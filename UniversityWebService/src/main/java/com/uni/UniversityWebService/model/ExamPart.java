@@ -32,10 +32,6 @@ public class ExamPart {
 	private int examPartPoints;
 	
 	@ManyToOne
-	@JoinColumn(name = "examId", referencedColumnName = "examId", nullable = false)
-	private Exam exam;
-	
-	@ManyToOne
 	@JoinColumn(name = "examPartTypeId", referencedColumnName = "examPartTypeId", nullable = false)
 	private ExamPartType examPartType;
 	
@@ -43,13 +39,12 @@ public class ExamPart {
 	@JoinColumn(name = "examPartStatusId", referencedColumnName = "examPartStatusId", nullable = false)
 	private ExamPartStatus examPartStatus;
 
-	public ExamPart(Long id, Date examPartStartDate, String classroom, int examPartPoints, Exam exam,
+	public ExamPart(Long id, Date examPartStartDate, String classroom, int examPartPoints,
 			ExamPartType examPartType, ExamPartStatus examPartStatus) {
 		this.id = id;
 		this.examPartStartDate = examPartStartDate;
 		this.classroom = classroom;
 		this.examPartPoints = examPartPoints;
-		this.exam = exam;
 		this.examPartType = examPartType;
 		this.examPartStatus = examPartStatus;
 	}
@@ -90,14 +85,6 @@ public class ExamPart {
 		this.examPartPoints = examPartPoints;
 	}
 
-	public Exam getExam() {
-		return exam;
-	}
-
-	public void setExam(Exam exam) {
-		this.exam = exam;
-	}
-
 	public ExamPartType getExamPartType() {
 		return examPartType;
 	}
@@ -113,6 +100,5 @@ public class ExamPart {
 	public void setExamPartStatus(ExamPartStatus examPartStatus) {
 		this.examPartStatus = examPartStatus;
 	}
-	
 	
 }

@@ -1,16 +1,10 @@
 package com.uni.UniversityWebService.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -29,15 +23,11 @@ public class ExamPartStatus {
 	
 	@Column(name = "code", unique = false, nullable = false)
 	private String code;
-	
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "examPartStatus")
-	private Set<ExamPart> examParts = new HashSet<ExamPart>();
 
-	public ExamPartStatus(Long id, String name, String code, Set<ExamPart> examParts) {
+	public ExamPartStatus(Long id, String name, String code) {
 		this.id = id;
 		this.name = name;
 		this.code = code;
-		this.examParts = examParts;
 	}
 
 	public ExamPartStatus() {
@@ -66,14 +56,6 @@ public class ExamPartStatus {
 
 	public void setCode(String code) {
 		this.code = code;
-	}
-
-	public Set<ExamPart> getExamParts() {
-		return examParts;
-	}
-
-	public void setExamParts(Set<ExamPart> examParts) {
-		this.examParts = examParts;
 	}
 	
 }
