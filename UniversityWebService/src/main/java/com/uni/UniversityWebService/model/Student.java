@@ -38,7 +38,6 @@ public class Student {
 	private Integer accountNumber;
 	
 	@OneToMany(
-			mappedBy = "student",
 			cascade = CascadeType.ALL,
 			fetch = FetchType.LAZY
 	)
