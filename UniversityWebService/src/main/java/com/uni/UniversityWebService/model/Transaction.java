@@ -1,10 +1,33 @@
 package com.uni.UniversityWebService.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Transaction")
 public class Transaction {
 	
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(name = "amount")
 	private Integer amount;
+	
+	@OneToOne
+	@JoinColumn(name="transactionType", referencedColumnName = "id")
 	private TransactionType transactionType;
+	
+	@ManyToOne
+	@JoinColumn(name="student", referencedColumnName = "id")
 	private Student student;
 	
 	public Transaction() {

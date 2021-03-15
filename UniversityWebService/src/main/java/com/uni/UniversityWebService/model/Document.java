@@ -1,11 +1,31 @@
 package com.uni.UniversityWebService.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="Document")
 public class Document {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private Long id;
+	
+	@Column(name="title")
 	private String title;
+	
+	@Column(name="uri")
 	private String uri;
+	
+	@OneToOne
+	@JoinColumn(name="documentTypeId", referencedColumnName = "id")
 	private DocumentType documentType;
 	
 	public Document(Long id, String title, String uri, DocumentType documentType) {

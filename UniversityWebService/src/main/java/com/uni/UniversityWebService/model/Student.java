@@ -2,16 +2,62 @@ package com.uni.UniversityWebService.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Student")
 public class Student {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private Long id;
+	
+	@Column(name="firstName")
 	private String firstName;
+	
+	@Column(name="lastName")
 	private String lastName;
+	
+	@Column(name="cardNumber")
 	private String cardNumber;
+	
+	@Column(name="balance")
 	private Integer balance;
+	
+	@Column(name="accountNumber")
 	private Integer accountNumber;
+	
+	@OneToMany(
+			mappedBy = "student",
+			cascade = CascadeType.ALL,
+			fetch = FetchType.LAZY
+	)
 	private List<Document> documents;
+	
+	@OneToMany(
+			mappedBy = "student",
+			cascade = CascadeType.ALL,
+			fetch = FetchType.LAZY
+			
+	)
 	private List<Transaction> transactions;
+	
+	@OneToMany(
+			mappedBy = "student",
+			cascade = CascadeType.ALL,
+			fetch = FetchType.LAZY
+	
+	)
 	private List<Enrollment> enrollments;
 
 
