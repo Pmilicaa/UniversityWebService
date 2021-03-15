@@ -1,13 +1,32 @@
 package com.uni.UniversityWebService.model;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "courseSpecification")
 public class CourseSpecification {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "ects")
     private int ECTS;
+
+    @Column(name = "code")
     private String code;
+
+    @OneToMany(
+            mappedBy = "courseSpecification",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+
+    )
     private List<CourseInstance> courseInstances;
 
     public CourseSpecification(Long id, String title, int ECTS, String code, List<CourseInstance> courseInstances) {

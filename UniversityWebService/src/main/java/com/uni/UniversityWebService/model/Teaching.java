@@ -1,10 +1,25 @@
 package com.uni.UniversityWebService.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "teaching")
 public class Teaching {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "courseInstance", referencedColumnName = "id")
     private CourseInstance courseInstance;
+
+    @OneToOne
+    @JoinColumn(name = "teachingType_id", referencedColumnName = "id")
     private TeachingType teachingType;
+
+    @Column(name = "code")
     private String code;
 
     public Teaching(Long id, CourseInstance courseInstance, TeachingType teachingType, String code) {

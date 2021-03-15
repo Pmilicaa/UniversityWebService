@@ -1,9 +1,20 @@
 package com.uni.UniversityWebService.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "teachingType")
 public class TeachingType {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "code")
     private String code;
 
     public TeachingType(Long id, String name, String code) {
