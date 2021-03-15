@@ -12,7 +12,7 @@ public class Teaching {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "courseInstance", referencedColumnName = "id")
+    @JoinColumn(name = "courseInstance", referencedColumnName = "courseInstanceId")
     private CourseInstance courseInstance;
 
     @OneToOne
