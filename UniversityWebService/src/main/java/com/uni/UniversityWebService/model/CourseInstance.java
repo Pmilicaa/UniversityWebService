@@ -10,7 +10,7 @@ public class CourseInstance {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "courseInstanceId")
     private Long id;
 
     @Column(name = "startDate")
