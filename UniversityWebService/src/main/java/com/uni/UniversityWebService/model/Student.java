@@ -48,13 +48,13 @@ public class Student {
 			fetch = FetchType.LAZY
 	
 	)
-
+	private List<Enrollment> enrollments;
 	@OneToOne(optional = false)
 	@JoinColumn(name="User_id", referencedColumnName = "id")
 	private User  user;
 
 
-	private List<Enrollment> enrollments;
+
 
 
 	public Student() {
