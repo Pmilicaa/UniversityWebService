@@ -32,7 +32,7 @@ public class Exam {
 	@Column(name = "grade", unique = false, nullable = false)
 	private int grade;
 	
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "exam")
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 	private Set<ExamPart> examParts = new HashSet<ExamPart>();
 	
 	@ManyToOne

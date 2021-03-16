@@ -33,40 +33,84 @@ public class Enrollment {
 	@ManyToOne
 	@JoinColumn(name = "courseInstanceId", referencedColumnName = "courseInstanceId", nullable = false)
 	private CourseInstance courseInstance;
+	
+	@ManyToOne
+	@JoinColumn(name = "studentId", referencedColumnName = "id", nullable = false)
+	private Student student;
 
 	
-	public Enrollment(Long id, Set<ExamPeriod> courseInstances, CourseInstance courseInstance) {
+	
+
+	public Enrollment(Long id, Set<ExamPeriod> courseInstances, CourseInstance courseInstance, Student student) {
 		this.id = id;
 		this.courseInstances = courseInstances;
 		this.courseInstance = courseInstance;
+		this.student = student;
 	}
+
+
+
 
 	public Enrollment() {
 		
 	}
 
+
+
+
 	public Long getId() {
 		return id;
 	}
+
+
+
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+
+
+
 	public Set<ExamPeriod> getCourseInstances() {
 		return courseInstances;
 	}
+
+
+
 
 	public void setCourseInstances(Set<ExamPeriod> courseInstances) {
 		this.courseInstances = courseInstances;
 	}
 
+
+
+
 	public CourseInstance getCourseInstance() {
 		return courseInstance;
 	}
 
+
+
+
 	public void setCourseInstance(CourseInstance courseInstance) {
 		this.courseInstance = courseInstance;
 	}
+
+
+
+
+	public Student getStudent() {
+		return student;
+	}
+
+
+
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+	
 
 }

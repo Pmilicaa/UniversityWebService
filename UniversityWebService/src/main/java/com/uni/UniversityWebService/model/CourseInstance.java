@@ -23,6 +23,9 @@ public class CourseInstance {
 
     @Column(name = "code")
     private String code;
+    
+    @ManyToOne
+	@JoinColumn(name = "courseSpecificationsId", referencedColumnName = "id", nullable = false)
     private CourseSpecification courseSpecification;
 
     @OneToMany(
