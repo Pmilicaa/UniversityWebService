@@ -15,6 +15,10 @@ public class Teaching {
     @JoinColumn(name = "courseInstance", referencedColumnName = "courseInstanceId")
     private CourseInstance courseInstance;
 
+    @ManyToOne
+    @JoinColumn(name = "TecherId", referencedColumnName = "id")
+    private Teacher teacher;
+
     @OneToOne
     @JoinColumn(name = "teachingType_id", referencedColumnName = "id")
     private TeachingType teachingType;
@@ -22,11 +26,12 @@ public class Teaching {
     @Column(name = "code")
     private String code;
 
-    public Teaching(Long id, CourseInstance courseInstance, TeachingType teachingType, String code) {
+    public Teaching(Long id, CourseInstance courseInstance, TeachingType teachingType, String code, Teacher teacher) {
         this.id = id;
         this.courseInstance = courseInstance;
         this.teachingType = teachingType;
         this.code = code;
+        this.teacher= teacher;
     }
 
     public Teaching() {
@@ -63,4 +68,7 @@ public class Teaching {
     public void setCode(String code) {
         this.code = code;
     }
+
+    public Teacher getTeacher() { return teacher; }
+    public void setTeacher(Teacher teacher) { this.teacher = teacher; }
 }

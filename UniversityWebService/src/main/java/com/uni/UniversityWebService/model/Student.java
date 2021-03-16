@@ -2,16 +2,7 @@ package com.uni.UniversityWebService.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="Student")
@@ -57,6 +48,12 @@ public class Student {
 			fetch = FetchType.LAZY
 	
 	)
+
+	@OneToOne(optional = false)
+	@JoinColumn(name="User_id", referencedColumnName = "id")
+	private User  user;
+
+
 	private List<Enrollment> enrollments;
 
 
@@ -66,7 +63,7 @@ public class Student {
 
 	public Student(Long id, String firstName, String lastName, String cardNumber, Integer balance,
 			Integer accountNumber, List<Document> documents, List<Transaction> transactions,
-			List<Enrollment> enrollments) {
+			List<Enrollment> enrollments,User user) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -77,6 +74,8 @@ public class Student {
 		this.documents = documents;
 		this.transactions = transactions;
 		this.enrollments = enrollments;
+		this.user=user;
+
 	}
 
 	public Long getId() {
@@ -138,5 +137,6 @@ public class Student {
 	public void setDocuments(List<Document> documents) {
 		this.documents = documents;
 	}
-	
+	public User getUser() { return user; }
+	public void setUser(User user) { this.user = user; }
 }
