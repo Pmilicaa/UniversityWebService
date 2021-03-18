@@ -18,7 +18,7 @@ public class Teacher {
     @Column(name="lastName")
     private String lastName;
 
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name="User_id", referencedColumnName = "id")
     private User  user;
 
@@ -31,13 +31,15 @@ public class Teacher {
 
 
     public Teacher(Long id,String firstName,String lastName,List<Teaching> teachings){
-
         this.id=id;
         this.firstName=firstName;
         this.lastName=lastName;
         this.teachings= teachings;
-
     }
+
+    public Teacher(){
+    }
+
     public Long getId() {
         return id;
     }

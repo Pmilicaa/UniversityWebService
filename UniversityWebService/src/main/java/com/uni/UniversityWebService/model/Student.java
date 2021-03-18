@@ -49,13 +49,10 @@ public class Student {
 	
 	)
 	private List<Enrollment> enrollments;
-	@OneToOne(optional = false)
+
+	@OneToOne(optional = false, cascade = CascadeType.ALL)
 	@JoinColumn(name="User_id", referencedColumnName = "id")
 	private User  user;
-
-
-
-
 
 	public Student() {
 		super();

@@ -1,8 +1,8 @@
 package com.uni.UniversityWebService.model;
 
-public enum RoleEnum {
+public enum Role {
 
     Admin,
     Teacher,
-    Stundet;
+    Student;
 }
