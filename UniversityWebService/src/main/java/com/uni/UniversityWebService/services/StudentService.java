@@ -2,6 +2,7 @@ package com.uni.UniversityWebService.services;
 
 import java.util.List;
 
+import com.uni.UniversityWebService.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +15,10 @@ public class StudentService {
 	@Autowired
 	StudentRepository studentRepository;
 
-//	public Student findOne(Long id) {
-//		return studentRepository.findOne(id);
-//	}
+
+	public Student findByOne(Long id) {
+		return studentRepository.findById(id).get();
+	}
 	
 	public void remove(Student student) {
 		studentRepository.delete(student);
