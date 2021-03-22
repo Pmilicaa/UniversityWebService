@@ -14,9 +14,9 @@ public class StudentService {
 	@Autowired
 	StudentRepository studentRepository;
 
-	public Student findOne(Long id) {
-		return studentRepository.findOne(id);
-	}
+//	public Student findOne(Long id) {
+//		return studentRepository.findOne(id);
+//	}
 	
 	public void remove(Student student) {
 		studentRepository.delete(student);
