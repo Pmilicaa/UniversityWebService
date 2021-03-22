@@ -43,13 +43,25 @@ public class UserService {
         return teacher;
     }
 
-    public List<Student> findAllStudents(){
-        return studentRepository.findAll();
+    public User updateUser(User user){
+        User userToUpdate = userRepository.findById(user.getId()).get();
+        userToUpdate.setUserName(user.getUserName());
+        userToUpdate.setPassword(user.getPassword());
+        userToUpdate.setRole(user.getRole());
+
+        userRepository.save(userToUpdate);
+        return userToUpdate;
     }
 
-    public Student saveStudent(Student student){
-        studentRepository.save(student);
-        return student;
+    public Teacher updateTeacher(Teacher teacher){
+        Teacher teacherToUpdate = teacherRepository.findById(teacher.getId()).get();
+        teacherToUpdate.setFirstName(teacher.getFirstName());
+        teacherToUpdate.setLastName(teacher.getLastName());
+        teacherToUpdate.setTeachings(teacher.getTeachings());
+
+        teacherRepository.save(teacherToUpdate);
+
+        return teacherToUpdate;
     }
 
 }

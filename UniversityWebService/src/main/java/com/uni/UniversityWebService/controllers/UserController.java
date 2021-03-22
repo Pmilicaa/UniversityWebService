@@ -4,6 +4,7 @@ import com.uni.UniversityWebService.model.Role;
 import com.uni.UniversityWebService.model.Student;
 import com.uni.UniversityWebService.model.Teacher;
 import com.uni.UniversityWebService.model.User;
+import com.uni.UniversityWebService.services.StudentService;
 import com.uni.UniversityWebService.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private StudentService studentService;
 
     @GetMapping(path = "/users")
     public @ResponseBody ResponseEntity<?> getAllUsers(){
@@ -43,18 +47,17 @@ public class UserController {
         }
     }
 
-    @GetMapping(path = "/students")
-    public @ResponseBody ResponseEntity<?> getAllStudents(){
-        return new ResponseEntity(userService.findAllStudents(), HttpStatus.OK);
+    @PutMapping(path = "/users")
+    public @ResponseBody ResponseEntity<?> updateUser(@RequestBody User user){
+        User updatedUser = userService.updateUser(user);
+
+        return new ResponseEntity(updatedUser, HttpStatus.OK);
     }
 
-    @PostMapping(path = "/students")
-    public @ResponseBody ResponseEntity<?> addStudent(@RequestBody Student student){
-        if(!student.getUser().getRole().equals(Role.Student)){
-            return new ResponseEntity("Student must have a student role", HttpStatus.BAD_REQUEST);
-        }else{
-            Student newStudent = userService.saveStudent(student);
-            return new ResponseEntity(newStudent, HttpStatus.OK);
-        }
+    @PutMapping(path = "/teachers")
+    public @ResponseBody ResponseEntity<?> updateTeacher(@RequestBody Teacher teacher){
+        Teacher updateTeacher = userService.updateTeacher(teacher);
+
+        return new ResponseEntity(updateTeacher, HttpStatus.OK);
     }
 }
