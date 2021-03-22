@@ -19,7 +19,7 @@ public class StudentService {
 	@Autowired
 	User user;
 	
-	public List<Student> findOne(Long id) {
+	public Student findOne(Long id) {
 		return studentRepository.findOne(id);
 	}
 	

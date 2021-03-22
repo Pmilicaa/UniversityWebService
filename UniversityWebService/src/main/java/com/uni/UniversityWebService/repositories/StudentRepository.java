@@ -8,6 +8,6 @@ import com.uni.UniversityWebService.model.Student;
 
 public interface StudentRepository extends JpaRepository<Student, Long>{
 
-	List<Student> findOne(Long id);
+	Student findOne(Long id);
 
 }
