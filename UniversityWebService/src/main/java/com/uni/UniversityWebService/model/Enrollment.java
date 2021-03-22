@@ -28,7 +28,7 @@ public class Enrollment {
 	private Long id;
 	
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "enrollment")
-	private Set<ExamPeriod> courseInstances = new HashSet<ExamPeriod>();
+	private Set<ExamPeriod> examPeriods = new HashSet<ExamPeriod>();//GRESKA
 	
 	@ManyToOne
 	@JoinColumn(name = "courseInstanceId", referencedColumnName = "courseInstanceId", nullable = false)
@@ -41,9 +41,9 @@ public class Enrollment {
 	
 	
 
-	public Enrollment(Long id, Set<ExamPeriod> courseInstances, CourseInstance courseInstance, Student student) {
+	public Enrollment(Long id, Set<ExamPeriod> examPeriods, CourseInstance courseInstance, Student student) {
 		this.id = id;
-		this.courseInstances = courseInstances;
+		this.examPeriods = examPeriods;
 		this.courseInstance = courseInstance;
 		this.student = student;
 	}
@@ -72,15 +72,15 @@ public class Enrollment {
 
 
 
-	public Set<ExamPeriod> getCourseInstances() {
-		return courseInstances;
+	public Set<ExamPeriod> getExamPeriods() {
+		return examPeriods;
 	}
 
 
 
 
-	public void setCourseInstances(Set<ExamPeriod> courseInstances) {
-		this.courseInstances = courseInstances;
+	public void setExamPeriods(Set<ExamPeriod> examPeriods) {
+		this.examPeriods = examPeriods;
 	}
 
 
