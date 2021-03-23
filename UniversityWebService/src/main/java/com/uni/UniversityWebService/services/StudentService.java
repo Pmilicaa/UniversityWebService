@@ -1,15 +1,21 @@
 package com.uni.UniversityWebService.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.uni.UniversityWebService.model.ExamPart;
+import com.uni.UniversityWebService.model.ExamPeriod;
 import com.uni.UniversityWebService.repositories.EnrollmentRepository;
 import com.uni.UniversityWebService.repositories.ExamPartRepository;
+import com.uni.UniversityWebService.repositories.ExamPeriodRepository;
+import com.uni.UniversityWebService.repositories.ExamRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.uni.UniversityWebService.model.CourseSpecification;
 import com.uni.UniversityWebService.model.Enrollment;
+import com.uni.UniversityWebService.model.Exam;
 import com.uni.UniversityWebService.model.Student;
 import com.uni.UniversityWebService.repositories.StudentRepository;
 
@@ -24,7 +30,13 @@ public class StudentService {
 	
 	@Autowired
 	EnrollmentRepository enrollmentRepository;
+	
+	@Autowired
+	ExamRepository examRepository;
 
+	@Autowired
+	ExamPeriodRepository examPeriodRepository;
+	
 	public Student findByOne(Long id) {
 		return studentRepository.findById(id).get();
 	}
@@ -52,12 +64,28 @@ public class StudentService {
 		return studentToUpdate;
 	}
 	
-//	public List<CourseSpecification> GetPassedExamsByStudent(Long studentId, Long courceInstanceId) {
-//		Student student = studentRepository.findById(studentId).orElse(null);
-//		Enrollment enrollment = (Enrollment) enrollmentRepository.findByStudent_id(student.getId());
-//		
-//	}
-//		
+	
+	//TODO: Check is this works
+	public List<CourseSpecification> GetPassedExamsByStudent(Long studentId) {
+		List<CourseSpecification> cs = new ArrayList<CourseSpecification>();
+		Student student = studentRepository.findById(studentId).orElse(null);
+		List<Enrollment> enrollment = enrollmentRepository.findByStudent_id(student.getId());
+		for (Enrollment enroll : enrollment) {
+			List<ExamPeriod> examPeriods = examPeriodRepository.findByEnrollment_id(enroll.getId());
+				for (ExamPeriod ep : examPeriods) {
+					List<Exam> exams = examRepository.findByExamPeriod_id(ep.getId());
+					for (Exam exam : exams) {
+						if (exam.getGrade() > 5) {
+							cs.add(enroll.getCourseInstance().getCourseSpecification());
+						}
+					}
+				}
+		}
+		return cs;
+	}
+	
+	
+		
 	
 
 	// TODO: Return all exams based on student

@@ -28,7 +28,7 @@ public class Enrollment {
 	private Long id;
 	
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "enrollment")
-	private Set<ExamPeriod> examPeriods = new HashSet<ExamPeriod>();//GRESKA
+	private Set<ExamPeriod> examPeriods = new HashSet<ExamPeriod>();
 	
 	@ManyToOne
 	@JoinColumn(name = "courseInstanceId", referencedColumnName = "courseInstanceId", nullable = false)
