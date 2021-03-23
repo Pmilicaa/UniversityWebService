@@ -22,7 +22,7 @@ public class EnrollmentService {
 	}
 	
 	public List<Enrollment> findAllByCourceInstance(Long id) {
-		return enrollmentRepository.findByCourceInstance_id(id);
+		return enrollmentRepository.findByCourseInstance_id(id);
 	}
 	
 	public Enrollment findOne(Long id) {
