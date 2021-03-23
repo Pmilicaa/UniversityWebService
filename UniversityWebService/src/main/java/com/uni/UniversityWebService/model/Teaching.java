@@ -11,15 +11,15 @@ public class Teaching {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "courseInstance", referencedColumnName = "courseInstanceId")
     private CourseInstance courseInstance;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "TecherId", referencedColumnName = "id")
     private Teacher teacher;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "teachingType_id", referencedColumnName = "id")
     private TeachingType teachingType;
 
@@ -28,6 +28,12 @@ public class Teaching {
 
     public Teaching(Long id, CourseInstance courseInstance, TeachingType teachingType, String code, Teacher teacher) {
         this.id = id;
+        this.courseInstance = courseInstance;
+        this.teachingType = teachingType;
+        this.code = code;
+        this.teacher= teacher;
+    }
+    public Teaching(CourseInstance courseInstance, TeachingType teachingType, String code, Teacher teacher) {
         this.courseInstance = courseInstance;
         this.teachingType = teachingType;
         this.code = code;

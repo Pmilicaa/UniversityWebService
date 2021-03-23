@@ -21,9 +21,6 @@ public class CourseInstance {
     @Temporal(TemporalType.DATE)
     private Date endDate;
 
-    @Column(name = "code")
-    private String code;
-    
     @ManyToOne
 	@JoinColumn(name = "courseSpecificationsId", referencedColumnName = "id", nullable = false)
     private CourseSpecification courseSpecification;
@@ -42,11 +39,18 @@ public class CourseInstance {
     )
     private List<Enrollment> enrollments;
 
-    public CourseInstance(Long id, Date startDate, Date endDate, String code, CourseSpecification courseSpecification, List<Teaching> teachings, List<Enrollment> enrollments) {
+    public CourseInstance(Long id, Date startDate, Date endDate, CourseSpecification courseSpecification, List<Teaching> teachings, List<Enrollment> enrollments) {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.code = code;
+        this.courseSpecification = courseSpecification;
+        this.teachings = teachings;
+        this.enrollments = enrollments;
+    }
+    public CourseInstance(Date startDate, Date endDate, CourseSpecification courseSpecification, List<Teaching> teachings, List<Enrollment> enrollments) {
+      
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.courseSpecification = courseSpecification;
         this.teachings = teachings;
         this.enrollments = enrollments;
@@ -79,13 +83,6 @@ public class CourseInstance {
         this.endDate = endDate;
     }
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
 
     public CourseSpecification getCourseSpecification() {
         return courseSpecification;
