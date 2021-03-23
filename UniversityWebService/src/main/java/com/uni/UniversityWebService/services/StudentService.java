@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.uni.UniversityWebService.model.ExamPart;
+import com.uni.UniversityWebService.model.ExamPartStatus;
 import com.uni.UniversityWebService.model.ExamPeriod;
 import com.uni.UniversityWebService.repositories.EnrollmentRepository;
 import com.uni.UniversityWebService.repositories.ExamPartRepository;
@@ -17,7 +18,10 @@ import com.uni.UniversityWebService.model.CourseSpecification;
 import com.uni.UniversityWebService.model.Enrollment;
 import com.uni.UniversityWebService.model.Exam;
 import com.uni.UniversityWebService.model.Student;
+import com.uni.UniversityWebService.model.Teacher;
+import com.uni.UniversityWebService.model.Teaching;
 import com.uni.UniversityWebService.repositories.StudentRepository;
+import com.uni.UniversityWebService.repositories.TeachingRepository;
 
 @Service
 public class StudentService {
@@ -36,6 +40,9 @@ public class StudentService {
 
 	@Autowired
 	ExamPeriodRepository examPeriodRepository;
+	
+	@Autowired
+	TeachingRepository teachingRepository;
 	
 	public Student findByOne(Long id) {
 		return studentRepository.findById(id).get();
@@ -65,8 +72,8 @@ public class StudentService {
 	}
 	
 	
-	//TODO: Check is this works
-	public List<CourseSpecification> GetPassedExamsByStudent(Long studentId) {
+	//TODO: Check is this works (Find all remaining exams for student)
+	public List<CourseSpecification> GetRemainingExamsByStudent(Long studentId) {
 		List<CourseSpecification> cs = new ArrayList<CourseSpecification>();
 		Student student = studentRepository.findById(studentId).orElse(null);
 		List<Enrollment> enrollment = enrollmentRepository.findByStudent_id(student.getId());
@@ -75,7 +82,7 @@ public class StudentService {
 				for (ExamPeriod ep : examPeriods) {
 					List<Exam> exams = examRepository.findByExamPeriod_id(ep.getId());
 					for (Exam exam : exams) {
-						if (exam.getGrade() > 5) {
+						if (exam.getGrade() == 5) {
 							cs.add(enroll.getCourseInstance().getCourseSpecification());
 						}
 					}
@@ -85,7 +92,34 @@ public class StudentService {
 	}
 	
 	
-		
+	public ExamPartStatus examInformation(Long studentId) {
+		ExamPartStatus examP = null;
+		Student student = studentRepository.findById(studentId).orElse(null);
+		List<Enrollment> enrollment = enrollmentRepository.findByStudent_id(student.getId());
+		for (Enrollment enroll : enrollment) {
+			List<ExamPeriod> examPeriods = examPeriodRepository.findByEnrollment_id(enroll.getId());
+				for (ExamPeriod ep : examPeriods) {
+					List<Exam> exams = examRepository.findByExamPeriod_id(ep.getId());
+					for (Exam ex : exams) {
+						for (ExamPart examPart : ex.getExamParts()) {
+							examP = examPart.getExamPartStatus();
+						}
+					}
+				}
+		}
+		return examP;
+	}
+	
+	
+	//TODO: FINISH THIS (Student want to see wich teacher teaching the course)
+//	public List<Teacher> WichTeacherIsTeachingTheCourse(Long studentId, Long courseInstanceId) {
+//		List<Teacher> teachers = new ArrayList<Teacher>();
+//		Student student = studentRepository.findById(studentId).orElse(null);
+//		List<Enrollment> enrollment = enrollmentRepository.findByStudent_id(student.getId());
+//		for(Enrollment enr : enrollment) {
+//			
+//		}
+//	}
 	
 
 	// TODO: Return all exams based on student
