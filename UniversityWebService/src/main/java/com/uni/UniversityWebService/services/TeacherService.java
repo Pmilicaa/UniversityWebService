@@ -11,6 +11,7 @@ import com.uni.UniversityWebService.model.Enrollment;
 import com.uni.UniversityWebService.model.Exam;
 import com.uni.UniversityWebService.model.ExamPart;
 import com.uni.UniversityWebService.model.ExamPeriod;
+import com.uni.UniversityWebService.model.Student;
 import com.uni.UniversityWebService.model.Teacher;
 import com.uni.UniversityWebService.model.Teaching;
 import com.uni.UniversityWebService.repositories.ExamPartRepository;
@@ -67,5 +68,15 @@ public class TeacherService {
 	public List<ExamPart> findExamParts(){
 		List<ExamPart> examParts =examPartRepository.findAll();
 		return examParts;
+	}
+	public List<Student> findTeacherStudents(Long id){
+		Teacher teacher = teacherRepository.findById(id).get();
+		List<Student> students = new ArrayList<>();
+		for(Teaching t : teacher.getTeachings()) {
+			for(Enrollment en: t.getCourseInstance().getEnrollments()) {
+				students.add(en.getStudent());
+			}
+		}
+		return students;
 	}
 }

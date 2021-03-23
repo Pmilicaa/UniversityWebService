@@ -19,6 +19,7 @@ import com.uni.UniversityWebService.model.CourseSpecification;
 import com.uni.UniversityWebService.model.Enrollment;
 import com.uni.UniversityWebService.model.ExamPart;
 import com.uni.UniversityWebService.model.Role;
+import com.uni.UniversityWebService.model.Student;
 import com.uni.UniversityWebService.model.Teacher;
 import com.uni.UniversityWebService.model.Teaching;
 import com.uni.UniversityWebService.model.TeachingType;
@@ -28,6 +29,7 @@ import com.uni.UniversityWebService.repositories.CourseSpecificationRepository;
 import com.uni.UniversityWebService.repositories.TeacherRepository;
 import com.uni.UniversityWebService.repositories.TeachingRepository;
 import com.uni.UniversityWebService.services.ExamPartService;
+import com.uni.UniversityWebService.services.StudentService;
 import com.uni.UniversityWebService.services.TeacherService;
 
 @RestController
@@ -47,6 +49,9 @@ public class TeacherController {
 	
 	@Autowired
 	private ExamPartService examPartService;
+	
+	@Autowired
+	private StudentService studentService;
 	
 	@GetMapping(path="teachers/{teacherId}/courses")
 	public @ResponseBody ResponseEntity<?> getTeacherCourses(@PathVariable(value="teacherId") Long id){
@@ -81,5 +86,11 @@ public class TeacherController {
 		return new ResponseEntity (teacherService.findExamParts(), HttpStatus.OK);
 	}
 	
+	@GetMapping(path="teachers/{teacherId}/students")
+	public @ResponseBody ResponseEntity<?> getAllTeacherStudents( @PathVariable(value="teacherId") Long id){
+		
+		return new ResponseEntity (teacherService.findTeacherStudents(id), HttpStatus.OK);
+	}
 
+		
 }
