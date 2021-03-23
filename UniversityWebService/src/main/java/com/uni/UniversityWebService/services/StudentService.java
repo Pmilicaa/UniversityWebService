@@ -58,4 +58,16 @@ public class StudentService {
 	public List<ExamPart> findAllExamParts(Student student){
 		return examPartRepository.findAll();
 	}
+
+	public void increaseStudentBalance(Student student, int amount){
+		student.setBalance(student.getBalance() + amount);
+
+		studentRepository.save(student);
+	}
+
+	public void decreaseStudentBalance(Student student, int amount){
+		student.setBalance(student.getBalance() + amount);
+
+		studentRepository.save(student);
+	}
 }
