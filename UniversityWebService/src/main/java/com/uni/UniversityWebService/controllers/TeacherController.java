@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.uni.UniversityWebService.model.CourseInstance;
 import com.uni.UniversityWebService.model.CourseSpecification;
 import com.uni.UniversityWebService.model.Enrollment;
+import com.uni.UniversityWebService.model.ExamPart;
+import com.uni.UniversityWebService.model.Role;
 import com.uni.UniversityWebService.model.Teacher;
 import com.uni.UniversityWebService.model.Teaching;
 import com.uni.UniversityWebService.model.TeachingType;
@@ -25,6 +27,7 @@ import com.uni.UniversityWebService.repositories.CourseInstanceRepository;
 import com.uni.UniversityWebService.repositories.CourseSpecificationRepository;
 import com.uni.UniversityWebService.repositories.TeacherRepository;
 import com.uni.UniversityWebService.repositories.TeachingRepository;
+import com.uni.UniversityWebService.services.ExamPartService;
 import com.uni.UniversityWebService.services.TeacherService;
 
 @RestController
@@ -41,6 +44,9 @@ public class TeacherController {
 	
 	@Autowired
 	private CourseInstanceRepository courseInstanceRepository;
+	
+	@Autowired
+	private ExamPartService examPartService;
 	
 	@GetMapping(path="teachers/{teacherId}/courses")
 	public @ResponseBody ResponseEntity<?> getTeacherCourses(@PathVariable(value="teacherId") Long id){
@@ -69,6 +75,11 @@ public class TeacherController {
 		return new ResponseEntity(new TeachingDto(teacherService.addTeacherTeachings(newTeaching,id)), HttpStatus.OK);
 	}
 	
+
+	@GetMapping(path="teachers/examparts")
+	public @ResponseBody ResponseEntity<?> getTeachersExamParts(){
+		return new ResponseEntity (teacherService.findExamParts(), HttpStatus.OK);
+	}
 	
 
 }
