@@ -6,6 +6,7 @@ import com.uni.UniversityWebService.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.uni.UniversityWebService.model.CourseSpecification;
 import com.uni.UniversityWebService.model.Student;
 import com.uni.UniversityWebService.repositories.StudentRepository;
 
@@ -42,5 +43,11 @@ public class StudentService {
 
 		return studentToUpdate;
 	}
+	
+//	public List<CourseSpecification> GetPassedExamsByStudent(Long id) {
+//		Student student = studentRepository.findById(id).orElse(null);
+//		
+//	}
 		
+	
 }
