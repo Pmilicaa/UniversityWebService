@@ -3,11 +3,13 @@ package com.uni.UniversityWebService.services;
 import java.util.List;
 
 import com.uni.UniversityWebService.model.ExamPart;
+import com.uni.UniversityWebService.repositories.EnrollmentRepository;
 import com.uni.UniversityWebService.repositories.ExamPartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.uni.UniversityWebService.model.CourseSpecification;
+import com.uni.UniversityWebService.model.Enrollment;
 import com.uni.UniversityWebService.model.Student;
 import com.uni.UniversityWebService.repositories.StudentRepository;
 
@@ -19,6 +21,9 @@ public class StudentService {
 
 	@Autowired
 	private ExamPartRepository examPartRepository;
+	
+	@Autowired
+	EnrollmentRepository enrollmentRepository;
 
 	public Student findByOne(Long id) {
 		return studentRepository.findById(id).get();
@@ -47,11 +52,12 @@ public class StudentService {
 		return studentToUpdate;
 	}
 	
-//	public List<CourseSpecification> GetPassedExamsByStudent(Long id) {
-//		Student student = studentRepository.findById(id).orElse(null);
+//	public List<CourseSpecification> GetPassedExamsByStudent(Long studentId, Long courceInstanceId) {
+//		Student student = studentRepository.findById(studentId).orElse(null);
+//		Enrollment enrollment = (Enrollment) enrollmentRepository.findByStudent_id(student.getId());
 //		
 //	}
-		
+//		
 	
 
 	// TODO: Return all exams based on student
