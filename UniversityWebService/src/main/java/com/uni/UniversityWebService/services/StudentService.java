@@ -2,7 +2,8 @@ package com.uni.UniversityWebService.services;
 
 import java.util.List;
 
-import com.uni.UniversityWebService.model.User;
+import com.uni.UniversityWebService.model.ExamPart;
+import com.uni.UniversityWebService.repositories.ExamPartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +15,10 @@ import com.uni.UniversityWebService.repositories.StudentRepository;
 public class StudentService {
 	
 	@Autowired
-	StudentRepository studentRepository;
+	private StudentRepository studentRepository;
 
+	@Autowired
+	private ExamPartRepository examPartRepository;
 
 	public Student findByOne(Long id) {
 		return studentRepository.findById(id).get();
@@ -50,4 +53,9 @@ public class StudentService {
 //	}
 		
 	
+
+	// TODO: Return all exams based on student
+	public List<ExamPart> findAllExamParts(Student student){
+		return examPartRepository.findAll();
+	}
 }
