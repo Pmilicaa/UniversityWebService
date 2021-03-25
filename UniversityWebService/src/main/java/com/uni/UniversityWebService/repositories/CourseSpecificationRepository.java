@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CourseSpecificationRepository extends JpaRepository<CourseSpecification, Long> {
 	
-	List<CourseSpecification> findByCourseInstance_id(Long id);
+	List<CourseSpecification> findByCourseInstances_id(Long id);
 }
