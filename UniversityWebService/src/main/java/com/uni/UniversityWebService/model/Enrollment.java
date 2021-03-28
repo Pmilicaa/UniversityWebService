@@ -28,27 +28,23 @@ public class Enrollment {
 	private Long id;
 	
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "enrollment")
-	private Set<ExamPeriod> examPeriods = new HashSet<ExamPeriod>();
+	private Set<Exam> exams = new HashSet<Exam>();
 	
 	@ManyToOne
-	@JoinColumn(name = "courseInstanceId", referencedColumnName = "courseInstanceId", nullable = false)
-	private CourseInstance courseInstance;
+	@JoinColumn(name = "courseSpecificationId", referencedColumnName = "id", nullable = false)
+	private CourseSpecification courseSpecification;
 	
 	@ManyToOne
 	@JoinColumn(name = "studentId", referencedColumnName = "id", nullable = false)
 	private Student student;
 
 	
-	
-
-	public Enrollment(Long id, Set<ExamPeriod> examPeriods, CourseInstance courseInstance, Student student) {
+	public Enrollment(Long id, Set<Exam> exams, CourseSpecification courseSpecification, Student student) {
 		this.id = id;
-		this.examPeriods = examPeriods;
-		this.courseInstance = courseInstance;
+		this.exams = exams;
+		this.courseSpecification = courseSpecification;
 		this.student = student;
 	}
-
-
 
 
 	public Enrollment() {
@@ -56,13 +52,9 @@ public class Enrollment {
 	}
 
 
-
-
 	public Long getId() {
 		return id;
 	}
-
-
 
 
 	public void setId(Long id) {
@@ -70,34 +62,24 @@ public class Enrollment {
 	}
 
 
-
-
-	public Set<ExamPeriod> getExamPeriods() {
-		return examPeriods;
+	public Set<Exam> getExams() {
+		return exams;
 	}
 
 
-
-
-	public void setExamPeriods(Set<ExamPeriod> examPeriods) {
-		this.examPeriods = examPeriods;
+	public void setExams(Set<Exam> exams) {
+		this.exams = exams;
 	}
 
 
-
-
-	public CourseInstance getCourseInstance() {
-		return courseInstance;
+	public CourseSpecification getCourseSpecification() {
+		return courseSpecification;
 	}
 
 
-
-
-	public void setCourseInstance(CourseInstance courseInstance) {
-		this.courseInstance = courseInstance;
+	public void setCourseSpecification(CourseSpecification courseSpecification) {
+		this.courseSpecification = courseSpecification;
 	}
-
-
 
 
 	public Student getStudent() {
@@ -105,12 +87,8 @@ public class Enrollment {
 	}
 
 
-
-
 	public void setStudent(Student student) {
 		this.student = student;
 	}
-
-	
 
 }

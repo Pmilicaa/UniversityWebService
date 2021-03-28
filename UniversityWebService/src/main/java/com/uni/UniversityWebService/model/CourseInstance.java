@@ -25,35 +25,18 @@ public class CourseInstance {
 	@JoinColumn(name = "courseSpecificationsId", referencedColumnName = "id", nullable = false)
     private CourseSpecification courseSpecification;
 
-    @OneToMany(
-            mappedBy = "courseInstance",
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL
-    )
-    private List<Teaching> teachings;
 
-    @OneToMany(
-            mappedBy = "courseInstance",
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL
-    )
-    private List<Enrollment> enrollments;
-
-    public CourseInstance(Long id, Date startDate, Date endDate, CourseSpecification courseSpecification, List<Teaching> teachings, List<Enrollment> enrollments) {
+    public CourseInstance(Long id, Date startDate, Date endDate, CourseSpecification courseSpecification) {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
         this.courseSpecification = courseSpecification;
-        this.teachings = teachings;
-        this.enrollments = enrollments;
     }
-    public CourseInstance(Date startDate, Date endDate, CourseSpecification courseSpecification, List<Teaching> teachings, List<Enrollment> enrollments) {
+    public CourseInstance(Date startDate, Date endDate, CourseSpecification courseSpecification) {
       
         this.startDate = startDate;
         this.endDate = endDate;
         this.courseSpecification = courseSpecification;
-        this.teachings = teachings;
-        this.enrollments = enrollments;
     }
 
     public CourseInstance() {
@@ -92,19 +75,4 @@ public class CourseInstance {
         this.courseSpecification = courseSpecification;
     }
 
-    public List<Teaching> getTeachings() {
-        return teachings;
-    }
-
-    public void setTeachings(List<Teaching> teachings) {
-        this.teachings = teachings;
-    }
-
-    public List<Enrollment> getEnrollments() {
-        return enrollments;
-    }
-
-    public void setEnrollments(List<Enrollment> enrollments) {
-        this.enrollments = enrollments;
-    }
 }

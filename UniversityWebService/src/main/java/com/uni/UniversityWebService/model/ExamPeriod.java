@@ -36,19 +36,15 @@ public class ExamPeriod {
 	@Column(name = "examPeriodEndDate", unique = false, nullable = false)
 	private Date examPeriodEndDate;
 	
-	@ManyToOne
-	@JoinColumn(name="enrollmentId", referencedColumnName="enrollmentId", nullable=false)
-	private Enrollment enrollment;
 	
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "examPeriod")
 	private Set<Exam> exams = new HashSet<Exam>();
 
-	public ExamPeriod(Long id, String name, Date examPeriodStartDate, Date examPeriodEndDate, Enrollment enrollment, Set<Exam> exams) {
+	public ExamPeriod(Long id, String name, Date examPeriodStartDate, Date examPeriodEndDate, Set<Exam> exams) {
 		this.id = id;
 		this.name = name;
 		this.examPeriodStartDate = examPeriodStartDate;
 		this.examPeriodEndDate = examPeriodEndDate;
-		this.enrollment = enrollment;
 		this.exams = exams;
 	}
 
@@ -86,14 +82,6 @@ public class ExamPeriod {
 
 	public void setExamPeriodEndDate(Date examPeriodEndDate) {
 		this.examPeriodEndDate = examPeriodEndDate;
-	}
-
-	public Enrollment getEnrollment() {
-		return enrollment;
-	}
-
-	public void setEnrollment(Enrollment enrollment) {
-		this.enrollment = enrollment;
 	}
 
 	public Set<Exam> getExams() {

@@ -36,21 +36,35 @@ public class Exam {
 	private Set<ExamPart> examParts = new HashSet<ExamPart>();
 	
 	@ManyToOne
+	@JoinColumn(name="enrollmentId", referencedColumnName="enrollmentId", nullable=false)
+	private Enrollment enrollment;
+	
+	@ManyToOne
+	@JoinColumn(name="teachingId", referencedColumnName="id", nullable=false)
+	private Teaching teaching;
+	
+	@ManyToOne
 	@JoinColumn(name = "examPeriodId", referencedColumnName = "examPeriodId", nullable = false)
 	private ExamPeriod examPeriod;
 
-	public Exam(Long id, int examPoints, int grade, Set<ExamPart> examParts, ExamPeriod examPeriod) {
+
+
+	public Exam(Long id, int examPoints, int grade, Set<ExamPart> examParts, Enrollment enrollment,
+			ExamPeriod examPeriod, Teaching teaching) {
 		this.id = id;
 		this.examPoints = examPoints;
 		this.grade = grade;
 		this.examParts = examParts;
+		this.enrollment = enrollment;
 		this.examPeriod = examPeriod;
+		this.teaching = teaching;
 	}
 
 	public Exam() {
 		
 	}
 
+	
 	public Long getId() {
 		return id;
 	}
@@ -89,6 +103,22 @@ public class Exam {
 
 	public void setExamPeriod(ExamPeriod examPeriod) {
 		this.examPeriod = examPeriod;
+	}
+
+	public Enrollment getEnrollment() {
+		return enrollment;
+	}
+
+	public void setEnrollment(Enrollment enrollment) {
+		this.enrollment = enrollment;
+	}
+
+	public Teaching getTeaching() {
+		return teaching;
+	}
+
+	public void setTeaching(Teaching teaching) {
+		this.teaching = teaching;
 	}
 	
 }

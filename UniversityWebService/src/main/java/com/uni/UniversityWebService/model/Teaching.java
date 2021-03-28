@@ -1,5 +1,8 @@
 package com.uni.UniversityWebService.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,8 +15,8 @@ public class Teaching {
     private Long id;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "courseInstance", referencedColumnName = "courseInstanceId")
-    private CourseInstance courseInstance;
+    @JoinColumn(name = "courseSpecificationId", referencedColumnName = "id")
+    private CourseSpecification courseSpecification;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "TecherId", referencedColumnName = "id")
@@ -25,19 +28,28 @@ public class Teaching {
 
     @Column(name = "code")
     private String code;
+    
+    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "teaching")
+	private Set<Exam> exams = new HashSet<Exam>();
 
-    public Teaching(Long id, CourseInstance courseInstance, TeachingType teachingType, String code, Teacher teacher) {
-        this.id = id;
-        this.courseInstance = courseInstance;
+    
+    public Teaching(Long id, CourseSpecification courseSpecification, Teacher teacher, TeachingType teachingType,
+			String code, Set<Exam> exams) {
+		super();
+		this.id = id;
+		this.courseSpecification = courseSpecification;
+		this.teacher = teacher;
+		this.teachingType = teachingType;
+		this.code = code;
+		this.exams = exams;
+	}
+
+	public Teaching(CourseSpecification courseSpecification, TeachingType teachingType, String code, Teacher teacher, Set<Exam> exams) {
+        this.courseSpecification = courseSpecification;
         this.teachingType = teachingType;
         this.code = code;
         this.teacher= teacher;
-    }
-    public Teaching(CourseInstance courseInstance, TeachingType teachingType, String code, Teacher teacher) {
-        this.courseInstance = courseInstance;
-        this.teachingType = teachingType;
-        this.code = code;
-        this.teacher= teacher;
+        this.exams = exams;
     }
 
     public Teaching() {
@@ -51,15 +63,13 @@ public class Teaching {
         this.id = id;
     }
 
-    public CourseInstance getCourseInstance() {
-        return courseInstance;
-    }
-
-    public void setCourseInstance(CourseInstance courseInstance) {
-        this.courseInstance = courseInstance;
-    }
-
-    public TeachingType getTeachingType() {
+    public CourseSpecification getCourseSpecification() {
+		return courseSpecification;
+	}
+	public void setCourseSpecification(CourseSpecification courseSpecification) {
+		this.courseSpecification = courseSpecification;
+	}
+	public TeachingType getTeachingType() {
         return teachingType;
     }
 
@@ -76,5 +86,16 @@ public class Teaching {
     }
 
     public Teacher getTeacher() { return teacher; }
+    
+    
     public void setTeacher(Teacher teacher) { this.teacher = teacher; }
+
+	public Set<Exam> getExams() {
+		return exams;
+	}
+
+	public void setExams(Set<Exam> exams) {
+		this.exams = exams;
+	}
+    
 }
