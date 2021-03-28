@@ -15,10 +15,6 @@ public class ExamPeriodService {
 	ExamPeriodRepository examPeriodRepository;
 	
 	
-	public List<ExamPeriod> findAllByEnrollments(Long id) {
-		return examPeriodRepository.findByEnrollment_id(id);
-	}
-	
 	public ExamPeriod findOne(Long id) {
 		return examPeriodRepository.findById(id).orElse(null);
 	}

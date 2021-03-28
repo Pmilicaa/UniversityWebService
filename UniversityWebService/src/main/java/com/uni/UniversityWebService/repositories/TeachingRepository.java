@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TeachingRepository extends JpaRepository<Teaching, Long> {
 	
-	List<Teaching> findByCourseInstance_id(Long id);
 	
 	List<Teaching> findByTeacher_id(Long id);
 }

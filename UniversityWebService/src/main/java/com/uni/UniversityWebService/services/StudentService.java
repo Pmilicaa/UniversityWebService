@@ -73,42 +73,42 @@ public class StudentService {
 	
 	
 	//TODO: Check is this works (Find all remaining exams for student)
-	public List<CourseSpecification> GetRemainingExamsByStudent(Long studentId) {
-		List<CourseSpecification> cs = new ArrayList<CourseSpecification>();
-		Student student = studentRepository.findById(studentId).orElse(null);
-		List<Enrollment> enrollment = enrollmentRepository.findByStudent_id(student.getId());
-		for (Enrollment enroll : enrollment) {
-			List<ExamPeriod> examPeriods = examPeriodRepository.findByEnrollment_id(enroll.getId());
-				for (ExamPeriod ep : examPeriods) {
-					List<Exam> exams = examRepository.findByExamPeriod_id(ep.getId());
-					for (Exam exam : exams) {
-						if (exam.getGrade() == 5) {
-							cs.add(enroll.getCourseSpecification());
-						}
-					}
-				}
-		}
-		return cs;
-	}
+//	public List<CourseSpecification> GetRemainingExamsByStudent(Long studentId) {
+//		List<CourseSpecification> cs = new ArrayList<CourseSpecification>();
+//		Student student = studentRepository.findById(studentId).orElse(null);
+//		List<Enrollment> enrollment = enrollmentRepository.findByStudent_id(student.getId());
+//		for (Enrollment enroll : enrollment) {
+//			List<ExamPeriod> examPeriods = examPeriodRepository.findByEnrollment_id(enroll.getId());
+//				for (ExamPeriod ep : examPeriods) {
+//					List<Exam> exams = examRepository.findByExamPeriod_id(ep.getId());
+//					for (Exam exam : exams) {
+//						if (exam.getGrade() == 5) {
+//							cs.add(enroll.getCourseSpecification());
+//						}
+//					}
+//				}
+//		}
+//		return cs;
+//	}
 	
 	
-	public ExamPartStatus examInformation(Long studentId) {
-		ExamPartStatus examP = null;
-		Student student = studentRepository.findById(studentId).orElse(null);
-		List<Enrollment> enrollment = enrollmentRepository.findByStudent_id(student.getId());
-		for (Enrollment enroll : enrollment) {
-			List<ExamPeriod> examPeriods = examPeriodRepository.findByEnrollment_id(enroll.getId());
-				for (ExamPeriod ep : examPeriods) {
-					List<Exam> exams = examRepository.findByExamPeriod_id(ep.getId());
-					for (Exam ex : exams) {
-						for (ExamPart examPart : ex.getExamParts()) {
-							examP = examPart.getExamPartStatus();
-						}
-					}
-				}
-		}
-		return examP;
-	}
+//	public ExamPartStatus examInformation(Long studentId) {
+//		ExamPartStatus examP = null;
+//		Student student = studentRepository.findById(studentId).orElse(null);
+//		List<Enrollment> enrollment = enrollmentRepository.findByStudent_id(student.getId());
+//		for (Enrollment enroll : enrollment) {
+//			List<ExamPeriod> examPeriods = examPeriodRepository.findByEnrollment_id(enroll.getId());
+//				for (ExamPeriod ep : examPeriods) {
+//					List<Exam> exams = examRepository.findByExamPeriod_id(ep.getId());
+//					for (Exam ex : exams) {
+//						for (ExamPart examPart : ex.getExamParts()) {
+//							examP = examPart.getExamPartStatus();
+//						}
+//					}
+//				}
+//		}
+//		return examP;
+//	}
 	
 	
 	//TODO: FINISH THIS (Student want to see wich teacher teaching the course)

@@ -8,6 +8,5 @@ import com.uni.UniversityWebService.model.ExamPeriod;
 
 public interface ExamPeriodRepository extends JpaRepository<ExamPeriod, Long>{
 
-	List<ExamPeriod> findByEnrollment_id(Long id);
 	
 }
