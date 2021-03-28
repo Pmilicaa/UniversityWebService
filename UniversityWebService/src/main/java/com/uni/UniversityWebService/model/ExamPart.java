@@ -30,6 +30,9 @@ public class ExamPart {
 	
 	@Column(name = "examPartPoints", unique = false, nullable = false)
 	private int examPartPoints;
+
+	@Column(name = "requiredPoints", nullable = false)
+	private int requiredPoints;
 	
 	@ManyToOne
 	@JoinColumn(name = "examPartTypeId", referencedColumnName = "examPartTypeId", nullable = false)
@@ -40,13 +43,14 @@ public class ExamPart {
 	private ExamPartStatus examPartStatus;
 
 	public ExamPart(Long id, Date examPartStartDate, String classroom, int examPartPoints,
-			ExamPartType examPartType, ExamPartStatus examPartStatus) {
+			ExamPartType examPartType, ExamPartStatus examPartStatus, int requiredPoints) {
 		this.id = id;
 		this.examPartStartDate = examPartStartDate;
 		this.classroom = classroom;
 		this.examPartPoints = examPartPoints;
 		this.examPartType = examPartType;
 		this.examPartStatus = examPartStatus;
+		this.requiredPoints = requiredPoints;
 	}
 
 	public ExamPart() {
@@ -100,5 +104,12 @@ public class ExamPart {
 	public void setExamPartStatus(ExamPartStatus examPartStatus) {
 		this.examPartStatus = examPartStatus;
 	}
-	
+
+	public int getRequiredPoints() {
+		return requiredPoints;
+	}
+
+	public void setRequiredPoints(int requiredPoints) {
+		this.requiredPoints = requiredPoints;
+	}
 }
