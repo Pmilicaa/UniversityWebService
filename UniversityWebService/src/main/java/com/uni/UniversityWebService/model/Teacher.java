@@ -37,6 +37,12 @@ public class Teacher {
         this.teachings= teachings;
     }
 
+    public Teacher(String firstName,String lastName,List<Teaching> teachings){
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.teachings= teachings;
+    }
+
     public Teacher(){
     }
 
