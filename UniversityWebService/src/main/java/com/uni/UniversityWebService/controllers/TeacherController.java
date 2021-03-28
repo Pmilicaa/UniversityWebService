@@ -2,8 +2,10 @@ package com.uni.UniversityWebService.controllers;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.uni.UniversityWebService.model.CourseInstance;
 import com.uni.UniversityWebService.model.CourseSpecification;
 import com.uni.UniversityWebService.model.Enrollment;
+import com.uni.UniversityWebService.model.Exam;
 import com.uni.UniversityWebService.model.ExamPart;
 import com.uni.UniversityWebService.model.Role;
 import com.uni.UniversityWebService.model.Student;
@@ -29,6 +32,7 @@ import com.uni.UniversityWebService.repositories.CourseSpecificationRepository;
 import com.uni.UniversityWebService.repositories.TeacherRepository;
 import com.uni.UniversityWebService.repositories.TeachingRepository;
 import com.uni.UniversityWebService.services.ExamPartService;
+import com.uni.UniversityWebService.services.ExamService;
 import com.uni.UniversityWebService.services.StudentService;
 import com.uni.UniversityWebService.services.TeacherService;
 
@@ -53,6 +57,8 @@ public class TeacherController {
 	@Autowired
 	private StudentService studentService;
 	
+	@Autowired
+	private ExamService examService;
 	@GetMapping(path="teachers/{teacherId}/courses")
 	public @ResponseBody ResponseEntity<?> getTeacherCourses(@PathVariable(value="teacherId") Long id){
 		
@@ -64,16 +70,13 @@ public class TeacherController {
 		
 		CourseSpecification courseSpecification = courseSpecificationRepository.findById(courseSpecId).get();
 		
-		CourseInstance newCourseInstance = new CourseInstance(new Date(),new Date(),courseSpecification, new ArrayList<Teaching>(), new ArrayList<Enrollment>());
 		Teacher teacher = teacherService.findById(id);
+		Teaching newTeaching = new Teaching(courseSpecification,new TeachingType(),"ma",teacher, new HashSet<Exam>());
 		
-		Teaching newTeaching = new Teaching(newCourseInstance,new TeachingType(),"ma",teacher);
-		
-		newCourseInstance.getTeachings().add(newTeaching);
-		
+		courseSpecification.getTeachings().add(newTeaching);
+		//CourseInstance newCourseInstance = new CourseInstance(new Date(),new Date(),courseSpecification);
+
 		teachingRepository.save(newTeaching);
-		courseInstanceRepository.save(newCourseInstance);
-		courseSpecification.getCourseInstances().add(newCourseInstance);
 		courseSpecificationRepository.save(courseSpecification);
 		teacher.getTeachings().add(newTeaching);
 		teacherService.save(teacher);

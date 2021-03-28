@@ -83,7 +83,7 @@ public class StudentService {
 					List<Exam> exams = examRepository.findByExamPeriod_id(ep.getId());
 					for (Exam exam : exams) {
 						if (exam.getGrade() == 5) {
-							cs.add(enroll.getCourseInstance().getCourseSpecification());
+							cs.add(enroll.getCourseSpecification());
 						}
 					}
 				}

@@ -33,7 +33,8 @@ public class TeacherService {
 		Teacher teacher = teacherRepository.findById(id).get();
 		List<CourseInstance> courseInstances = new ArrayList<>();
 		for(Teaching t : teacher.getTeachings()) {
-			courseInstances.add(t.getCourseInstance());
+			for(CourseInstance ci : t.getCourseSpecification().getCourseInstances())
+			courseInstances.add(ci);
 		}
 		return courseInstances;
 	}
@@ -75,7 +76,7 @@ public class TeacherService {
 		Teacher teacher = teacherRepository.findById(id).get();
 		List<Student> students = new ArrayList<>();
 		for(Teaching t : teacher.getTeachings()) {
-			for(Enrollment en: t.getCourseInstance().getEnrollments()) {
+			for(Enrollment en: t.getCourseSpecification().getEnrollments()) {
 				students.add(en.getStudent());
 			}
 		}
@@ -85,7 +86,7 @@ public class TeacherService {
 		Teacher teacher = teacherRepository.findById(id).get();
 		List<Enrollment> enrollments = new ArrayList<>();
 		for(Teaching t : teacher.getTeachings()) {
-			for(Enrollment en: t.getCourseInstance().getEnrollments()) {
+			for(Enrollment en: t.getCourseSpecification().getEnrollments()) {
 				enrollments.add(en);
 			}
 		}
