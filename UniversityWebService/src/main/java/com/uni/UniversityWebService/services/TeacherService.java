@@ -3,6 +3,7 @@ package com.uni.UniversityWebService.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.mapping.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,20 +55,6 @@ public class TeacherService {
 		return teacherRepository.save(teacher);
 	}
 	
-	/*
-	 * public List <ExamPart> findTeacherExams(Long id)
-	 * { Teacher teacher =teacherRepository.findById(id).get();
-	 *  List<ExamPart> examParts = new ArrayList<>(); 
-	 *  for(Teaching t : teacher.getTeachings())
-	 *   { for(Enrollment e : t.getCourseInstance().getEnrollments())
-	 *    { for(ExamPeriod ep : e.getExamPeriods()) 
-	 *    { for(Exam exam : ep.getExams()) 
-	 *    { for(ExamPart examPa :exam.getExamParts()) 
-	 *    { examParts.add(examPa); } } } } } 
-	 *    return examParts;
-	 * 
-	 * }
-	 */
 	public List<ExamPart> findExamParts(){
 		List<ExamPart> examParts =examPartRepository.findAll();
 		return examParts;
@@ -97,4 +84,17 @@ public class TeacherService {
 		return students;
 	}
 	
+	public List<ExamPart> findTeacherExamParts(Long id){
+		Teacher teacher = teacherRepository.findById(id).get();
+		List<ExamPart>examParts = new ArrayList<>();
+		for(Teaching teaching : teacher.getTeachings()) {
+			for(Exam exam: teaching.getExams()) {
+				for(ExamPart ep: exam.getExamParts()) {
+					examParts.add(ep);
+				}
+			}
+		}
+		return examParts;
+		
+	}
 }
