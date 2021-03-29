@@ -65,23 +65,24 @@ public class TeacherController {
 		return new ResponseEntity(teacherService.findTeacherCourses(id), HttpStatus.OK);
 	}
 	
-	@PostMapping(path="teachers/{teacherId}/teaching/{courseSpecId}")
-	public @ResponseBody ResponseEntity<?> addTeacherTeaching(@PathVariable(value="teacherId") Long id, @PathVariable(value="courseSpecId") Long courseSpecId){
-		
-		CourseSpecification courseSpecification = courseSpecificationRepository.findById(courseSpecId).get();
-		
-		Teacher teacher = teacherService.findById(id);
-		Teaching newTeaching = new Teaching(courseSpecification,new TeachingType(),"ma",teacher, new HashSet<Exam>());
-		
-		courseSpecification.getTeachings().add(newTeaching);
-		//CourseInstance newCourseInstance = new CourseInstance(new Date(),new Date(),courseSpecification);
-
-		teachingRepository.save(newTeaching);
-		courseSpecificationRepository.save(courseSpecification);
-		teacher.getTeachings().add(newTeaching);
-		teacherService.save(teacher);
-		return new ResponseEntity(new TeachingDto(teacherService.addTeacherTeachings(newTeaching,id)), HttpStatus.OK);
-	}
+	
+//	@PostMapping(path="teachers/{teacherId}/teaching/{courseSpecId}")
+//	public @ResponseBody ResponseEntity<?> addTeacherTeaching(@PathVariable(value="teacherId") Long id, @PathVariable(value="courseSpecId") Long courseSpecId){
+//		
+//		CourseSpecification courseSpecification = courseSpecificationRepository.findById(courseSpecId).get();
+//		
+//		Teacher teacher = teacherService.findById(id);
+//		Teaching newTeaching = new Teaching(courseSpecification,new TeachingType(),"ma",teacher, new HashSet<Exam>());
+//		
+//		courseSpecification.getTeachings().add(newTeaching);
+//		//CourseInstance newCourseInstance = new CourseInstance(new Date(),new Date(),courseSpecification);
+//
+//		teachingRepository.save(newTeaching);
+//		courseSpecificationRepository.save(courseSpecification);
+//		teacher.getTeachings().add(newTeaching);
+//		teacherService.save(teacher);
+//		return new ResponseEntity(new TeachingDto(teacherService.addTeacherTeachings(newTeaching,id)), HttpStatus.OK);
+//	}
 	
 
 	@GetMapping(path="teachers/examparts")
