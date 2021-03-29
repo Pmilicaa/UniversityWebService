@@ -95,5 +95,9 @@ public class TeacherController {
 		
 		return new ResponseEntity (teacherService.findTeacherStudents(id), HttpStatus.OK);
 	}
+	@GetMapping(path="teachers/{teacherId}/examParts")
+	public @ResponseBody ResponseEntity<?> getTeacherExamParts(@PathVariable(value="teacherId") Long teacherId){		
+		return new ResponseEntity (teacherService.findTeacherExamParts(teacherId), HttpStatus.OK);
+	}
 	
 }
