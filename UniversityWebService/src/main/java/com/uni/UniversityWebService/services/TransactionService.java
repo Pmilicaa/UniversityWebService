@@ -17,8 +17,8 @@ import java.util.Optional;
 public class TransactionService {
 
 //              witdraw u frontu
-    private final TransactionRepository transactionRepository;
-    private final StudentRepository studentRepository;
+    private  TransactionRepository transactionRepository;
+    private  StudentRepository studentRepository;
     @Transactional
     public void addNewTransaction(TransactionDto transactionDto) throws Exception {
 
