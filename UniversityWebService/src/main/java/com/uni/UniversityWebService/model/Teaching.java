@@ -29,27 +29,28 @@ public class Teaching {
     @Column(name = "code")
     private String code;
     
-    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "teaching")
-	private Set<Exam> exams = new HashSet<Exam>();
+    @OneToOne
+    @JoinColumn(name="exam_id", nullable = false)
+	private Exam exam;
 
     
     public Teaching(Long id, CourseSpecification courseSpecification, Teacher teacher, TeachingType teachingType,
-			String code, Set<Exam> exams) {
+			String code, Exam exam) {
 		super();
 		this.id = id;
 		this.courseSpecification = courseSpecification;
 		this.teacher = teacher;
 		this.teachingType = teachingType;
 		this.code = code;
-		this.exams = exams;
+		this.exam = exam;
 	}
 
-	public Teaching(CourseSpecification courseSpecification, TeachingType teachingType, String code, Teacher teacher, Set<Exam> exams) {
+	public Teaching(CourseSpecification courseSpecification, TeachingType teachingType, String code, Teacher teacher, Exam exam) {
         this.courseSpecification = courseSpecification;
         this.teachingType = teachingType;
         this.code = code;
         this.teacher= teacher;
-        this.exams = exams;
+        this.exam = exam;
     }
 
     public Teaching() {
@@ -90,12 +91,11 @@ public class Teaching {
     
     public void setTeacher(Teacher teacher) { this.teacher = teacher; }
 
-	public Set<Exam> getExams() {
-		return exams;
-	}
+    public Exam getExam() {
+        return exam;
+    }
 
-	public void setExams(Set<Exam> exams) {
-		this.exams = exams;
-	}
-    
+    public void setExam(Exam exam) {
+        this.exam = exam;
+    }
 }

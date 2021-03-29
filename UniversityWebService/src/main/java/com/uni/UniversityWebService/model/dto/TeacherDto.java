@@ -53,9 +53,7 @@ public class TeacherDto {
 
 	public Set<Exam> getExam(Teacher teacher) {
 		for(Teaching t : teacher.getTeachings()) {
-			for(Exam e : t.getExams()) {
-				exams.add(e);
-			}
+			this.exams.add(t.getExam());
 		}
 		return exams;
 	}
@@ -63,10 +61,8 @@ public class TeacherDto {
 	public Set<ExamPart> getExamParts(Teacher teacher){
 		
 		for(Teaching t : teacher.getTeachings()) {
-			for(Exam e : t.getExams()) {
-				for(ExamPart ex : e.getExamParts()) {
-					examParts.add(ex);
-				}
+			for(ExamPart ex : t.getExam().getExamParts()) {
+				this.examParts.add(ex);
 			}
 		}
 		return examParts;

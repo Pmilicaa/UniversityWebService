@@ -3,17 +3,7 @@ package com.uni.UniversityWebService.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Entity
@@ -27,8 +17,9 @@ public class Enrollment {
 	@Column(name = "enrollmentId", unique = true, nullable = false)
 	private Long id;
 	
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "enrollment")
-	private Set<Exam> exams = new HashSet<Exam>();
+	@OneToOne
+	@JoinColumn(name="exam_Id",  nullable = false)
+	private Exam exam;
 	
 	@ManyToOne
 	@JoinColumn(name = "courseSpecificationId", referencedColumnName = "id", nullable = false)
@@ -39,9 +30,9 @@ public class Enrollment {
 	private Student student;
 
 	
-	public Enrollment(Long id, Set<Exam> exams, CourseSpecification courseSpecification, Student student) {
+	public Enrollment(Long id, Exam exam, CourseSpecification courseSpecification, Student student) {
 		this.id = id;
-		this.exams = exams;
+		this.exam = exam;
 		this.courseSpecification = courseSpecification;
 		this.student = student;
 	}
@@ -61,16 +52,13 @@ public class Enrollment {
 		this.id = id;
 	}
 
-
-	public Set<Exam> getExams() {
-		return exams;
+	public Exam getExam() {
+		return exam;
 	}
 
-
-	public void setExams(Set<Exam> exams) {
-		this.exams = exams;
+	public void setExam(Exam exam) {
+		this.exam = exam;
 	}
-
 
 	public CourseSpecification getCourseSpecification() {
 		return courseSpecification;

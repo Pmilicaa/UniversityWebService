@@ -88,10 +88,8 @@ public class TeacherService {
 		Teacher teacher = teacherRepository.findById(id).get();
 		List<ExamPart>examParts = new ArrayList<>();
 		for(Teaching teaching : teacher.getTeachings()) {
-			for(Exam exam: teaching.getExams()) {
-				for(ExamPart ep: exam.getExamParts()) {
-					examParts.add(ep);
-				}
+			for(ExamPart ep: teaching.getExam().getExamParts()) {
+				examParts.add(ep);
 			}
 		}
 		return examParts;

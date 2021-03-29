@@ -3,17 +3,7 @@ package com.uni.UniversityWebService.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Exam")
@@ -34,13 +24,11 @@ public class Exam {
 	
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 	private Set<ExamPart> examParts = new HashSet<ExamPart>();
-	
-	@ManyToOne
-	@JoinColumn(name="enrollmentId", referencedColumnName="enrollmentId", nullable=false)
+
+	@OneToOne(cascade={CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "exam")
 	private Enrollment enrollment;
-	
-	@ManyToOne
-	@JoinColumn(name="teachingId", referencedColumnName="id", nullable=false)
+
+	@OneToOne(cascade={CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "exam")
 	private Teaching teaching;
 	
 	@ManyToOne
