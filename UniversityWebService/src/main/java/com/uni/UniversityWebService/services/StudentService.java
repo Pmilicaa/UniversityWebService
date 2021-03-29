@@ -72,6 +72,20 @@ public class StudentService {
 	}
 	
 	
+	public List<CourseSpecification> GetRemainingExamsByStudent(Long studentId) {
+		List<CourseSpecification> cs = new ArrayList<CourseSpecification>();
+		Student student = studentRepository.findById(studentId).get();
+		for (Enrollment enroll : student.getEnrollments()) {
+			for(Exam ex : enroll.getExams()) {
+				if(ex.getGrade() == 5) {
+					cs.add(enroll.getCourseSpecification());
+				}
+			}
+		}
+		return cs;
+	}
+	
+	
 	//TODO: Check is this works (Find all remaining exams for student)
 //	public List<CourseSpecification> GetRemainingExamsByStudent(Long studentId) {
 //		List<CourseSpecification> cs = new ArrayList<CourseSpecification>();
@@ -90,6 +104,7 @@ public class StudentService {
 //		}
 //		return cs;
 //	}
+	
 	
 	
 //	public ExamPartStatus examInformation(Long studentId) {
