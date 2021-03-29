@@ -20,17 +20,19 @@ public class TeachingDto {
     private TeachingType teachingType;
     private String code;
     
-	public TeachingDto(Teaching teaching) {
-		super();
-		this.id = teaching.getId();
-		this.startDate = teaching.getCourseInstance().getStartDate();
-		this.endDate = teaching.getCourseInstance().getEndDate();
-		this.title = teaching.getCourseInstance().getCourseSpecification().getTitle();
-		this.ects = teaching.getCourseInstance().getCourseSpecification().getECTS();
-		this.teacher = teaching.getTeacher();
-		this.teachingType = teaching.getTeachingType();
-		this.code = teaching.getCode();
-	}
+    
+    
+//	public TeachingDto(Teaching teaching) {
+//		super();
+//		this.id = teaching.getId();
+//		this.startDate = teaching.getCourseInstance().getStartDate();
+//		this.endDate = teaching.getCourseInstance().getEndDate();
+//		this.title = teaching.getCourseInstance().getCourseSpecification().getTitle();
+//		this.ects = teaching.getCourseInstance().getCourseSpecification().getECTS();
+//		this.teacher = teaching.getTeacher();
+//		this.teachingType = teaching.getTeachingType();
+//		this.code = teaching.getCode();
+//	}
 
 	public Long getId() {
 		return id;
