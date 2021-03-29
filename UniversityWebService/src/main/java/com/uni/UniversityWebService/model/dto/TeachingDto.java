@@ -1,9 +1,12 @@
 package com.uni.UniversityWebService.model.dto;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
+import com.uni.UniversityWebService.model.CourseInstance;
 import com.uni.UniversityWebService.model.Teacher;
 import com.uni.UniversityWebService.model.Teaching;
 import com.uni.UniversityWebService.model.TeachingType;
@@ -12,8 +15,6 @@ public class TeachingDto {
 
   
     private Long id;
-    private Date startDate;
-    private Date endDate;
     private String title;
     private int ects;
     private Teacher teacher;
@@ -33,6 +34,16 @@ public class TeachingDto {
 //		this.teachingType = teaching.getTeachingType();
 //		this.code = teaching.getCode();
 //	}
+   
+	public TeachingDto(Teaching teaching) {
+		super();
+		this.id = teaching.getId();
+		this.title = teaching.getCourseSpecification().getTitle();
+		this.ects = teaching.getCourseSpecification().getECTS();
+		this.teacher = teaching.getTeacher();
+		this.teachingType = teaching.getTeachingType();
+		this.code = teaching.getCode();
+	}
 
 	public Long getId() {
 		return id;
@@ -41,26 +52,12 @@ public class TeachingDto {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public Date getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
-	public Date getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
-
+	
+	
 	public String getTitle() {
 		return title;
 	}
+
 
 	public void setTitle(String title) {
 		this.title = title;
