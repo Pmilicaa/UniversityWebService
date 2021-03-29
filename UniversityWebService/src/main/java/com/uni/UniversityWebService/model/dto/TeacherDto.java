@@ -44,11 +44,13 @@ public class TeacherDto {
 		this.id = id;
 	}
 
-	public TeachingType getTeachingType(Teacher teacher) {
-		for(Teaching t : teacher.getTeachings()) {
-			teachingType = t.getTeachingType();
-		}
+	
+	public TeachingType getTeachingType() {
 		return teachingType;
+	}
+
+	public void setTeachingType(TeachingType teachingType) {
+		this.teachingType = teachingType;
 	}
 
 	public Set<Exam> getExam(Teacher teacher) {
