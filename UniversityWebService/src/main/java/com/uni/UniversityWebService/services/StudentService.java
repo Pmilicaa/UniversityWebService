@@ -6,10 +6,7 @@ import java.util.List;
 import com.uni.UniversityWebService.model.ExamPart;
 import com.uni.UniversityWebService.model.ExamPartStatus;
 import com.uni.UniversityWebService.model.ExamPeriod;
-import com.uni.UniversityWebService.repositories.EnrollmentRepository;
-import com.uni.UniversityWebService.repositories.ExamPartRepository;
-import com.uni.UniversityWebService.repositories.ExamPeriodRepository;
-import com.uni.UniversityWebService.repositories.ExamRepository;
+import com.uni.UniversityWebService.repositories.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,8 +17,6 @@ import com.uni.UniversityWebService.model.Exam;
 import com.uni.UniversityWebService.model.Student;
 import com.uni.UniversityWebService.model.Teacher;
 import com.uni.UniversityWebService.model.Teaching;
-import com.uni.UniversityWebService.repositories.StudentRepository;
-import com.uni.UniversityWebService.repositories.TeachingRepository;
 
 @Service
 public class StudentService {
@@ -70,21 +65,21 @@ public class StudentService {
 
 		return studentToUpdate;
 	}
-	
-	
-	public List<CourseSpecification> GetRemainingExamsByStudent(Long studentId) {
+
+
+	/*public List<CourseSpecification> GetRemainingExamsByStudent(Long studentId) {
 		List<CourseSpecification> cs = new ArrayList<CourseSpecification>();
 		Student student = studentRepository.findById(studentId).get();
 		for (Enrollment enroll : student.getEnrollments()) {
 			for(Exam ex : enroll.getExams()) {
-				if(ex.getGrade() == 5) {
+			if(ex.getGrade() == 5) {
 					cs.add(enroll.getCourseSpecification());
 				}
 			}
 		}
 		return cs;
-	}
-	
+	}*/
+
 	
 	//TODO: Check is this works (Find all remaining exams for student)
 //	public List<CourseSpecification> GetRemainingExamsByStudent(Long studentId) {
@@ -149,7 +144,7 @@ public class StudentService {
 	}
 
 	public void decreaseStudentBalance(Student student, int amount){
-		student.setBalance(student.getBalance() + amount);
+		student.setBalance(student.getBalance() - amount);
 
 		studentRepository.save(student);
 	}
