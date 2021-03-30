@@ -10,6 +10,8 @@ import com.uni.UniversityWebService.repositories.EnrollmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CourseService {
 
@@ -21,12 +23,40 @@ public class CourseService {
     @Autowired
     CourseInstanceRepository courseInstanceRepository;
 
-    public CourseInstance InstanceUpdate(CourseInstance courseInstance) {
+    public CourseInstance saveCourseInstance(CourseInstance courseInstance) {
         return courseInstanceRepository.save(courseInstance);
     }
 
-    public CourseSpecification SpecUpdate(CourseSpecification courseSpecification) {
+    public CourseSpecification saveCourseSpecification(CourseSpecification courseSpecification) {
         return courseSpecificationRepository.save(courseSpecification);
+    }
+
+    public CourseInstance deleteCourseInstance(CourseInstance courseInstance){
+        courseInstanceRepository.delete(courseInstance);
+
+        return courseInstance;
+    }
+
+    public CourseSpecification deleteCourseSpecification(CourseSpecification courseSpecification){
+        courseSpecificationRepository.delete(courseSpecification);
+
+        return courseSpecification;
+    }
+
+    public List<CourseInstance> findAllCourseInstances(){
+        return courseInstanceRepository.findAll();
+    }
+
+    public List<CourseSpecification> findAllCourseSpecifications(){
+        return courseSpecificationRepository.findAll();
+    }
+
+    public CourseInstance findCourseInstanceById(long id){
+        return courseInstanceRepository.findById(id).get();
+    }
+
+    public CourseSpecification findCourseSpecificationById(long id){
+        return courseSpecificationRepository.findById(id).get();
     }
 
 }
