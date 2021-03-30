@@ -5,19 +5,20 @@ import com.uni.UniversityWebService.model.Transaction;
 import com.uni.UniversityWebService.model.dto.TransactionDto;
 import com.uni.UniversityWebService.repositories.StudentRepository;
 import com.uni.UniversityWebService.repositories.TransactionRepository;
-import lombok.RequiredArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
-
 public class TransactionService {
 
 //              witdraw u frontu
+	@Autowired
     private  TransactionRepository transactionRepository;
+	@Autowired
     private  StudentRepository studentRepository;
     @Transactional
     public void addNewTransaction(TransactionDto transactionDto) throws Exception {
