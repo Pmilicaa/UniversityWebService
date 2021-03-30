@@ -12,7 +12,7 @@ import com.uni.UniversityWebService.repositories.ExamPartRepository;
 public class ExamPartService {
 
 	@Autowired
-	ExamPartRepository examPartRepository;
+	private ExamPartRepository examPartRepository;
 	
 	
 	public List<ExamPart> findAll() {
@@ -20,7 +20,7 @@ public class ExamPartService {
 	}
 	
 	public ExamPart findOne(Long id) {
-		return examPartRepository.findById(id).orElse(null);
+		return examPartRepository.findById(id).get();
 	}
 	
 	public ExamPart save (ExamPart examPart) {
