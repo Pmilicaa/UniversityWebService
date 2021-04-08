@@ -1,16 +1,25 @@
 package com.uni.UniversityWebService.model.dto;
 
 import com.uni.UniversityWebService.model.Student;
+import com.uni.UniversityWebService.model.Transaction;
 import com.uni.UniversityWebService.model.TransactionType;
 
 
 public class TransactionDto {
 
 
-		private Long id;
-		private Integer amount;
-		private TransactionType transactionType;
-		private Long studentId;
+	private Long id;
+	private Integer amount;
+	private TransactionType transactionType;
+	private Long studentId;
+
+	public TransactionDto(Transaction transaction) {
+		this(transaction.getId(), transaction.getAmount(), transaction.getTransactionType(), transaction.getStudent().getId());
+	}	
+		
+	public TransactionDto() {
+		super();
+	}
 
 	public TransactionDto(Long id, Integer amount, TransactionType transactionType, Long studentId) {
 		this.id = id;
