@@ -14,8 +14,8 @@ public class ExamService {
 	@Autowired
 	ExamRepository examRepository;
 	
-	public List<Exam> findAllByExamPeriod_id(Long id) {
-		return examRepository.findByExamPeriod_id(id);
+	public List<Exam> findAll() {
+		return examRepository.findAll();
 	}
 	
 	public Exam findOne(Long id) {

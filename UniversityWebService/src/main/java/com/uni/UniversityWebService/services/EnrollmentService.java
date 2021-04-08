@@ -21,6 +21,9 @@ public class EnrollmentService {
 		return enrollmentRepository.findByStudent_id(id);
 	}
 	
+	public List<Enrollment> findAll() {
+		return enrollmentRepository.findAll();
+	}
 	
 	public Enrollment findOne(Long id) {
 		return enrollmentRepository.findById(id).orElse(null);

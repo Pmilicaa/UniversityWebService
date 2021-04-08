@@ -15,8 +15,12 @@ public class ExamPeriodService {
 	ExamPeriodRepository examPeriodRepository;
 	
 	
+	public List<ExamPeriod> findAll() {
+		return examPeriodRepository.findAll();
+	}
+	
 	public ExamPeriod findOne(Long id) {
-		return examPeriodRepository.findById(id).orElse(null);
+		return examPeriodRepository.findById(id).get();
 	}
 	
 	public ExamPeriod save(ExamPeriod examPeriod) {
