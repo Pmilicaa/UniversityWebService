@@ -33,7 +33,7 @@ public class StudentDto {
 		this.enrollmentsDto = convertEnrollmentsToDtos(student.getEnrollments());
 	}
 	
-	public List<EnrollmentDto> convertEnrollmentsToDtos(List<Enrollment> enrollments) {
+	private List<EnrollmentDto> convertEnrollmentsToDtos(List<Enrollment> enrollments) {
 		List<EnrollmentDto> enrollmentsDto = new ArrayList<EnrollmentDto>();
 		for (Enrollment enrollment : enrollments) {
 			enrollmentsDto.add(new EnrollmentDto(enrollment));
@@ -42,7 +42,7 @@ public class StudentDto {
 	}
 	
 	
-	public List<TransactionDto> convertTransactionsToDtos(List<Transaction> transactions) {
+	private List<TransactionDto> convertTransactionsToDtos(List<Transaction> transactions) {
 		List<TransactionDto> transactionsDto = new ArrayList<TransactionDto>();
 		for (Transaction transaction : transactions) {
 			transactionsDto.add(new TransactionDto(transaction));

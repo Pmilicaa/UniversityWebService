@@ -9,14 +9,29 @@ public class ExamDto {
 	private int grade;
 	private EnrollmentDto enrollmentDto;
 	private TeachingDto teachingDto;
-	//TODO: INSERT EXAMPERIODDTO!
+	private ExamPeriodDto examPeriodDto;
 	
+	
+	
+	public ExamDto() {
+		
+	}
+
 	public ExamDto(Exam exam)  {
 		this.id = exam.getId();
 		this.examPoints = exam.getExamPoints();
 		this.grade = exam.getGrade();
 		this.enrollmentDto = new EnrollmentDto(exam.getEnrollment());
 		this.teachingDto = new TeachingDto(exam.getTeaching());
+		this.examPeriodDto = new ExamPeriodDto(exam.getExamPeriod());
+	}
+
+	public ExamPeriodDto getExamPeriodDto() {
+		return examPeriodDto;
+	}
+
+	public void setExamPeriodDto(ExamPeriodDto examPeriodDto) {
+		this.examPeriodDto = examPeriodDto;
 	}
 
 	public Long getId() {
