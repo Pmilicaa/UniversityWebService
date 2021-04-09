@@ -36,8 +36,8 @@ public class EnrollmentService {
 	
 	
 	//mislim da nam i ovo ne treba za enrollment
-	public void remove(Enrollment enrollment) {
-		enrollmentRepository.delete(enrollment);
+	public void remove(Long id) {
+		enrollmentRepository.deleteById(id);
 	}
 	
 }

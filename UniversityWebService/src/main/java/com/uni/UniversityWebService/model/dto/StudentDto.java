@@ -9,6 +9,7 @@ import com.uni.UniversityWebService.model.Transaction;
 
 public class StudentDto {
 
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private String cardNumber;
@@ -24,6 +25,7 @@ public class StudentDto {
 	}
 	
 	public StudentDto(Student student) {
+		this.id = student.getId();
 		this.firstName = student.getFirstName();
 		this.lastName = student.getLastName();
 		this.cardNumber = student.getCardNumber();
@@ -113,7 +115,13 @@ public class StudentDto {
 	public void setUserDto(UserDto userDto) {
 		this.userDto = userDto;
 	}
-	
-	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 	
 }
