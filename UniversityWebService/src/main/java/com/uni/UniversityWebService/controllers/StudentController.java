@@ -33,7 +33,7 @@ public class StudentController {
     
     
     //This is my way how to show unpassed exams with information of the courses
-    @GetMapping(path = "students/{studentId}/courses")
+    @GetMapping(path = "students/{studentId}/courses", consumes="application/json")
     public ResponseEntity<List<CourseSpecificationDto>> getStudentRemainingExams(@PathVariable("studentId") Long studentId) {
     	List<CourseSpecification> studentRemainingExams = studentService.getRemainingExamsByStudent(studentId);
     	List<CourseSpecificationDto> courseSpecificationsDto = new ArrayList<CourseSpecificationDto>();
@@ -45,7 +45,7 @@ public class StudentController {
     
     
     //This is teachers example how to show student courses
-    @GetMapping(path = "students/{studentId}/courses")
+    @GetMapping(path = "students/{studentId}/courses", consumes="application/json")
     public ResponseEntity<List<EnrollmentDto>> getStudentCourses(
 			@PathVariable("studentId") Long studentId) {
 		Student student = studentService.findByOne(studentId);

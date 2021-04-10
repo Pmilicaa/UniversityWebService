@@ -26,6 +26,7 @@ public class ExamDto {
 		this.examPeriodDto = new ExamPeriodDto(exam.getExamPeriod());
 	}
 
+	
 	public ExamPeriodDto getExamPeriodDto() {
 		return examPeriodDto;
 	}
