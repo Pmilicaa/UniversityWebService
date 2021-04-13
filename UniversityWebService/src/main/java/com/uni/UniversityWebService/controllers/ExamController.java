@@ -51,6 +51,7 @@ public class ExamController {
 		return new ResponseEntity<List<ExamDto>>(examsDto, HttpStatus.OK);
 	}
 	
+	
 	@GetMapping(value =  "/{examId}")
 	public ResponseEntity<ExamDto> getExam(@PathVariable("examId") Long idExam) {
 		Exam exam = examService.findOne(idExam);
