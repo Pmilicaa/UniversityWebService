@@ -19,4 +19,7 @@ public class TeachingService {
 		return teachingRepository.findByTeacher_id(id);
 	}
 	
+	public Teaching findOne(Long id) {
+		return teachingRepository.findById(id).get();
+	}
 }

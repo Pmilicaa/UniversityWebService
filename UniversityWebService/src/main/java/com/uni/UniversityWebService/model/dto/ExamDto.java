@@ -1,6 +1,11 @@
 package com.uni.UniversityWebService.model.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.uni.UniversityWebService.model.Enrollment;
 import com.uni.UniversityWebService.model.Exam;
+import com.uni.UniversityWebService.model.ExamPart;
 
 public class ExamDto {
 
@@ -10,6 +15,7 @@ public class ExamDto {
 	private EnrollmentDto enrollmentDto;
 	private TeachingDto teachingDto;
 	private ExamPeriodDto examPeriodDto;
+	//private List<ExamPartDto> examPartsdto;
 	
 	
 	
@@ -24,7 +30,18 @@ public class ExamDto {
 		this.enrollmentDto = new EnrollmentDto(exam.getEnrollment());
 		this.teachingDto = new TeachingDto(exam.getTeaching());
 		this.examPeriodDto = new ExamPeriodDto(exam.getExamPeriod());
+		//this.examPartsdto
 	}
+	
+	//TODO: Videti sa Micom oko ExamPartDto da napravi konstruktor sa parametrom ExamPart
+//	private List<ExamPartDto> convertExamPartsToDtos(List<ExamPart> examParts) {
+//		List<ExamPartDto> examPartsDto = new ArrayList<ExamPartDto>();
+//		for (ExamPart examPart : examParts) {
+//			examPartsDto.add(new ExamPartDto(examPart));
+//		}
+//		return examPartsDto;
+//	}
+	
 
 	
 	public ExamPeriodDto getExamPeriodDto() {

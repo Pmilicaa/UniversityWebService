@@ -32,8 +32,8 @@ public class ExamService {
 		return examRepository.save(exam);
 	}
 	
-	public void remove (Exam exam) {
-		examRepository.delete(exam);
+	public void remove (Long id) {
+		examRepository.deleteById(id);
 	}
 	
 	public List<Exam> findExamsByExamPeriod(Long examPeriodId) {
