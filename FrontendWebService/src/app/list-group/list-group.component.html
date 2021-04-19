@@ -1,0 +1,10 @@
+<div class="w-25 m-auto">
+    <h2>Student info</h2>
+    <ul class="list-group" *ngFor="let document of documents">
+        <li class="list-group-item"> 
+            {{document.title}} 
+            <button class="p-0 btn btn-danger" style="float: right; margin-left: 5px;">Delete</button>
+            <button class="p-0 btn btn-success" style="float: right;">Download</button>
+        </li>
+    </ul>
+</div>
