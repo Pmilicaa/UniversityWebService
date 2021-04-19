@@ -1,4 +1,7 @@
 export class Exam{
     id:number;
-    name:string
+    name:string;
+    dateOfregistration:string;
+    points: number;
+    grade: number;
 }

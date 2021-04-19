@@ -9,6 +9,7 @@ import { DocumentTableComponent } from './document-table/document-table.componen
 import { StudentInfoComponent } from './student-info/student-info.component';
 import { ProfessorInfoComponent } from './professor-info/professor-info.component';
 import { ExamTableComponent } from './exam-table/exam-table.component';
+import { StudentTableComponent } from './student-table/student-table.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ExamTableComponent } from './exam-table/exam-table.component';
     DocumentTableComponent,
     StudentInfoComponent,
     ProfessorInfoComponent,
-    ExamTableComponent
+    ExamTableComponent,
+    StudentTableComponent
   ],
   imports: [
     BrowserModule
