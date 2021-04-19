@@ -7,6 +7,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { ListGroupComponent } from './list-group/list-group.component';
 import { DocumentTableComponent } from './document-table/document-table.component';
 import { StudentInfoComponent } from './student-info/student-info.component';
+import { ProfessorInfoComponent } from './professor-info/professor-info.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { StudentInfoComponent } from './student-info/student-info.component';
     RegisterFormComponent,
     ListGroupComponent,
     DocumentTableComponent,
-    StudentInfoComponent
+    StudentInfoComponent,
+    ProfessorInfoComponent
   ],
   imports: [
     BrowserModule
