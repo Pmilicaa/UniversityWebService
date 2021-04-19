@@ -8,6 +8,7 @@ import { ListGroupComponent } from './list-group/list-group.component';
 import { DocumentTableComponent } from './document-table/document-table.component';
 import { StudentInfoComponent } from './student-info/student-info.component';
 import { ProfessorInfoComponent } from './professor-info/professor-info.component';
+import { FinanceTableComponent } from './finance-table/finance-table.component';
 import { ExamTableComponent } from './exam-table/exam-table.component';
 import { StudentTableComponent } from './student-table/student-table.component';
 
@@ -21,7 +22,9 @@ import { StudentTableComponent } from './student-table/student-table.component';
     StudentInfoComponent,
     ProfessorInfoComponent,
     ExamTableComponent,
-    StudentTableComponent
+    StudentTableComponent,
+    FinanceTableComponent,
+    ExamTableComponent
   ],
   imports: [
     BrowserModule
