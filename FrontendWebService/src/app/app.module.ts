@@ -8,11 +8,8 @@ import { ListGroupComponent } from './list-group/list-group.component';
 import { DocumentTableComponent } from './document-table/document-table.component';
 import { StudentInfoComponent } from './student-info/student-info.component';
 import { ProfessorInfoComponent } from './professor-info/professor-info.component';
-<<<<<<< HEAD
 import { FinanceTableComponent } from './finance-table/finance-table.component';
-=======
 import { ExamTableComponent } from './exam-table/exam-table.component';
->>>>>>> 87c197007fc84b731e325e18f3723377c66c1abe
 
 @NgModule({
   declarations: [
@@ -23,11 +20,8 @@ import { ExamTableComponent } from './exam-table/exam-table.component';
     DocumentTableComponent,
     StudentInfoComponent,
     ProfessorInfoComponent,
-<<<<<<< HEAD
-    FinanceTableComponent
-=======
+    FinanceTableComponent,
     ExamTableComponent
->>>>>>> 87c197007fc84b731e325e18f3723377c66c1abe
   ],
   imports: [
     BrowserModule
