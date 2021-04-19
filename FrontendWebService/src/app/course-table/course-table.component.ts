@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {Exam} from '../models/Exam';
 
-
 @Component({
-  selector: 'app-exam-table',
-  templateUrl: './exam-table.component.html',
-  styleUrls: ['./exam-table.component.css']
+  selector: 'app-course-table',
+  templateUrl: './course-table.component.html',
+  styleUrls: ['./course-table.component.css']
 })
-export class ExamTableComponent implements OnInit {
+export class CourseTableComponent implements OnInit {
 
   constructor() { }
   exams:Exam[]=[
@@ -16,7 +15,7 @@ export class ExamTableComponent implements OnInit {
     {id:3,name:'Internet mreze',dateOfregistration:'2020-06-02', points: 100, grade:10},
     {id:4,name: 'Asembler',dateOfregistration:'2020-07-02', points: 100, grade:10}
   ];
-
+  
   ngOnInit(): void {
   }
 

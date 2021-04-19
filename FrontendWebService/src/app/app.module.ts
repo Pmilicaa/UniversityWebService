@@ -12,6 +12,7 @@ import { FinanceTableComponent } from './finance-table/finance-table.component';
 import { ExamTableComponent } from './exam-table/exam-table.component';
 import { StudentTableComponent } from './student-table/student-table.component';
 import { GradeStudentTableComponent } from './grade-student-table/grade-student-table.component';
+import { CourseTableComponent } from './course-table/course-table.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { GradeStudentTableComponent } from './grade-student-table/grade-student-
     StudentTableComponent,
     FinanceTableComponent,
     ExamTableComponent,
-    GradeStudentTableComponent
+    GradeStudentTableComponent,
+    CourseTableComponent
   ],
   imports: [
     BrowserModule
