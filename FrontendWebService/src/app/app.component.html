@@ -1,21 +1,9 @@
 <div>
-  <app-login-form></app-login-form>
-  <br>
-  <app-register-form></app-register-form>
-  <br>
-  <app-student-info></app-student-info>
-  <br>
-  <app-document-table></app-document-table>
-  <br>
-  <app-professor-info></app-professor-info>
-  <br>
-  <app-finance-table></app-finance-table>
-  <br>
-  <app-exam-table></app-exam-table>
-  <br>
-  <app-student-table></app-student-table>
-  <br>
-  <app-grade-student-table></app-grade-student-table>
-  <br>
-  <app-course-table></app-course-table>
+  <h1>Main page</h1>
+  <button routerLink="/login" type="submit" class="btn btn-secondary ml-2">I already have an account</button>
+
+</div>
+
+<div style="margin-top: 100px" class="container">
+  <router-outlet></router-outlet>
 </div>
