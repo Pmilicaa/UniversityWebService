@@ -34,6 +34,8 @@ const routes: Routes = [
   declarations: [ AppComponent, LoginFormComponent, RegisterFormComponent, DocumentTableComponent],
   imports: [
     RouterModule.forRoot(routes),
+    BrowserModule,
+    CommonModule
   ],
   exports: [RouterModule]
 })

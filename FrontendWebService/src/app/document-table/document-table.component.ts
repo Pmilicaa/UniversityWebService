@@ -15,15 +15,15 @@ export class DocumentTableComponent implements OnInit {
     this.documents = [
       {
         id: 1,
-        title: "Diploma"
+        title: "Diplomaaaaaaaaaaaaaaaaaaa"
       },
       {
         id: 2,
-        title: "Photo"
+        title: "Fotografija"
       },
       {
         id: 3,
-        title: "Insurance"
+        title: "Osigranje"
       }
     ]
   }
