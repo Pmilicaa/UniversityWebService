@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Document } from "../models/Document";
+import Document  from "../models/Document";
+import { DocumentServiceService } from '../services/document-service.service';
 
 @Component({
   selector: 'app-document-table',
@@ -9,23 +10,10 @@ import { Document } from "../models/Document";
 export class DocumentTableComponent implements OnInit {
   documents:Document[];
 
-  constructor() { }
+  constructor(private documentService: DocumentServiceService) { }
 
   ngOnInit(): void {
-    this.documents = [
-      {
-        id: 1,
-        title: "Diplomaaaaaaaaaaaaaaaaaaa"
-      },
-      {
-        id: 2,
-        title: "Fotografija"
-      },
-      {
-        id: 3,
-        title: "Osigranje"
-      }
-    ]
+    this.documentService.getAll().subscribe( (documents) => (this.documents = documents))
   }
 
 }

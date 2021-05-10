@@ -15,6 +15,8 @@ import { ExamTableComponent } from '../exam-table/exam-table.component';
 import { StudentTableComponent } from '../student-table/student-table.component';
 import { GradeStudentTableComponent } from '../grade-student-table/grade-student-table.component';
 import { CourseTableComponent } from '../course-table/course-table.component';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { ProfileComponent } from '../profile/profile.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -27,15 +29,14 @@ const routes: Routes = [
   { path: 'examTable', component: ExamTableComponent },
   { path: 'studentTable', component: StudentTableComponent },
   { path: 'gradeTable', component: GradeStudentTableComponent },
-  { path: 'courseTable', component: CourseTableComponent }
+  { path: 'courseTable', component: CourseTableComponent },
+  { path: 'profile', component: ProfileComponent}
+  
 ];
 
 @NgModule({
-  declarations: [ AppComponent, LoginFormComponent, RegisterFormComponent, DocumentTableComponent],
   imports: [
     RouterModule.forRoot(routes),
-    BrowserModule,
-    CommonModule
   ],
   exports: [RouterModule]
 })

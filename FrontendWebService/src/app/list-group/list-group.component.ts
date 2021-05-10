@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Document } from '../models/Document';
+import Document from '../models/Document';
 
 @Component({
   selector: 'app-list-group',
