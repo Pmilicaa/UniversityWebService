@@ -24,6 +24,8 @@ import { UserInfoComponent } from './user-info/user-info.component';
 import { FinanceComponent } from './components/finance/finance.component';
 import { FinanceHistoryComponent } from './components/finance-history/finance-history.component';
 import { FinanceInfoComponent } from './components/finance-info/finance-info.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { AdminStudentsComponent } from './admin-students/admin-students.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { FinanceInfoComponent } from './components/finance-info/finance-info.com
     StudentInfoComponent,
     FinanceComponent,
     FinanceHistoryComponent,
-    FinanceInfoComponent
+    FinanceInfoComponent,
+    AdminProfileComponent,
+    AdminStudentsComponent
   ],
   imports: [
     AppRoutingModule,

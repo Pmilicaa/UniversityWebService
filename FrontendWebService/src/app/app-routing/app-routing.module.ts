@@ -37,7 +37,8 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent},
   { path: 'adminProfile', component: AdminProfileComponent},
   { path: 'adminStudents', component: AdminStudentsComponent},
-  { path: 'finances', component: FinanceComponent}
+  { path: 'finances', component: FinanceComponent},
+  { path: 'navBar', component: NavbarComponent}
 ];
 
 @NgModule({
