@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,6 +21,7 @@ public class TransactionService {
     private  TransactionRepository transactionRepository;
 	@Autowired
     private  StudentRepository studentRepository;
+
     @Transactional
     public void addNewTransaction(TransactionDto transactionDto) throws Exception {
 
@@ -46,6 +48,10 @@ public class TransactionService {
         transaction.setStudent(existingStudent);
         transactionRepository.save(transaction);
 
+    }
+
+    public List<Transaction> findAll(){
+        return transactionRepository.findAll();
     }
 
 

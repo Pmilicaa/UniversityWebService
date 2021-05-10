@@ -19,6 +19,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { ProfileComponent } from '../profile/profile.component';
 import { AdminProfileComponent } from '../admin-profile/admin-profile.component';
 import { AdminStudentsComponent } from '../admin-students/admin-students.component';
+import { FinanceComponent } from '../components/finance/finance.component';
 import { AdminProfessorComponent } from '../components/admin-professor/admin-professor/admin-professor.component';
 
 const routes: Routes = [
@@ -38,8 +39,8 @@ const routes: Routes = [
   { path: 'adminProfile', component: AdminProfileComponent},
   { path: 'adminStudents', component: AdminStudentsComponent},
   { path: 'navBar', component: NavbarComponent},
-  { path: 'adminProfessors', component: AdminProfessorComponent}
-  
+  { path: 'adminProfessors', component: AdminProfessorComponent},
+  { path: 'finances', component: FinanceComponent}
 ];
 
 @NgModule({

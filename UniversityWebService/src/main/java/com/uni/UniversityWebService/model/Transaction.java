@@ -1,5 +1,7 @@
 package com.uni.UniversityWebService.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,6 +30,7 @@ public class Transaction {
 	
 	@ManyToOne
 	@JoinColumn(name="student", referencedColumnName = "id")
+	@JsonBackReference
 	private Student student;
 	
 	public Transaction() {
