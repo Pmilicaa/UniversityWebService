@@ -25,6 +25,7 @@ import { FinanceComponent } from './components/finance/finance.component';
 import { FinanceHistoryComponent } from './components/finance-history/finance-history.component';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { AdminStudentsComponent } from './admin-students/admin-students.component';
+import { AdminProfessorComponent } from './components/admin-professor/admin-professor/admin-professor.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { AdminStudentsComponent } from './admin-students/admin-students.componen
     FinanceComponent,
     FinanceHistoryComponent,
     AdminProfileComponent,
-    AdminStudentsComponent
+    AdminStudentsComponent,
+    AdminProfessorComponent
   ],
   imports: [
     AppRoutingModule,
