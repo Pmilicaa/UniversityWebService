@@ -1,0 +1,27 @@
+<h3>{{ title }}</h3>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">FirstName</th>
+        <th scope="col">LastName</th>
+        <th scope="col">Card number</th>
+        <th scope="col">Options</th>
+        <th scope="col">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let student of students; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ student.firstName }}</td>
+        <td>{{ student.lastName }}</td>
+        <td>{{ student.cardNumber }}</td>
+        <td>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-info">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

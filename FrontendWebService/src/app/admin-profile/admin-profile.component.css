@@ -1,0 +1,9 @@
+.nav {
+    font-weight: bold;
+    font-size: 26px;
+    background-color: #F0FFFF;
+}
+
+.nav-link Logout {
+    float: right;
+}

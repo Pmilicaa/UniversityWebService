@@ -24,7 +24,9 @@ import { UserInfoComponent } from './user-info/user-info.component';
 import { FinanceComponent } from './components/finance/finance.component';
 import { FinanceHistoryComponent } from './components/finance-history/finance-history.component';
 
+
 @NgModule({
+<<<<<<< Updated upstream
   declarations: [ 
     AppComponent, 
     LoginFormComponent,
@@ -36,6 +38,13 @@ import { FinanceHistoryComponent } from './components/finance-history/finance-hi
     StudentInfoComponent,
     FinanceComponent,
     FinanceHistoryComponent
+=======
+  declarations: [
+    
+  
+  
+    
+>>>>>>> Stashed changes
   ],
   imports: [
     AppRoutingModule,

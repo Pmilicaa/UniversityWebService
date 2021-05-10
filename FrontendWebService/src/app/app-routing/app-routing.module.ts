@@ -17,8 +17,11 @@ import { GradeStudentTableComponent } from '../grade-student-table/grade-student
 import { CourseTableComponent } from '../course-table/course-table.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ProfileComponent } from '../profile/profile.component';
+import { AdminProfileComponent } from '../admin-profile/admin-profile.component';
+import { AdminStudentsComponent } from '../admin-students/admin-students.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'login', component: LoginFormComponent },
   { path: 'register', component: RegisterFormComponent },
   { path: 'listGroup', component: ListGroupComponent },
@@ -30,8 +33,9 @@ const routes: Routes = [
   { path: 'studentTable', component: StudentTableComponent },
   { path: 'gradeTable', component: GradeStudentTableComponent },
   { path: 'courseTable', component: CourseTableComponent },
-  { path: 'profile', component: ProfileComponent}
-  
+  { path: 'profile', component: ProfileComponent},
+  { path: 'adminProfile', component: AdminProfileComponent},
+  { path: 'adminStudents', component: AdminStudentsComponent}
 ];
 
 @NgModule({
