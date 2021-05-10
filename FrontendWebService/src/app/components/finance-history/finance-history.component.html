@@ -1,16 +1,19 @@
-<div >
+<div style="background-color: aquamarine;" >
     <h2>Finance history</h2>
     <table class="table">
       <thead>
         <tr>
+          <th scoper="col">#</th>
           <th scope="col">Type</th>
-          <th scope="col">Purpose</th>
           <th scope="col">Amount</th>
-          <th scope="col">Date</th>
         </tr>
       </thead>
       <tbody>
-        
+        <tr *ngFor="let transaction of transactions; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ transaction.transactionType.name }}</td>
+          <td>{{ transaction.amount }}</td>
+        </tr>
       </tbody>
     </table>
   </div>

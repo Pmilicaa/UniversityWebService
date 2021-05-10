@@ -23,10 +23,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { FinanceComponent } from './components/finance/finance.component';
 import { FinanceHistoryComponent } from './components/finance-history/finance-history.component';
+import { FinanceInfoComponent } from './components/finance-info/finance-info.component';
 
 
 @NgModule({
-<<<<<<< Updated upstream
   declarations: [ 
     AppComponent, 
     LoginFormComponent,
@@ -37,14 +37,8 @@ import { FinanceHistoryComponent } from './components/finance-history/finance-hi
     UserInfoComponent,
     StudentInfoComponent,
     FinanceComponent,
-    FinanceHistoryComponent
-=======
-  declarations: [
-    
-  
-  
-    
->>>>>>> Stashed changes
+    FinanceHistoryComponent,
+    FinanceInfoComponent
   ],
   imports: [
     AppRoutingModule,

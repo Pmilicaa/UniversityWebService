@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import Transaction from "../../models/Transaction";
+import { FinanceService } from '../../services/finance.service';
 
 @Component({
   selector: 'app-finance-history',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./finance-history.component.css']
 })
 export class FinanceHistoryComponent implements OnInit {
+  transactions:Transaction[];
 
-  constructor() { }
+  constructor(private financeService: FinanceService) { }
 
   ngOnInit(): void {
+    this.financeService.getAll().subscribe( (transactions) => (this.transactions = transactions))
   }
 
 }
