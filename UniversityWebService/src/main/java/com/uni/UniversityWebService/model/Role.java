@@ -2,7 +2,7 @@ package com.uni.UniversityWebService.model;
 
 public enum Role {
 
-    Admin,
-    Teacher,
-    Student;
+    ROLE_ADMIN,
+    ROLE_TEACHER,
+    ROLE_STUDENT;
 }

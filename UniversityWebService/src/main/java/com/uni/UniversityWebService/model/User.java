@@ -22,10 +22,16 @@ public class User {
     public User(){
     }
 
-    public User(Long id,String userName,String password){
+    public User(Long id,String userName,String password, Role role){
         this.id=id;
         this.userName=userName;
         this.password=password;
+        this.role = role;
+    }
+    public User(String userName,String password, Role role){
+        this.userName=userName;
+        this.password=password;
+        this.role = role;
     }
 
     public Long getId() {

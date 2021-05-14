@@ -24,7 +24,6 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
     
-
     @GetMapping(path = "/students")
     public @ResponseBody
     ResponseEntity<?> getAllStudents(){
@@ -65,7 +64,7 @@ public class StudentController {
 
     @PostMapping(path = "/students")
     public @ResponseBody ResponseEntity<?> addStudent(@RequestBody Student student){
-        if(!student.getUser().getRole().equals(Role.Student)){
+        if(!student.getUser().getRole().equals(Role.ROLE_STUDENT)){
             return new ResponseEntity("Student must have a student role", HttpStatus.BAD_REQUEST);
         }else{
             Student newStudent = studentService.saveStudent(student);
