@@ -21,7 +21,7 @@ import { AdminProfileComponent } from '../admin-profile/admin-profile.component'
 import { AdminStudentsComponent } from '../admin-students/admin-students.component';
 import { FinanceComponent } from '../components/finance/finance.component';
 import { AdminProfessorComponent } from '../components/admin-professor/admin-professor/admin-professor.component';
-
+import { ExamComponent } from '../exam/exam.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'login', component: LoginFormComponent },
@@ -40,7 +40,8 @@ const routes: Routes = [
   { path: 'adminStudents', component: AdminStudentsComponent},
   { path: 'navBar', component: NavbarComponent},
   { path: 'adminProfessors', component: AdminProfessorComponent},
-  { path: 'finances', component: FinanceComponent}
+  { path: 'finances', component: FinanceComponent},
+  { path: 'exam', component: ExamComponent}
 ];
 
 @NgModule({

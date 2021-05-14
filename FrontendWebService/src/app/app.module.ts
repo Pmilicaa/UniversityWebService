@@ -27,6 +27,7 @@ import { FinanceInfoComponent } from './components/finance-info/finance-info.com
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { AdminStudentsComponent } from './admin-students/admin-students.component';
 import { AdminProfessorComponent } from './components/admin-professor/admin-professor/admin-professor.component';
+import { ExamComponent } from './exam/exam.component';
 
 
 @NgModule({
@@ -44,7 +45,9 @@ import { AdminProfessorComponent } from './components/admin-professor/admin-prof
     FinanceInfoComponent,
     AdminProfileComponent,
     AdminStudentsComponent,
-    AdminProfessorComponent
+    AdminProfessorComponent,
+    ExamComponent,
+    
   ],
   imports: [
     AppRoutingModule,
