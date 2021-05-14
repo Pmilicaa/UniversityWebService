@@ -29,6 +29,7 @@ import { AdminStudentsComponent } from './admin-students/admin-students.componen
 import { AdminProfessorComponent } from './components/admin-professor/admin-professor/admin-professor.component';
 import { ProfessorProfileComponent } from './professor-profile/professor-profile.component';
 import { ProfessorNavbarComponent } from './professor-navbar/professor-navbar.component';
+import { ExamComponent } from './exam/exam.component';
 
 
 @NgModule({
@@ -48,7 +49,9 @@ import { ProfessorNavbarComponent } from './professor-navbar/professor-navbar.co
     AdminStudentsComponent,
     AdminProfessorComponent,
     ProfessorProfileComponent,
-    ProfessorNavbarComponent
+    ProfessorNavbarComponent,
+    ExamComponent,
+    
   ],
   imports: [
     AppRoutingModule,
