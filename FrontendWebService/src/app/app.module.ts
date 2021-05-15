@@ -27,6 +27,8 @@ import { FinanceInfoComponent } from './components/finance-info/finance-info.com
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { AdminStudentsComponent } from './admin-students/admin-students.component';
 import { AdminProfessorComponent } from './components/admin-professor/admin-professor/admin-professor.component';
+import { ProfessorProfileComponent } from './professor-profile/professor-profile.component';
+import { ProfessorNavbarComponent } from './professor-navbar/professor-navbar.component';
 import { ExamComponent } from './exam/exam.component';
 
 
@@ -46,7 +48,10 @@ import { ExamComponent } from './exam/exam.component';
     AdminProfileComponent,
     AdminStudentsComponent,
     AdminProfessorComponent,
+    ProfessorProfileComponent,
+    ProfessorNavbarComponent,
     ExamComponent,
+    ProfessorInfoComponent
     
   ],
   imports: [
