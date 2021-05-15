@@ -51,6 +51,7 @@ import { ExamComponent } from './exam/exam.component';
     ProfessorProfileComponent,
     ProfessorNavbarComponent,
     ExamComponent,
+    ProfessorInfoComponent
     
   ],
   imports: [
