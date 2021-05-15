@@ -1,47 +1,66 @@
-<div class="w-50 ml-auto">
-    <h2>Exam</h2>
-    <table class="table">
-      <tbody>
-        <tr>
-          <td>
-            id:
-          </td>
-          <td>
-                {{exam.id}}
-          </td>
-        </tr>
-        <tr>
-            <td>
-                Name:
-            </td>
-            <td>
-                {{exam.name}}
-            </td>
-          </tr>
-          <tr>
-            <td>
-                Date of Registration:
-            </td>
-            <td>
-                {{exam.dateOfregistration}}
-            </td>
-          </tr>
-          <tr>
-            <td>
-                Points:
-            </td>
-            <td>
-                {{exam.points}} 
-            </td>
-          </tr>
-          <tr>
-            <td>
-                Grade:
-            </td>
-            <td>
-                {{exam.grade}}
-            </td>
-          </tr>
-      </tbody>
-    </table>
-  </div>
+<div class="w-50 m-auto">
+  <h2>Register Exams</h2>
+  <p><input type="checkbox">   January
+    <input type="checkbox">   February
+  </p>
+  <table class="table" >
+    <thead>
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Code</th>
+        <th scope="col">Course</th>
+        <th scope="col">Date</th>
+        <th scope="col">Price</th>
+        <th scope="col">Teacher</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ course.code }}</td>
+        <td>{{ course.title }}</td>
+        <td>04/04/2004</td>
+        <td>200</td>
+        <td>{{ course.teacher }}</td>
+        <td><button type="button" class="btn btn-info">Delete</button></td>
+        <td><button type="button" class="btn btn-danger">Edit</button></td>
+
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-info" >Add new register exam</button>
+<h2 >Registered Exams</h2>
+  <table class="table" >
+    <thead>
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Code</th>
+        <th scope="col">Course</th>
+        <th scope="col">Date</th>
+        <th scope="col">Price</th>
+        <th scope="col">Teacher</th>
+        <th scope="col">Time</th>
+        <th scope="col">Classroom</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ course.code }}</td>
+        <td>{{ course.title }}</td>
+        <td>04/04/2004</td>
+        <td>200</td>
+        <td>{{ course.teacher }}</td>
+        <td>12:00</td>
+        <td>NTP202</td>
+        <td><button type="button" class="btn btn-info">Delete</button></td>
+        <td><button type="button" class="btn btn-danger">Edit</button></td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
