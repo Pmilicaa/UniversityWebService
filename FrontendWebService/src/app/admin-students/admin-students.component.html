@@ -21,10 +21,92 @@
           <button type="button" class="btn btn-danger">Delete</button>
         </td>
         <td>
-          <button type="button" class="btn btn-info">Edit</button>
+          <button type="button" class="btn btn-info" (click)="showEditStudent()">Edit</button>
         </td>
       </tr>
     </tbody>
   </table>
-  <button type="button" class="btn btn-success" style="float: right;">Add student</button>
+  <button type="button" class="btn btn-success" style="float: right;" (click)="showAddStudent()">Add student</button>
+</div>
+<div id="editStudent" style="display: none; margin-top: 100px;">
+  <h3>Edit student</h3>
+  <form>
+    <div class="row mb-3">
+      <label for="inputFirstName" class="col-sm-2 col-form-label">FirstName</label>
+      <div class="col-sm-10">
+        <input type="text" id="inputFirstName" class="form-control">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputLastName3" class="col-sm-2 col-form-label">LastName</label>
+      <div class="col-sm-10">
+        <input type="text" id="inputLastName3" class="form-control">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputCardNumber" class="col-sm-2 col-form-label">Card number</label>
+      <div class="col-sm-10">
+        <input type="text" id="inputCardNumber" class="form-control">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputBalance" class="col-sm-2 col-form-label">Balance</label>
+      <div class="col-sm-10">
+        <input type="text" id="inputBalance" class="form-control">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputCardNumber" class="col-sm-2 col-form-label">Account number</label>
+      <div class="col-sm-10">
+        <input type="text" id="inputCardNumber" class="form-control">
+      </div>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary" style="float: right;">Cancel</button>
+    </div>
+    <div class="col-11">
+      <button type="submit" class="btn btn-primary" style="float: right;">Confirm</button>
+    </div>
+  </form>
+</div>
+<div id="addStudent" style="display: none;">
+  <h2>Add new student</h2>
+  <form>
+    <div class="row mb-3">
+      <label for="inputFirstName" class="col-sm-2 col-form-label">FirstName</label>
+      <div class="col-sm-10">
+        <input type="text" [(ngModel)]="student.firstName" id="inputFirstName" class="form-control" placeholder="Enter the FirstName">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputLastName3" class="col-sm-2 col-form-label">LastName</label>
+      <div class="col-sm-10">
+        <input type="text" [(ngModel)]="student.lastName" id="inputLastName3" class="form-control" placeholder="Enter the LastName">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputBalance" class="col-sm-2 col-form-label">Balance</label>
+      <div class="col-sm-10">
+        <input type="text" [(ngModel)]="student.balance"  id="inputBalance" class="form-control" placeholder="Enter the Balance of Student">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputCardNumber" class="col-sm-2 col-form-label">Card number</label>
+      <div class="col-sm-10">
+        <input type="text" [(ngModel)]="student.cardNumber" id="inputCardNumber" class="form-control" placeholder="Enter the Card number of Student">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputAccountNumber" class="col-sm-2 col-form-label">Account number</label>
+      <div class="col-sm-10">
+        <input type="text" [(ngModel)]="student.accountNumber" class="form-control" placeholder="Enter the Account number of Student">
+      </div>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary" style="float: right;">Cancel</button>
+    </div>
+    <div class="col-11">
+      <button type="submit" class="btn btn-primary" style="float: right;" (click)="add()">Confirm</button>
+    </div>
+  </form>
 </div>
