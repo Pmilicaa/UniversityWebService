@@ -1,6 +1,11 @@
 <div class="container">
-  <app-navbar></app-navbar>
-  <app-admin-profile></app-admin-profile>
+  <div *ngIf="currentUser != false; else elseBlock">
+    <app-navbar *ngIf="roles.includes('ROLE_STUDENT')"></app-navbar>
+    <app-admin-profile  *ngIf="roles.includes('ROLE_ADMIN')"></app-admin-profile>
 
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
+  </div>
+  <ng-template #elseBlock>
+    <app-login-form [onLogin]="onLogin"></app-login-form>
+  </ng-template>
 </div>

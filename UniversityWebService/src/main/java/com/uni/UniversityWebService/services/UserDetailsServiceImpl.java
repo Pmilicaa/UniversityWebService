@@ -29,17 +29,13 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	    } else {
 	    	List<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
 	    	grantedAuthorities.add(new SimpleGrantedAuthority(user.getRole().toString()));
-	    	
-	 
-	    	//Java 1.8 way   	
-	    	/*List<GrantedAuthority> grantedAuthorities = user.getUserAuthorities().stream()
-	                .map(authority -> new SimpleGrantedAuthority(authority.getAuthority().getName()))
-	                .collect(Collectors.toList());*/
-	    	
-	    	return new org.springframework.security.core.userdetails.User(
-	    		  user.getUserName(),
-	    		  user.getPassword(),
-	    		  grantedAuthorities);
+
+	    	UserDetails userDetails = new org.springframework.security.core.userdetails.User(
+					user.getUserName(),
+					user.getPassword(),
+					grantedAuthorities);
+
+	    	return userDetails;
 	    }
 	}
 	

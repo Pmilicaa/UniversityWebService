@@ -9,19 +9,25 @@ import { JwtUtilsService } from './jwt-utils.service';
 })
 export class AuthenticationServiceService {
 
-  private readonly loginPath = '/api/users/authenticate';
+  private readonly loginPath = '/api/login';
 
   constructor(private http: HttpClient, private jwtUtilsService: JwtUtilsService) { }
 
-  login(name: string, password: string): Observable<boolean> {
+  login(username: string, password: string): Observable<boolean> {
     var headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(this.loginPath, JSON.stringify({ name, password }), { headers }).pipe(map((res: any) => {
-      let token = res && res['token'];
+    var loginInfo = {
+      username: username,
+      password: password
+    };
+
+    return this.http.post(this.loginPath, JSON.stringify(loginInfo), { headers: headers, responseType: "text" }).pipe(map((res: any) => {
+      //let token = res && res['token'];
+      let token = res;
       if (token) {
         localStorage.setItem('currentUser', JSON.stringify({
-          username: name,
+          username: username,
           roles: this.jwtUtilsService.getRoles(token),
-          token: token.split(' ')[1]
+          token: token
         }));
         return true;
       }

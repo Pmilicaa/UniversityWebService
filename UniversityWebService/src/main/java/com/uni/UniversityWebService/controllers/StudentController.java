@@ -62,7 +62,7 @@ public class StudentController {
 	}
     
 
-    @PostMapping(path = "/students")
+    @PostMapping(path = "/api/students")
     public @ResponseBody ResponseEntity<?> addStudent(@RequestBody Student student){
         if(!student.getUser().getRole().equals(Role.ROLE_STUDENT)){
             return new ResponseEntity("Student must have a student role", HttpStatus.BAD_REQUEST);

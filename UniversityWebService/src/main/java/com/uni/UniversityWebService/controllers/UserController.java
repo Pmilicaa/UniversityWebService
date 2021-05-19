@@ -32,7 +32,7 @@ public class UserController {
 
     @PostMapping(path = "/users")
     public @ResponseBody ResponseEntity<?> addUser(@RequestBody User user){
-        User newUser = new User(user.getUserName(),  bCryptPasswordEncoder.encode(user.getPassword()), user.getRole().ROLE_ADMIN);
+        User newUser = new User(user.getUserName(),  bCryptPasswordEncoder.encode(user.getPassword()), Role.ROLE_ADMIN);
 
         return new ResponseEntity(userService.saveUser(newUser), HttpStatus.OK);
     }

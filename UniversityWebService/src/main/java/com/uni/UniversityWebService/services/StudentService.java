@@ -10,6 +10,7 @@ import com.uni.UniversityWebService.model.ExamPeriod;
 import com.uni.UniversityWebService.repositories.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.uni.UniversityWebService.model.CourseSpecification;
@@ -39,7 +40,10 @@ public class StudentService {
 	
 	@Autowired
 	TeachingRepository teachingRepository;
-	
+
+	@Autowired
+	private PasswordEncoder bCryptPasswordEncoder;
+
 	public Student findByOne(Long id) {
 		return studentRepository.findById(id).get();
 	}
@@ -53,6 +57,8 @@ public class StudentService {
 	}
 
 	public Student saveStudent(Student student){
+		String studentPassword = student.getUser().getPassword();
+		student.getUser().setPassword(bCryptPasswordEncoder.encode(studentPassword));
 		studentRepository.save(student);
 		return student;
 	}
