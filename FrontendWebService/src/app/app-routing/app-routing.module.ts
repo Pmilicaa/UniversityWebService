@@ -23,7 +23,6 @@ import { FinanceComponent } from '../components/finance/finance.component';
 import { AdminProfessorComponent } from '../components/admin-professor/admin-professor/admin-professor.component';
 import { ExamComponent } from '../exam/exam.component';
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'login', component: LoginFormComponent },
   { path: 'register', component: RegisterFormComponent },
   { path: 'listGroup', component: ListGroupComponent },

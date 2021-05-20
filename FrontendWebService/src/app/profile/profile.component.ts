@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Student } from '../models/Student';
+import { AuthenticationServiceService } from '../services/authentication-service.service';
 import { DocumentServiceService } from '../services/document-service.service';
+import { StudentServiceService } from '../services/student-service.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,10 +11,12 @@ import { DocumentServiceService } from '../services/document-service.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  student: Student;
+
+  constructor(private studentService: StudentServiceService, private authentiactionService: AuthenticationServiceService) { }
 
   ngOnInit(): void {
-    
+    console.log(JSON.parse(localStorage.getItem("currentUser")));
   }
 
 }
