@@ -79,5 +79,15 @@ public class StudentController {
 
         return new ResponseEntity(updatedStudent, HttpStatus.OK);
     }
+    
+    @DeleteMapping(path ="/students/{id}")
+    public ResponseEntity<Void> deleteStudent(@PathVariable("id") Long id) {
+    	Student student = studentService.findByOne(id);
+    	if (student == null) {
+			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+		}
+    	studentService.remove(student);
+    	return new ResponseEntity<Void>(HttpStatus.OK);
+    }
 
 }
