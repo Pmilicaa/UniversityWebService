@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationServiceService } from '../services/authentication-service.service';
 
 @Component({
   selector: 'app-admin-profile',
@@ -8,9 +9,19 @@ import { Router } from '@angular/router';
 })
 export class AdminProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthenticationServiceService,
+              private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  loggedIn(): boolean{
+    return this.authService.isLoggedIn();
+  }
+
+  logout(): void{
+    this.authService.logout();
+    this.router.navigate(['login']);
   }
 
 }

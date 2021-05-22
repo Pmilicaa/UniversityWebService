@@ -11,7 +11,7 @@ export class AdminStudentsComponent implements OnInit {
 
   students: Student[];
 
-  student: Student
+  // student: Student
 
   constructor(private adminStudentService: AdminStudentsService) { 
     // this.student = new Student ({
@@ -23,10 +23,10 @@ export class AdminStudentsComponent implements OnInit {
     // });
   }
 
-  title = "Students"
+  title = "Studenti"
 
   ngOnInit(): void {
-    this.adminStudentService.getAll().subscribe((students) => (this.students = students))
+    this.adminStudentService.getAll().subscribe((students) => (this.students = students));
   }
 
   public showAddStudent(): void {
