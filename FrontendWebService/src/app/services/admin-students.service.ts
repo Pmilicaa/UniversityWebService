@@ -10,9 +10,10 @@ import { AuthenticationServiceService } from './authentication-service.service';
 })
 export class AdminStudentsService {
 
-  private readonly URL = "http://localhost:8080/students";
+  private readonly URL_STUDENTS = "http://localhost:8080/students";
 
-  
+  private readonly URL_API_STUDENTS = "http://localhost:8080/api/students";
+
 
   constructor(private http: HttpClient, private authService: AuthenticationServiceService) {}
 
@@ -24,11 +25,19 @@ export class AdminStudentsService {
     const requestOptions = {
       headers: new HttpHeaders(headInfo)
     };
-    return this.http.get<Student[]>(this.URL, requestOptions);
+    return this.http.get<Student[]>(this.URL_STUDENTS, requestOptions);
   }
 
-  saveStudent(student: Student) {
-    return this.http.post(this.URL, student);
+  saveStudent(student: Student): Observable<Student> {
+    const headInfo = {
+      'Content-Type': 'application/json',
+      'X-Auth-Token': "" + this.authService.getToken()
+    }
+    const requestOptions = {
+      headers: new HttpHeaders(headInfo)
+    };
+    const data = JSON.stringify(student)
+    return this.http.post<Student>(this.URL_API_STUDENTS, data, requestOptions);
   }
 
 }

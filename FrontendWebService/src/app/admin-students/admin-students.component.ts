@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Student } from '../models/Student';
+import { User } from '../models/User';
 import { AdminStudentsService } from '../services/admin-students.service';
 
 @Component({
@@ -11,17 +14,42 @@ export class AdminStudentsComponent implements OnInit {
 
   students: Student[];
 
-  // student: Student
+  stud: Student;
 
-  constructor(private adminStudentService: AdminStudentsService) { 
-    // this.student = new Student ({
-    //   firstName: '',
-    //   lastName: '',
-    //   cardNumber: '',
-    //   balance: 0,
-    //   accountNumber: 0
-    // });
+  private readonly ROLE_STUDENT = "ROLE_STUDENT";
+  
+  constructor(private adminStudentService: AdminStudentsService, private route: Router) { 
+      // this.stud = new Student ({
+      //   firstName: '',
+      //   lastName: '',
+      //   cardNumber: '',
+      //   balance: 0,
+      //   accountNumber: 0,
+      //   user: new User({
+      //     username: '',
+      //     password: '',
+      //     role: ''
+      //   })
+      // });
+  }  
+
+  addStudent(form: NgForm): void {
+    this.stud = new Student ({
+      firstName: form.value.firstname,
+      lastName: form.value.lastname,
+      balance: +form.value.balance,
+      cardNumber: form.value.cardnumber,
+      accountNumber: +form.value.accountnumber,
+      user: new User({
+        userName: form.value.username,
+        password: form.value.password,
+        role: this.ROLE_STUDENT
+      }),
+    });
+    this.adminStudentService.saveStudent(this.stud).subscribe(() => this.route.navigate(["adminStudents"]));
+    console.log(form.value);
   }
+    
 
   title = "Studenti"
 
