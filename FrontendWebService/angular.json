@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "../../UniversityWebService/UniversityWebService/src/main/resources/static/",
+            "outputPath": "C:/Users/Milica/git/UniversityWebService/NoviProj/UniversityWebService/src/main/resources/static",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []

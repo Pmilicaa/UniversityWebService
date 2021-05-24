@@ -32,6 +32,7 @@ import { ProfessorNavbarComponent } from './professor-navbar/professor-navbar.co
 import { ExamComponent } from './exam/exam.component';
 
 
+
 @NgModule({
   declarations: [ 
     AppComponent, 
