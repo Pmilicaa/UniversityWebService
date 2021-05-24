@@ -2,11 +2,23 @@
   <div *ngIf="currentUser != false; else elseBlock">
     <app-navbar *ngIf="roles.includes('ROLE_STUDENT')"></app-navbar>
     <app-admin-profile  *ngIf="roles.includes('ROLE_ADMIN')"></app-admin-profile>
-    <app-admin-profile  *ngIf="roles.includes('ROLE_PROFESSOR')"></app-admin-profile>
 
     <router-outlet></router-outlet>
   </div>
   <ng-template #elseBlock>
-    <app-login-form [onLogin]="onLogin"></app-login-form>
+    <div class="row h-100">
+      <div class="col-lg-6">
+        <div style="top: 25%;  position: absolute;">
+          <h2 class="bold text-white">UniService</h2>
+          <br>
+          <p class="text-white">“Education is the most powerful weapon which you can use to change the world” – Nelson Mandela</p>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div style="background-color: white; top: 25%;  position: absolute;">
+          <app-login-form class="mt-auto" [onLogin]="onLogin"></app-login-form>
+        </div>
+      </div>
+    </div>
   </ng-template>
 </div>
