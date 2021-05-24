@@ -2,6 +2,7 @@
   <div *ngIf="currentUser != false; else elseBlock">
     <app-navbar *ngIf="roles.includes('ROLE_STUDENT')"></app-navbar>
     <app-admin-profile  *ngIf="roles.includes('ROLE_ADMIN')"></app-admin-profile>
+    <app-admin-profile  *ngIf="roles.includes('ROLE_PROFESSOR')"></app-admin-profile>
 
     <router-outlet></router-outlet>
   </div>
