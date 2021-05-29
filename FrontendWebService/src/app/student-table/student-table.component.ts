@@ -22,7 +22,12 @@ export class StudentTableComponent implements OnInit {
       lastName: "Petrovic",
       cardNumber: "12313rfr35y24ygw3r5325",
       balance: 15000,
-      accountNumber: 423756547967
+      accountNumber: 423756547967,
+      user: {
+        userName: "aleksa123",
+        password:"asdasd",
+        role: "ROLE_STUDENT"
+      }
     },
     {
       id: 1,
@@ -30,7 +35,12 @@ export class StudentTableComponent implements OnInit {
       lastName: "Pajic",
       cardNumber: "345yuikj4567890g",
       balance: 15000,
-      accountNumber: 234567890
+      accountNumber: 234567890,
+      user: {
+        userName: "aleksa123",
+        password:"asdasd",
+        role: "ROLE_STUDENT"
+      }
     },
 
 

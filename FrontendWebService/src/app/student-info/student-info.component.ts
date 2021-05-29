@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from "../models/Student";
+import { User } from '../models/User';
 
 @Component({
   selector: 'app-student-info',
@@ -13,7 +14,11 @@ export class StudentInfoComponent implements OnInit {
     lastName: "Petrovic",
     cardNumber: "12313rfr35y24ygw3r5325",
     balance: 15000,
-    accountNumber: 423756547967
+    accountNumber: 423756547967,
+    user: {userName: "aleksa123",
+          password:"asdasd",
+          role: "ROLE_STUDENT"
+    }
   }
   constructor() { }
 

@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "C:/Users/Damir/git/UniversityWebService/UniversityWebService/src/main/resources/static/",
+            "outputPath":"../../UniversityWebService/UniversityWebService/src/main/resources/static/",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -21,11 +21,12 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/images"
             ],
             "styles": [
               "src/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/css/aos.css"
             ],
             "scripts": []
           },
@@ -85,10 +86,13 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/images"
             ],
             "styles": [
-              "src/styles.css"
+              "src/css/bootstrap.min.css",
+              "src/styles.css",
+              "src/css/aos.css"
             ],
             "scripts": []
           }
