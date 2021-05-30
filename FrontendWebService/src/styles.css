@@ -1,3 +1,9 @@
+body{
+  background-image: url("/images/hero_1.jpg");
+  background-size:cover;
+  background-repeat: no-repeat;
+}
+
 body {
     line-height: 1.7;
     color: gray;
@@ -305,7 +311,6 @@ body {
   .site-navbar {
     margin-bottom: 0px;
     z-index: 1999;
-    position: absolute;
     width: 100%; }
     .site-navbar .container-fluid {
       padding-left: 7rem;
