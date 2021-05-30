@@ -1,21 +1,37 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="">UniService</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/profile">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/studentExams">Exams</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/finances">Finances</a>
-          </li>
-        </ul>
+<header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+      
+  <div>
+    <div class="d-flex align-items-center">
+      <div class="site-logo mr-auto w-25"><a routerLink="/">UniService</a></div>
+
+      <div class="mx-auto text-center">
+        <nav class="site-navigation position-relative text-right" role="navigation">
+          <ul class="site-menu main-menu js-clone-nav mx-auto d-none d-lg-block  m-0 p-0">
+            <li><a routerLink="/profile" class="nav-link"><strong>Profile</strong></a></li>
+            <li><a routerLink="/exams" class="nav-link"><strong>Exams</strong></a></li>
+            <li><a routerLink="/finances" class="nav-link"><strong>Finances</strong></a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="ml-auto w-25">
+        <nav class="site-navigation position-relative text-right" role="navigation">
+          <ul class="site-menu main-menu site-menu-dark js-clone-nav mr-auto d-none d-lg-block m-0 p-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a>
       </div>
     </div>
-</nav>
+  </div>
+</header>
