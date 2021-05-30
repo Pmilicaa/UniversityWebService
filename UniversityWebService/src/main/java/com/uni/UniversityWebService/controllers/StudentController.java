@@ -6,6 +6,7 @@ import com.uni.UniversityWebService.model.Role;
 import com.uni.UniversityWebService.model.Student;
 import com.uni.UniversityWebService.model.dto.CourseSpecificationDto;
 import com.uni.UniversityWebService.model.dto.EnrollmentDto;
+import com.uni.UniversityWebService.model.dto.StudentDto;
 import com.uni.UniversityWebService.services.CourseService;
 import com.uni.UniversityWebService.services.StudentService;
 
@@ -30,9 +31,18 @@ public class StudentController {
         return new ResponseEntity(studentService.findAllStudents(), HttpStatus.OK);
     }
     
+    @GetMapping(path = "/students/{id}")
+    public ResponseEntity<?> getStudentById(@PathVariable("id") Long id) {
+    	Student student = studentService.findByOne(id);
+    	if(student == null) {
+    		return new ResponseEntity<StudentDto>(HttpStatus.NOT_FOUND);
+    	}
+    	return new ResponseEntity(student, HttpStatus.OK);
+    }
+    
     
     //This is my way how to show unpassed exams with information of the courses
-    @GetMapping(path = "students/{studentId}/exams", consumes="application/json")
+    @GetMapping(path = "/students/{studentId}/exams", consumes="application/json")
     public ResponseEntity<List<CourseSpecificationDto>> getStudentRemainingExams(@PathVariable("studentId") Long studentId) {
     	List<CourseSpecification> studentRemainingExams = studentService.getRemainingExamsByStudent(studentId);
     	List<CourseSpecificationDto> courseSpecificationsDto = new ArrayList<CourseSpecificationDto>();
@@ -44,7 +54,7 @@ public class StudentController {
     
     
     //This is teachers example how to show student courses
-    @GetMapping(path = "students/{studentId}/courses", consumes="application/json")
+    @GetMapping(path = "/students/{studentId}/courses", consumes="application/json")
     public ResponseEntity<List<EnrollmentDto>> getStudentCourses(
 			@PathVariable("studentId") Long studentId) {
 		Student student = studentService.findByOne(studentId);

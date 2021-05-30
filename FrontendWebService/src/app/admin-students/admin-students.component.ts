@@ -1,6 +1,7 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Student } from '../models/Student';
 import { User } from '../models/User';
 import { AdminStudentsService } from '../services/admin-students.service';
@@ -18,19 +19,7 @@ export class AdminStudentsComponent implements OnInit {
 
   private readonly ROLE_STUDENT = "ROLE_STUDENT";
   
-  constructor(private adminStudentService: AdminStudentsService, private route: Router) { 
-      // this.stud = new Student ({
-      //   firstName: '',
-      //   lastName: '',
-      //   cardNumber: '',
-      //   balance: 0,
-      //   accountNumber: 0,
-      //   user: new User({
-      //     username: '',
-      //     password: '',
-      //     role: ''
-      //   })
-      // });
+  constructor(private adminStudentService: AdminStudentsService, private route: Router, private location: Location, private activateRoute: ActivatedRoute) { 
   }  
 
   addStudent(form: NgForm): void {
@@ -49,13 +38,32 @@ export class AdminStudentsComponent implements OnInit {
     this.adminStudentService.saveStudent(this.stud).subscribe(() => this.route.navigate(["adminStudents"]));
     console.log(form.value);
   }
-    
 
+  // editStud(id: number) {
+  //   this.adminStudentService.getStudent(this.activateRoute.params['id'])
+  //       .subscribe(res => 
+  //         this.stu = res.body);
+  // }
+    
   title = "Studenti"
 
   ngOnInit(): void {
+    this.adminStudentService.getRefresNeeded().subscribe(() => this.getAllStudets());
+    this.getAllStudets();
+  }
+
+  private getAllStudets() {
     this.adminStudentService.getAll().subscribe((students) => (this.students = students));
   }
+
+  deleteStudent(studentId: number): void {
+    this.adminStudentService.deleteStudent(studentId).subscribe(() => this.getAllStudets());
+  }
+
+  // gotoEdit(student: Student): void {
+  //   this.route.navigate(['/adminEditStudents', student.id]);
+  //   this.showEditStudent();
+  // }
 
   public showAddStudent(): void {
     let x = document.getElementById("addStudent");
@@ -75,8 +83,8 @@ export class AdminStudentsComponent implements OnInit {
     }
   }
 
-  // public add(): void {
-  //   this.adminStudentService.saveStudent(this.student);
-  // }
+  goBack(): void {
+    this.location.back();
+  }
 
 }
