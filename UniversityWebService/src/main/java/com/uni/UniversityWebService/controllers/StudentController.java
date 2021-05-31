@@ -1,11 +1,9 @@
 package com.uni.UniversityWebService.controllers;
 
-import com.uni.UniversityWebService.model.CourseSpecification;
-import com.uni.UniversityWebService.model.Enrollment;
-import com.uni.UniversityWebService.model.Role;
-import com.uni.UniversityWebService.model.Student;
+import com.uni.UniversityWebService.model.*;
 import com.uni.UniversityWebService.model.dto.CourseSpecificationDto;
 import com.uni.UniversityWebService.model.dto.EnrollmentDto;
+import com.uni.UniversityWebService.model.dto.StudentDto;
 import com.uni.UniversityWebService.services.CourseService;
 import com.uni.UniversityWebService.services.StudentService;
 
@@ -13,9 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import com.uni.UniversityWebService.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,14 +24,23 @@ public class StudentController {
 
     @Autowired
     private StudentService studentService;
-    
+
+    @Autowired
+    private UserService userService;
+
     @GetMapping(path = "/students")
     public @ResponseBody
     ResponseEntity<?> getAllStudents(){
         return new ResponseEntity(studentService.findAllStudents(), HttpStatus.OK);
     }
     
-    
+    @GetMapping(path = "students/me")
+    public ResponseEntity<?> getMe(@AuthenticationPrincipal UserDetails userDetails){
+        Student student = studentService.findByUserUsername(userDetails.getUsername());
+
+        return new ResponseEntity(new StudentDto(student), HttpStatus.OK);
+    }
+
     //This is my way how to show unpassed exams with information of the courses
     @GetMapping(path = "students/{studentId}/exams", consumes="application/json")
     public ResponseEntity<List<CourseSpecificationDto>> getStudentRemainingExams(@PathVariable("studentId") Long studentId) {
