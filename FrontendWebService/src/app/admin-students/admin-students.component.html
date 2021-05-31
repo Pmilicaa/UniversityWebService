@@ -18,7 +18,7 @@
         <td>{{ student.lastName }}</td>
         <td>{{ student.cardNumber }}</td>
         <td>
-          <button type="button" class="btn btn-danger">Delete</button>
+          <button type="button" class="btn btn-danger" (click)="deleteStudent(student.id)">Delete</button>
         </td>
         <td>
           <button type="button" class="btn btn-info" (click)="showEditStudent()">Edit</button>
@@ -34,35 +34,35 @@
     <div class="row mb-3">
       <label for="inputFirstName" class="col-sm-2 col-form-label">FirstName</label>
       <div class="col-sm-10">
-        <input type="text" id="inputFirstName" class="form-control">
+        <input type="text"   id="inputFirstName" name="firstname" class="form-control">
       </div>
     </div>
     <div class="row mb-3">
       <label for="inputLastName3" class="col-sm-2 col-form-label">LastName</label>
       <div class="col-sm-10">
-        <input type="text" id="inputLastName3" class="form-control">
+        <input type="text"  name="lastname" id="inputLastName3" class="form-control">
       </div>
     </div>
     <div class="row mb-3">
       <label for="inputCardNumber" class="col-sm-2 col-form-label">Card number</label>
       <div class="col-sm-10">
-        <input type="text" id="inputCardNumber" class="form-control">
+        <input type="text"  name="cardnumber" id="inputCardNumber" class="form-control">
       </div>
     </div>
     <div class="row mb-3">
       <label for="inputBalance" class="col-sm-2 col-form-label">Balance</label>
       <div class="col-sm-10">
-        <input type="text" id="inputBalance" class="form-control">
+        <input type="text"  name="balance" id="inputBalance" class="form-control">
       </div>
     </div>
     <div class="row mb-3">
       <label for="inputCardNumber" class="col-sm-2 col-form-label">Account number</label>
       <div class="col-sm-10">
-        <input type="text" id="inputCardNumber" class="form-control">
+        <input type="text"  name="accountnumber" id="inputCardNumber" class="form-control">
       </div>
     </div>
     <div class="col-12">
-      <button type="submit" class="btn btn-primary" style="float: right;">Cancel</button>
+      <button type="submit" class="btn btn-primary" style="float: right;" (click)="goBack()">Cancel</button>
     </div>
     <div class="col-11">
       <button type="submit" class="btn btn-primary" style="float: right;">Confirm</button>
@@ -118,7 +118,7 @@
       <button type="submit" class="btn btn-primary" style="float: right;">Cancel</button>
     </div>
     <div class="col-11">
-      <button type="submit" class="btn btn-primary" style="float: right;">Confirm</button>
+      <button type="submit" class="btn btn-primary" style="float: right;" (click)="goBack()">Confirm</button>
     </div>
   </form>
 </div>
