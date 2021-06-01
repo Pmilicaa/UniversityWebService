@@ -21,6 +21,7 @@ import com.uni.UniversityWebService.services.UserDetailsServiceImpl;
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
+<<<<<<< HEAD
 
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
@@ -80,3 +81,64 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 UsernamePasswordAuthenticationFilter.class);
     }
 }
+=======
+	
+	@Autowired
+	private UserDetailsServiceImpl userDetailsService;
+
+	@Autowired
+	public void configureAuthentication(
+			AuthenticationManagerBuilder authenticationManagerBuilder)
+			throws Exception {
+		
+		authenticationManagerBuilder
+				.userDetailsService(this.userDetailsService).passwordEncoder(
+						passwordEncoder());
+	}
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	@Override
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
+	}
+	
+	@Bean
+	public AuthenticationTokenFilter authenticationTokenFilterBean()
+			throws Exception {
+		AuthenticationTokenFilter authenticationTokenFilter = new AuthenticationTokenFilter();
+		authenticationTokenFilter
+				.setAuthenticationManager(authenticationManagerBean());
+		return authenticationTokenFilter;
+	}
+
+	@Override
+	protected void configure(HttpSecurity httpSecurity) throws Exception {
+		httpSecurity
+			.csrf().disable()
+			.sessionManagement()
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+				.and()
+			.authorizeRequests()
+				.antMatchers("/", "/api/login", "/styles.css", "/profile",
+						"/runtime.js", "/polyfills.js", "/vendor.js", "/main.js", "/images/**", "/js/**",
+						"/runtime-es2015.js", "/polyfills-es2015.js", "/vendor-es2015.js", "/main-es2015.js", "/documents/**").permitAll()
+				.antMatchers(HttpMethod.POST,"/users").permitAll()
+				.antMatchers("/students/me").hasRole("STUDENT")
+				.antMatchers(HttpMethod.POST, "/api/**")
+						.hasRole("ADMIN")
+				.antMatchers(HttpMethod.GET, "/students/**").permitAll()
+				.antMatchers(HttpMethod.DELETE, "/students/**").permitAll()
+				.anyRequest().authenticated();
+				 
+		
+		// Custom JWT based authentication
+		httpSecurity.addFilterBefore(authenticationTokenFilterBean(),
+				UsernamePasswordAuthenticationFilter.class);
+	}
+}
+>>>>>>> documents
