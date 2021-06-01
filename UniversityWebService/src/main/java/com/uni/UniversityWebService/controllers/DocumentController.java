@@ -31,20 +31,6 @@ public class DocumentController {
     @Autowired
     private FileSystemStorageService storageService;
 
-
-    @GetMapping("/")
-    public String listAllFiles(Model model) {
-
-        model.addAttribute("files", storageService.loadAll().map(
-                path -> ServletUriComponentsBuilder.fromCurrentContextPath()
-                        .path("/download/")
-                        .path(path.getFileName().toString())
-                        .toUriString())
-                .collect(Collectors.toList()));
-
-        return "listFiles";
-    }
-
     @GetMapping("/download/{filename:.+}")
     @ResponseBody
     public ResponseEntity<Resource> downloadFile(@PathVariable String filename) {
@@ -62,24 +48,12 @@ public class DocumentController {
         }
     }
 
-    @PostMapping("/upload-file")
+    @PostMapping("/documents/upload")
     @ResponseBody
     public FileResponse uploadFile(@RequestParam("file") MultipartFile file) {
         String name = storageService.store(file);
 
-        String uri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/download/")
-                .path(name)
-                .toUriString();
-
-        return new FileResponse(name, uri, file.getContentType(), file.getSize());
+        return new FileResponse(name, file.getContentType(), file.getSize());
     }
 
-    @PostMapping("/upload-multiple-files")
-    @ResponseBody
-    public List<FileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
-        return Arrays.stream(files)
-                .map(file -> uploadFile(file))
-                .collect(Collectors.toList());
-    }
 }

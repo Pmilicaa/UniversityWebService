@@ -1,48 +1,47 @@
 <div class="bg-light p-4 rounded">
-    <h2>Student info</h2>
-    <table class="table">
-      <tbody>
-        <tr>
+  <h2>Student info</h2>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>
+          First Name:
+        </td>
+        <td>
+              {{student.firstName}}
+        </td>
+      </tr>
+      <tr>
           <td>
-            First Name:
+              Last name:
           </td>
           <td>
-                {{student.firstName}}
+              {{student.lastName}}
           </td>
         </tr>
         <tr>
-            <td>
-                Last name:
-            </td>
-            <td>
-                {{student.lastName}}
-            </td>
-          </tr>
-          <tr>
-            <td>
-                Card number:
-            </td>
-            <td>
-                {{student.cardNumber}}
-            </td>
-          </tr>
-          <tr>
-            <td>
-                Balance:
-            </td>
-            <td>
-                {{student.balance}} RSD
-            </td>
-          </tr>
-          <tr>
-            <td>
-                Account number:
-            </td>
-            <td>
-                {{student.accountNumber}}
-            </td>
-          </tr>
-      </tbody>
-    </table>
-  </div>
--->
+          <td>
+              Card number:
+          </td>
+          <td>
+              {{student.cardNumber}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+              Balance:
+          </td>
+          <td>
+              {{student.balance}} RSD
+          </td>
+        </tr>
+        <tr>
+          <td>
+              Account number:
+          </td>
+          <td>
+              {{student.accountNumber}}
+          </td>
+        </tr>
+    </tbody>
+  </table>
+</div>
