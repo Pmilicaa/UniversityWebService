@@ -2,6 +2,7 @@ insert into user (id, password, role, user_name) values (1, '$2a$10$pzhQj/9w.Fjp
 insert into user (id, password, role, user_name) values (2, 'mica321', 2, 'mica123');
 insert into user (id, password, role, user_name) values (3, 'damir321', 2, 'damir123');
 
+
 insert into student (id, account_number, balance, card_number, first_name, last_name, user_id) values (1, 241245135, 15000, 'asd234tg5e3ghseth5e','Aleksa', 'Petrovic', 1);
 insert into student (id, account_number, balance, card_number, first_name, last_name, user_id) values (2, 241245135, 15000, 'asd234tg5e3ghseth5e','Milica', 'Pajic', 2);
 insert into student (id, account_number, balance, card_number, first_name, last_name, user_id) values (3, 241245135, 15000, 'asd234tg5e3ghseth5e','Damir', 'Tizmonar', 3);
