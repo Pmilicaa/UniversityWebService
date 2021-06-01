@@ -1,11 +1,13 @@
 insert into user (id, password, role, user_name) values (1, '$2a$10$pzhQj/9w.Fjp4AXxOWgUg.f4rvBPRpZGa9I1eyGn05VgFzdNV58cu', 2, 'aleksa123');
 insert into user (id, password, role, user_name) values (2, 'mica321', 2, 'mica123');
 insert into user (id, password, role, user_name) values (3, 'damir321', 2, 'damir123');
+insert into user (id, password, role, user_name) values (4, '$2a$10$6qGF3lna.qPAQTgOn9IhzutR5y.qYIH5apJINHFYg3jCj.JKIeqDa', 1, 'joka');
 
 
 insert into student (id, account_number, balance, card_number, first_name, last_name, user_id) values (1, 241245135, 15000, 'asd234tg5e3ghseth5e','Aleksa', 'Petrovic', 1);
 insert into student (id, account_number, balance, card_number, first_name, last_name, user_id) values (2, 241245135, 15000, 'asd234tg5e3ghseth5e','Milica', 'Pajic', 2);
 insert into student (id, account_number, balance, card_number, first_name, last_name, user_id) values (3, 241245135, 15000, 'asd234tg5e3ghseth5e','Damir', 'Tizmonar', 3);
+insert into teacher (id, firstName, lastName, user_id) values (4, 'joka', 'janjic', 4);
 
 insert into document_type values (1, "D", "Diploma");
 insert into document_type values (2, "N", "Nesto");

@@ -67,7 +67,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .antMatchers("/", "/api/login", "/styles.css", "/profile",
                         "/runtime.js", "/polyfills.js", "/vendor.js", "/main.js", "/images/**", "/js/**",
                         "/runtime-es2015.js", "/polyfills-es2015.js", "/vendor-es2015.js", "/main-es2015.js").permitAll()
-                .antMatchers(HttpMethod.POST,"/users").permitAll()
+                .antMatchers(HttpMethod.POST,"/users","/teachers").permitAll()
                 .antMatchers("/students/me").hasRole("STUDENT")
                 .antMatchers(HttpMethod.POST, "/api/**")
                 .hasRole("ADMIN")

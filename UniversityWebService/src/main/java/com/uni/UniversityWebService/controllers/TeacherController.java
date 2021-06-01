@@ -9,6 +9,8 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,11 +28,13 @@ import com.uni.UniversityWebService.model.Student;
 import com.uni.UniversityWebService.model.Teacher;
 import com.uni.UniversityWebService.model.Teaching;
 import com.uni.UniversityWebService.model.TeachingType;
+import com.uni.UniversityWebService.model.dto.TeacherDto;
 import com.uni.UniversityWebService.model.dto.TeachingDto;
 import com.uni.UniversityWebService.repositories.CourseInstanceRepository;
 import com.uni.UniversityWebService.repositories.CourseSpecificationRepository;
 import com.uni.UniversityWebService.repositories.TeacherRepository;
 import com.uni.UniversityWebService.repositories.TeachingRepository;
+import com.uni.UniversityWebService.repositories.UserRepository;
 import com.uni.UniversityWebService.services.ExamPartService;
 import com.uni.UniversityWebService.services.ExamService;
 import com.uni.UniversityWebService.services.StudentService;
@@ -47,6 +51,9 @@ public class TeacherController {
 	
 	@Autowired
 	private TeachingRepository teachingRepository;
+	
+	@Autowired
+	private TeacherRepository teacherRepository;
 	
 	@Autowired
 	private CourseInstanceRepository courseInstanceRepository;
@@ -99,5 +106,9 @@ public class TeacherController {
 	public @ResponseBody ResponseEntity<?> getTeacherExamParts(@PathVariable(value="teacherId") Long teacherId){		
 		return new ResponseEntity (teacherService.findTeacherExamParts(teacherId), HttpStatus.OK);
 	}
-	
+	@GetMapping(path="/teachers/me")
+	public @ResponseBody ResponseEntity<?> getLoggedTeacher(@AuthenticationPrincipal UserDetails userDetails){
+		Teacher teacher = teacherRepository.findByUser_UserName(userDetails.getUsername());
+		return new ResponseEntity(new TeacherDto(teacher), HttpStatus.OK);
+	}
 }
