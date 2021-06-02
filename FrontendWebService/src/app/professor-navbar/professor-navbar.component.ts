@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationServiceService } from '../services/authentication-service.service';
 
 @Component({
   selector: 'app-professor-navbar',
@@ -7,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfessorNavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthenticationServiceService) { }
 
+  onLogOut(){
+    this.authService.logout(); 
+    window.location.reload();
+  }
   ngOnInit(): void {
   }
 
