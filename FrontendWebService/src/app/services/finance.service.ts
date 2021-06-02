@@ -13,7 +13,7 @@ export class FinanceService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Transaction[]>{
+  getAll(): Observable<Transaction[]>{    
       return this.http.get<Transaction[]>(this.URL);
   }
 }

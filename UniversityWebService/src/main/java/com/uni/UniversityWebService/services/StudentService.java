@@ -102,4 +102,8 @@ public class StudentService {
 
 		studentRepository.save(student);
 	}
+
+	public Student findByUserUsername(String username){
+		return studentRepository.findByUser_UserName(username);
+	}
 }

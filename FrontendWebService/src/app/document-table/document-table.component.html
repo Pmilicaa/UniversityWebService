@@ -1,6 +1,8 @@
 <div class="bg-light p-4 rounded">
-  <h2 style="color: black;">Documents</h2>
-  <table class="table" style="color: black;">
+  <h2>Documents</h2>
+  <input type="file" id="chooseFileInput" class="btn btn-primary" name="upload">
+  <button type="button" (click)="onUpload()" class="btn btn-primary">Upload file</button>
+  <table class="table">
     <thead class="bg-primary rounded">
       <tr>
         <th scope="col" class="text-light">#</th>

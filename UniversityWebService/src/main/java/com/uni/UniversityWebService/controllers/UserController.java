@@ -47,6 +47,8 @@ public class UserController {
         if(!teacher.getUser().getRole().equals(Role.ROLE_TEACHER)) {
             return new ResponseEntity("Teacher must have a teacher role", HttpStatus.BAD_REQUEST);
         }else{
+        	User user = new User(teacher.getUser().getUserName(), bCryptPasswordEncoder.encode(teacher.getUser().getPassword()), Role.ROLE_TEACHER);
+        	teacher.setUser(user);
             Teacher newTeacher = userService.saveTeacher(teacher);
             return new ResponseEntity(newTeacher, HttpStatus.OK);
         }

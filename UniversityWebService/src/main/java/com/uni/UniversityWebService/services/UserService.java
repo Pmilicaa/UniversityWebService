@@ -28,6 +28,14 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public User findByUsername(String username){
+        return userRepository.findByUserName(username);
+    }
+
+    public User findById(Long id){
+        return userRepository.findById(id).orElseThrow(NullPointerException::new);
+    }
+
     public User saveUser(User user) {
         userRepository.save(user);
 
