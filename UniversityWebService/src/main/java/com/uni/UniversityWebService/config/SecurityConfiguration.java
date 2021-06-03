@@ -16,10 +16,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.uni.UniversityWebService.security.AuthenticationTokenFilter;
 import com.uni.UniversityWebService.services.UserDetailsServiceImpl;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @EnableWebSecurity
 @Configuration
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
 
 
@@ -55,7 +57,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .setAuthenticationManager(authenticationManagerBean());
         return authenticationTokenFilter;
     }
+    @Override
+    public void addCorsMappings(CorsRegistry registry){
 
+        registry.addMapping("/**").allowedOriginPatterns("*").allowedHeaders("*").allowedMethods("GET" , "POST" , "PUT" , "DELETE" , "OPTIONS" , "HEAD");
+
+    }
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
@@ -74,7 +81,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .antMatchers(HttpMethod.GET, "/students/**").permitAll()
                 .antMatchers(HttpMethod.DELETE, "/students/**").permitAll()
                 .anyRequest().authenticated();
-
+                httpSecurity.cors();
 
         // Custom JWT based authentication
         httpSecurity.addFilterBefore(authenticationTokenFilterBean(),
