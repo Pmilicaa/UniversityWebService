@@ -24,42 +24,5 @@
       </tr>
     </tbody>
   </table>
-  <button type="button" class="btn btn-success" style="float: right;" (click)="showAddTeacher()">Add professor</button>
-</div>
-
-<div id="addTeacher" style="display: none;">
-  <h2>Add new Teacher</h2>
-  <form  (ngSubmit)="addTeacher()">
-    <div class="row mb-3">
-      <label for="inputFirstName" class="col-sm-2 col-form-label">FirstName</label>
-      <div class="col-sm-10">
-        <input [(ngModel)]="profesor.firstName" type="text" id="inputFirstName" class="form-control" placeholder="Enter the First Name" name="firstName" >
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="inputlastName" class="col-sm-2 col-form-label">lastName</label>
-      <div class="col-sm-10">
-        <input [(ngModel)]="profesor.lastName" type="text" id="inputLastName" class="form-control" placeholder="Enter the Last Name" name="lastName" >
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="inputUserName" class="col-sm-2 col-form-label">UserName</label>
-      <div class="col-sm-10">
-        <input  [(ngModel)]="profesor.user.userName" type="email" class="form-control" id="inputUserName" placeholder="Enter the username " name="username" ngModel>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-      <div class="col-sm-10">
-        <input  [(ngModel)]="profesor.user.password" type="password" class="form-control" id="inputPassword" placeholder="Enter the password" name="password" ngModel>
-      </div>
-    </div>
-    <div class="col-12">
-      <button type="button" class="btn btn-primary" style="float: right;">Cancel</button>
-    </div>
-    <div class="col-11">
-      <button type="submit" class="btn btn-primary" style="float: right;" (click)="goBack()">Confirm</button>
-    </div>
-    
-  </form>
+  <button type="button" class="btn btn-success" style="float: right;">Add professor</button>
 </div>

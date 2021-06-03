@@ -29,4 +29,14 @@ export class AppComponent {
     }
   }
 
+  onLogin(){
+    console.log("called");
+    this.ngOnInit();
+    const currentRoute = this.router.url;
+
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.router.navigate([currentRoute]); // navigate to same route
+    }); 
+  }
+
 }

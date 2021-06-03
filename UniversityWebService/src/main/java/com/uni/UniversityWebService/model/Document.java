@@ -36,12 +36,7 @@ public class Document {
 		this.documentType = documentType;
 	}
 
-	public Document(String title, String uri, DocumentType documentType) {
-		this.title = title;
-		this.uri = uri;
-		this.documentType = documentType;
-	}
-
+	
 	public Document() {
 		super();
 	}

@@ -16,12 +16,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.uni.UniversityWebService.security.AuthenticationTokenFilter;
 import com.uni.UniversityWebService.services.UserDetailsServiceImpl;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @EnableWebSecurity
 @Configuration
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
 
 
@@ -57,12 +55,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter implemen
                 .setAuthenticationManager(authenticationManagerBean());
         return authenticationTokenFilter;
     }
-    @Override
-    public void addCorsMappings(CorsRegistry registry){
 
-        registry.addMapping("/**").allowedOriginPatterns("*").allowedHeaders("*").allowedMethods("GET" , "POST" , "PUT" , "DELETE" , "OPTIONS" , "HEAD");
-
-    }
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
@@ -73,19 +66,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter implemen
                 .authorizeRequests()
                 .antMatchers("/", "/api/login", "/styles.css", "/profile",
                         "/runtime.js", "/polyfills.js", "/vendor.js", "/main.js", "/images/**", "/js/**",
-                        "/runtime-es2015.js", "/polyfills-es2015.js", "/vendor-es2015.js", "/main-es2015.js","/teachers").permitAll()
+                        "/runtime-es2015.js", "/polyfills-es2015.js", "/vendor-es2015.js", "/main-es2015.js").permitAll()
                 .antMatchers(HttpMethod.POST,"/users","/teachers").permitAll()
-                .antMatchers("/students/me", "/documents/me").hasRole("STUDENT")
+                .antMatchers("/students/me").hasRole("STUDENT")
                 .antMatchers(HttpMethod.POST, "/api/**")
                 .hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/students/**").permitAll()
                 .antMatchers(HttpMethod.DELETE, "/students/**").permitAll()
                 .anyRequest().authenticated();
-                httpSecurity.cors();
+
 
         // Custom JWT based authentication
         httpSecurity.addFilterBefore(authenticationTokenFilterBean(),
                 UsernamePasswordAuthenticationFilter.class);
     }
-
 }

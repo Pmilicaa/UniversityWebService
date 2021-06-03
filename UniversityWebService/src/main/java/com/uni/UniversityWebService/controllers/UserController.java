@@ -37,7 +37,10 @@ public class UserController {
         return new ResponseEntity(userService.saveUser(newUser), HttpStatus.OK);
     }
 
-    
+    @GetMapping(path = "/teachers")
+    public @ResponseBody ResponseEntity<?> getAllTeachers(){
+        return new ResponseEntity(userService.findAllTeachers(), HttpStatus.OK);
+    }
 
     @PostMapping(path = "/teachers")
     public @ResponseBody ResponseEntity<?> addTeacher(@RequestBody Teacher teacher){

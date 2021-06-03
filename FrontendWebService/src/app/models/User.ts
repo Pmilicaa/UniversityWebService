@@ -4,12 +4,12 @@ export  class User {
     password:string;
     role:string;
 
-    constructor(userCfg?: UserInterface) {
-       if(userCfg){ this.id = userCfg.id;
+    constructor(userCfg: UserInterface) {
+        this.id = userCfg.id;
         this.userName = userCfg.userName;
         this.password = userCfg.password;
         this.role = userCfg.role;
-    }}
+    }
 
 }
 
