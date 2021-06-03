@@ -4,7 +4,7 @@
       <div class="col-lg-12">
         <app-navbar *ngIf="roles.includes('ROLE_STUDENT')"></app-navbar>
         <app-admin-profile  *ngIf="roles.includes('ROLE_ADMIN')"></app-admin-profile>
-        <app-admin-profile  *ngIf="roles.includes('ROLE_PROFESSOR')"></app-admin-profile>
+        <app-professor-navbar  *ngIf="roles.includes('ROLE_TEACHER')"></app-professor-navbar>
       </div>
     </div>
     <div class="row">
