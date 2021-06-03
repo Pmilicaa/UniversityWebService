@@ -15,18 +15,13 @@ export class DocumentTableComponent implements OnInit {
   constructor(private documentService: DocumentServiceService) { }
 
   onUpload(): void {
-<<<<<<< HEAD
     this.documentService.uploadDocument().subscribe( (document) => { 
       this.documents.push(document);
     });
-=======
-    console.log("called first");
-    this.documentService.uploadDocument().subscribe();
->>>>>>> 3f8fe5d1f46b9766c89d40e6ec5dcc27b52a1ae4
   }
 
   ngOnInit(): void {
-    this.documentService.getAll().subscribe( (documents) => (this.documents = documents))
+    this.documentService.getLoggedInUserDocuments().subscribe( (documents) => (this.documents = documents))
   }
 
 }

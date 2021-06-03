@@ -15,4 +15,8 @@ export class AdminProfessorsService {
   getAll(): Observable<Professor[]> {
     return this.http.get<Professor[]>(this.URL);
   }
+  addTeacher(profesor:Professor): Observable<Professor>{
+
+    return this.http.post<Professor>(this.URL,profesor);
+  }
 }

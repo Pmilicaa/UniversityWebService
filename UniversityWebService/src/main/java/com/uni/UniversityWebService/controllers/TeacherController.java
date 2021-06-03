@@ -111,4 +111,9 @@ public class TeacherController {
 		Teacher teacher = teacherRepository.findByUser_UserName(userDetails.getUsername());
 		return new ResponseEntity(new TeacherDto(teacher), HttpStatus.OK);
 	}
+	@GetMapping(path = "/teachers")
+	public @ResponseBody
+	ResponseEntity<?> getAllTechers(){
+		return new ResponseEntity(teacherService.findAllTeachers(), HttpStatus.OK);
+	}
 }

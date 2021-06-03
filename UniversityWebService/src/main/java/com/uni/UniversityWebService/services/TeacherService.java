@@ -54,7 +54,10 @@ public class TeacherService {
 	public Teacher save(Teacher teacher) {
 		return teacherRepository.save(teacher);
 	}
-	
+
+	public List<Teacher> findAllTeachers(){
+		return teacherRepository.findAll();
+	}
 	public List<ExamPart> findExamParts(){
 		List<ExamPart> examParts =examPartRepository.findAll();
 		return examParts;

@@ -1,10 +1,11 @@
 package com.uni.UniversityWebService.services;
 
-import com.uni.UniversityWebService.model.StorageException;
-import com.uni.UniversityWebService.model.StorageProperties;
+import com.uni.UniversityWebService.model.*;
+import com.uni.UniversityWebService.repositories.DocumentTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.util.StringUtils;
@@ -27,6 +28,15 @@ public class FileSystemStorageService {
     private final Path rootLocation;
 
     @Autowired
+    private StudentService studentService;
+
+    @Autowired
+    private DocumentService documentService;
+
+    @Autowired
+    private DocumentTypeRepository documentTypeRepository;
+
+    @Autowired
     public FileSystemStorageService(StorageProperties properties) {
         this.rootLocation = Paths.get(properties.getLocation());
     }
@@ -41,7 +51,6 @@ public class FileSystemStorageService {
     }
 
 
-<<<<<<< HEAD
     public Document store(MultipartFile file, UserDetails userDetails) {
         DocumentType documentType = documentTypeRepository.findByCode("D");
         String[] split = file.getOriginalFilename().split("\\.");
@@ -55,10 +64,6 @@ public class FileSystemStorageService {
         Student student = studentService.findByUserUsername(userDetails.getUsername());
         student.getDocuments().add(newDocument);
         studentService.saveStudent(student);
-=======
-    public String store(MultipartFile file) {
-        String filename = StringUtils.cleanPath(file.getOriginalFilename());
->>>>>>> 3f8fe5d1f46b9766c89d40e6ec5dcc27b52a1ae4
         try {
             if (file.isEmpty()) {
                 throw new StorageException("Failed to store empty file " + filename);
@@ -70,7 +75,7 @@ public class FileSystemStorageService {
                                 + filename);
             }
             try (InputStream inputStream = file.getInputStream()) {
-                Files.copy(inputStream, this.rootLocation.resolve(filename),
+                Files.copy(inputStream, this.rootLocation.resolve(filenameOnSystem),
                         StandardCopyOption.REPLACE_EXISTING);
             }
         }
