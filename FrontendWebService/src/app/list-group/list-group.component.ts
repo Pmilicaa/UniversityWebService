@@ -12,21 +12,6 @@ export class ListGroupComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.documents = [
-      {
-        id: 1,
-        title: "Diploma"
-      },
-      {
-        id: 2,
-        title: "Photo"
-      },
-      {
-        id: 3,
-        title: "Insurance"
-      }
-
-    ]
   }
 
 }

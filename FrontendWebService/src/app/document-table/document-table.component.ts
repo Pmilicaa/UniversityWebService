@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import Document  from "../models/Document";
+import FileResponse from '../models/FileResponse';
 import { DocumentServiceService } from '../services/document-service.service';
 
 @Component({
@@ -8,12 +10,14 @@ import { DocumentServiceService } from '../services/document-service.service';
   styleUrls: ['./document-table.component.css']
 })
 export class DocumentTableComponent implements OnInit {
-  documents:Document[];
+  documents:Document[] = [];
 
   constructor(private documentService: DocumentServiceService) { }
 
   onUpload(): void {
-    this.documentService.uploadDocument().subscribe();
+    this.documentService.uploadDocument().subscribe( (document) => { 
+      this.documents.push(document);
+    });
   }
 
   ngOnInit(): void {

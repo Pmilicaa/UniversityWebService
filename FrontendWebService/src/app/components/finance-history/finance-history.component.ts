@@ -8,7 +8,7 @@ import { FinanceService } from '../../services/finance.service';
   styleUrls: ['./finance-history.component.css']
 })
 export class FinanceHistoryComponent implements OnInit {
-  transactions:Transaction[];
+  transactions:Transaction[] = [];
 
   constructor(private financeService: FinanceService) { }
 

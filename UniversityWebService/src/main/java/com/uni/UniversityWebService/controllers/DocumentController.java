@@ -1,7 +1,9 @@
 package com.uni.UniversityWebService.controllers;
 
+import com.uni.UniversityWebService.model.Document;
 import com.uni.UniversityWebService.model.FileResponse;
 import com.uni.UniversityWebService.model.Student;
+import com.uni.UniversityWebService.model.dto.DocumentDto;
 import com.uni.UniversityWebService.services.DocumentService;
 import com.uni.UniversityWebService.services.FileSystemStorageService;
 import com.uni.UniversityWebService.services.StudentService;
@@ -71,9 +73,8 @@ public class DocumentController {
             return new ResponseEntity("File names cannot contain a ',' character.", HttpStatus.BAD_REQUEST);
         }else{
             if (Arrays.asList(allowedContentTypes).contains(file.getContentType())) {
-                String name = storageService.store(file, userDetails);
-                FileResponse fileResponse = new FileResponse(name, file.getContentType(), file.getSize());
-                return new ResponseEntity(fileResponse, HttpStatus.OK);
+                Document document = storageService.store(file, userDetails);
+                return new ResponseEntity(new DocumentDto(document), HttpStatus.OK);
             } else {
                 String message = file.getContentType() + " is not allowed, please try with a different file type.";
                 return new ResponseEntity(message, HttpStatus.BAD_REQUEST);
