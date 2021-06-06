@@ -80,6 +80,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter implemen
                 .hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/students/**").permitAll()
                 .antMatchers(HttpMethod.DELETE, "/students/**").permitAll()
+                .antMatchers("/examParts/register/*").hasRole("STUDENT")
                 .anyRequest().authenticated();
                 httpSecurity.cors();
 

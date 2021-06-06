@@ -3,4 +3,4 @@
 <td>{{ examPart.examPartPoints}}</td>
 <td>{{ examPart.requiredPoints}}</td>
 <td>{{ examPart.examPartStatus.name}}</td>
-<td><button (click)="registerExam()" class="btn btn-primary">Register</button></td>
+<td><button (click)="registerExam(examPart.id)" class="btn btn-primary">Register</button></td>

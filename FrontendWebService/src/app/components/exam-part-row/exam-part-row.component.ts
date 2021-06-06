@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import ExamPart from 'src/app/models/ExamPart';
+import { ExamPartService } from 'src/app/services/exam-part.service';
 
 @Component({
   selector: '[app-exam-part-row]',
@@ -7,16 +9,18 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ExamPartRowComponent implements OnInit {
 
-  @Input() examPart;
+  @Input() examPart: ExamPart;
   @Input() index;
 
-  constructor() { }
+  constructor(private examPartService: ExamPartService) { }
 
   ngOnInit(): void {
   }
 
-  registerExam(): void {
-    
+  registerExam(id: number): void {
+    this.examPartService.registerExamPart(id).subscribe(( examPart ) => {
+      this.examPart = examPart;
+    })
   }
 
 }

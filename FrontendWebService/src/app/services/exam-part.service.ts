@@ -1,23 +1,22 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Exam } from '../models/Exam';
+import ExamPart from '../models/ExamPart';
 import { AuthenticationServiceService } from './authentication-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ExamServiceService {
+export class ExamPartService {
 
-  private readonly path = "http://localhost:8080/exams";
+  private readonly path = "http://localhost:8080/examParts";
 
   constructor(private http: HttpClient, private authService: AuthenticationServiceService) { }
 
-  getLoggedInStudentExams(): Observable<Exam[]>{
+  registerExamPart(id: number): Observable<ExamPart>{
     const headers = new HttpHeaders({"Content-Type": "application/json", "X-Auth-Token": this.authService.getToken().toString()});
-
-    return this.http.get<Exam[]>(this.path + "/me", {headers: headers});
+    console.log(this.authService.getToken().toString());
+    console.log(headers)
+    return this.http.post<ExamPart>(this.path + "/register/" + id, {}, {headers: headers});
   }
-
-
 }

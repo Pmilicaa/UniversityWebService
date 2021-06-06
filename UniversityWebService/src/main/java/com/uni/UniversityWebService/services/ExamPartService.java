@@ -19,8 +19,8 @@ public class ExamPartService {
 		return examPartRepository.findAll();
 	}
 	
-	public ExamPart findOne(Long id) {
-		return examPartRepository.findById(id).get();
+	public ExamPart findById(Long id) {
+		return examPartRepository.findById(id).orElseThrow(NullPointerException::new);
 	}
 	
 	public ExamPart save (ExamPart examPart) {
