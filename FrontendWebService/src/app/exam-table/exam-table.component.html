@@ -1,17 +1,15 @@
-<div class="w-25 m-auto">
+<div class="bg-light p-4 rounded">
     <h2>Exams</h2>
     <table class="table">
       <thead>
         <tr>
           <th scope="col">#</th>
           <th scope="col">Name</th>
+          <th scope="col">Options</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let exam of exams; let i = index">
-          <th scope="row">{{ i + 1 }}</th>
-          <td>{{ exam.name }}</td>
-        </tr>
+        <tr app-exam-row [enrollment]="enrollment" [index]="i" *ngFor="let enrollment of enrollments; let i = index"></tr>
       </tbody>
     </table>
   </div>

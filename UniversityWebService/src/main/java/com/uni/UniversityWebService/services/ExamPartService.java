@@ -26,7 +26,11 @@ public class ExamPartService {
 	public ExamPart save (ExamPart examPart) {
 		return examPartRepository.save(examPart);
 	}
-	
+
+	public ExamPart saveAndFlush(ExamPart examPart) {
+		return examPartRepository.saveAndFlush(examPart);
+	}
+
 	public void remove(ExamPart examPart) {
 		examPartRepository.delete(examPart);
 	}

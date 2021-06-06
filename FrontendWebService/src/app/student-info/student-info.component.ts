@@ -9,7 +9,19 @@ import { StudentServiceService } from '../services/student-service.service';
   styleUrls: ['./student-info.component.css']
 })
 export class StudentInfoComponent implements OnInit {
-  student:Student;
+  student:Student = {
+    id: 0,
+    firstName: "",
+    lastName: "",
+    cardNumber: "",
+    balance: 0,
+    accountNumber: 123123,
+    user: {
+      userName: "",
+      role: "",
+      password: ""
+    }
+  };
   
   constructor(private studentService: StudentServiceService) { }
 

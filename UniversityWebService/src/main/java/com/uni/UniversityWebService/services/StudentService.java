@@ -1,24 +1,13 @@
 package com.uni.UniversityWebService.services;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
-import com.uni.UniversityWebService.model.ExamPart;
-import com.uni.UniversityWebService.model.ExamPartStatus;
-import com.uni.UniversityWebService.model.ExamPeriod;
+import com.uni.UniversityWebService.model.*;
 import com.uni.UniversityWebService.repositories.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import com.uni.UniversityWebService.model.CourseSpecification;
-import com.uni.UniversityWebService.model.Enrollment;
-import com.uni.UniversityWebService.model.Exam;
-import com.uni.UniversityWebService.model.Student;
-import com.uni.UniversityWebService.model.Teacher;
-import com.uni.UniversityWebService.model.Teaching;
 
 @Service
 public class StudentService {
@@ -27,24 +16,33 @@ public class StudentService {
 	private StudentRepository studentRepository;
 
 	@Autowired
-	private ExamPartRepository examPartRepository;
+	private ExamPartService examPartService;
 	
 	@Autowired
-	EnrollmentRepository enrollmentRepository;
+	private EnrollmentService enrollmentService;
 	
 	@Autowired
-	ExamRepository examRepository;
+	private ExamService examService;
 
 	@Autowired
 	ExamPeriodRepository examPeriodRepository;
-	
+
+	@Autowired
+	private CourseSpecificationRepository courseSpecificationRepository;
+
 	@Autowired
 	TeachingRepository teachingRepository;
 
 	@Autowired
+	private ExamPartTypeRepository examPartTypeRepository;
+
+	@Autowired
+	private ExamPartStatusRepository examPartStatusRepository;
+
+	@Autowired
 	private PasswordEncoder bCryptPasswordEncoder;
 
-	public Student findByOne(Long id) {
+	public Student findById(Long id) {
 		return studentRepository.findById(id).get();
 	}
 	
@@ -88,7 +86,7 @@ public class StudentService {
 
 	// TODO: Return all exams based on student
 	public List<ExamPart> findAllExamParts(Student student){
-		return examPartRepository.findAll();
+		return examPartService.findAll();
 	}
 
 	public void increaseStudentBalance(Student student, int amount){
@@ -105,5 +103,56 @@ public class StudentService {
 
 	public Student findByUserUsername(String username){
 		return studentRepository.findByUser_UserName(username);
+	}
+
+	public Student initEnrollments(Student student){
+		ExamPartType examPartTypeColloq = examPartTypeRepository.findByCode("C");
+		ExamPartType examPartTypeHomework = examPartTypeRepository.findByCode("H");
+		ExamPartType examPartTypeFinal = examPartTypeRepository.findByCode("F");
+
+		ExamPartStatus notRegisteredStatus = examPartStatusRepository.findByCode("N");
+
+		ExamPeriod januaryPeriod = examPeriodRepository.findByName("January");
+
+		CourseSpecification mathCourse = courseSpecificationRepository.findByTitle("Mathematics");
+		CourseSpecification oopCourse = courseSpecificationRepository.findByTitle("Object oriented programming");
+
+		// Matematika
+		ExamPart colloqPart = new ExamPart(new Date("20/1/2021"), "100", 0, 10, examPartTypeColloq, notRegisteredStatus);
+		ExamPart homeworkPart = new ExamPart(new Date("20/1/2021"), "100", 0, 20, examPartTypeHomework, notRegisteredStatus);
+		ExamPart finalPart = new ExamPart(new Date("20/1/2021"), "100", 0, 30, examPartTypeFinal, notRegisteredStatus);
+		Exam mathExam = new Exam(0, 0, null, null, januaryPeriod);
+		mathExam.getExamParts().add(colloqPart);
+		mathExam.getExamParts().add(homeworkPart);
+		mathExam.getExamParts().add(finalPart);
+
+		Enrollment mathEnrollment = new Enrollment(mathExam, mathCourse, student);
+		mathExam.setEnrollment(mathEnrollment);
+
+		examPartService.save(colloqPart);
+		examPartService.save(homeworkPart);
+		examPartService.save(finalPart);
+		examService.save(mathExam);
+		enrollmentService.save(mathEnrollment);
+
+		// OOP
+		ExamPart colloqPartOOP = new ExamPart(new Date("20/5/2021"), "100", 0, 10, examPartTypeColloq, notRegisteredStatus);
+		ExamPart homeworkPartOOP = new ExamPart(new Date("25/6/2021"), "200", 0, 20, examPartTypeHomework, notRegisteredStatus);
+		ExamPart finalPartOOP = new ExamPart(new Date("15/7/2021"), "300", 0, 30, examPartTypeFinal, notRegisteredStatus);
+		Exam oopExam= new Exam(0, 0, null, null, januaryPeriod);
+		oopExam.getExamParts().add(colloqPartOOP);
+		oopExam.getExamParts().add(homeworkPartOOP);
+		oopExam.getExamParts().add(finalPartOOP);
+
+		Enrollment oopEnrollment = new Enrollment(oopExam, oopCourse, student);
+		oopExam.setEnrollment(oopEnrollment);
+
+		examPartService.save(colloqPartOOP);
+		examPartService.save(homeworkPartOOP);
+		examPartService.save(finalPartOOP);
+		examService.save(oopExam);
+		enrollmentService.save(oopEnrollment);
+
+		return student;
 	}
 }

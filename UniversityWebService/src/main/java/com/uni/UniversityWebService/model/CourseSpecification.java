@@ -1,10 +1,15 @@
 package com.uni.UniversityWebService.model;
 
+import com.fasterxml.jackson.annotation.*;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "courseSpecification")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+                  property = "id",
+                  scope = long.class)
 public class CourseSpecification {
 
     @Id
@@ -28,7 +33,7 @@ public class CourseSpecification {
 
     )
     private List<CourseInstance> courseInstances;
-    
+
     @OneToMany(
             mappedBy = "courseSpecification",
             fetch = FetchType.LAZY,

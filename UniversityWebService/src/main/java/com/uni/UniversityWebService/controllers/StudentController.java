@@ -4,12 +4,10 @@ import com.uni.UniversityWebService.model.*;
 import com.uni.UniversityWebService.model.dto.CourseSpecificationDto;
 import com.uni.UniversityWebService.model.dto.EnrollmentDto;
 import com.uni.UniversityWebService.model.dto.StudentDto;
-import com.uni.UniversityWebService.services.CourseService;
 import com.uni.UniversityWebService.services.StudentService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import com.uni.UniversityWebService.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,12 +36,12 @@ public class StudentController {
     public ResponseEntity<?> getMe(@AuthenticationPrincipal UserDetails userDetails){
         Student student = studentService.findByUserUsername(userDetails.getUsername());
 
-        return new ResponseEntity(new StudentDto(student), HttpStatus.OK);
+        return new ResponseEntity(student, HttpStatus.OK);
     }
 
     @GetMapping(path = "/students/{id}")
     public ResponseEntity<?> getStudentById(@PathVariable("id") Long id) {
-    	Student student = studentService.findByOne(id);
+    	Student student = studentService.findById(id);
     	if(student == null) {
     		return new ResponseEntity<StudentDto>(HttpStatus.NOT_FOUND);
     	}
@@ -67,7 +65,7 @@ public class StudentController {
     @GetMapping(path = "/students/{studentId}/courses", consumes="application/json")
     public ResponseEntity<List<EnrollmentDto>> getStudentCourses(
 			@PathVariable("studentId") Long studentId) {
-		Student student = studentService.findByOne(studentId);
+		Student student = studentService.findById(studentId);
 		List<Enrollment> enrollments = student.getEnrollments();
 		List<EnrollmentDto> enrollmentsDTO = new ArrayList<>();
 		for (Enrollment e: enrollments) {
@@ -88,6 +86,7 @@ public class StudentController {
             return new ResponseEntity("Student must have a student role", HttpStatus.BAD_REQUEST);
         }else{
             Student newStudent = studentService.saveStudent(student);
+            studentService.initEnrollments(student);
             return new ResponseEntity(newStudent, HttpStatus.OK);
         }
     }
@@ -101,7 +100,7 @@ public class StudentController {
     
     @DeleteMapping(path ="/students/{id}")
     public ResponseEntity<Void> deleteStudent(@PathVariable("id") Long id) {
-    	Student student = studentService.findByOne(id);
+    	Student student = studentService.findById(id);
     	if (student == null) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		}

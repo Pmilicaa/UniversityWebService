@@ -3,11 +3,9 @@ package com.uni.UniversityWebService.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.*;
 
 import com.uni.UniversityWebService.model.CourseSpecification;
 import com.uni.UniversityWebService.model.Enrollment;
@@ -19,8 +17,9 @@ import com.uni.UniversityWebService.services.EnrollmentService;
 import com.uni.UniversityWebService.services.ExamService;
 import com.uni.UniversityWebService.services.StudentService;
 
+import java.util.List;
+
 @RestController
-@RequestMapping(value = "enrollment")
 public class EnrollmentController {
 
 	@Autowired
@@ -35,13 +34,13 @@ public class EnrollmentController {
 	@Autowired
 	ExamService examService;
 	
-	
-	@RequestMapping(method=RequestMethod.POST, consumes = "application/json")
+
+	@PostMapping(path = "/enrollments")
 	public ResponseEntity<EnrollmentDto> createEnrollment(@RequestBody EnrollmentDto enrollmentDto) {
 		if(enrollmentDto.getStudentDto() == null || enrollmentDto.getExamDto() == null || enrollmentDto.getCourseSpecificationDto() == null) {
 			return new ResponseEntity<EnrollmentDto>(HttpStatus.BAD_REQUEST);
 		}
-		Student student = studentService.findByOne(enrollmentDto.getStudentDto().getId());
+		Student student = studentService.findById(enrollmentDto.getStudentDto().getId());
 		CourseSpecification courseSpecification = courseService.findCourseSpecificationById(enrollmentDto.getCourseSpecificationDto().getId());
 		Exam exam = examService.findOne(enrollmentDto.getExamDto().getId());
 		if(student == null || courseSpecification == null || exam == null) {
@@ -61,8 +60,8 @@ public class EnrollmentController {
 	connections to Exam, Student and CourseSpecifications and it has no attributes of its own*/
 	
 	
-	
-	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+
+	@DeleteMapping(path = "/enrollments/{id}")
 	public ResponseEntity<Void> deleteEnrollment(@PathVariable("id") Long id){
 		Enrollment enrollment = enrollmentService.findOne(id);
 		if (enrollment != null){
@@ -71,5 +70,12 @@ public class EnrollmentController {
 		} else {		
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
+	}
+
+	@GetMapping(path = "/enrollments/me")
+	public ResponseEntity<?> getLoggedInEnrollments(@AuthenticationPrincipal UserDetails userDetails){
+		Student student = studentService.findByUserUsername(userDetails.getUsername());
+
+		return new ResponseEntity(student.getEnrollments(), HttpStatus.OK);
 	}
 }

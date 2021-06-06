@@ -22,6 +22,7 @@ import { AdminStudentsComponent } from '../admin-students/admin-students.compone
 import { FinanceComponent } from '../components/finance/finance.component';
 import { AdminProfessorComponent } from '../components/admin-professor/admin-professor/admin-professor.component';
 import { ExamComponent } from '../exam/exam.component';
+import { ExamsComponent } from '../components/exams/exams.component';
 const routes: Routes = [
   { path: 'login', component: LoginFormComponent },
   { path: 'register', component: RegisterFormComponent },
@@ -40,7 +41,7 @@ const routes: Routes = [
   { path: 'navBar', component: NavbarComponent},
   { path: 'adminProfessors', component: AdminProfessorComponent},
   { path: 'finances', component: FinanceComponent},
-  { path: 'exam', component: ExamComponent}
+  { path: 'exams', component: ExamsComponent}
 ];
 
 @NgModule({

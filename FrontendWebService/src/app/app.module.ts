@@ -31,8 +31,10 @@ import { ProfessorProfileComponent } from './professor-profile/professor-profile
 import { ProfessorNavbarComponent } from './professor-navbar/professor-navbar.component';
 import { ExamComponent } from './exam/exam.component';
 import { DocumentTableRowComponent } from './components/document-table-row/document-table-row.component';
-
-
+import { ExamsComponent } from './components/exams/exams.component';
+import { ExamRowComponent } from './components/exam-row/exam-row.component';
+import { ExamPartTableComponent } from './components/exam-part-table/exam-part-table.component';
+import { ExamPartRowComponent } from './components/exam-part-row/exam-part-row.component';
 
 @NgModule({
   declarations: [ 
@@ -54,7 +56,12 @@ import { DocumentTableRowComponent } from './components/document-table-row/docum
     ProfessorNavbarComponent,
     ExamComponent,
     ProfessorInfoComponent,
-    DocumentTableRowComponent
+    DocumentTableRowComponent,
+    ExamsComponent,
+    ExamTableComponent,
+    ExamRowComponent,
+    ExamPartTableComponent,
+    ExamPartRowComponent
     
   ],
   imports: [

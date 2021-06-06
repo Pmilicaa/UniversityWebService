@@ -75,7 +75,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter implemen
                         "/runtime.js", "/polyfills.js", "/vendor.js", "/main.js", "/images/**", "/js/**",
                         "/runtime-es2015.js", "/polyfills-es2015.js", "/vendor-es2015.js", "/main-es2015.js","/teachers").permitAll()
                 .antMatchers(HttpMethod.POST,"/users","/teachers").permitAll()
-                .antMatchers("/students/me", "/documents/me").hasRole("STUDENT")
+                .antMatchers("/students/me", "/documents/me", "/enrollments/me").hasRole("STUDENT")
                 .antMatchers(HttpMethod.POST, "/api/**")
                 .hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/students/**").permitAll()
