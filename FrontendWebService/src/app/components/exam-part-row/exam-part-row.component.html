@@ -3,4 +3,7 @@
 <td>{{ examPart.examPartPoints}}</td>
 <td>{{ examPart.requiredPoints}}</td>
 <td>{{ examPart.examPartStatus.name}}</td>
-<td><button (click)="registerExam(examPart.id)" class="btn btn-primary">Register</button></td>
+<td>
+    <button *ngIf="examPart.examPartStatus.name != 'Registered'" (click)="registerExam(examPart.id)" class="btn btn-primary">Register</button>
+    <button *ngIf="examPart.examPartStatus.name == 'Registered'" (click)="cancelExam(examPart.id)" class="btn btn-primary">Cancel</button>
+</td>

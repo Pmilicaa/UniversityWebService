@@ -2,6 +2,7 @@ package com.uni.UniversityWebService.controllers;
 
 import com.uni.UniversityWebService.model.ExamPart;
 import com.uni.UniversityWebService.model.ExamPartStatus;
+import com.uni.UniversityWebService.model.Student;
 import com.uni.UniversityWebService.repositories.ExamPartStatusRepository;
 import com.uni.UniversityWebService.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,17 +40,44 @@ public class ExamPartController {
 	public ResponseEntity<?> registerExamPart(@AuthenticationPrincipal UserDetails userDetails, @PathVariable(value = "id") Long id){
 		ExamPartStatus registeredStatus = examPartStatusRepository.findByCode("R");
 		// TODO: Check whether this exam part belongs to the user that's logged in
-		// TODO: Decrease student balance after registration by 200
 		try{
 			ExamPart examPart = examPartService.findById(id);
+			if(examPart.getExamPartStatus().getName().equals("Registered")){
+				return new ResponseEntity("Exam is already registered.", HttpStatus.BAD_REQUEST);
+			}
 			examPart.setExamPartStatus(registeredStatus);
 			ExamPart newExamPart = examPartService.save(examPart);
 
+			Student student = studentService.findByUserUsername(userDetails.getUsername());
+			studentService.decreaseStudentBalance(student, 200);
+			studentService.saveStudent(student);
+
 			return new ResponseEntity(newExamPart, HttpStatus.OK);
 		}catch(NullPointerException e){
-			return new ResponseEntity("Exam part with the specified id does not exist.", HttpStatus.OK);
+			return new ResponseEntity("Exam part with the specified id does not exist.", HttpStatus.BAD_REQUEST);
 		}
+	}
 
+	@PostMapping(path = "/examParts/cancel/{id}")
+	public ResponseEntity<?> cancelExamPart(@AuthenticationPrincipal UserDetails userDetails, @PathVariable(value = "id") Long id){
+		ExamPartStatus notRegisteredStatus = examPartStatusRepository.findByCode("N");
+
+		try{
+			ExamPart examPart = examPartService.findById(id);
+			if(!examPart.getExamPartStatus().getName().equals("Registered")){
+				return new ResponseEntity("You can only cancel a registered exam.", HttpStatus.BAD_REQUEST);
+			}
+			examPart.setExamPartStatus(notRegisteredStatus);
+			ExamPart newExamPart = examPartService.save(examPart);
+
+			Student student = studentService.findByUserUsername(userDetails.getUsername());
+			studentService.increaseStudentBalance(student, 200);
+			studentService.saveStudent(student);
+
+			return new ResponseEntity(newExamPart, HttpStatus.OK);
+		}catch (NullPointerException e){
+			return new ResponseEntity("Exam part with the specified id does not exist.", HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 	 

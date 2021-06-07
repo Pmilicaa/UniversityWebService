@@ -1,8 +1,12 @@
-<div class="row">
-    <div class="col-lg-6">
-        <app-exam-table [enrollments]="enrollments"></app-exam-table>
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <app-exam-table [enrollments]="enrollments"></app-exam-table>
+        </div>
     </div>
-    <div class="col-lg-6">
-        <app-exam-part-table *ngIf="selectedEnrollment.exam != undefined" [examParts]="selectedEnrollment.exam.examParts"></app-exam-part-table>
+    <div class="row mt-2">
+        <div class="col-lg-12">
+            <app-exam-part-table *ngIf="selectedEnrollment.exam != undefined" [examParts]="selectedEnrollment.exam.examParts"></app-exam-part-table>
+        </div>
     </div>
 </div>

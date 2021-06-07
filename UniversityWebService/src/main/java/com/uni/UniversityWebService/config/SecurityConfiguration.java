@@ -75,13 +75,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter implemen
                         "/runtime.js", "/polyfills.js", "/vendor.js", "/main.js", "/images/**", "/js/**",
                         "/runtime-es2015.js", "/polyfills-es2015.js", "/vendor-es2015.js", "/main-es2015.js","/teachers").permitAll()
                 .antMatchers(HttpMethod.POST,"/users","/teachers").permitAll()
-                .antMatchers("/students/me", "/documents/me", "/enrollments/me").hasRole("STUDENT")
-                .antMatchers(HttpMethod.POST, "/api/**")
-                .hasRole("ADMIN")
+                .antMatchers("/students/me", "/documents/me", "/enrollments/me", "/examParts/register/*", "/examParts/cancel/*").hasRole("STUDENT")
+                .antMatchers(HttpMethod.POST, "/api/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/students/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/teaching/teacher/{id}").permitAll()
                 .antMatchers(HttpMethod.DELETE, "/students/**").permitAll()
-                .antMatchers("/examParts/register/*").hasRole("STUDENT")
                 .anyRequest().authenticated();
                 httpSecurity.cors();
 

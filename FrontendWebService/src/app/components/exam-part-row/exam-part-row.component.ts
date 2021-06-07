@@ -23,4 +23,10 @@ export class ExamPartRowComponent implements OnInit {
     })
   }
 
+  cancelExam(id: number): void {
+    this.examPartService.cancelExamPart(id).subscribe((examPart) => {
+      this.examPart = examPart;
+    })
+  }
+
 }
