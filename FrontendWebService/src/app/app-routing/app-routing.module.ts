@@ -23,6 +23,8 @@ import { FinanceComponent } from '../components/finance/finance.component';
 import { AdminProfessorComponent } from '../components/admin-professor/admin-professor/admin-professor.component';
 import { ExamComponent } from '../exam/exam.component';
 import { ExamsComponent } from '../components/exams/exams.component';
+import { ProfessorProfileComponent } from '../professor-profile/professor-profile.component';
+import { ProfessorExamsComponent } from '../professor-exams/professor-exams.component';
 const routes: Routes = [
   { path: 'login', component: LoginFormComponent },
   { path: 'register', component: RegisterFormComponent },
@@ -41,7 +43,9 @@ const routes: Routes = [
   { path: 'navBar', component: NavbarComponent},
   { path: 'adminProfessors', component: AdminProfessorComponent},
   { path: 'finances', component: FinanceComponent},
-  { path: 'exams', component: ExamsComponent}
+  { path: 'exams', component: ExamsComponent},
+  { path: 'professorProfile', component: ProfessorProfileComponent},
+  { path: 'professorExams', component: ProfessorExamsComponent}
 ];
 
 @NgModule({

@@ -35,6 +35,8 @@ import { ExamsComponent } from './components/exams/exams.component';
 import { ExamRowComponent } from './components/exam-row/exam-row.component';
 import { ExamPartTableComponent } from './components/exam-part-table/exam-part-table.component';
 import { ExamPartRowComponent } from './components/exam-part-row/exam-part-row.component';
+import { ProfessorExamsComponent } from './professor-exams/professor-exams.component';
+import { ProfessorCoursesComponent } from './components/professor-courses/professor-courses.component';
 
 @NgModule({
   declarations: [ 
@@ -61,7 +63,9 @@ import { ExamPartRowComponent } from './components/exam-part-row/exam-part-row.c
     ExamTableComponent,
     ExamRowComponent,
     ExamPartTableComponent,
-    ExamPartRowComponent
+    ExamPartRowComponent,
+    ProfessorExamsComponent,
+    ProfessorCoursesComponent
     
   ],
   imports: [
