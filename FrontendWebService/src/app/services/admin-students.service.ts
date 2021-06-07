@@ -49,7 +49,7 @@ export class AdminStudentsService {
     );
   }
 
-  getStudent(id: number): Observable<HttpResponse<Student>> {
+  getStudent(id: number): Observable<Student> {
     const headInfo = {
       'Content-Type': 'application/json',
       'X-Auth-Token': "" + this.authService.getToken()
@@ -58,7 +58,7 @@ export class AdminStudentsService {
       headers: new HttpHeaders(headInfo)
     };
     const url = `${this.URL_STUDENTS}/${id}`;
-    return this.http.get<HttpResponse<Student>>(url, requestOptions);
+    return this.http.get<Student>(url, requestOptions);
   }
 
   deleteStudent(studentId: number): Observable<any> {
@@ -71,6 +71,18 @@ export class AdminStudentsService {
     };
     const url = `${this.URL_STUDENTS}/${studentId}`;
     return this.http.delete<any>(url, requestOptions);
+  }
+
+  updateStudent(studentId: number, student: Student): Observable<Student> {
+    const headInfo = {
+      'Content-Type': 'application/json',
+      'X-Auth-Token': "" + this.authService.getToken()
+    }
+    const requestOptions = {
+      headers: new HttpHeaders(headInfo)
+    };
+    const url = `${this.URL_API_STUDENTS}/${studentId}`
+    return this.http.put<Student>(url, student, requestOptions);
   }
 
 }
