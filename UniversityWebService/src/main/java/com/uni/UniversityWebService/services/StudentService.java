@@ -19,6 +19,7 @@ import com.uni.UniversityWebService.model.Exam;
 import com.uni.UniversityWebService.model.Student;
 import com.uni.UniversityWebService.model.Teacher;
 import com.uni.UniversityWebService.model.Teaching;
+import com.uni.UniversityWebService.model.User;
 
 @Service
 public class StudentService {
@@ -43,12 +44,16 @@ public class StudentService {
 
 	@Autowired
 	private PasswordEncoder bCryptPasswordEncoder;
+	
+	@Autowired UserService userService;
 
 	public Student findByOne(Long id) {
 		return studentRepository.findById(id).get();
 	}
 	
 	public void remove(Student student) {
+//		User user = userService.findById(student.getUser().getId());
+//		userService.deleteUser(user);
 		studentRepository.delete(student);
 	}
 

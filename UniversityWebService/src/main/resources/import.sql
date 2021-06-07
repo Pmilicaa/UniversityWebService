@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 --insert into user (id, password, role, user_name) values (1, 'aleksa321', 1, 'aleksa123');
 --insert into user (id, password, role, user_name) values (2, 'mica321', 1, 'mica123');
 --insert into user (id, password, role, user_name) values (3, 'damir321', 1, 'damir123');

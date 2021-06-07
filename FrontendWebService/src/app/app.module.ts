@@ -30,6 +30,7 @@ import { AdminProfessorComponent } from './components/admin-professor/admin-prof
 import { ProfessorProfileComponent } from './professor-profile/professor-profile.component';
 import { ProfessorNavbarComponent } from './professor-navbar/professor-navbar.component';
 import { ExamComponent } from './exam/exam.component';
+import { AdminStudentDetailComponent } from './components/admin-student-detail/admin-student-detail.component';
 
 
 
@@ -52,7 +53,8 @@ import { ExamComponent } from './exam/exam.component';
     ProfessorProfileComponent,
     ProfessorNavbarComponent,
     ExamComponent,
-    ProfessorInfoComponent
+    ProfessorInfoComponent,
+    AdminStudentDetailComponent
     
   ],
   imports: [
