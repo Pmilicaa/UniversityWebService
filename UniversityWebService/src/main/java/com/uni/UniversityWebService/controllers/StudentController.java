@@ -90,7 +90,25 @@ public class StudentController {
             return new ResponseEntity(newStudent, HttpStatus.OK);
         }
     }
+    
+    @PutMapping(path = "/api/students/{id}")
+    public ResponseEntity<StudentDto> updateStudent(@RequestBody StudentDto studentDto, @PathVariable("id") Long studentId) {
+    	if(!studentId.equals(studentDto.getId())) {
+    		return new ResponseEntity<StudentDto>(HttpStatus.NOT_FOUND);
+    	}
+    	Student student = studentService.findByOne(studentId);
+    	if(student == null) {
+    		return new ResponseEntity<StudentDto>(HttpStatus.BAD_REQUEST);
+    	}
+    	
+    	Student izmenjenStudent = studentDto.convertStudentDtoToStudent(student);
+    	User user = userService.findById(student.getUser().getId());
+    	izmenjenStudent.setUser(user);
+    	student = studentService.saveStudent(izmenjenStudent);
+    	return new ResponseEntity<StudentDto>(new StudentDto(student), HttpStatus.OK);
+    }
 
+    
     @PutMapping(path = "/students")
     public @ResponseBody ResponseEntity<?> updateStudent(@RequestBody Student student){
         Student updatedStudent = studentService.updateStudent(student);

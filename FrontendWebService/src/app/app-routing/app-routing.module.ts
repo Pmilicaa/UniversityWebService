@@ -22,6 +22,7 @@ import { AdminStudentsComponent } from '../admin-students/admin-students.compone
 import { FinanceComponent } from '../components/finance/finance.component';
 import { AdminProfessorComponent } from '../components/admin-professor/admin-professor/admin-professor.component';
 import { ExamComponent } from '../exam/exam.component';
+import { AdminStudentDetailComponent } from '../components/admin-student-detail/admin-student-detail.component';
 import { ExamsComponent } from '../components/exams/exams.component';
 import { ProfessorProfileComponent } from '../professor-profile/professor-profile.component';
 import { ProfessorExamsComponent } from '../professor-exams/professor-exams.component';
@@ -40,6 +41,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent},
   { path: 'adminProfile', component: AdminProfileComponent},
   { path: 'adminStudents', component: AdminStudentsComponent},
+  { path: 'adminEditStudents/:id', component: AdminStudentDetailComponent},
   { path: 'navBar', component: NavbarComponent},
   { path: 'adminProfessors', component: AdminProfessorComponent},
   { path: 'finances', component: FinanceComponent},

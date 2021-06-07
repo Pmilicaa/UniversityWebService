@@ -30,6 +30,9 @@ import { AdminProfessorComponent } from './components/admin-professor/admin-prof
 import { ProfessorProfileComponent } from './professor-profile/professor-profile.component';
 import { ProfessorNavbarComponent } from './professor-navbar/professor-navbar.component';
 import { ExamComponent } from './exam/exam.component';
+import { AdminStudentDetailComponent } from './components/admin-student-detail/admin-student-detail.component';
+
+
 import { DocumentTableRowComponent } from './components/document-table-row/document-table-row.component';
 import { ExamsComponent } from './components/exams/exams.component';
 import { ExamRowComponent } from './components/exam-row/exam-row.component';
@@ -64,9 +67,13 @@ import { ProfessorCoursesComponent } from './components/professor-courses/profes
     ExamRowComponent,
     ExamPartTableComponent,
     ExamPartRowComponent,
+<<<<<<< HEAD
     ProfessorExamsComponent,
     ProfessorCoursesComponent
     
+=======
+    AdminStudentDetailComponent
+>>>>>>> c7abd638af3163feb37b3367093203ceec91b859
   ],
   imports: [
     AppRoutingModule,
