@@ -5,6 +5,7 @@ insert into user (id, password, role, user_name) values (5, "$2a$10$YNaqStb.elNn
 insert into user (id, password, role, user_name) values (1, '$2a$10$pzhQj/9w.Fjp4AXxOWgUg.f4rvBPRpZGa9I1eyGn05VgFzdNV58cu', 2, 'aleksa123');
 insert into user (id, password, role, user_name) values (2, 'mica321', 2, 'mica123');
 insert into user (id, password, role, user_name) values (3, 'damir321', 2, 'damir123');
+--Professor acc user:joka pass:joka
 insert into user (id, password, role, user_name) values (4, '$2a$10$6qGF3lna.qPAQTgOn9IhzutR5y.qYIH5apJINHFYg3jCj.JKIeqDa', 1, 'joka');
 
 
@@ -24,6 +25,9 @@ insert into transaction_type values (2, "Withdrawal");
 insert into transaction values (1, 1500,  1, 1);
 insert into transaction values (2, 2500,  1, 1);
 insert into transaction values (3, 3500,  1, 1);
+
+insert into teaching_type values (1, "P", "professor");
+insert into teaching_type values (2, "A", "assistant");
 
 insert into course_specification (title, ects, code) values ("Mathematics", 8, "MATH");
 insert into course_specification (title, ects, code) values ("Object oriented programming", 8, "OOP");

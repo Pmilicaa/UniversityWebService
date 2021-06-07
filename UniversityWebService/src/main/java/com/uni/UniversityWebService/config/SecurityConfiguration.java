@@ -79,6 +79,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter implemen
                 .antMatchers(HttpMethod.POST, "/api/**")
                 .hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/students/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/teaching/teacher/{id}").permitAll()
                 .antMatchers(HttpMethod.DELETE, "/students/**").permitAll()
                 .antMatchers("/examParts/register/*").hasRole("STUDENT")
                 .anyRequest().authenticated();
