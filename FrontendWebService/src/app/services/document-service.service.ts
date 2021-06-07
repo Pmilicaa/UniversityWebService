@@ -24,11 +24,11 @@ export class DocumentServiceService {
     return this.http.get<Document[]>(this.URL + "/me", {headers: headers});
   }
 
-  uploadDocument(): Observable<FileResponse> {
+  uploadDocument(): Observable<Document> {
     const headers = new HttpHeaders({"X-Auth-Token": this.authService.getToken().toString()});
     var chooseFileInput = <HTMLInputElement>document.getElementById("chooseFileInput");
     const formData = new FormData();
     formData.append("file", chooseFileInput.files[0]);
-    return this.http.post<FileResponse>(this.URL + "/upload", formData, {headers: headers});
+    return this.http.post<Document>(this.URL + "/upload", formData, {headers: headers});
   }
 }

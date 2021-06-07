@@ -9,7 +9,7 @@ import { AuthenticationServiceService } from './authentication-service.service';
 })
 export class StudentServiceService {
 
-  private readonly path = '/students';
+  private readonly path = 'http://localhost:8080/students';
 
   constructor(private http: HttpClient, private authService: AuthenticationServiceService) { }
 

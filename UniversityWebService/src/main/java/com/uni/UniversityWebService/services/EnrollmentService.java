@@ -34,10 +34,15 @@ public class EnrollmentService {
 		return enrollmentRepository.save(enrollment);
 	}
 	
-	
+
+
 	//mislim da nam i ovo ne treba za enrollment
 	public void remove(Long id) {
 		enrollmentRepository.deleteById(id);
+	}
+
+	public List<Enrollment> findByStudentUsername(String username){
+		return enrollmentRepository.findByStudent_User_UserName(username);
 	}
 	
 }

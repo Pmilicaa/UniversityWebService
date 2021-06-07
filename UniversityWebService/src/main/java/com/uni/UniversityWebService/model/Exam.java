@@ -1,5 +1,8 @@
 package com.uni.UniversityWebService.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,12 +28,14 @@ public class Exam {
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 	private Set<ExamPart> examParts = new HashSet<ExamPart>();
 
+	@JsonBackReference
 	@OneToOne(cascade={CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "exam")
 	private Enrollment enrollment;
 
 	@OneToOne(cascade={CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "exam")
 	private Teaching teaching;
-	
+
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "examPeriodId", referencedColumnName = "examPeriodId", nullable = false)
 	private ExamPeriod examPeriod;
@@ -46,6 +51,15 @@ public class Exam {
 		this.enrollment = enrollment;
 		this.examPeriod = examPeriod;
 		this.teaching = teaching;
+	}
+
+	public Exam(int examPoints, int grade, Enrollment enrollment, Teaching teaching, ExamPeriod examPeriod) {
+		this.examPoints = examPoints;
+		this.grade = grade;
+		this.examParts = new HashSet<>();
+		this.enrollment = enrollment;
+		this.teaching = teaching;
+		this.examPeriod = examPeriod;
 	}
 
 	public Exam() {

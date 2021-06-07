@@ -33,6 +33,11 @@ import { ExamComponent } from './exam/exam.component';
 import { AdminStudentDetailComponent } from './components/admin-student-detail/admin-student-detail.component';
 
 
+import { DocumentTableRowComponent } from './components/document-table-row/document-table-row.component';
+import { ExamsComponent } from './components/exams/exams.component';
+import { ExamRowComponent } from './components/exam-row/exam-row.component';
+import { ExamPartTableComponent } from './components/exam-part-table/exam-part-table.component';
+import { ExamPartRowComponent } from './components/exam-part-row/exam-part-row.component';
 
 @NgModule({
   declarations: [ 
@@ -54,8 +59,13 @@ import { AdminStudentDetailComponent } from './components/admin-student-detail/a
     ProfessorNavbarComponent,
     ExamComponent,
     ProfessorInfoComponent,
+    DocumentTableRowComponent,
+    ExamsComponent,
+    ExamTableComponent,
+    ExamRowComponent,
+    ExamPartTableComponent,
+    ExamPartRowComponent,
     AdminStudentDetailComponent
-    
   ],
   imports: [
     AppRoutingModule,

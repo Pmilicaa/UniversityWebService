@@ -1,0 +1,22 @@
+<div class="bg-light p-4 rounded">
+    <h2>Exam parts</h2>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Points</th>
+          <th scope="col">Required points</th>
+          <th scope="col">Status
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="statusSortCheckbox" (click)="onCheckClick()">
+            </div>
+          </th>
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr app-exam-part-row [examPart]="examPart" [index]="i" *ngFor="let examPart of examParts; let i = index"></tr>
+      </tbody>
+    </table>
+  </div>

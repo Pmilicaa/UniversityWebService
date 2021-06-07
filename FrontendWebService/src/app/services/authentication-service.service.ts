@@ -9,7 +9,7 @@ import { JwtUtilsService } from './jwt-utils.service';
 })
 export class AuthenticationServiceService {
 
-  private readonly loginPath = '/api/login';
+  private readonly loginPath = 'http://localhost:8080/api/login';
 
   constructor(private http: HttpClient, private jwtUtilsService: JwtUtilsService) { }
 

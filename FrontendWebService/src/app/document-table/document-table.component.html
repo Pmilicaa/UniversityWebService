@@ -1,7 +1,5 @@
 <div class="bg-light p-4 rounded">
   <h2>Documents</h2>
-  <input type="file" id="chooseFileInput" class="btn btn-primary" name="upload">
-  <button type="button" (click)="onUpload()" class="btn btn-primary">Upload file</button>
   <table class="table">
     <thead class="bg-primary rounded">
       <tr>
@@ -11,14 +9,27 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let document of documents; let i = index">
-        <th scope="row">{{ i + 1 }}</th>
-        <td>{{ document.title }}</td>
-        <td>
-            <button class="p-0 btn btn-danger" style="float: right; margin-left: 5px;">Delete</button>
-            <button class="p-0 btn btn-success" style="float: right;">Download</button>
-        </td>
+      <tr app-document-table-row [document]="document" [index]="i" *ngFor="let document of documents; let i = index">
+        
       </tr>
     </tbody>
   </table>
+  <div class="row">
+    <div class="col-lg-12">
+      <p *ngIf="documents.length == 0" class="text-center h3 bold">No documents to display</p>
+      <hr class="divider">
+    </div>
+  </div>
+    
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="chooseFileInput">
+        <label class="custom-file-label" for="customFile">Choose file</label>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <button type="button" (click)="onUpload()" class="btn btn-primary">Upload file</button>
+    </div>
+  </div>
 </div>

@@ -51,16 +51,16 @@ public class FileSystemStorageService {
     }
 
 
-    public String store(MultipartFile file, UserDetails userDetails) {
-        DocumentType documentType = documentTypeRepository.findByCode("DP");
+    public Document store(MultipartFile file, UserDetails userDetails) {
+        DocumentType documentType = documentTypeRepository.findByCode("D");
         String[] split = file.getOriginalFilename().split("\\.");
         split[0] = split[0] + "," + userDetails.getUsername();
         System.out.println("Original name " + file.getOriginalFilename());
         String filenameOnSystem = StringUtils.cleanPath(String.join(".", split));
         String filename = file.getOriginalFilename();
 
-        Document newDocument = new Document(file.getOriginalFilename(), filenameOnSystem, documentType);
-
+        Document document = new Document(file.getOriginalFilename(), filenameOnSystem, documentType);
+        Document newDocument = documentService.saveDocument(document);
         Student student = studentService.findByUserUsername(userDetails.getUsername());
         student.getDocuments().add(newDocument);
         studentService.saveStudent(student);
@@ -83,7 +83,7 @@ public class FileSystemStorageService {
             throw new StorageException("Failed to store file " + filename, e);
         }
 
-        return filename;
+        return newDocument;
     }
 
     public Stream<Path> loadAll() {

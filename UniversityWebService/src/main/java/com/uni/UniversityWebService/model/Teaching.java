@@ -5,8 +5,14 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Table(name = "teaching")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+property = "id",
+scope = long.class)
 public class Teaching {
 
     @Id
@@ -30,7 +36,7 @@ public class Teaching {
     private String code;
     
     @OneToOne
-    @JoinColumn(name="exam_id", nullable = false)
+    @JoinColumn(name="exam_id", nullable = true)
 	private Exam exam;
 
     
@@ -53,6 +59,12 @@ public class Teaching {
         this.exam = exam;
     }
 
+	public Teaching(CourseSpecification courseSpecification, TeachingType teachingType, String code, Teacher teacher) {
+        this.courseSpecification = courseSpecification;
+        this.teachingType = teachingType;
+        this.code = code;
+        this.teacher= teacher;
+    }
     public Teaching() {
     }
 

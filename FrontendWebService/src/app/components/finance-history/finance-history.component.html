@@ -1,11 +1,11 @@
-<div>
+<div class="bg-light p-4 rounded">
     <h2>Finance history</h2>
     <table class="table">
-      <thead>
+      <thead class="bg-primary rounded">
         <tr>
-          <th scoper="col">#</th>
-          <th scope="col">Type</th>
-          <th scope="col">Amount</th>
+          <th scoper="col" class="text-light">#</th>
+          <th scope="col" class="text-light">Type</th>
+          <th scope="col" class="text-light">Amount</th>
         </tr>
       </thead>
       <tbody>
@@ -16,4 +16,5 @@
         </tr>
       </tbody>
     </table>
+    <p *ngIf="transactions.length == 0" class="text-center h3 bold">No transactions to display</p>
   </div>

@@ -6,17 +6,22 @@ import com.uni.UniversityWebService.model.Teacher;
 import com.uni.UniversityWebService.model.User;
 import com.uni.UniversityWebService.services.StudentService;
 import com.uni.UniversityWebService.services.UserService;
+import com.uni.UniversityWebService.services.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private TeacherService teacherService;
 
     @Autowired
     private StudentService studentService;
@@ -37,10 +42,7 @@ public class UserController {
         return new ResponseEntity(userService.saveUser(newUser), HttpStatus.OK);
     }
 
-    @GetMapping(path = "/teachers")
-    public @ResponseBody ResponseEntity<?> getAllTeachers(){
-        return new ResponseEntity(userService.findAllTeachers(), HttpStatus.OK);
-    }
+
 
     @PostMapping(path = "/teachers")
     public @ResponseBody ResponseEntity<?> addTeacher(@RequestBody Teacher teacher){
@@ -66,5 +68,15 @@ public class UserController {
         Teacher updateTeacher = userService.updateTeacher(teacher);
 
         return new ResponseEntity(updateTeacher, HttpStatus.OK);
+    }
+
+    @DeleteMapping(path ="/teachers/{id}")
+    public ResponseEntity<Void> deleteTeacher(@PathVariable("id") Long id) {
+        Teacher teacher = teacherService.findById(id);
+        if (teacher == null) {
+            return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+        }
+       userService.deleteTeacher(teacher);
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }

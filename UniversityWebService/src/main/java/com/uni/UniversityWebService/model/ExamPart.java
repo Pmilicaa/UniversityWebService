@@ -53,6 +53,15 @@ public class ExamPart {
 		this.requiredPoints = requiredPoints;
 	}
 
+	public ExamPart(Date examPartStartDate, String classroom, int examPartPoints, int requiredPoints, ExamPartType examPartType, ExamPartStatus examPartStatus) {
+		this.examPartStartDate = examPartStartDate;
+		this.classroom = classroom;
+		this.examPartPoints = examPartPoints;
+		this.requiredPoints = requiredPoints;
+		this.examPartType = examPartType;
+		this.examPartStatus = examPartStatus;
+	}
+
 	public ExamPart() {
 		
 	}

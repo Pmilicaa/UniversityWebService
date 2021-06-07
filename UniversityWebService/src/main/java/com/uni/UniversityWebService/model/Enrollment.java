@@ -1,5 +1,7 @@
 package com.uni.UniversityWebService.model;
 
+import com.fasterxml.jackson.annotation.*;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,6 +10,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Enrollment")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+		property = "id",
+		scope = long.class)
 public class Enrollment {
 	
 	private static final long serialVersionUID = 1L;
@@ -16,15 +21,17 @@ public class Enrollment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "enrollmentId", unique = true, nullable = false)
 	private Long id;
-	
+
+	@JsonManagedReference
 	@OneToOne
 	@JoinColumn(name="exam_Id",  nullable = false)
 	private Exam exam;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "courseSpecificationId", referencedColumnName = "id", nullable = false)
 	private CourseSpecification courseSpecification;
-	
+
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "studentId", referencedColumnName = "id", nullable = false)
 	private Student student;
@@ -37,6 +44,11 @@ public class Enrollment {
 		this.student = student;
 	}
 
+	public Enrollment(Exam exam, CourseSpecification courseSpecification, Student student) {
+		this.exam = exam;
+		this.courseSpecification = courseSpecification;
+		this.student = student;
+	}
 
 	public Enrollment() {
 		

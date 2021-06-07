@@ -1,5 +1,7 @@
 package com.uni.UniversityWebService.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 import javax.persistence.*;
@@ -41,7 +43,7 @@ public class Student {
 			
 	)
 	private List<Transaction> transactions;
-	
+
 	@OneToMany(
 			mappedBy = "student",
 			cascade = CascadeType.ALL,
