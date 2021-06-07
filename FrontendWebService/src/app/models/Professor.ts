@@ -2,6 +2,7 @@
 import { User } from "./User";
 
 export class Professor{
+    id:number;
     firstName:string;
     lastName:string;
     user: User;

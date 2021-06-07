@@ -71,5 +71,9 @@ public class UserService {
 
         return teacherToUpdate;
     }
+    public void deleteTeacher(Teacher teacher){
+        Teacher teacherToDelete = teacherRepository.findById(teacher.getId()).get();
+        teacherRepository.delete(teacherToDelete);
 
+    }
 }

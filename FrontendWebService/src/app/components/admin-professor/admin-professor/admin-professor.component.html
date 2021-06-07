@@ -16,10 +16,10 @@
         <td>{{ professor.firstName }}</td>
         <td>{{ professor.lastName }}</td>
         <td>
-          <button type="button" class="btn btn-danger">Delete</button>
+          <button type="button" class="btn btn-danger" (click)="removeTeacher(professor)">Delete</button>
         </td>
         <td>
-          <button type="button" class="btn btn-info">Edit</button>
+          <button type="button" class="btn btn-info" (click)="showEditTeacher(professor)">Edit</button>
         </td>
       </tr>
     </tbody>
@@ -52,6 +52,44 @@
       <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
       <div class="col-sm-10">
         <input  [(ngModel)]="profesor.user.password" type="password" class="form-control" id="inputPassword" placeholder="Enter the password" name="password" ngModel>
+      </div>
+    </div>
+    <div class="col-12">
+      <button type="button" class="btn btn-primary" style="float: right;">Cancel</button>
+    </div>
+    <div class="col-11">
+      <button type="submit" class="btn btn-primary" style="float: right;" (click)="goBack()">Confirm</button>
+    </div>
+    
+  </form>
+</div>
+
+<div id="editTeacher" style="display: none;">
+  <h2>Add new Teacher</h2>
+  <form  (ngSubmit)="editTeacher()">
+    <div class="row mb-3">
+      <label for="inputFirstName" class="col-sm-2 col-form-label">FirstName</label>
+      <div class="col-sm-10">
+        <input [(ngModel)]="selectedProfesor.firstName" type="text" id="inputFirstName" class="form-control" placeholder="Enter the First Name" name="firstName" >
+      </div>
+    
+    </div>
+    <div class="row mb-3">
+      <label for="inputlastName" class="col-sm-2 col-form-label">lastName</label>
+      <div class="col-sm-10">
+        <input [(ngModel)]="selectedProfesor.lastName" type="text" id="inputLastName" class="form-control" placeholder="Enter the Last Name" name="lastName" >
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputUserName" class="col-sm-2 col-form-label">UserName</label>
+      <div class="col-sm-10">
+        <input  [(ngModel)]="selectedProfesor.user.userName" type="email" class="form-control" id="inputUserName" placeholder="Enter the username " name="username" >
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-10">
+        <input  [(ngModel)]="selectedProfesor.user.password" type="password" class="form-control" id="inputPassword" placeholder="Enter the password" name="password" >
       </div>
     </div>
     <div class="col-12">
