@@ -18,8 +18,8 @@ public class ExamRegistration {
 	private Student student;
 	
 	@OneToOne(optional = false, cascade = CascadeType.ALL)
-	@JoinColumn(name="course_id", referencedColumnName = "courseInstanceId")
-	private CourseInstance course;
+	@JoinColumn(name="course_id", referencedColumnName = "id")
+	private CourseSpecification course;
 	
 	@Column(name="dateOfRegistration")
 	private Date dateOfRegistration;
@@ -35,7 +35,7 @@ public class ExamRegistration {
 	private String classroom;
 
 
-	public ExamRegistration(long id, Student student, CourseInstance course, Date dateOfRegistration, double price,
+	public ExamRegistration(long id, Student student, CourseSpecification course, Date dateOfRegistration, double price,
 				ExamPart examPart, String classroom) {
 			super();
 		this.id = id;
@@ -46,7 +46,7 @@ public class ExamRegistration {
 		this.examPart = examPart;
 		this.classroom = classroom;
 	}
-	public ExamRegistration(Student student, CourseInstance course, Date dateOfRegistration, double price,
+	public ExamRegistration(Student student, CourseSpecification course, Date dateOfRegistration, double price,
 			ExamPart examPart, String classroom) {
 		super();
 		this.student = student;
@@ -71,10 +71,10 @@ public class ExamRegistration {
 		public void setStudent(Student student) {
 			this.student = student;
 		}
-		public CourseInstance getCourse() {
+		public CourseSpecification getCourse() {
 			return course;
 		}
-		public void setCourse(CourseInstance course) {
+		public void setCourse(CourseSpecification course) {
 			this.course = course;
 		}
 		public Date getDateOfRegistration() {
