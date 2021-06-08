@@ -2,14 +2,36 @@ package com.uni.UniversityWebService.model;
 
 import java.util.Date;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="ExamRegistration")
 public class ExamRegistration {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private long id;
+	
+	@OneToOne(optional = false, cascade = CascadeType.ALL)
+	@JoinColumn(name="student_id", referencedColumnName = "id")
 	private Student student;
+	
+	@OneToOne(optional = false, cascade = CascadeType.ALL)
+	@JoinColumn(name="course_id", referencedColumnName = "courseInstanceId")
 	private CourseInstance course;
+	
+	@Column(name="dateOfRegistration")
 	private Date dateOfRegistration;
+	
+	@Column(name="price")
 	private double price;
+	
+	@OneToOne(optional = false, cascade = CascadeType.ALL)
+	@JoinColumn(name="examPart_id", referencedColumnName = "examPartId")
 	private ExamPart examPart;
+	
+	@Column(name="classroom")
 	private String classroom;
 
 
