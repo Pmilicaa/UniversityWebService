@@ -14,6 +14,12 @@ public class UserDto {
         this.username = user.getUserName();
         this.role = user.getRole();
     }
+    
+    public User convertUserDtoToUser(User user) {
+    	user.setId(this.getId());
+    	user.setUserName(this.getUsername());
+    	return user;
+    }
 
     public long getId() {
         return id;

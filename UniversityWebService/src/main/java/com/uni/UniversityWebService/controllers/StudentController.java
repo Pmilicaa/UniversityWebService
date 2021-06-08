@@ -96,7 +96,7 @@ public class StudentController {
     	if(!studentId.equals(studentDto.getId())) {
     		return new ResponseEntity<StudentDto>(HttpStatus.NOT_FOUND);
     	}
-    	Student student = studentService.findByOne(studentId);
+    	Student student = studentService.findById(studentId);
     	if(student == null) {
     		return new ResponseEntity<StudentDto>(HttpStatus.BAD_REQUEST);
     	}
