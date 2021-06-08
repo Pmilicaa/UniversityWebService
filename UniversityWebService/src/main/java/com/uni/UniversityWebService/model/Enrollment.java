@@ -32,8 +32,8 @@ public class Enrollment {
 	private CourseSpecification courseSpecification;
 
 	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "studentId", referencedColumnName = "id", nullable = false)
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "studentId", referencedColumnName = "id", nullable = true)
 	private Student student;
 
 	
