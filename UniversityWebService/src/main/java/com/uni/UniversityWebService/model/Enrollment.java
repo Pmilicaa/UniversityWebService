@@ -23,7 +23,7 @@ public class Enrollment {
 	private Long id;
 
 	@JsonManagedReference
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="exam_Id",  nullable = false)
 	private Exam exam;
 
@@ -33,7 +33,7 @@ public class Enrollment {
 
 	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "studentId", referencedColumnName = "id", nullable = true)
+	@JoinColumn(name = "studentId", referencedColumnName = "id", nullable = false)
 	private Student student;
 
 	
