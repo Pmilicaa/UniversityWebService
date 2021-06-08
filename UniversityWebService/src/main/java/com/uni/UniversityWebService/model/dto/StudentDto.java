@@ -35,7 +35,7 @@ public class StudentDto {
 		this.balance = student.getBalance();
 		this.accountNumber = student.getAccountNumber();
 		this.transactionsDto = convertTransactionsToDtos(student.getTransactions());
-		this.enrollmentsDto = convertEnrollmentsToDtos(student.getEnrollments());
+//		this.enrollmentsDto = convertEnrollmentsToDtos(student.getEnrollments());
 		this.userDto = new UserDto(student.getUser());
 	}
 	
