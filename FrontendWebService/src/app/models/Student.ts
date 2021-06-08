@@ -1,7 +1,7 @@
 import { User } from "./User";
 
 export class Student implements StudentInterface {
-    id:number;
+    id?:number;
     firstName:string;
     lastName:string;
     cardNumber:string;
