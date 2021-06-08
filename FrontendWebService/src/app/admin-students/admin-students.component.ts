@@ -60,10 +60,9 @@ export class AdminStudentsComponent implements OnInit {
     this.adminStudentService.deleteStudent(studentId).subscribe(() => this.getAllStudets());
   }
 
-  // gotoEdit(student: Student): void {
-  //   this.route.navigate(['/adminEditStudents', student.id]);
-  //   this.showEditStudent();
-  // }
+  gotoEdit(id: number): void {
+    this.route.navigate(['/adminEditStudents', id]);
+  }
 
   public showAddStudent(): void {
     let x = document.getElementById("addStudent");
