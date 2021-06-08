@@ -51,6 +51,9 @@ public class StudentService {
 	@Autowired
 	private PasswordEncoder bCryptPasswordEncoder;
 	
+	@Autowired
+	private EnrollmentService enrollment;
+	
 	@Autowired UserService userService;
 
 	public Student findById(Long id) {
@@ -58,9 +61,7 @@ public class StudentService {
 	}
 	
 	public void remove(Student student) {
-//		User user = userService.findById(student.getUser().getId());
-//		userService.deleteUser(user);
-		studentRepository.delete(student);
+			studentRepository.delete(student);
 	}
 
 	public List<Student> findAllStudents(){

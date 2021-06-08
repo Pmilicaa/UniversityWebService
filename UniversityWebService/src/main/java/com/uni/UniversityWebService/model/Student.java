@@ -1,7 +1,5 @@
 package com.uni.UniversityWebService.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.util.List;
 
 import javax.persistence.*;
@@ -43,7 +41,7 @@ public class Student {
 			
 	)
 	private List<Transaction> transactions;
-
+	
 	@OneToMany(
 			mappedBy = "student",
 			cascade = CascadeType.ALL,
@@ -52,7 +50,7 @@ public class Student {
 	)
 	private List<Enrollment> enrollments;
 
-	@OneToOne(optional = false, cascade = CascadeType.ALL)
+	@OneToOne(optional = true, cascade = CascadeType.ALL)
 	@JoinColumn(name="User_id", referencedColumnName = "id")
 	private User  user;
 

@@ -1,7 +1,6 @@
 package com.uni.UniversityWebService.controllers;
 
 import com.uni.UniversityWebService.model.Document;
-import com.uni.UniversityWebService.model.FileResponse;
 import com.uni.UniversityWebService.model.Student;
 import com.uni.UniversityWebService.model.dto.DocumentDto;
 import com.uni.UniversityWebService.services.DocumentService;
