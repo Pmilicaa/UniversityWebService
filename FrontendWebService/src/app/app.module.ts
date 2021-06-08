@@ -67,13 +67,9 @@ import { ProfessorCoursesComponent } from './components/professor-courses/profes
     ExamRowComponent,
     ExamPartTableComponent,
     ExamPartRowComponent,
-<<<<<<< HEAD
     ProfessorExamsComponent,
-    ProfessorCoursesComponent
-    
-=======
+    ProfessorCoursesComponent,
     AdminStudentDetailComponent
->>>>>>> c7abd638af3163feb37b3367093203ceec91b859
   ],
   imports: [
     AppRoutingModule,
