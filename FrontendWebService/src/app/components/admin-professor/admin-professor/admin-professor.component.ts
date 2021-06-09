@@ -78,4 +78,7 @@ export class AdminProfessorComponent implements OnInit {
     });
 
   }
+  reloadCurrentPage() {
+    window.location.reload();
+   }
 }
