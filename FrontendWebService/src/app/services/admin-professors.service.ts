@@ -14,7 +14,15 @@ export class AdminProfessorsService {
   constructor(private http: HttpClient,private authService: AuthenticationServiceService) { }
 
   getAll(): Observable<Professor[]> {
-    return this.http.get<Professor[]>(this.URL);
+    const headInfo = {
+      'Content-Type': 'application/json',
+      'X-Auth-Token': "" + this.authService.getToken()
+      
+    }
+    const requestOptions = {
+      headers: new HttpHeaders(headInfo)
+    };
+    return this.http.get<Professor[]>(this.URL,requestOptions);
   }
   addTeacher(profesor:Professor): Observable<Professor>{
     const headInfo = {
