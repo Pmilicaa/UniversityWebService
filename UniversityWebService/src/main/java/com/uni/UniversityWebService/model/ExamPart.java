@@ -31,10 +31,6 @@ public class ExamPart {
 	@JoinColumn(name = "examPartTypeId", referencedColumnName = "examPartTypeId", nullable = false)
 	private ExamPartType examPartType;
 
-//	@ManyToOne(fetch = FetchType.EAGER)
-//	@JoinColumn(name = "examId", referencedColumnName = "examId")
-//	private Exam exam;
-
 
 	@ManyToOne
 	@JoinColumn(name = "examPartStatusId", referencedColumnName = "examPartStatusId", nullable = false)
