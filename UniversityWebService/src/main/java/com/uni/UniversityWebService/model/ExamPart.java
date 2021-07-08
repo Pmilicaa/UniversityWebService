@@ -2,14 +2,7 @@ package com.uni.UniversityWebService.model;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "ExamPart")
@@ -33,11 +26,15 @@ public class ExamPart {
 
 	@Column(name = "requiredPoints", nullable = false)
 	private int requiredPoints;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "examPartTypeId", referencedColumnName = "examPartTypeId", nullable = false)
 	private ExamPartType examPartType;
-	
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Exam exam;
+
+
 	@ManyToOne
 	@JoinColumn(name = "examPartStatusId", referencedColumnName = "examPartStatusId", nullable = false)
 	private ExamPartStatus examPartStatus;

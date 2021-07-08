@@ -6,7 +6,7 @@ body{
 
 body {
     line-height: 1.7;
-    color: gray;
+    color: white;
     font-weight: 300;
     font-size: 1.1rem; }
   
@@ -1128,4 +1128,12 @@ body {
           .comment-list li .comment-body .reply:hover {
             color: #000;
             background: #e3e3e3; }
+
+
+.table{
+
+background-color:#ffffff66;
+color:black;
+
+}
   
