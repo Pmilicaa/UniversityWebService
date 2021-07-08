@@ -81,6 +81,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter implemen
                 .antMatchers(HttpMethod.POST,"/teaching/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/students/**").permitAll()
                 .antMatchers(HttpMethod.DELETE, "/students/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/teachers/courses").permitAll()
+
                 .antMatchers(HttpMethod.POST, "/teaching/teacher/{id}").permitAll()
                 .anyRequest().authenticated();
         httpSecurity.cors();

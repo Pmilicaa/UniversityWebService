@@ -66,10 +66,10 @@ public class TeacherController {
 	
 	@Autowired
 	private ExamService examService;
-	@GetMapping(path="teachers/{teacherId}/courses")
-	public @ResponseBody ResponseEntity<?> getTeacherCourses(@PathVariable(value="teacherId") Long id){
-		
-		return new ResponseEntity(teacherService.findTeacherCourses(id), HttpStatus.OK);
+	@GetMapping(path="teachers/courses")
+	public @ResponseBody ResponseEntity<?> getTeacherCourses(@AuthenticationPrincipal UserDetails userDetails){
+		Teacher teacher = teacherRepository.findByUser_UserName(userDetails.getUsername());
+		return new ResponseEntity(teacherService.findTeacherCourses(teacher.getId()), HttpStatus.OK);
 	}
 	
 	

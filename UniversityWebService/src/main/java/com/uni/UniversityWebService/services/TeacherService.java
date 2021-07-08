@@ -33,10 +33,17 @@ public class TeacherService {
 		
 		Teacher teacher = teacherRepository.findById(id).get();
 		List<CourseInstance> courseInstances = new ArrayList<>();
+		System.out.println("asdasdasdsa " + teacher.getTeachings().size());
 		for(Teaching t : teacher.getTeachings()) {
-			for(CourseInstance ci : t.getCourseSpecification().getCourseInstances())
-			courseInstances.add(ci);
+			System.out.println(t.getTeacher().getFirstName());
+
+			for(CourseInstance ci : t.getCourseSpecification().getCourseInstances()) {
+				System.out.println(ci.getEndDate());
+
+				courseInstances.add(ci);
+			}
 		}
+		System.out.println();
 		return courseInstances;
 	}
 	public Teaching addTeacherTeachings(Teaching teaching, Long id) {
