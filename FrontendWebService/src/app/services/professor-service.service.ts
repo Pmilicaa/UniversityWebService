@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Professor } from '../models/Professor';
 import { Observable } from 'rxjs';
 import { AuthenticationServiceService } from './authentication-service.service';
+import ExamPartsAndCourses from '../models/ExamPartsAndCourses';
 
 
 @Injectable({
@@ -21,6 +22,11 @@ export class ProfessorServiceService {
     const headers = new HttpHeaders({"Content-Type": "application/json", "X-Auth-Token": this.authService.getToken().toString()});
 
     return this.http.get<Professor>(this.path + "/me", {headers: headers});
+  }
+  getTeacherExamParts(professor:Professor): Observable<ExamPartsAndCourses[]>{
+    const headers = new HttpHeaders({"Content-Type": "application/json", "X-Auth-Token": this.authService.getToken().toString()});
+    const url = `${this.path}/${professor.id}/examPartsAndSpec`;
+    return this.http.get<ExamPartsAndCourses[]>(url, {headers: headers});
   }
 }
 

@@ -1,1 +1,29 @@
-<p>professor-exams works!</p>
+<div>
+    <h3 style="margin-top: 80px;">{{ title }}</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Course</th>
+          <th scope="col">Classroom</th>
+          <th scope="col">Date</th>
+          <th scope="col">Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let examPart of examParts; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>
+            {{ examPart.course }}
+          </td>
+          <td>{{ examPart.classroom }}</td>
+          <td>{{ examPart.date }}</td>
+          
+          <td>
+            {{ examPart.time }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </div>

@@ -3,18 +3,13 @@ package com.uni.UniversityWebService.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.uni.UniversityWebService.model.*;
+import com.uni.UniversityWebService.model.dto.ExamPartProfessorDto;
+import com.uni.UniversityWebService.repositories.TeachingRepository;
 import org.hibernate.mapping.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.uni.UniversityWebService.model.CourseInstance;
-import com.uni.UniversityWebService.model.Enrollment;
-import com.uni.UniversityWebService.model.Exam;
-import com.uni.UniversityWebService.model.ExamPart;
-import com.uni.UniversityWebService.model.ExamPeriod;
-import com.uni.UniversityWebService.model.Student;
-import com.uni.UniversityWebService.model.Teacher;
-import com.uni.UniversityWebService.model.Teaching;
 import com.uni.UniversityWebService.repositories.EnrollmentRepository;
 import com.uni.UniversityWebService.repositories.ExamPartRepository;
 import com.uni.UniversityWebService.repositories.TeacherRepository;
@@ -24,6 +19,9 @@ public class TeacherService {
 	
 	@Autowired
 	private TeacherRepository teacherRepository;
+
+	@Autowired
+	private TeachingRepository teachingRepository;
 	
 	@Autowired
 	private ExamPartRepository examPartRepository;
@@ -45,6 +43,26 @@ public class TeacherService {
 		}
 		System.out.println();
 		return courseInstances;
+	}
+
+	public List<ExamPartProfessorDto> findExamPartsAndCourseSepcificationForTeacher(Long id){
+		List<ExamPartProfessorDto> examPartProfessorDtos= new ArrayList<>();
+		List<ExamPart>examParts = new ArrayList<>();
+		List<CourseSpecification> courseSpecification = new ArrayList<>();
+		List<Teaching> teachingAll=teachingRepository.findAll();
+		for(Teaching t : teachingAll) {
+			if (t.getTeacher().getId() == id){
+
+				for (ExamPart ep : t.getExam().getExamParts()) {
+					ExamPartProfessorDto examPartProfessorDto= new ExamPartProfessorDto();
+					examPartProfessorDto.setCourse(t.getCourseSpecification().getTitle());
+
+					examPartProfessorDto.setClassroom(ep.getClassroom());
+					examPartProfessorDto.setExamPartStartDate(ep.getExamPartStartDate());
+					examPartProfessorDtos.add(examPartProfessorDto);
+				}
+		}}
+		return examPartProfessorDtos;
 	}
 	public Teaching addTeacherTeachings(Teaching teaching, Long id) {
 		
@@ -95,14 +113,18 @@ public class TeacherService {
 	}
 	
 	public List<ExamPart> findTeacherExamParts(Long id){
-		Teacher teacher = teacherRepository.findById(id).get();
+
+		List<Teaching> teachingAll=teachingRepository.findAll();
 		List<ExamPart>examParts = new ArrayList<>();
-		for(Teaching teaching : teacher.getTeachings()) {
-			for(ExamPart ep: teaching.getExam().getExamParts()) {
-				examParts.add(ep);
+		for(Teaching teaching : teachingAll) {
+			if (teaching.getTeacher().getId() == id) {
+				for (ExamPart ep : teaching.getExam().getExamParts()) {
+
+					examParts.add(ep);
+				}
 			}
 		}
 		return examParts;
-		
+		}
 	}
-}
+
