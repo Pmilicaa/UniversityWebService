@@ -30,9 +30,9 @@ export class AdminProfessorComponent implements OnInit {
     this.adminProfessorsService.addTeacher(this.profesor).subscribe((result) => {
       if(result){
         this.profesor=new Professor();
-
-
-
+        this.route.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.route.onSameUrlNavigation = 'reload';
+        this.route.navigate(['/adminProfessors']);
       }
     });
   }
@@ -41,7 +41,9 @@ export class AdminProfessorComponent implements OnInit {
     this.adminProfessorsService.editTeacher(this.selectedProfesor).subscribe((result) => {
       if(result){
         this.selectedProfesor=new Professor();
-
+        this.route.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.route.onSameUrlNavigation = 'reload';
+        this.route.navigate(['/adminProfessors']);
 
 
       }
@@ -71,14 +73,14 @@ export class AdminProfessorComponent implements OnInit {
   removeTeacher(profesor:Professor){
     console.log(profesor);
     this.adminProfessorsService.deleteTeacher(profesor).subscribe((result) => {
-     
+      this.route.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.route.onSameUrlNavigation = 'reload';
+      this.route.navigate(['/adminProfessors']);
     
     } ,(error)=>{
     console.log(error);
     });
 
   }
-  reloadCurrentPage() {
-    window.location.reload();
-   }
+
 }
