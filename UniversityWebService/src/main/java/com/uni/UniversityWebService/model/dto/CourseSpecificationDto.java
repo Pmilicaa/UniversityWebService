@@ -51,7 +51,11 @@ public class CourseSpecificationDto {
         this.id = id;
     }
 
-    public String getTitle() {
+    public CourseSpecificationDto() {
+		super();
+	}
+
+	public String getTitle() {
         return title;
     }
 

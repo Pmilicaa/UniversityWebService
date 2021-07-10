@@ -104,14 +104,13 @@ public class TeacherService {
 		List<ExamPart> examParts =examPartRepository.findAll();
 		return examParts;
 	}
-	public List<Student> findTeacherStudents(Long id){
-		Teacher teacher = teacherRepository.findById(id).get();
+	public List<Student> findTeacherStudents(CourseSpecification courseSpec){
 		List<Student> students = new ArrayList<>();
-		for(Teaching t : teacher.getTeachings()) {
-			for(Enrollment en: t.getCourseSpecification().getEnrollments()) {
-				students.add(en.getStudent());
-			}
+		
+		for(Enrollment en: courseSpec.getEnrollments()) {
+			students.add(en.getStudent());
 		}
+		
 		return students;
 	}
 	public List<Student> findStudentsInfo(Long id){

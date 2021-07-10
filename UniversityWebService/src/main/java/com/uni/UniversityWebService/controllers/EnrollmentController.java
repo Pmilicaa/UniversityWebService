@@ -37,13 +37,14 @@ public class EnrollmentController {
 
 	@PostMapping(path = "/enrollments")
 	public ResponseEntity<EnrollmentDto> createEnrollment(@RequestBody EnrollmentDto enrollmentDto) {
-		if(enrollmentDto.getStudentDto() == null || enrollmentDto.getExamDto() == null || enrollmentDto.getCourseSpecificationDto() == null) {
+		if(enrollmentDto.getStudentDto() == null  || enrollmentDto.getCourseSpecificationDto() == null) {
 			return new ResponseEntity<EnrollmentDto>(HttpStatus.BAD_REQUEST);
 		}
 		Student student = studentService.findById(enrollmentDto.getStudentDto().getId());
 		CourseSpecification courseSpecification = courseService.findCourseSpecificationById(enrollmentDto.getCourseSpecificationDto().getId());
 		Exam exam = examService.findOne(enrollmentDto.getExamDto().getId());
-		if(student == null || courseSpecification == null || exam == null) {
+		if(student == null || courseSpecification == null) {
+			//or exam==null || enrollmentDto.getExamDto() == null
 			return new ResponseEntity<EnrollmentDto>(HttpStatus.BAD_REQUEST);
 		}
 		Enrollment enrollment = new Enrollment();

@@ -102,10 +102,10 @@ public class TeacherController {
 		return new ResponseEntity (teacherService.findExamParts(), HttpStatus.OK);
 	}
 	
-	@GetMapping(path="teachers/{teacherId}/students")
-	public @ResponseBody ResponseEntity<?> getAllTeacherStudents( @PathVariable(value="teacherId") Long id){
-		
-		return new ResponseEntity (teacherService.findTeacherStudents(id), HttpStatus.OK);
+	@GetMapping(path="teachers/courses/{id}/students")
+	public @ResponseBody ResponseEntity<?> getAllTeacherStudents(@PathVariable(value="id") Long id){
+		CourseSpecification courseSpec = courseSpecificationRepository.findById(id).get();
+		return new ResponseEntity (teacherService.findTeacherStudents(courseSpec), HttpStatus.OK);
 	}
 	@GetMapping(path="teachers/{teacherId}/examParts")
 	public @ResponseBody ResponseEntity<?> getTeacherExamParts(@PathVariable(value="teacherId") Long teacherId){		
