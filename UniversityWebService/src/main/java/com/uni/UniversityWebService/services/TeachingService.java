@@ -31,7 +31,16 @@ public class TeachingService {
 	TeacherRepository teacherRepository;
 	
 	public List<Teaching> findAllByTeacher(Long id) {
+		
 		return teachingRepository.findByTeacher_id(id);
+	}
+	
+	public List<Teaching> findAllByCourse(Long id) {
+		return teachingRepository.findByCourseSpecification_id(id);
+	}
+	
+	public List<Teaching> findAllTeaching() {
+		return teachingRepository.findAll();
 	}
 	
 	public Teaching findOne(Long id) {
@@ -46,7 +55,7 @@ public class TeachingService {
 		TeachingType teachingType = teachingTypeRepository.findByCode("P");
 		Teacher teacher = teacherRepository.findById(id).get();
 		
-		Teaching teaching = new Teaching(oopCourse,teachingType,"M",teacher);
+		Teaching teaching = new Teaching(oopCourse,teachingType,teacher);
 		
 		teachingRepository.save(teaching);
 		List<Teaching> teachings = new ArrayList();
@@ -56,4 +65,7 @@ public class TeachingService {
 		return teaching;
 		
 	}
+	
+//	public Teaching addTeaching() {
+//		return null;}
 }
