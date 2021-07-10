@@ -1,4 +1,5 @@
-<div class="bg-light p-4 rounded">
+<div >
+  <div class="bg-light p-4 rounded">
   <h2 class="text-black">Teacher courses</h2>
   <table class="table table-sm">
     <thead>
@@ -11,7 +12,29 @@
       <tr *ngFor="let course of courses; let i = index">
         <td>{{i+1}}</td>
         <td>{{course.title}}</td>
+        <td><button type="submit" class="btn btn-primary" style="float: right;" (click)="seeStudents(course.id)">See students</button>
+        </td>
       </tr>
     </tbody>
   </table>
+  </div>
+  <div class="bg-light p-4 rounded mt-1">
+  <h2 class="text-black">Teacher students</h2>
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First name</th>
+        <th scope="col">Last name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{student.firstName}}</td>
+        <td>{{student.lastName}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 </div>
