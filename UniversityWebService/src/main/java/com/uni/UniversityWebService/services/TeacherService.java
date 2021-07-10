@@ -44,6 +44,23 @@ public class TeacherService {
 		System.out.println();
 		return courseInstances;
 	}
+	public List<CourseSpecification> findTeacherCourseSpec(Long id){
+		
+		Teacher teacher = teacherRepository.findById(id).get();
+	//	System.out.println("asdasdasdsa " + teacher.getTeachings().size());
+		List<Teaching> teachings = teachingRepository.findAll();
+		List<CourseSpecification> courseSpec = new ArrayList<>();
+		List<Teaching> teachingTeacher = new ArrayList<>();
+		for(Teaching t : teachings) {
+			if(t.getTeacher().getId() == id) {
+				courseSpec.add(t.getCourseSpecification());
+				teachingTeacher.add(t);
+				teacher.setTeachings(teachingTeacher);
+			}
+		}
+	//	System.out.println(courseSpec);
+		return courseSpec;
+	}
 
 	public List<ExamPartProfessorDto> findExamPartsAndCourseSepcificationForTeacher(Long id){
 		List<ExamPartProfessorDto> examPartProfessorDtos= new ArrayList<>();

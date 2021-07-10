@@ -69,7 +69,8 @@ public class TeacherController {
 	@GetMapping(path="teachers/courses")
 	public @ResponseBody ResponseEntity<?> getTeacherCourses(@AuthenticationPrincipal UserDetails userDetails){
 		Teacher teacher = teacherRepository.findByUser_UserName(userDetails.getUsername());
-		return new ResponseEntity(teacherService.findTeacherCourses(teacher.getId()), HttpStatus.OK);
+		System.out.println(teacher.getFirstName());
+		return new ResponseEntity(teacherService.findTeacherCourseSpec(teacher.getId()), HttpStatus.OK);
 	}
 	@GetMapping(path="teachers/{teacherId}/examPartsAndSpec")
 	public @ResponseBody ResponseEntity<?> getTeacherCoursesSpecs(@PathVariable(value="teacherId") Long id){
