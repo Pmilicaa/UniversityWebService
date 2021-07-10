@@ -1,17 +1,17 @@
-<div class="w-25 m-auto">
-    <h2>Courses</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Name</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let exam of exams; let i = index">
-          <th scope="row">{{ i + 1 }}</th>
-          <td>{{ exam.name }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div class="bg-light p-4 rounded">
+  <h2 class="text-black">Teacher courses</h2>
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{course.title}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
