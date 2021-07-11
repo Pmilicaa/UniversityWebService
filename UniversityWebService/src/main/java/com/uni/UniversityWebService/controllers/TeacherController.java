@@ -66,10 +66,11 @@ public class TeacherController {
 	
 	@Autowired
 	private ExamService examService;
-	@GetMapping(path="teachers/{teacherId}/courses")
-	public @ResponseBody ResponseEntity<?> getTeacherCourses(@PathVariable(value="teacherId") Long id){
-		
-		return new ResponseEntity(teacherService.findTeacherCourses(id), HttpStatus.OK);
+	@GetMapping(path="teachers/courses")
+	public @ResponseBody ResponseEntity<?> getTeacherCourses(@AuthenticationPrincipal UserDetails userDetails){
+		Teacher teacher = teacherRepository.findByUser_UserName(userDetails.getUsername());
+		System.out.println(teacher.getFirstName());
+		return new ResponseEntity(teacherService.findTeacherCourseSpec(teacher.getId()), HttpStatus.OK);
 	}
 	@GetMapping(path="teachers/{teacherId}/examPartsAndSpec")
 	public @ResponseBody ResponseEntity<?> getTeacherCoursesSpecs(@PathVariable(value="teacherId") Long id){
@@ -101,10 +102,10 @@ public class TeacherController {
 		return new ResponseEntity (teacherService.findExamParts(), HttpStatus.OK);
 	}
 	
-	@GetMapping(path="teachers/{teacherId}/students")
-	public @ResponseBody ResponseEntity<?> getAllTeacherStudents( @PathVariable(value="teacherId") Long id){
-		
-		return new ResponseEntity (teacherService.findTeacherStudents(id), HttpStatus.OK);
+	@GetMapping(path="teachers/courses/{id}/students")
+	public @ResponseBody ResponseEntity<?> getAllTeacherStudents(@PathVariable(value="id") Long id){
+		CourseSpecification courseSpec = courseSpecificationRepository.findById(id).get();
+		return new ResponseEntity (teacherService.findTeacherStudents(courseSpec), HttpStatus.OK);
 	}
 	@GetMapping(path="teachers/{teacherId}/examParts")
 	public @ResponseBody ResponseEntity<?> getTeacherExamParts(@PathVariable(value="teacherId") Long teacherId){		

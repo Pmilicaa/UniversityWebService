@@ -31,11 +31,35 @@ public class TeacherService {
 		
 		Teacher teacher = teacherRepository.findById(id).get();
 		List<CourseInstance> courseInstances = new ArrayList<>();
+		System.out.println("asdasdasdsa " + teacher.getTeachings().size());
 		for(Teaching t : teacher.getTeachings()) {
-			for(CourseInstance ci : t.getCourseSpecification().getCourseInstances())
-			courseInstances.add(ci);
+			System.out.println(t.getTeacher().getFirstName());
+
+			for(CourseInstance ci : t.getCourseSpecification().getCourseInstances()) {
+				System.out.println(ci.getEndDate());
+
+				courseInstances.add(ci);
+			}
 		}
+		System.out.println();
 		return courseInstances;
+	}
+	public List<CourseSpecification> findTeacherCourseSpec(Long id){
+		
+		Teacher teacher = teacherRepository.findById(id).get();
+	//	System.out.println("asdasdasdsa " + teacher.getTeachings().size());
+		List<Teaching> teachings = teachingRepository.findAll();
+		List<CourseSpecification> courseSpec = new ArrayList<>();
+		List<Teaching> teachingTeacher = new ArrayList<>();
+		for(Teaching t : teachings) {
+			if(t.getTeacher().getId() == id) {
+				courseSpec.add(t.getCourseSpecification());
+				teachingTeacher.add(t);
+				teacher.setTeachings(teachingTeacher);
+			}
+		}
+	//	System.out.println(courseSpec);
+		return courseSpec;
 	}
 
 	public List<ExamPartProfessorDto> findExamPartsAndCourseSepcificationForTeacher(Long id){
@@ -80,14 +104,13 @@ public class TeacherService {
 		List<ExamPart> examParts =examPartRepository.findAll();
 		return examParts;
 	}
-	public List<Student> findTeacherStudents(Long id){
-		Teacher teacher = teacherRepository.findById(id).get();
+	public List<Student> findTeacherStudents(CourseSpecification courseSpec){
 		List<Student> students = new ArrayList<>();
-		for(Teaching t : teacher.getTeachings()) {
-			for(Enrollment en: t.getCourseSpecification().getEnrollments()) {
-				students.add(en.getStudent());
-			}
+		
+		for(Enrollment en: courseSpec.getEnrollments()) {
+			students.add(en.getStudent());
 		}
+		
 		return students;
 	}
 	public List<Student> findStudentsInfo(Long id){
