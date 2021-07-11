@@ -26,6 +26,8 @@ import { AdminStudentDetailComponent } from '../components/admin-student-detail/
 import { ExamsComponent } from '../components/exams/exams.component';
 import { ProfessorProfileComponent } from '../professor-profile/professor-profile.component';
 import { ProfessorExamsComponent } from '../professor-exams/professor-exams.component';
+import { AdminCoursesComponent } from '../components/admin-courses/admin-courses.component';
+import { AdminCoursesDetailsComponent } from '../components/admin-courses-details/admin-courses-details.component';
 const routes: Routes = [
   { path: 'login', component: LoginFormComponent },
   { path: 'register', component: RegisterFormComponent },
@@ -47,7 +49,9 @@ const routes: Routes = [
   { path: 'finances', component: FinanceComponent},
   { path: 'exams', component: ExamsComponent},
   { path: 'professorProfile', component: ProfessorProfileComponent},
-  { path: 'professorExams', component: ProfessorExamsComponent}
+  { path: 'professorExams', component: ProfessorExamsComponent},
+  { path: 'AdminCourses', component: AdminCoursesComponent},
+  { path: 'AdminCoursesDetails/:id', component: AdminCoursesDetailsComponent}
 ];
 
 @NgModule({

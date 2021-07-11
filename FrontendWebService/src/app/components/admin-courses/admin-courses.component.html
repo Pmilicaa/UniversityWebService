@@ -1,0 +1,29 @@
+<div>
+    <h3 style="margin-top: 80px;">{{ title }}</h3>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Options</th>
+            <th scope="col">Options</th>
+            <th scope="col">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let course of courses; let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ course.title }}</td>
+                <td>
+                  <button type="button" class="btn btn-info" (click)="gotoDetails(course.id)">Details</button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-info">Edit</button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

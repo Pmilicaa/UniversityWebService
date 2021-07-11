@@ -1,0 +1,22 @@
+<div>
+    <h3 style="margin-top: 80px;">{{ title }}</h3>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Teacher</th>
+            <th scope="col">Start date of teaching</th>
+            <th scope="col">End date of teaching</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let professor of professors; let i = index;">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ professor.firstName }}</td>
+                <tr *ngFor = "let ci of courseInstances;">
+                    <td>{{ ci.startDate }}</td>
+                    <td>{{ ci.endDate }}</td>
+                </tr>
+        </tbody>
+    </table>
+</div>
