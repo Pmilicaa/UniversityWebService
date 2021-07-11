@@ -6,6 +6,9 @@ import com.uni.UniversityWebService.model.Student;
 import com.uni.UniversityWebService.repositories.ExamPartStatusRepository;
 import com.uni.UniversityWebService.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import com.uni.UniversityWebService.repositories.ExamPartRepository;
@@ -79,6 +82,14 @@ public class ExamPartController {
 			return new ResponseEntity("Exam part with the specified id does not exist.", HttpStatus.BAD_REQUEST);
 		}
 	}
-	
+
+	// Test endpoint za paging
+	@GetMapping(path = "/examParts/paged")
+	public ResponseEntity<?> getAllPartsPaged(){
+		Pageable fiveElementsPerPage = PageRequest.of(0, 5);
+
+		Page<ExamPart> allExamParts = examPartRepository.findAll(fiveElementsPerPage);
+		return new ResponseEntity(allExamParts, HttpStatus.OK);
+	}
 	 
 }
