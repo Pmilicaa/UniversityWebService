@@ -22,7 +22,7 @@ public class CourseSpecificationDto {
         this.ECTS = courseSpecification.getECTS();
         this.code = courseSpecification.getCode();
         this.courseInstanceDtos = convertCourseInstancesToDtos(courseSpecification.getCourseInstances());
-        this.enrollmentDtos = convertEnrollmentToDtos(courseSpecification.getEnrollments());
+        //this.enrollmentDtos = convertEnrollmentToDtos(courseSpecification.getEnrollments());
     }
 
     public List<CourseInstanceDto> convertCourseInstancesToDtos(List<CourseInstance> courseInstances){

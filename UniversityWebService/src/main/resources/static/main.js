@@ -407,9 +407,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _services_professor_service_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/professor-service.service */ "wtsI");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
+<<<<<<< HEAD
 
 
 
+=======
+
+
+
+>>>>>>> 9223927ba29694a9488defec7080a502465ae2a3
 function ProfessorInfoComponent_span_9_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
@@ -836,20 +842,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminCoursesComponent", function() { return AdminCoursesComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var src_app_services_admin_courses_service_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/services/admin-courses-service.service */ "zr5E");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "ofXK");
 
 
 
-function AdminCoursesComponent_tr_17_td_5_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "td");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const course_r4 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](course_r4.startDate);
-} }
+
 function AdminCoursesComponent_tr_17_Template(rf, ctx) { if (rf & 1) {
+    const _r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "th", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
@@ -857,34 +857,46 @@ function AdminCoursesComponent_tr_17_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "td");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, AdminCoursesComponent_tr_17_td_5_Template, 2, 1, "td", 3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "td");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "button", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "Details");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "td");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "button", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AdminCoursesComponent_tr_17_Template_button_click_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r4); const course_r1 = ctx.$implicit; const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r3.gotoDetails(course_r1.id); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "Details");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "td");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "button", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Edit");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "td");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "button", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "Delete");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const teaching_r1 = ctx.$implicit;
+    const course_r1 = ctx.$implicit;
     const i_r2 = ctx.index;
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](i_r2 + 1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](teaching_r1.courseSpecificationDto.title);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", teaching_r1.courseSpecificationDto.courseInstanceDtos);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](course_r1.title);
 } }
 class AdminCoursesComponent {
-    constructor(adminCourseService) {
+    constructor(adminCourseService, route) {
         this.adminCourseService = adminCourseService;
+        this.route = route;
         this.title = "Courses";
     }
     ngOnInit() {
-        this.adminCourseService.getAll().subscribe((teachings) => (this.teachings = teachings));
+        this.adminCourseService.getAll().subscribe((courses) => (this.courses = courses));
+    }
+    gotoDetails(id) {
+        this.route.navigate(['/AdminCoursesDetails', id]);
     }
 }
-AdminCoursesComponent.ɵfac = function AdminCoursesComponent_Factory(t) { return new (t || AdminCoursesComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_admin_courses_service_service__WEBPACK_IMPORTED_MODULE_1__["AdminCoursesServiceService"])); };
-AdminCoursesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AdminCoursesComponent, selectors: [["app-admin-courses"]], decls: 18, vars: 2, consts: [[2, "margin-top", "80px"], [1, "table"], ["scope", "col"], [4, "ngFor", "ngForOf"], ["scope", "row"], ["type", "button", 1, "btn", "btn-danger"]], template: function AdminCoursesComponent_Template(rf, ctx) { if (rf & 1) {
+AdminCoursesComponent.ɵfac = function AdminCoursesComponent_Factory(t) { return new (t || AdminCoursesComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_admin_courses_service_service__WEBPACK_IMPORTED_MODULE_1__["AdminCoursesServiceService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"])); };
+AdminCoursesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AdminCoursesComponent, selectors: [["app-admin-courses"]], decls: 18, vars: 2, consts: [[2, "margin-top", "80px"], [1, "table"], ["scope", "col"], [4, "ngFor", "ngForOf"], ["scope", "row"], ["type", "button", 1, "btn", "btn-info", 3, "click"], ["type", "button", 1, "btn", "btn-info"], ["type", "button", 1, "btn", "btn-danger"]], template: function AdminCoursesComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h3", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
@@ -910,7 +922,7 @@ AdminCoursesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "tbody");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](17, AdminCoursesComponent_tr_17_Template, 9, 3, "tr", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](17, AdminCoursesComponent_tr_17_Template, 14, 2, "tr", 3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -918,8 +930,8 @@ AdminCoursesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.title);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](15);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.teachings);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhZG1pbi1jb3Vyc2VzLmNvbXBvbmVudC5jc3MifQ== */"] });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.courses);
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhZG1pbi1jb3Vyc2VzLmNvbXBvbmVudC5jc3MifQ== */"] });
 
 
 /***/ }),
@@ -1124,6 +1136,10 @@ JwtUtilsService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineI
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfessorCoursesComponent", function() { return ProfessorCoursesComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _course_table_course_table_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../course-table/course-table.component */ "gZSj");
+/* harmony import */ var _professor_student_table_professor_student_table_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../professor-student-table/professor-student-table.component */ "PHgo");
+
+
 
 class ProfessorCoursesComponent {
     constructor() { }
@@ -1132,10 +1148,9 @@ class ProfessorCoursesComponent {
 }
 ProfessorCoursesComponent.ɵfac = function ProfessorCoursesComponent_Factory(t) { return new (t || ProfessorCoursesComponent)(); };
 ProfessorCoursesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ProfessorCoursesComponent, selectors: [["app-professor-courses"]], decls: 2, vars: 0, template: function ProfessorCoursesComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "professor-courses works!");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJwcm9mZXNzb3ItY291cnNlcy5jb21wb25lbnQuY3NzIn0= */"] });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-course-table");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "app-professor-student-table");
+    } }, directives: [_course_table_course_table_component__WEBPACK_IMPORTED_MODULE_1__["CourseTableComponent"], _professor_student_table_professor_student_table_component__WEBPACK_IMPORTED_MODULE_2__["ProfessorStudentTableComponent"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJwcm9mZXNzb3ItY291cnNlcy5jb21wb25lbnQuY3NzIn0= */"] });
 
 
 /***/ }),
@@ -1704,6 +1719,117 @@ ExamComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
 
 /***/ }),
 
+/***/ "L+nS":
+/*!*************************************************************************************!*\
+  !*** ./src/app/components/admin-courses-details/admin-courses-details.component.ts ***!
+  \*************************************************************************************/
+/*! exports provided: AdminCoursesDetailsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminCoursesDetailsComponent", function() { return AdminCoursesDetailsComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var src_app_services_admin_courses_service_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/services/admin-courses-service.service */ "zr5E");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "ofXK");
+
+
+
+
+function AdminCoursesDetailsComponent_tr_15_td_5_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "td");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ci_r4 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ci_r4.startDate, " ");
+} }
+function AdminCoursesDetailsComponent_tr_15_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "th", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "td");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, AdminCoursesDetailsComponent_tr_15_td_5_Template, 2, 1, "td", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const professor_r1 = ctx.$implicit;
+    const i_r2 = ctx.index;
+    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](i_r2 + 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](professor_r1.firstName);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r0.courseInstances);
+} }
+class AdminCoursesDetailsComponent {
+    constructor(adminCourseService, activatedRoute) {
+        this.adminCourseService = adminCourseService;
+        this.activatedRoute = activatedRoute;
+        // name(): any {
+        //   const uniqueDates = [...new Set(this.courseInstances.map(date => date.toString()))];
+        //   return uniqueDates;
+        //   console.log(uniqueDates); 
+        // }
+        this.title = "Details for course";
+    }
+    ngOnInit() {
+        this.getCI();
+        console.log(this.courseInstances);
+    }
+    getCI() {
+        this.id = +this.activatedRoute.snapshot.params["id"];
+        this.adminCourseService.getTeachersByCourse(this.id)
+            .subscribe(professors => {
+            this.professors = professors;
+            this.adminCourseService.getCourseInstancesByCourse(this.id)
+                .subscribe(courseInstances => this.courseInstances = courseInstances);
+        });
+    }
+}
+AdminCoursesDetailsComponent.ɵfac = function AdminCoursesDetailsComponent_Factory(t) { return new (t || AdminCoursesDetailsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_admin_courses_service_service__WEBPACK_IMPORTED_MODULE_1__["AdminCoursesServiceService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"])); };
+AdminCoursesDetailsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AdminCoursesDetailsComponent, selectors: [["app-admin-courses-details"]], decls: 16, vars: 2, consts: [[2, "margin-top", "80px"], [1, "table"], ["scope", "col"], [4, "ngFor", "ngForOf"], ["scope", "row"]], template: function AdminCoursesDetailsComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h3", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "table", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "thead");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "tr");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "th", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "#");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "th", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Teacher");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "th", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Start date of teaching");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "th", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "End date of teaching");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](15, AdminCoursesDetailsComponent_tr_15_Template, 6, 3, "tr", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.title);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.professors);
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhZG1pbi1jb3Vyc2VzLWRldGFpbHMuY29tcG9uZW50LmNzcyJ9 */"] });
+
+
+/***/ }),
+
 /***/ "LFkS":
 /*!****************************************************************!*\
   !*** ./src/app/professor-navbar/professor-navbar.component.ts ***!
@@ -1990,6 +2116,33 @@ class Professor {
         this.user.role = "ROLE_TEACHER";
     }
 }
+
+
+/***/ }),
+
+/***/ "PHgo":
+/*!*****************************************************************************************!*\
+  !*** ./src/app/components/professor-student-table/professor-student-table.component.ts ***!
+  \*****************************************************************************************/
+/*! exports provided: ProfessorStudentTableComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfessorStudentTableComponent", function() { return ProfessorStudentTableComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+class ProfessorStudentTableComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+}
+ProfessorStudentTableComponent.ɵfac = function ProfessorStudentTableComponent_Factory(t) { return new (t || ProfessorStudentTableComponent)(); };
+ProfessorStudentTableComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ProfessorStudentTableComponent, selectors: [["app-professor-student-table"]], decls: 2, vars: 0, template: function ProfessorStudentTableComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "professor-student-table works!");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJwcm9mZXNzb3Itc3R1ZGVudC10YWJsZS5jb21wb25lbnQuY3NzIn0= */"] });
 
 
 /***/ }),
@@ -2807,28 +2960,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _student_info_student_info_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./student-info/student-info.component */ "FSf5");
 /* harmony import */ var _professor_info_professor_info_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./professor-info/professor-info.component */ "2+1H");
 /* harmony import */ var _exam_table_exam_table_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./exam-table/exam-table.component */ "miqt");
-/* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./navbar/navbar.component */ "kWWo");
-/* harmony import */ var _profile_profile_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./profile/profile.component */ "W6KJ");
-/* harmony import */ var _user_info_user_info_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./user-info/user-info.component */ "0aH0");
-/* harmony import */ var _components_finance_finance_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/finance/finance.component */ "YEfL");
-/* harmony import */ var _components_finance_history_finance_history_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/finance-history/finance-history.component */ "Uy+f");
-/* harmony import */ var _components_finance_info_finance_info_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/finance-info/finance-info.component */ "+AfY");
-/* harmony import */ var _admin_profile_admin_profile_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./admin-profile/admin-profile.component */ "N7Yj");
-/* harmony import */ var _admin_students_admin_students_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./admin-students/admin-students.component */ "TCXu");
-/* harmony import */ var _components_admin_professor_admin_professor_admin_professor_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/admin-professor/admin-professor/admin-professor.component */ "3Kr0");
-/* harmony import */ var _professor_profile_professor_profile_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./professor-profile/professor-profile.component */ "jJb4");
-/* harmony import */ var _professor_navbar_professor_navbar_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./professor-navbar/professor-navbar.component */ "LFkS");
-/* harmony import */ var _exam_exam_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./exam/exam.component */ "KPts");
-/* harmony import */ var _components_admin_student_detail_admin_student_detail_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/admin-student-detail/admin-student-detail.component */ "Dvxp");
-/* harmony import */ var _components_document_table_row_document_table_row_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/document-table-row/document-table-row.component */ "fcXT");
-/* harmony import */ var _components_exams_exams_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/exams/exams.component */ "TlmW");
-/* harmony import */ var _components_exam_row_exam_row_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/exam-row/exam-row.component */ "t8E4");
-/* harmony import */ var _components_exam_part_table_exam_part_table_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/exam-part-table/exam-part-table.component */ "+SPL");
-/* harmony import */ var _components_exam_part_row_exam_part_row_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/exam-part-row/exam-part-row.component */ "Ou8+");
-/* harmony import */ var _professor_exams_professor_exams_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./professor-exams/professor-exams.component */ "Hpei");
-/* harmony import */ var _components_professor_courses_professor_courses_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/professor-courses/professor-courses.component */ "Djwy");
-/* harmony import */ var _components_admin_courses_admin_courses_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/admin-courses/admin-courses.component */ "542k");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _course_table_course_table_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./course-table/course-table.component */ "gZSj");
+/* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./navbar/navbar.component */ "kWWo");
+/* harmony import */ var _profile_profile_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./profile/profile.component */ "W6KJ");
+/* harmony import */ var _user_info_user_info_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./user-info/user-info.component */ "0aH0");
+/* harmony import */ var _components_finance_finance_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/finance/finance.component */ "YEfL");
+/* harmony import */ var _components_finance_history_finance_history_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/finance-history/finance-history.component */ "Uy+f");
+/* harmony import */ var _components_finance_info_finance_info_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/finance-info/finance-info.component */ "+AfY");
+/* harmony import */ var _admin_profile_admin_profile_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./admin-profile/admin-profile.component */ "N7Yj");
+/* harmony import */ var _admin_students_admin_students_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./admin-students/admin-students.component */ "TCXu");
+/* harmony import */ var _components_admin_professor_admin_professor_admin_professor_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/admin-professor/admin-professor/admin-professor.component */ "3Kr0");
+/* harmony import */ var _professor_profile_professor_profile_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./professor-profile/professor-profile.component */ "jJb4");
+/* harmony import */ var _professor_navbar_professor_navbar_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./professor-navbar/professor-navbar.component */ "LFkS");
+/* harmony import */ var _exam_exam_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./exam/exam.component */ "KPts");
+/* harmony import */ var _components_admin_student_detail_admin_student_detail_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/admin-student-detail/admin-student-detail.component */ "Dvxp");
+/* harmony import */ var _components_document_table_row_document_table_row_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/document-table-row/document-table-row.component */ "fcXT");
+/* harmony import */ var _components_exams_exams_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/exams/exams.component */ "TlmW");
+/* harmony import */ var _components_exam_row_exam_row_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/exam-row/exam-row.component */ "t8E4");
+/* harmony import */ var _components_exam_part_table_exam_part_table_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/exam-part-table/exam-part-table.component */ "+SPL");
+/* harmony import */ var _components_exam_part_row_exam_part_row_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/exam-part-row/exam-part-row.component */ "Ou8+");
+/* harmony import */ var _professor_exams_professor_exams_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./professor-exams/professor-exams.component */ "Hpei");
+/* harmony import */ var _components_professor_courses_professor_courses_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/professor-courses/professor-courses.component */ "Djwy");
+/* harmony import */ var _components_admin_courses_admin_courses_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/admin-courses/admin-courses.component */ "542k");
+/* harmony import */ var _components_admin_courses_details_admin_courses_details_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/admin-courses-details/admin-courses-details.component */ "L+nS");
+/* harmony import */ var _components_professor_student_table_professor_student_table_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/professor-student-table/professor-student-table.component */ "PHgo");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+
+
 
 
 
@@ -2867,8 +3026,8 @@ __webpack_require__.r(__webpack_exports__);
 class AppModule {
 }
 AppModule.ɵfac = function AppModule_Factory(t) { return new (t || AppModule)(); };
-AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_34__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]] });
-AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_34__["ɵɵdefineInjector"]({ providers: [], imports: [[
+AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_37__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]] });
+AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_37__["ɵɵdefineInjector"]({ providers: [], imports: [[
             _app_routing_app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"],
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -2876,34 +3035,37 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_34__["ɵɵdefineInjecto
             _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
             _angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"]
         ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_34__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_37__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
         _login_form_login_form_component__WEBPACK_IMPORTED_MODULE_7__["LoginFormComponent"],
         _register_form_register_form_component__WEBPACK_IMPORTED_MODULE_8__["RegisterFormComponent"],
-        _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_13__["NavbarComponent"],
-        _profile_profile_component__WEBPACK_IMPORTED_MODULE_14__["ProfileComponent"],
+        _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_14__["NavbarComponent"],
+        _profile_profile_component__WEBPACK_IMPORTED_MODULE_15__["ProfileComponent"],
         _document_table_document_table_component__WEBPACK_IMPORTED_MODULE_9__["DocumentTableComponent"],
-        _user_info_user_info_component__WEBPACK_IMPORTED_MODULE_15__["UserInfoComponent"],
+        _user_info_user_info_component__WEBPACK_IMPORTED_MODULE_16__["UserInfoComponent"],
         _student_info_student_info_component__WEBPACK_IMPORTED_MODULE_10__["StudentInfoComponent"],
-        _components_finance_finance_component__WEBPACK_IMPORTED_MODULE_16__["FinanceComponent"],
-        _components_finance_history_finance_history_component__WEBPACK_IMPORTED_MODULE_17__["FinanceHistoryComponent"],
-        _components_finance_info_finance_info_component__WEBPACK_IMPORTED_MODULE_18__["FinanceInfoComponent"],
-        _admin_profile_admin_profile_component__WEBPACK_IMPORTED_MODULE_19__["AdminProfileComponent"],
-        _admin_students_admin_students_component__WEBPACK_IMPORTED_MODULE_20__["AdminStudentsComponent"],
-        _components_admin_professor_admin_professor_admin_professor_component__WEBPACK_IMPORTED_MODULE_21__["AdminProfessorComponent"],
-        _professor_profile_professor_profile_component__WEBPACK_IMPORTED_MODULE_22__["ProfessorProfileComponent"],
-        _professor_navbar_professor_navbar_component__WEBPACK_IMPORTED_MODULE_23__["ProfessorNavbarComponent"],
-        _exam_exam_component__WEBPACK_IMPORTED_MODULE_24__["ExamComponent"],
+        _components_finance_finance_component__WEBPACK_IMPORTED_MODULE_17__["FinanceComponent"],
+        _components_finance_history_finance_history_component__WEBPACK_IMPORTED_MODULE_18__["FinanceHistoryComponent"],
+        _components_finance_info_finance_info_component__WEBPACK_IMPORTED_MODULE_19__["FinanceInfoComponent"],
+        _admin_profile_admin_profile_component__WEBPACK_IMPORTED_MODULE_20__["AdminProfileComponent"],
+        _admin_students_admin_students_component__WEBPACK_IMPORTED_MODULE_21__["AdminStudentsComponent"],
+        _components_admin_professor_admin_professor_admin_professor_component__WEBPACK_IMPORTED_MODULE_22__["AdminProfessorComponent"],
+        _professor_profile_professor_profile_component__WEBPACK_IMPORTED_MODULE_23__["ProfessorProfileComponent"],
+        _professor_navbar_professor_navbar_component__WEBPACK_IMPORTED_MODULE_24__["ProfessorNavbarComponent"],
+        _exam_exam_component__WEBPACK_IMPORTED_MODULE_25__["ExamComponent"],
         _professor_info_professor_info_component__WEBPACK_IMPORTED_MODULE_11__["ProfessorInfoComponent"],
-        _components_document_table_row_document_table_row_component__WEBPACK_IMPORTED_MODULE_26__["DocumentTableRowComponent"],
-        _components_exams_exams_component__WEBPACK_IMPORTED_MODULE_27__["ExamsComponent"],
+        _components_document_table_row_document_table_row_component__WEBPACK_IMPORTED_MODULE_27__["DocumentTableRowComponent"],
+        _components_exams_exams_component__WEBPACK_IMPORTED_MODULE_28__["ExamsComponent"],
         _exam_table_exam_table_component__WEBPACK_IMPORTED_MODULE_12__["ExamTableComponent"],
-        _components_exam_row_exam_row_component__WEBPACK_IMPORTED_MODULE_28__["ExamRowComponent"],
-        _components_exam_part_table_exam_part_table_component__WEBPACK_IMPORTED_MODULE_29__["ExamPartTableComponent"],
-        _components_exam_part_row_exam_part_row_component__WEBPACK_IMPORTED_MODULE_30__["ExamPartRowComponent"],
-        _professor_exams_professor_exams_component__WEBPACK_IMPORTED_MODULE_31__["ProfessorExamsComponent"],
-        _components_professor_courses_professor_courses_component__WEBPACK_IMPORTED_MODULE_32__["ProfessorCoursesComponent"],
-        _components_admin_student_detail_admin_student_detail_component__WEBPACK_IMPORTED_MODULE_25__["AdminStudentDetailComponent"],
-        _components_admin_courses_admin_courses_component__WEBPACK_IMPORTED_MODULE_33__["AdminCoursesComponent"]], imports: [_app_routing_app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
+        _components_exam_row_exam_row_component__WEBPACK_IMPORTED_MODULE_29__["ExamRowComponent"],
+        _components_exam_part_table_exam_part_table_component__WEBPACK_IMPORTED_MODULE_30__["ExamPartTableComponent"],
+        _components_exam_part_row_exam_part_row_component__WEBPACK_IMPORTED_MODULE_31__["ExamPartRowComponent"],
+        _professor_exams_professor_exams_component__WEBPACK_IMPORTED_MODULE_32__["ProfessorExamsComponent"],
+        _components_professor_courses_professor_courses_component__WEBPACK_IMPORTED_MODULE_33__["ProfessorCoursesComponent"],
+        _components_admin_student_detail_admin_student_detail_component__WEBPACK_IMPORTED_MODULE_26__["AdminStudentDetailComponent"],
+        _components_admin_courses_admin_courses_component__WEBPACK_IMPORTED_MODULE_34__["AdminCoursesComponent"],
+        _components_admin_courses_details_admin_courses_details_component__WEBPACK_IMPORTED_MODULE_35__["AdminCoursesDetailsComponent"],
+        _course_table_course_table_component__WEBPACK_IMPORTED_MODULE_13__["CourseTableComponent"],
+        _components_professor_student_table_professor_student_table_component__WEBPACK_IMPORTED_MODULE_36__["ProfessorStudentTableComponent"]], imports: [_app_routing_app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
         _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"],
         _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
         _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
@@ -3174,6 +3336,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_course_service_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/course-service.service */ "/4cU");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
 
+
+
+function CourseTableComponent_tr_12_Template(rf, ctx) { if (rf & 1) {
+    const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+=======
+<<<<<<< HEAD
+/* harmony import */ var _services_course_service_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/course-service.service */ "/4cU");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
+
 =======
 >>>>>>> branch 'master' of https://github.com/Pmilicaa/UniversityWebService.git
 
@@ -3195,16 +3366,27 @@ function CourseTableComponent_tr_12_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 =======
 function CourseTableComponent_tr_11_Template(rf, ctx) { if (rf & 1) {
+>>>>>>> 9223927ba29694a9488defec7080a502465ae2a3
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "th", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "td");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
 >>>>>>> branch 'master' of https://github.com/Pmilicaa/UniversityWebService.git
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "td");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "button", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CourseTableComponent_tr_12_Template_button_click_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r5); const course_r2 = ctx.$implicit; const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r4.seeStudents(course_r2.id); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "See students");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
+<<<<<<< HEAD
+    const course_r2 = ctx.$implicit;
+    const i_r3 = ctx.index;
+=======
 <<<<<<< HEAD
     const course_r2 = ctx.$implicit;
     const i_r3 = ctx.index;
@@ -3237,9 +3419,40 @@ function CourseTableComponent_tr_26_Template(rf, ctx) { if (rf & 1) {
 =======
     const exam_r1 = ctx.$implicit;
     const i_r2 = ctx.index;
+>>>>>>> 9223927ba29694a9488defec7080a502465ae2a3
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](i_r2 + 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](i_r3 + 1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](course_r2.title);
+} }
+function CourseTableComponent_tr_26_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "td");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "td");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const student_r6 = ctx.$implicit;
+    const i_r7 = ctx.index;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](i_r7 + 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](student_r6.firstName);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+<<<<<<< HEAD
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](student_r6.lastName);
+} }
+class CourseTableComponent {
+    constructor(courseService) {
+        this.courseService = courseService;
+        this.students = [];
+=======
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](exam_r1.name);
 >>>>>>> branch 'master' of https://github.com/Pmilicaa/UniversityWebService.git
 } }
@@ -3258,6 +3471,7 @@ class CourseTableComponent {
         // ];
         this.exams = [];
 >>>>>>> branch 'master' of https://github.com/Pmilicaa/UniversityWebService.git
+>>>>>>> 9223927ba29694a9488defec7080a502465ae2a3
     }
     ngOnInit() {
         this.courseService.getAllTeacherCourses().subscribe((courses) => (this.courses = courses));
@@ -3269,12 +3483,26 @@ class CourseTableComponent {
     }
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9223927ba29694a9488defec7080a502465ae2a3
 CourseTableComponent.ɵfac = function CourseTableComponent_Factory(t) { return new (t || CourseTableComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_course_service_service__WEBPACK_IMPORTED_MODULE_1__["CourseServiceService"])); };
 CourseTableComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: CourseTableComponent, selectors: [["app-course-table"]], decls: 27, vars: 2, consts: [[1, "bg-light", "p-4", "rounded"], [1, "text-black"], [1, "table", "table-sm"], ["scope", "col"], [4, "ngFor", "ngForOf"], [1, "bg-light", "p-4", "rounded", "mt-1"], ["type", "submit", 1, "btn", "btn-primary", 2, "float", "right", 3, "click"]], template: function CourseTableComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "h2", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Teacher courses");
+<<<<<<< HEAD
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "table", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "thead");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "tr");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "th", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "#");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "th", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Title");
+=======
 =======
 CourseTableComponent.ɵfac = function CourseTableComponent_Factory(t) { return new (t || CourseTableComponent)(); };
 CourseTableComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: CourseTableComponent, selectors: [["app-course-table"]], decls: 12, vars: 1, consts: [[1, "w-25", "m-auto"], [1, "table"], ["scope", "col"], [4, "ngFor", "ngForOf"], ["scope", "row"]], template: function CourseTableComponent_Template(rf, ctx) { if (rf & 1) {
@@ -3293,12 +3521,20 @@ CourseTableComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdef
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Title");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+>>>>>>> 9223927ba29694a9488defec7080a502465ae2a3
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 <<<<<<< HEAD
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "tbody");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, CourseTableComponent_tr_12_Template, 8, 2, "tr", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+<<<<<<< HEAD
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, CourseTableComponent_tr_12_Template, 8, 2, "tr", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+=======
+>>>>>>> 9223927ba29694a9488defec7080a502465ae2a3
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "div", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "h2", 1);
@@ -3321,25 +3557,34 @@ CourseTableComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdef
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "tbody");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](26, CourseTableComponent_tr_26_Template, 7, 3, "tr", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+<<<<<<< HEAD
+=======
 =======
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "tbody");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, CourseTableComponent_tr_11_Template, 5, 2, "tr", 3);
 >>>>>>> branch 'master' of https://github.com/Pmilicaa/UniversityWebService.git
+>>>>>>> 9223927ba29694a9488defec7080a502465ae2a3
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9223927ba29694a9488defec7080a502465ae2a3
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.courses);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](14);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.students);
     } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJjb3Vyc2UtdGFibGUuY29tcG9uZW50LmNzcyJ9 */"] });
+<<<<<<< HEAD
+=======
 =======
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](11);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.exams);
     } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJjb3Vyc2UtdGFibGUuY29tcG9uZW50LmNzcyJ9 */"] });
 >>>>>>> branch 'master' of https://github.com/Pmilicaa/UniversityWebService.git
+>>>>>>> 9223927ba29694a9488defec7080a502465ae2a3
 
 
 /***/ }),
@@ -3783,7 +4028,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _professor_profile_professor_profile_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../professor-profile/professor-profile.component */ "jJb4");
 /* harmony import */ var _professor_exams_professor_exams_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../professor-exams/professor-exams.component */ "Hpei");
 /* harmony import */ var _components_admin_courses_admin_courses_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../components/admin-courses/admin-courses.component */ "542k");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _components_admin_courses_details_admin_courses_details_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../components/admin-courses-details/admin-courses-details.component */ "L+nS");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
 
 
 
@@ -3831,16 +4078,17 @@ const routes = [
     { path: 'exams', component: _components_exams_exams_component__WEBPACK_IMPORTED_MODULE_19__["ExamsComponent"] },
     { path: 'professorProfile', component: _professor_profile_professor_profile_component__WEBPACK_IMPORTED_MODULE_20__["ProfessorProfileComponent"] },
     { path: 'professorExams', component: _professor_exams_professor_exams_component__WEBPACK_IMPORTED_MODULE_21__["ProfessorExamsComponent"] },
-    { path: 'AdminCourses', component: _components_admin_courses_admin_courses_component__WEBPACK_IMPORTED_MODULE_22__["AdminCoursesComponent"] }
+    { path: 'AdminCourses', component: _components_admin_courses_admin_courses_component__WEBPACK_IMPORTED_MODULE_22__["AdminCoursesComponent"] },
+    { path: 'AdminCoursesDetails/:id', component: _components_admin_courses_details_admin_courses_details_component__WEBPACK_IMPORTED_MODULE_23__["AdminCoursesDetailsComponent"] }
 ];
 class AppRoutingModule {
 }
 AppRoutingModule.ɵfac = function AppRoutingModule_Factory(t) { return new (t || AppRoutingModule)(); };
-AppRoutingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_23__["ɵɵdefineNgModule"]({ type: AppRoutingModule });
-AppRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_23__["ɵɵdefineInjector"]({ imports: [[
+AppRoutingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_24__["ɵɵdefineNgModule"]({ type: AppRoutingModule });
+AppRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_24__["ɵɵdefineInjector"]({ imports: [[
             _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(routes),
         ], _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_23__["ɵɵsetNgModuleScope"](AppRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] }); })();
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_24__["ɵɵsetNgModuleScope"](AppRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] }); })();
 
 
 /***/ }),
@@ -4081,7 +4329,7 @@ class AdminCoursesServiceService {
     constructor(http, authService) {
         this.http = http;
         this.authService = authService;
-        this.URL_COURSES = "http://localhost:8080/teaching";
+        this.URL_COURSES = "http://localhost:8080/courses";
     }
     getAll() {
         const headInfo = {
@@ -4092,6 +4340,28 @@ class AdminCoursesServiceService {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpHeaders"](headInfo)
         };
         return this.http.get(this.URL_COURSES, requestOptions);
+    }
+    getTeachersByCourse(courseId) {
+        const headInfo = {
+            'Content-Type': 'application/json',
+            'X-Auth-Token': "" + this.authService.getToken()
+        };
+        const requestOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpHeaders"](headInfo)
+        };
+        const url = `${this.URL_COURSES}/${courseId}/teachers`;
+        return this.http.get(url, requestOptions);
+    }
+    getCourseInstancesByCourse(courseId) {
+        const headInfo = {
+            'Content-Type': 'application/json',
+            'X-Auth-Token': "" + this.authService.getToken()
+        };
+        const requestOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpHeaders"](headInfo)
+        };
+        const url = `${this.URL_COURSES}/${courseId}/courseInstances`;
+        return this.http.get(url, requestOptions);
     }
 }
 AdminCoursesServiceService.ɵfac = function AdminCoursesServiceService_Factory(t) { return new (t || AdminCoursesServiceService)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_authentication_service_service__WEBPACK_IMPORTED_MODULE_2__["AuthenticationServiceService"])); };
