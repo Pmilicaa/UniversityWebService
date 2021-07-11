@@ -40,6 +40,9 @@ import { ExamPartTableComponent } from './components/exam-part-table/exam-part-t
 import { ExamPartRowComponent } from './components/exam-part-row/exam-part-row.component';
 import { ProfessorExamsComponent } from './professor-exams/professor-exams.component';
 import { ProfessorCoursesComponent } from './components/professor-courses/professor-courses.component';
+import { AdminCoursesComponent } from './components/admin-courses/admin-courses.component';
+import { AdminCoursesDetailsComponent } from './components/admin-courses-details/admin-courses-details.component';
+import { ProfessorStudentTableComponent } from './components/professor-student-table/professor-student-table.component';
 
 @NgModule({
   declarations: [ 
@@ -69,7 +72,11 @@ import { ProfessorCoursesComponent } from './components/professor-courses/profes
     ExamPartRowComponent,
     ProfessorExamsComponent,
     ProfessorCoursesComponent,
-    AdminStudentDetailComponent
+    AdminStudentDetailComponent,
+    AdminCoursesComponent,
+    AdminCoursesDetailsComponent,
+    CourseTableComponent,
+    ProfessorStudentTableComponent
   ],
   imports: [
     AppRoutingModule,

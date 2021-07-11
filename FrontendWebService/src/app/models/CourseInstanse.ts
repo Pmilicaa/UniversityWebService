@@ -1,8 +1,9 @@
 import { Course } from "./Course";
 
 export class CourseInstance{
-    id:number;
+    
+    id?:number;
     startDate: Date;
     endDate: Date;
-    courseSpec: Course;
+    //courseSpecification: Course;
 }
