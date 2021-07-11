@@ -43,6 +43,7 @@ import { ProfessorCoursesComponent } from './components/professor-courses/profes
 import { AdminCoursesComponent } from './components/admin-courses/admin-courses.component';
 import { AdminCoursesDetailsComponent } from './components/admin-courses-details/admin-courses-details.component';
 import { ProfessorStudentTableComponent } from './components/professor-student-table/professor-student-table.component';
+import { CourseServiceService } from './services/course-service.service';
 
 @NgModule({
   declarations: [ 
