@@ -7,7 +7,7 @@
             First Name:
           </td>
           <td>
-                {{professor.firstName}}
+                <span *ngIf="professor != undefined">{{professor.firstName}}</span>
           </td>
         </tr>
         <tr>
@@ -15,7 +15,7 @@
                 Last name:
             </td>
             <td>
-                {{professor.lastName}}
+              <span *ngIf="professor != undefined">{{professor.lastName}}</span>
             </td>
           </tr>
       </tbody>
