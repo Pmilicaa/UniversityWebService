@@ -407,9 +407,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _services_professor_service_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/professor-service.service */ "wtsI");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
+<<<<<<< HEAD
 
 
 
+=======
+
+
+
+>>>>>>> 9223927ba29694a9488defec7080a502465ae2a3
 function ProfessorInfoComponent_span_9_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
@@ -3326,10 +3332,23 @@ DocumentTableRowComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵ
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CourseTableComponent", function() { return CourseTableComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+<<<<<<< HEAD
 /* harmony import */ var _services_course_service_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/course-service.service */ "/4cU");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
 
 
+
+function CourseTableComponent_tr_12_Template(rf, ctx) { if (rf & 1) {
+    const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+=======
+<<<<<<< HEAD
+/* harmony import */ var _services_course_service_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/course-service.service */ "/4cU");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
+
+=======
+>>>>>>> branch 'master' of https://github.com/Pmilicaa/UniversityWebService.git
+
+<<<<<<< HEAD
 
 function CourseTableComponent_tr_12_Template(rf, ctx) { if (rf & 1) {
     const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
@@ -3345,9 +3364,30 @@ function CourseTableComponent_tr_12_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CourseTableComponent_tr_12_Template_button_click_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r5); const course_r2 = ctx.$implicit; const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r4.seeStudents(course_r2.id); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "See students");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+=======
+function CourseTableComponent_tr_11_Template(rf, ctx) { if (rf & 1) {
+>>>>>>> 9223927ba29694a9488defec7080a502465ae2a3
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "td");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
+>>>>>>> branch 'master' of https://github.com/Pmilicaa/UniversityWebService.git
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "td");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "button", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CourseTableComponent_tr_12_Template_button_click_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r5); const course_r2 = ctx.$implicit; const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r4.seeStudents(course_r2.id); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "See students");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
+<<<<<<< HEAD
+    const course_r2 = ctx.$implicit;
+    const i_r3 = ctx.index;
+=======
+<<<<<<< HEAD
     const course_r2 = ctx.$implicit;
     const i_r3 = ctx.index;
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
@@ -3376,11 +3416,62 @@ function CourseTableComponent_tr_26_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](student_r6.firstName);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](student_r6.lastName);
+=======
+    const exam_r1 = ctx.$implicit;
+    const i_r2 = ctx.index;
+>>>>>>> 9223927ba29694a9488defec7080a502465ae2a3
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](i_r3 + 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](course_r2.title);
+} }
+function CourseTableComponent_tr_26_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "td");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "td");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const student_r6 = ctx.$implicit;
+    const i_r7 = ctx.index;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](i_r7 + 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](student_r6.firstName);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+<<<<<<< HEAD
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](student_r6.lastName);
 } }
 class CourseTableComponent {
     constructor(courseService) {
         this.courseService = courseService;
         this.students = [];
+=======
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](exam_r1.name);
+>>>>>>> branch 'master' of https://github.com/Pmilicaa/UniversityWebService.git
+} }
+class CourseTableComponent {
+<<<<<<< HEAD
+    constructor(courseService) {
+        this.courseService = courseService;
+        this.students = [];
+=======
+    constructor() {
+        // exams:Exam[]=[
+        //   {id:1,name:'Web programiranje',dateOfregistration:'2020-02-02', points: 100, grade:10},
+        //   {id:2,name: 'Baza podataka' ,dateOfregistration:'2020-04-02', points: 99, grade:10},
+        //   {id:3,name:'Internet mreze',dateOfregistration:'2020-06-02', points: 100, grade:10},
+        //   {id:4,name: 'Asembler',dateOfregistration:'2020-07-02', points: 100, grade:10}
+        // ];
+        this.exams = [];
+>>>>>>> branch 'master' of https://github.com/Pmilicaa/UniversityWebService.git
+>>>>>>> 9223927ba29694a9488defec7080a502465ae2a3
     }
     ngOnInit() {
         this.courseService.getAllTeacherCourses().subscribe((courses) => (this.courses = courses));
@@ -3391,12 +3482,34 @@ class CourseTableComponent {
         });
     }
 }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9223927ba29694a9488defec7080a502465ae2a3
 CourseTableComponent.ɵfac = function CourseTableComponent_Factory(t) { return new (t || CourseTableComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_course_service_service__WEBPACK_IMPORTED_MODULE_1__["CourseServiceService"])); };
 CourseTableComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: CourseTableComponent, selectors: [["app-course-table"]], decls: 27, vars: 2, consts: [[1, "bg-light", "p-4", "rounded"], [1, "text-black"], [1, "table", "table-sm"], ["scope", "col"], [4, "ngFor", "ngForOf"], [1, "bg-light", "p-4", "rounded", "mt-1"], ["type", "submit", 1, "btn", "btn-primary", 2, "float", "right", 3, "click"]], template: function CourseTableComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "h2", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Teacher courses");
+<<<<<<< HEAD
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "table", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "thead");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "tr");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "th", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "#");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "th", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Title");
+=======
+=======
+CourseTableComponent.ɵfac = function CourseTableComponent_Factory(t) { return new (t || CourseTableComponent)(); };
+CourseTableComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: CourseTableComponent, selectors: [["app-course-table"]], decls: 12, vars: 1, consts: [[1, "w-25", "m-auto"], [1, "table"], ["scope", "col"], [4, "ngFor", "ngForOf"], ["scope", "row"]], template: function CourseTableComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h2");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Courses");
+>>>>>>> branch 'master' of https://github.com/Pmilicaa/UniversityWebService.git
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "table", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "thead");
@@ -3408,11 +3521,20 @@ CourseTableComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdef
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Title");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+>>>>>>> 9223927ba29694a9488defec7080a502465ae2a3
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+<<<<<<< HEAD
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "tbody");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, CourseTableComponent_tr_12_Template, 8, 2, "tr", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+<<<<<<< HEAD
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, CourseTableComponent_tr_12_Template, 8, 2, "tr", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+=======
+>>>>>>> 9223927ba29694a9488defec7080a502465ae2a3
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "div", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "h2", 1);
@@ -3435,15 +3557,34 @@ CourseTableComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdef
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "tbody");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](26, CourseTableComponent_tr_26_Template, 7, 3, "tr", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+<<<<<<< HEAD
+=======
+=======
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, CourseTableComponent_tr_11_Template, 5, 2, "tr", 3);
+>>>>>>> branch 'master' of https://github.com/Pmilicaa/UniversityWebService.git
+>>>>>>> 9223927ba29694a9488defec7080a502465ae2a3
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9223927ba29694a9488defec7080a502465ae2a3
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.courses);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](14);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.students);
     } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJjb3Vyc2UtdGFibGUuY29tcG9uZW50LmNzcyJ9 */"] });
+<<<<<<< HEAD
+=======
+=======
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.exams);
+    } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJjb3Vyc2UtdGFibGUuY29tcG9uZW50LmNzcyJ9 */"] });
+>>>>>>> branch 'master' of https://github.com/Pmilicaa/UniversityWebService.git
+>>>>>>> 9223927ba29694a9488defec7080a502465ae2a3
 
 
 /***/ }),
