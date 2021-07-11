@@ -37,7 +37,16 @@ public class TeachingService {
 	CourseInstanceRepository courseInstanceRepository;
 	
 	public List<Teaching> findAllByTeacher(Long id) {
+		
 		return teachingRepository.findByTeacher_id(id);
+	}
+	
+	public List<Teaching> findAllByCourse(Long id) {
+		return teachingRepository.findByCourseSpecification_id(id);
+	}
+	
+	public List<Teaching> findAllTeaching() {
+		return teachingRepository.findAll();
 	}
 	
 	public Teaching findOne(Long id) {
@@ -52,6 +61,7 @@ public class TeachingService {
 		TeachingType teachingType = teachingTypeRepository.findByCode("P");
 		Teacher teacher = teacherRepository.findById(id).get();
 		
+
 		CourseInstance courseInstance = new CourseInstance(new Date("2010/10/10"),new Date("2029/03/03"),oopCourse);
 		CourseInstance newCourseInstance = courseInstanceRepository.save(courseInstance);
 		oopCourse.getCourseInstances().add(newCourseInstance);		
@@ -70,4 +80,7 @@ public class TeachingService {
 		return teaching;
 		
 	}
+	
+//	public Teaching addTeaching() {
+//		return null;}
 }

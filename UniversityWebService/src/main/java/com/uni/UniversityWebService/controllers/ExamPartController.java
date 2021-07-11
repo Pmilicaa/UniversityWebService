@@ -6,6 +6,10 @@ import com.uni.UniversityWebService.model.Student;
 import com.uni.UniversityWebService.repositories.ExamPartStatusRepository;
 import com.uni.UniversityWebService.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import com.uni.UniversityWebService.repositories.ExamPartRepository;
@@ -79,6 +83,24 @@ public class ExamPartController {
 			return new ResponseEntity("Exam part with the specified id does not exist.", HttpStatus.BAD_REQUEST);
 		}
 	}
-	
+
+	// Test endpoint za paging
+	@GetMapping(path = "/examParts/paged/{pageId}/{sortType}/{sortBy}")
+	public ResponseEntity<?> getAllPartsPaged(@PathVariable(value = "pageId") int pageId, @PathVariable(value = "sortType") int sortType, @PathVariable(value = "sortBy") String sortBy){
+		Pageable fiveElementsPerPage = null;
+		
+		if(sortType == 0) {
+			fiveElementsPerPage =  PageRequest.of(pageId, 5);
+		}else if(sortType == 1) {
+			fiveElementsPerPage = PageRequest.of(pageId, 5, Sort.by(sortBy));
+		}else if(sortType == 2) {
+			fiveElementsPerPage = PageRequest.of(pageId, 5, Sort.by(sortBy).descending());
+		}else {
+			return new ResponseEntity("Sort type not found", HttpStatus.BAD_REQUEST);
+		}
+		 
+		Page<ExamPart> allExamParts = examPartRepository.findAll(fiveElementsPerPage);
+		return new ResponseEntity(allExamParts, HttpStatus.OK);
+	}
 	 
 }

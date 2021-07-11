@@ -10,4 +10,5 @@ public interface TeachingRepository extends JpaRepository<Teaching, Long> {
 	
 	
 	List<Teaching> findByTeacher_id(Long id);
+	List<Teaching> findByCourseSpecification_id(Long id);
 }
