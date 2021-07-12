@@ -12,7 +12,7 @@
         <tbody>
             <tr *ngFor = "let ci of courseInstances; let i = index;">
                 <th scope="row">{{ i + 1 }}</th>
-                <td>{{ professors[i].firstName }}</td>
+                <td>{{ professors[i].firstName }}  {{ professors[i].lastName }}</td>
                 <td>{{ ci.startDate }}</td>
                 <td *ngIf="ci.endDate !== null">{{ ci.endDate }}</td>
                 <td *ngIf="ci.endDate == null">{{ endDateMessage }}</td>
