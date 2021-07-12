@@ -14,7 +14,7 @@ public class CourseSpecificationDto {
     private int ECTS;
     private String code;
     private List<CourseInstanceDto> courseInstanceDtos;
-    private List<EnrollmentDto> enrollmentDtos;
+    //private List<EnrollmentDto> enrollmentDtos;
 
     public CourseSpecificationDto(CourseSpecification courseSpecification){
         this.id = courseSpecification.getId();
@@ -87,11 +87,11 @@ public class CourseSpecificationDto {
         this.courseInstanceDtos = courseInstanceDtos;
     }
 
-    public List<EnrollmentDto> getEnrollmentDtos() {
-        return enrollmentDtos;
-    }
-
-    public void setEnrollmentDtos(List<EnrollmentDto> enrollmentDtos) {
-        this.enrollmentDtos = enrollmentDtos;
-    }
+//    public List<EnrollmentDto> getEnrollmentDtos() {
+//        return enrollmentDtos;
+//    }
+//
+//    public void setEnrollmentDtos(List<EnrollmentDto> enrollmentDtos) {
+//        this.enrollmentDtos = enrollmentDtos;
+//    }
 }

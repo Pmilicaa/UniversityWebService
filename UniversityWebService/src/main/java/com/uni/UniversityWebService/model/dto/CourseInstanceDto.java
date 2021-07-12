@@ -9,13 +9,13 @@ public class CourseInstanceDto {
     private long id;
     private Date startDate;
     private Date endDate;
-    private CourseSpecificationDto courseSpecificationDto;
+    //private CourseSpecificationDto courseSpecificationDto;
 
     public CourseInstanceDto(CourseInstance courseInstance){
         this.id = courseInstance.getId();
         this.startDate = courseInstance.getStartDate();
         this.endDate = courseInstance.getEndDate();
-        this.courseSpecificationDto = new CourseSpecificationDto(courseInstance.getCourseSpecification());
+        //this.courseSpecificationDto = new CourseSpecificationDto(courseInstance.getCourseSpecification());
     }
 
     public CourseInstanceDto() {
@@ -45,11 +45,11 @@ public class CourseInstanceDto {
         this.endDate = endDate;
     }
 
-    public CourseSpecificationDto getCourseSpecificationDto() {
-        return courseSpecificationDto;
-    }
-
-    public void setCourseSpecificationDto(CourseSpecificationDto courseSpecificationDto) {
-        this.courseSpecificationDto = courseSpecificationDto;
-    }
+//    public CourseSpecificationDto getCourseSpecificationDto() {
+//        return courseSpecificationDto;
+//    }
+//
+//    public void setCourseSpecificationDto(CourseSpecificationDto courseSpecificationDto) {
+//        this.courseSpecificationDto = courseSpecificationDto;
+//    }
 }

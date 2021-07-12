@@ -10,13 +10,13 @@
           </tr>
         </thead>
         <tbody>
-            <tr *ngFor = "let professor of professors; let i = index;">
+            <tr *ngFor = "let ci of courseInstances; let i = index;">
                 <th scope="row">{{ i + 1 }}</th>
-                <td>{{ professor.firstName }}</td>
-                <tr *ngFor = "let ci of courseInstances;">
-                    <td>{{ ci.startDate }}</td>
-                    <td>{{ ci.endDate }}</td>
-                </tr>
+                <td>{{ professors[i].firstName }}</td>
+                <td>{{ ci.startDate }}</td>
+                <td *ngIf="ci.endDate !== null">{{ ci.endDate }}</td>
+                <td *ngIf="ci.endDate == null">{{ endDateMessage }}</td>
+            </tr>
         </tbody>
     </table>
 </div>

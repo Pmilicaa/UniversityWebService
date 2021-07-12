@@ -13,17 +13,11 @@ export class AdminCoursesDetailsComponent implements OnInit {
 
   id: number;
   professors: Professor[];
-  courseInstances: CourseInstance[];
-
-  // name(): any {
-  //   const uniqueDates = [...new Set(this.courseInstances.map(date => date.toString()))];
-  //   return uniqueDates;
-  //   console.log(uniqueDates); 
-  // }
-  
+  courseInstances: CourseInstance[];  
 
 
   title ="Details for course";
+  endDateMessage = "Active"
 
   constructor(private adminCourseService: AdminCoursesServiceService, private activatedRoute: ActivatedRoute) { }
 
@@ -41,8 +35,6 @@ export class AdminCoursesDetailsComponent implements OnInit {
       .subscribe((courseInstances) => { 
       this.courseInstances = courseInstances
       console.log(this.courseInstances);
-      
-      //this.courseInstances = [...new Set(this.courseInstances.map(date => date))];
       });
     });
   }

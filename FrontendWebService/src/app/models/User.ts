@@ -1,4 +1,4 @@
-export  class User {
+export  class User implements UserInterface {
     id?:number;
     userName:string;
     password:string;

@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.uni.UniversityWebService.model.CourseInstance;
+import com.uni.UniversityWebService.model.CourseSpecification;
 import com.uni.UniversityWebService.model.Teacher;
 import com.uni.UniversityWebService.model.Teaching;
 import com.uni.UniversityWebService.model.TeachingType;
@@ -18,8 +19,10 @@ public class TeachingDto {
     private String title;
     private int ects;
     private Teacher teacher;
+    private TeacherDto teacherDto;
     private TeachingType teachingType;
-    private String code;
+    private CourseSpecification courseSpecification;
+    private CourseSpecificationDto courseSpecificationDto;
     
     
     
@@ -35,14 +38,33 @@ public class TeachingDto {
 //		this.code = teaching.getCode();
 //	}
    
-	public TeachingDto(Teaching teaching) {
+		public TeachingDto(Teaching teaching) {
 		super();
 		this.id = teaching.getId();
 		this.title = teaching.getCourseSpecification().getTitle();
 		this.ects = teaching.getCourseSpecification().getECTS();
 		this.teacher = teaching.getTeacher();
 		this.teachingType = teaching.getTeachingType();
-		this.code = teaching.getCode();
+    	this.teacherDto = new TeacherDto(teaching.getTeacher());
+    	this.courseSpecificationDto = new CourseSpecificationDto(teaching.getCourseSpecification());
+    	this.teachingType = teaching.getTeachingType();
+	}
+    
+
+	public TeacherDto getTeacherDto() {
+		return teacherDto;
+	}
+
+	public void setTeacherDto(TeacherDto teacherDto) {
+		this.teacherDto = teacherDto;
+	}
+
+	public CourseSpecificationDto getCourseSpecificationDto() {
+		return courseSpecificationDto;
+	}
+
+	public void setCourseSpecificationDto(CourseSpecificationDto courseSpecificationDto) {
+		this.courseSpecificationDto = courseSpecificationDto;
 	}
 
 	public Long getId() {
@@ -87,17 +109,16 @@ public class TeachingDto {
 		this.teachingType = teachingType;
 	}
 
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
 	public TeachingDto() {
 		super();
 	}
 	
+  public CourseSpecification getCourseSpecification() {
+		return courseSpecification;
+	}
+
+	public void setCourseSpecification(CourseSpecification courseSpecification) {
+		this.courseSpecification = courseSpecification;
+	}
 
 }

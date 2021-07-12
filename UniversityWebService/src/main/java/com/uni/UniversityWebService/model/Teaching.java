@@ -19,7 +19,7 @@ public class Teaching {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "courseSpecificationId", referencedColumnName = "id")
     private CourseSpecification courseSpecification;
@@ -31,7 +31,7 @@ public class Teaching {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "teachingType_id", referencedColumnName = "id")
     private TeachingType teachingType;
-
+    
     @Column(name = "code")
     private String code;
     
@@ -40,8 +40,8 @@ public class Teaching {
 	private Exam exam;
 
     
-    public Teaching(Long id, CourseSpecification courseSpecification, Teacher teacher, TeachingType teachingType,
-			String code, Exam exam) {
+    public Teaching(Long id, CourseSpecification courseSpecification, Teacher teacher, TeachingType teachingType, 
+			 String code, Exam exam) {
 		super();
 		this.id = id;
 		this.courseSpecification = courseSpecification;
@@ -89,11 +89,11 @@ public class Teaching {
     public void setTeachingType(TeachingType teachingType) {
         this.teachingType = teachingType;
     }
-
+    
     public String getCode() {
         return code;
     }
-
+ 
     public void setCode(String code) {
         this.code = code;
     }
