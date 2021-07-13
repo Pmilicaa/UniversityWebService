@@ -1,5 +1,7 @@
 package com.uni.UniversityWebService.services;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -54,28 +56,44 @@ public class TeachingService {
 	public Teaching save(Teaching teaching) {
 		return teachingRepository.save(teaching);
 	}
-	public Teaching addTeaching (Long id) {
+	public Teaching addTeaching (Long id, String title, String code) {
 		
-		CourseSpecification oopCourse = courseSpecificationRepository.findByTitle("Object oriented programming");
-		TeachingType teachingType = teachingTypeRepository.findByCode("P");
+		CourseSpecification oopCourse = courseSpecificationRepository.findByTitle(title);
+		TeachingType teachingType = teachingTypeRepository.findByCode(code);
 		Teacher teacher = teacherRepository.findById(id).get();
 		
-		CourseInstance courseInstance = new CourseInstance(new Date("2010/10/10"),new Date("2029/03/03"),oopCourse);
-		CourseInstance newCourseInstance = courseInstanceRepository.save(courseInstance);
-		oopCourse.getCourseInstances().add(newCourseInstance);		
-		courseSpecificationRepository.save(oopCourse);
+		 String pattern = "yyyy-MM-dd";
+		 SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		 String date = simpleDateFormat.format(new Date());
+		 System.out.println(date);
 
-		Teaching teaching = new Teaching(oopCourse,teachingType,"M",teacher);
-		List<Teaching> teachings = new ArrayList();
-		Teaching newTeaching = teachingRepository.save(teaching);
-		teacher.getTeachings().add(newTeaching);
+		 Date date1;
+		try {
+			date1 = simpleDateFormat.parse(date);
+			 System.out.println(date1);
+				CourseInstance courseInstance = new CourseInstance(date1,null,oopCourse);
+				CourseInstance newCourseInstance = courseInstanceRepository.save(courseInstance);
+				oopCourse.getCourseInstances().add(newCourseInstance);		
+				courseSpecificationRepository.save(oopCourse);
+
+				Teaching teaching = new Teaching(oopCourse,teachingType,"M",teacher);
+				List<Teaching> teachings = new ArrayList();
+				Teaching newTeaching = teachingRepository.save(teaching);
+				teacher.getTeachings().add(newTeaching);
+				teacherRepository.save(teacher);
+				return teaching;
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
 		/*
 		 * teachings.add(teaching); teacher.setTeachings(teachings);
 		 */
 		
 		
-		teacherRepository.save(teacher);
-		return teaching;
+	
 		
 	}
 }

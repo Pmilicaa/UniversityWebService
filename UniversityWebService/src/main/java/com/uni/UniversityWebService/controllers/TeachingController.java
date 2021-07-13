@@ -1,6 +1,8 @@
 package com.uni.UniversityWebService.controllers;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,10 +43,10 @@ public class TeachingController {
 	 @Autowired
 	 private CourseSpecificationRepository courseSpecificationRepository;
 	 
-	 @PostMapping(path ="/teaching/teacher/{id}")
-	 public @ResponseBody ResponseEntity<?> createTeaching(@PathVariable("id") Long id){
+	 @PostMapping(path ="/teaching/teacher/{id}/{title}/{code}")
+	 public @ResponseBody ResponseEntity<?> createTeaching(@PathVariable("id") Long id,@PathVariable("title") String title, @PathVariable("code") String code){
 		 Teacher teacher = teacherRepository.findById(id).get();
-		 return new ResponseEntity(teachingService.addTeaching(id), HttpStatus.OK);
+		 return new ResponseEntity(teachingService.addTeaching(id,title, code), HttpStatus.OK);
 	 }
 	 
 	 @GetMapping(path = "/teaching/{teacherId}/teachings")
