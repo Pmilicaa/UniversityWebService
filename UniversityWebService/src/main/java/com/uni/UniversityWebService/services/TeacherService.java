@@ -1,12 +1,14 @@
 package com.uni.UniversityWebService.services;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.uni.UniversityWebService.model.*;
 import com.uni.UniversityWebService.model.dto.ExamPartProfessorDto;
+
 import com.uni.UniversityWebService.repositories.TeachingRepository;
-import org.hibernate.mapping.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -62,24 +64,27 @@ public class TeacherService {
 		return courseSpec;
 	}
 
-	public List<ExamPartProfessorDto> findExamPartsAndCourseSepcificationForTeacher(Long id){
+	public List<ExamPartProfessorDto> findExamPartsAndCourseSepcificationForTeacher(Long id,String period){
 		List<ExamPartProfessorDto> examPartProfessorDtos= new ArrayList<>();
 		List<ExamPart>examParts = new ArrayList<>();
-		List<CourseSpecification> courseSpecification = new ArrayList<>();
+
 		List<Teaching> teachingAll=teachingRepository.findAll();
 		for(Teaching t : teachingAll) {
-			if (t.getTeacher().getId() == id){
+			if (t.getTeacher().getId().equals(id)){
 
 				for (ExamPart ep : t.getExam().getExamParts()) {
+                    if(period.equals(t.getExam().getExamPeriod().getName()) ){
 					ExamPartProfessorDto examPartProfessorDto= new ExamPartProfessorDto();
 					examPartProfessorDto.setCourse(t.getCourseSpecification().getTitle());
-
 					examPartProfessorDto.setClassroom(ep.getClassroom());
 					examPartProfessorDto.setExamPartStartDate(ep.getExamPartStartDate());
 					examPartProfessorDtos.add(examPartProfessorDto);
-				}
-		}}
-		return examPartProfessorDtos;
+				}}
+			}}
+
+		Set<ExamPartProfessorDto> hSetReg= new HashSet<>(examPartProfessorDtos);
+		List<ExamPartProfessorDto> returnList = new ArrayList<>(hSetReg);
+		return returnList;
 	}
 	public Teaching addTeacherTeachings(Teaching teaching, Long id) {
 		

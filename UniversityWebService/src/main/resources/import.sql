@@ -39,9 +39,9 @@ insert into transaction values (3, 3500,  1, 1);
 insert into teaching_type values (1, "P", "professor");
 insert into teaching_type values (2, "A", "assistant");
 
-insert into course_specification (title, ects, code) values ("Mathematics", 8, "MATH");
-insert into course_specification (title, ects, code) values ("Object oriented programming", 8, "OOP");
-insert into course_specification (title, ects, code) values ("Embedded programming", 8, "EP");
+insert into course_specification (title, ects, code, active) values ("Mathematics", 8, "MATH", 1);
+insert into course_specification (title, ects, code, active) values ("Object oriented programming", 8, "OOP", 1);
+insert into course_specification (title, ects, code, active) values ("Embedded programming", 8, "EP", 1);
 
 insert into exam_part_type (name, code) values ("Homework", "H");
 insert into exam_part_type (name, code) values ("Colloquium", "C");

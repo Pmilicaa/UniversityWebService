@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators'
 import { JwtUtilsService } from './jwt-utils.service';
-
+import { throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -36,7 +36,7 @@ export class AuthenticationServiceService {
       }
     }),catchError((error: any) => {
       if (error.status === 400) {
-        return Observable.throw('Ilegal login');
+        throwError("Illegal login");
       }
       else {
         return Observable.throw(error.json().error || 'Server error');

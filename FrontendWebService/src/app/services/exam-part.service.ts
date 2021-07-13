@@ -13,10 +13,10 @@ export class ExamPartService {
 
   constructor(private http: HttpClient, private authService: AuthenticationServiceService) { }
 
-  registerExamPart(id: number): Observable<ExamPart>{
+  registerExamPart(id: number, enrollmentId: number): Observable<ExamPart>{
     const headers = new HttpHeaders({"Content-Type": "application/json", "X-Auth-Token": this.authService.getToken().toString()});
   
-    return this.http.post<ExamPart>(this.path + "/register/" + id, {}, {headers: headers});
+    return this.http.post<ExamPart>(this.path + "/register/" + id + "/" + enrollmentId, {}, {headers: headers});
   }
 
   cancelExamPart(id: number): Observable<ExamPart>{

@@ -4,6 +4,7 @@ import com.uni.UniversityWebService.model.Role;
 import com.uni.UniversityWebService.model.Student;
 import com.uni.UniversityWebService.model.Teacher;
 import com.uni.UniversityWebService.model.User;
+import com.uni.UniversityWebService.model.dto.RegisterExamDto;
 import com.uni.UniversityWebService.services.StudentService;
 import com.uni.UniversityWebService.services.UserService;
 import com.uni.UniversityWebService.services.TeacherService;
@@ -78,5 +79,11 @@ public class UserController {
         }
        userService.deleteTeacher(teacher);
         return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/examRegistery")
+    public ResponseEntity<?> getAllRegisterExams(){
+
+        return new ResponseEntity(userService.getAllRegisterExams(), HttpStatus.OK);
     }
 }

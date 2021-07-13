@@ -23,9 +23,9 @@ export class ProfessorServiceService {
 
     return this.http.get<Professor>(this.path + "/me", {headers: headers});
   }
-  getTeacherExamParts(professor:Professor): Observable<ExamPartsAndCourses[]>{
+  getTeacherExamParts(professor:Professor,period: String): Observable<ExamPartsAndCourses[]>{
     const headers = new HttpHeaders({"Content-Type": "application/json", "X-Auth-Token": this.authService.getToken().toString()});
-    const url = `${this.path}/${professor.id}/examPartsAndSpec`;
+    const url = `${this.path}/${professor.id}/examPartsAndSpec/${period}`;
     return this.http.get<ExamPartsAndCourses[]>(url, {headers: headers});
   }
 }

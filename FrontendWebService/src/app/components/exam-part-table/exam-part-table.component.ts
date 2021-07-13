@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import ExamPart from 'src/app/models/ExamPart';
+import Enrollment from 'src/app/models/Enrollment';
 
 @Component({
   selector: 'app-exam-part-table',
@@ -9,6 +10,7 @@ import ExamPart from 'src/app/models/ExamPart';
 export class ExamPartTableComponent implements OnInit {
 
   @Input() examParts: ExamPart[];
+  @Input() selectedEnrollment: Enrollment;
   statusSortChecked: boolean;
 
   constructor() { }

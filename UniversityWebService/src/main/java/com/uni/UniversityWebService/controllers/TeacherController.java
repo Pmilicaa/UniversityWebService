@@ -72,10 +72,10 @@ public class TeacherController {
 		System.out.println(teacher.getFirstName());
 		return new ResponseEntity(teacherService.findTeacherCourseSpec(teacher.getId()), HttpStatus.OK);
 	}
-	@GetMapping(path="teachers/{teacherId}/examPartsAndSpec")
-	public @ResponseBody ResponseEntity<?> getTeacherCoursesSpecs(@PathVariable(value="teacherId") Long id){
+	@GetMapping(path="teachers/{teacherId}/examPartsAndSpec/{period}")
+	public @ResponseBody ResponseEntity<?> getTeacherCoursesSpecs(@PathVariable(value="teacherId") Long id, @PathVariable(value="period") String period){
 
-		return new ResponseEntity(teacherService.findExamPartsAndCourseSepcificationForTeacher(id), HttpStatus.OK);
+		return new ResponseEntity(teacherService.findExamPartsAndCourseSepcificationForTeacher(id,period), HttpStatus.OK);
 	}
 	
 //	@PostMapping(path="teachers/{teacherId}/teaching/{courseSpecId}")

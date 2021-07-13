@@ -1,5 +1,7 @@
 package com.uni.UniversityWebService.model;
 
+import com.uni.UniversityWebService.model.dto.CourseSpecificationDto;
+
 import java.util.Date;
 
 import javax.persistence.*;
@@ -18,8 +20,8 @@ public class ExamRegistration {
 	private Student student;
 	
 	@OneToOne(optional = false, cascade = CascadeType.ALL)
-	@JoinColumn(name="course_id", referencedColumnName = "courseInstanceId")
-	private CourseInstance course;
+	@JoinColumn(name="course_id", referencedColumnName = "id")
+	private CourseSpecification courseSpecification;
 	
 	@Column(name="dateOfRegistration")
 	private Date dateOfRegistration;
@@ -35,22 +37,22 @@ public class ExamRegistration {
 	private String classroom;
 
 
-	public ExamRegistration(long id, Student student, CourseInstance course, Date dateOfRegistration, double price,
+	public ExamRegistration(long id, Student student, CourseSpecification courseSpecification, Date dateOfRegistration, double price,
 				ExamPart examPart, String classroom) {
 			super();
 		this.id = id;
 		this.student = student;
-		this.course = course;
+		this.courseSpecification = courseSpecification;
 		this.dateOfRegistration = dateOfRegistration;
 		this.price = price;
 		this.examPart = examPart;
 		this.classroom = classroom;
 	}
-	public ExamRegistration(Student student, CourseInstance course, Date dateOfRegistration, double price,
+	public ExamRegistration(Student student, CourseSpecification courseSpecification, Date dateOfRegistration, double price,
 			ExamPart examPart, String classroom) {
 		super();
 		this.student = student;
-		this.course = course;
+		this.courseSpecification = courseSpecification;
 		this.dateOfRegistration = dateOfRegistration;
 		this.price = price;
 		this.examPart = examPart;
@@ -71,11 +73,11 @@ public class ExamRegistration {
 		public void setStudent(Student student) {
 			this.student = student;
 		}
-		public CourseInstance getCourse() {
-			return course;
+		public CourseSpecification getCourse() {
+			return courseSpecification;
 		}
-		public void setCourse(CourseInstance course) {
-			this.course = course;
+		public void setCourse(CourseSpecification courseSpecification) {
+			this.courseSpecification = courseSpecification;
 		}
 		public Date getDateOfRegistration() {
 			return dateOfRegistration;

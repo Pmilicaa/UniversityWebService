@@ -6,7 +6,36 @@
     </div>
     <div class="row mt-2">
         <div class="col-lg-12">
-            <app-exam-part-table *ngIf="selectedEnrollment.exam != undefined" [examParts]="selectedEnrollment.exam.examParts"></app-exam-part-table>
+            <app-exam-part-table *ngIf="selectedEnrollment.exam != undefined" [selectedEnrollment]="selectedEnrollment" [examParts]="selectedEnrollment.exam.examParts"></app-exam-part-table>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-lg-12">
+            <div class="bg-light p-4 rounded">
+                <h2>Exam history</h2>
+                <table class="table table-sm">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Course</th>
+                      <th scope="col">Exam part</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Classroom</th>
+                      <th scope="col">Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let examRegistration of examRegistrations; let i = index">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td>{{ examRegistration.courseSpecificationDto.title}}</td>
+                        <td>{{ examRegistration.examPart.examPartType.name}}</td>
+                        <td>{{ examRegistration.dateOfRegistration.substring(0,10)}}</td>
+                        <td>{{ examRegistration.examPart.classroom}}</td>
+                        <td>{{ examRegistration.price}}</td>
+                    </tr>    
+                  </tbody>
+                </table>
+              </div>
         </div>
     </div>
 </div>

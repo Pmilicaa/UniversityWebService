@@ -1,9 +1,9 @@
 package com.uni.UniversityWebService.controllers;
 
-import com.uni.UniversityWebService.model.ExamPart;
-import com.uni.UniversityWebService.model.ExamPartStatus;
-import com.uni.UniversityWebService.model.Student;
+import com.uni.UniversityWebService.model.*;
 import com.uni.UniversityWebService.repositories.ExamPartStatusRepository;
+import com.uni.UniversityWebService.services.EnrollmentService;
+import com.uni.UniversityWebService.services.ExamRegistrationService;
 import com.uni.UniversityWebService.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,6 +18,8 @@ import com.uni.UniversityWebService.services.ExamPartService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 @RestController
 public class ExamPartController {
@@ -35,16 +37,25 @@ public class ExamPartController {
 	@Autowired
 	private ExamPartStatusRepository examPartStatusRepository;
 
+	@Autowired
+	private EnrollmentService enrollmentService;
+
+	@Autowired
+	private ExamRegistrationService examRegistrationService;
+
 	@GetMapping(path="/examParts")
 	public @ResponseBody ResponseEntity<?> getExamParts(){
 		return new ResponseEntity(examPartRepository.findAll(), HttpStatus.OK);
 	}
 
-	@PostMapping(path = "/examParts/register/{id}")
-	public ResponseEntity<?> registerExamPart(@AuthenticationPrincipal UserDetails userDetails, @PathVariable(value = "id") Long id){
+	@PostMapping(path = "/examParts/register/{id}/{enrollmentId}")
+	public ResponseEntity<?> registerExamPart(@AuthenticationPrincipal UserDetails userDetails, @PathVariable(value = "id") Long id,
+											  @PathVariable(value = "enrollmentId") Long enrollmentId){
+
 		ExamPartStatus registeredStatus = examPartStatusRepository.findByCode("R");
 		// TODO: Check whether this exam part belongs to the user that's logged in
 		try{
+			Enrollment enrollment = enrollmentService.findOne(enrollmentId);
 			ExamPart examPart = examPartService.findById(id);
 			if(examPart.getExamPartStatus().getName().equals("Registered")){
 				return new ResponseEntity("Exam is already registered.", HttpStatus.BAD_REQUEST);
@@ -53,12 +64,15 @@ public class ExamPartController {
 			ExamPart newExamPart = examPartService.save(examPart);
 
 			Student student = studentService.findByUserUsername(userDetails.getUsername());
+			ExamRegistration examRegistration = new ExamRegistration(student, enrollment.getCourseSpecification(), new Date(System.currentTimeMillis()), 200, examPart, examPart.getClassroom());
+
+			examRegistrationService.saveExamRegistration(examRegistration);
 			studentService.decreaseStudentBalance(student, 200);
 			studentService.saveStudent(student);
 
 			return new ResponseEntity(newExamPart, HttpStatus.OK);
 		}catch(NullPointerException e){
-			return new ResponseEntity("Exam part with the specified id does not exist.", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity("Exam part or enrollment with the specified id does not exist.", HttpStatus.BAD_REQUEST);
 		}
 	}
 
