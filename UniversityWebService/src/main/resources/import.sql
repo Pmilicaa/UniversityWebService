@@ -59,18 +59,19 @@ insert into exam_period (name, exam_period_start_date, exam_period_end_date) val
 insert into exam_period (name, exam_period_start_date, exam_period_end_date) values ("Jun", "2021-06-01 10:00:00", "2021-06-30 10:00:00");
 insert into exam_period (name, exam_period_start_date, exam_period_end_date) values ("July", "2021-07-01 10:00:00", "2021-07-30 10:00:00");
 insert into exam_period (name, exam_period_start_date, exam_period_end_date) values ("September", "2021-09-01 10:00:00", "2021-01-30 10:00:00");
+
 --User
-insert into user values (1, "papa", 0, "paki");
-insert into user values (2, "pele", 1, "peki");
-insert into user values (3, "pale", 2, "pal");
-insert into user values (4, "neko", 2, "neko");
+--insert into user values (1, "papa", 0, "paki");
+--insert into user values (2, "pele", 1, "peki");
+--insert into user values (3, "pale", 2, "pal");
+--insert into user values (4, "neko", 2, "neko");
 
 
 --Students
-insert into student values (1, 374387438, 1000, "SF-9-2018", "Aleksa", "Petrovic", 1);
-insert into student values (2, 327827387, 2000, "SF-11-2018", "Milica", "Pajic", 2);
-insert into student values (3, 273283783, 1000, "SF-12-2018", "Damir", "Tizmonar", 3);
-insert into student values (4, 545544545, 1000, "SF-2-2018", "Neko", "Nekic", 4);
+--insert into student values (1, 374387438, 1000, "SF-9-2018", "Aleksa", "Petrovic", 1);
+--insert into student values (2, 327827387, 2000, "SF-11-2018", "Milica", "Pajic", 2);
+--insert into student values (3, 273283783, 1000, "SF-12-2018", "Damir", "Tizmonar", 3);
+--insert into student values (4, 545544545, 1000, "SF-2-2018", "Neko", "Nekic", 4);
 
 
 --Professors
