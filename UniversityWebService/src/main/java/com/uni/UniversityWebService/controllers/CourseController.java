@@ -108,5 +108,15 @@ public class CourseController {
 		 
 		 return new ResponseEntity<CourseSpecificationDto>(new CourseSpecificationDto(cs), HttpStatus.OK);
 	 }
+	 
+	 @DeleteMapping(path = "/courses/{courseId}")
+	 public ResponseEntity<Void> deleteCourse(@PathVariable("courseId") Long courseId) {
+		 CourseSpecification cs = courseSpecificationRepository.findById(courseId).get();
+		 if(cs == null) {
+		    return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+		 }
+		 courseService.deleteCourseSpecification(cs);
+		 return new ResponseEntity<Void>(HttpStatus.OK);
+	 }
 
 }

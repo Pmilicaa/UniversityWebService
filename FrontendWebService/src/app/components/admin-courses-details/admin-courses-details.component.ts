@@ -25,7 +25,8 @@ export class AdminCoursesDetailsComponent implements OnInit {
   course: Course = {
     title: ' ',
     ects: +' ',
-    code: ' '
+    code: ' ',
+    active: null
   }
 
   constructor(private adminCourseService: AdminCoursesServiceService, private activatedRoute: ActivatedRoute, private route: Router, private location: Location) { }

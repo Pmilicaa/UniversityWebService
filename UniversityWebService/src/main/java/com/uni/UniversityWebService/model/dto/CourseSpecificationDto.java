@@ -13,6 +13,7 @@ public class CourseSpecificationDto {
     private String title;
     private int ECTS;
     private String code;
+    private boolean active;
     private List<CourseInstanceDto> courseInstanceDtos;
     //private List<EnrollmentDto> enrollmentDtos;
 
@@ -21,6 +22,7 @@ public class CourseSpecificationDto {
         this.title = courseSpecification.getTitle();
         this.ECTS = courseSpecification.getECTS();
         this.code = courseSpecification.getCode();
+        this.active = courseSpecification.isActive();
         this.courseInstanceDtos = convertCourseInstancesToDtos(courseSpecification.getCourseInstances());
         //this.enrollmentDtos = convertEnrollmentToDtos(courseSpecification.getEnrollments());
     }
@@ -29,6 +31,7 @@ public class CourseSpecificationDto {
     	courseSpecification.setId(this.getId());
     	courseSpecification.setTitle(this.getTitle());
     	courseSpecification.setECTS(this.ECTS);
+    	courseSpecification.setActive(this.isActive());
     	return courseSpecification;
     }
 
@@ -94,6 +97,14 @@ public class CourseSpecificationDto {
         this.courseInstanceDtos = courseInstanceDtos;
     }
 
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
 //    public List<EnrollmentDto> getEnrollmentDtos() {
 //        return enrollmentDtos;
 //    }
@@ -101,4 +112,6 @@ public class CourseSpecificationDto {
 //    public void setEnrollmentDtos(List<EnrollmentDto> enrollmentDtos) {
 //        this.enrollmentDtos = enrollmentDtos;
 //    }
+    
+    
 }

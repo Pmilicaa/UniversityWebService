@@ -7,6 +7,7 @@ export class Course implements CourseInterface{
     title: string;
     ects: number;
     code: string;
+    active: boolean;
     // teaching: Teaching[];
     //courseInstance: CourseInstance[];
 
@@ -15,6 +16,7 @@ export class Course implements CourseInterface{
         this.title = courseCfg.title;
         this.ects = courseCfg.ects;
         this.code = courseCfg.code;
+        this.active = courseCfg.active;
     }
 
 }
@@ -24,5 +26,6 @@ interface CourseInterface {
     title: string;
     ects: number;
     code: string;
+    active: boolean;
 }
 //Ovo je samo napravljeno kao dummy klasa,u bekendu jos ima polja enrollment i course instace

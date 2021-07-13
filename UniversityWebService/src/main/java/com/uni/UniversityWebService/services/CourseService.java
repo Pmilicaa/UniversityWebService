@@ -37,10 +37,9 @@ public class CourseService {
         return courseInstance;
     }
 
-    public CourseSpecification deleteCourseSpecification(CourseSpecification courseSpecification){
-        courseSpecificationRepository.delete(courseSpecification);
-
-        return courseSpecification;
+    public void deleteCourseSpecification(CourseSpecification courseSpecification){
+    	courseSpecification.setActive(false);
+    	courseSpecificationRepository.save(courseSpecification);
     }
 
     public List<CourseInstance> findAllCourseInstances(){

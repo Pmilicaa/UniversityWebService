@@ -27,6 +27,10 @@ export class AdminCoursesComponent implements OnInit {
     this.route.navigate(['/AdminCoursesDetails', id]);
   }
 
+  deleteCourse(id: number): void {
+    this.adminCourseService.deleteCourse(id).subscribe(() => this.getAllCourses());
+  }
+
   
 
   // showEditTeacher(id: number): void {

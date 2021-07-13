@@ -25,6 +25,9 @@ public class CourseSpecification {
 
     @Column(name = "code")
     private String code;
+    
+    @Column(name = "active")
+    private boolean active = true;
 
     @OneToMany(
             mappedBy = "courseSpecification",
@@ -53,7 +56,7 @@ public class CourseSpecification {
     
 
     public CourseSpecification(Long id, String title, int eCTS, String code, List<CourseInstance> courseInstances,
-			List<Enrollment> enrollments, List<Teaching> teachings) {
+			List<Enrollment> enrollments, List<Teaching> teachings, boolean active) {
 		this.id = id;
 		this.title = title;
 		this.ECTS = eCTS;
@@ -61,7 +64,9 @@ public class CourseSpecification {
 		this.courseInstances = courseInstances;
 		this.enrollments = enrollments;
 		this.teachings = teachings;
+		this.active = active;
 	}
+
 
 	public CourseSpecification() {
     }
@@ -120,6 +125,14 @@ public class CourseSpecification {
 
 	public void setTeachings(List<Teaching> teachings) {
 		this.teachings = teachings;
+	}
+	
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 }

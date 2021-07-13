@@ -74,4 +74,16 @@ export class AdminCoursesServiceService {
     return this.http.put<Course>(url, course, requestOptions);
   }
 
+  deleteCourse(courseId: number): Observable<any> {
+    const headInfo = {
+      'Content-Type': 'application/json',
+      'X-Auth-Token': "" + this.authService.getToken()
+    }
+    const requestOptions = {
+      headers: new HttpHeaders(headInfo)
+    };
+    const url = `${this.URL_COURSES}/${courseId}`;
+    return this.http.delete<any>(url, requestOptions);
+  }
+
 }
