@@ -1,16 +1,15 @@
 package com.uni.UniversityWebService.services;
 
-import com.uni.UniversityWebService.model.Role;
-import com.uni.UniversityWebService.model.Student;
-import com.uni.UniversityWebService.model.Teacher;
-import com.uni.UniversityWebService.model.User;
-import com.uni.UniversityWebService.repositories.StudentRepository;
-import com.uni.UniversityWebService.repositories.TeacherRepository;
-import com.uni.UniversityWebService.repositories.UserRepository;
+import com.uni.UniversityWebService.model.*;
+import com.uni.UniversityWebService.model.dto.RegisterExamDto;
+import com.uni.UniversityWebService.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -23,6 +22,12 @@ public class UserService {
 
     @Autowired
     private StudentRepository studentRepository;
+
+    @Autowired
+    private TeachingRepository teachingRepository;
+
+    @Autowired
+    private CourseSpecificationRepository courseSpecificationRepository;
 
     public List<User> findAll(){
         return userRepository.findAll();
@@ -50,6 +55,33 @@ public class UserService {
         teacherRepository.save(teacher);
         return teacher;
     }
+    public List<RegisterExamDto> getAllRegisterExams(){
+        List<CourseSpecification>courseList=courseSpecificationRepository.findAll();
+        List<Teaching> teachingList=teachingRepository.findAll();
+        List<RegisterExamDto>registerExamDtos= new ArrayList<>();
+
+        for(Teaching t : teachingList){
+
+
+            for (ExamPart ep : t.getExam().getExamParts()){
+                RegisterExamDto registerExamDto=new RegisterExamDto();
+                registerExamDto.setTeacher(t.getTeacher().getLastName()+" "+t.getTeacher().getFirstName());
+                registerExamDto.setCourse(t.getCourseSpecification().getTitle());
+                registerExamDto.setPrice(200);
+                registerExamDto.setClassroom(ep.getClassroom());
+                registerExamDto.setExamDateTime(ep.getExamPartStartDate());
+
+                registerExamDtos.add(registerExamDto);
+            }
+
+
+
+        }
+        Set<RegisterExamDto> hSetReg= new HashSet<>(registerExamDtos);
+        List<RegisterExamDto> returnList=new ArrayList<>(hSetReg);
+        return returnList;
+    }
+
 
     public User updateUser(User user){
         User userToUpdate = userRepository.findById(user.getId()).get();
