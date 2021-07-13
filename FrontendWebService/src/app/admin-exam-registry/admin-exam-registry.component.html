@@ -1,0 +1,39 @@
+<div  div class="bg-light p-4 rounded">
+    <h3>{{ title }}
+    </h3>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Course</th>
+          <th scope="col">Classroom</th>
+          <th scope="col">Price</th>
+          <th scope="col">Date</th>
+          <th scope="col">Time</th>
+          <th scope="col">Teacher</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let adminExamRegistry of adminExamRegistrys; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>
+            {{ adminExamRegistry.course }}
+          </td>
+          <td>{{ adminExamRegistry.classroom }}</td>
+          <td>
+            {{ adminExamRegistry.price }}
+          </td>
+          <td>{{ adminExamRegistry.date }}</td>
+          
+          <td>
+            {{ adminExamRegistry.time }}
+          </td>
+          <td>
+            {{ adminExamRegistry.teacher }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </div>

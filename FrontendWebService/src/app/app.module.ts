@@ -44,6 +44,7 @@ import { AdminCoursesComponent } from './components/admin-courses/admin-courses.
 import { AdminCoursesDetailsComponent } from './components/admin-courses-details/admin-courses-details.component';
 import { ProfessorStudentTableComponent } from './components/professor-student-table/professor-student-table.component';
 import { CourseServiceService } from './services/course-service.service';
+import { AdminExamRegistryComponent } from './admin-exam-registry/admin-exam-registry.component';
 
 @NgModule({
   declarations: [ 
@@ -77,7 +78,8 @@ import { CourseServiceService } from './services/course-service.service';
     AdminCoursesComponent,
     AdminCoursesDetailsComponent,
     CourseTableComponent,
-    ProfessorStudentTableComponent
+    ProfessorStudentTableComponent,
+    AdminExamRegistryComponent
   ],
   imports: [
     AppRoutingModule,
