@@ -15,7 +15,7 @@ public class ExamPartProfessorDto {
     private String classroom;
     private String course;
 
-    public Long getId() {
+   public Long getId() {
         return id;
     }
 
@@ -47,5 +47,26 @@ public class ExamPartProfessorDto {
 
     public void setCourse(String course) {
         this.course = course;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + course.hashCode();
+
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (!(obj instanceof ExamPartProfessorDto))
+            return false;
+
+        return this.course.equals(((ExamPartProfessorDto) obj).getCourse());
+
     }
 }
