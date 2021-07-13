@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr app-exam-part-row [examPart]="examPart" [index]="i" *ngFor="let examPart of examParts; let i = index"></tr>
+        <tr app-exam-part-row [examPart]="examPart" [selectedEnrollment]="selectedEnrollment" [index]="i" *ngFor="let examPart of examParts; let i = index"></tr>
       </tbody>
     </table>
   </div>

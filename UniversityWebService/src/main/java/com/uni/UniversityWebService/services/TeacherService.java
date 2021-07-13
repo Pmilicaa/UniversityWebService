@@ -7,7 +7,7 @@ import java.util.Set;
 
 import com.uni.UniversityWebService.model.*;
 import com.uni.UniversityWebService.model.dto.ExamPartProfessorDto;
-import com.uni.UniversityWebService.model.dto.RegisterExamDto;
+
 import com.uni.UniversityWebService.repositories.TeachingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -70,7 +70,7 @@ public class TeacherService {
 
 		List<Teaching> teachingAll=teachingRepository.findAll();
 		for(Teaching t : teachingAll) {
-			if (t.getTeacher().getId() == id){
+			if (t.getTeacher().getId().equals(id)){
 
 				for (ExamPart ep : t.getExam().getExamParts()) {
                     if(period.equals(t.getExam().getExamPeriod().getName()) ){

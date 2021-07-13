@@ -1,13 +1,13 @@
-import { CourseInstance } from "./CourseInstanse";
+import { CourseSpecification } from "./CourseSpecification";
 import ExamPart from "./ExamPart";
 import { Student } from "./Student";
 
 export class ExamRegistration{
     id:number;
     student: Student;
-    course: CourseInstance;
+    course: CourseSpecification;
     dateOfRegistration:Date;
     price:number;
     examPart: ExamPart;
-    classRoom: string;
+    classroom: string;
 }
