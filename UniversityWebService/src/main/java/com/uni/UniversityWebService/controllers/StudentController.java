@@ -101,10 +101,10 @@ public class StudentController {
     		return new ResponseEntity<StudentDto>(HttpStatus.BAD_REQUEST);
     	}
     	
-    	Student izmenjenStudent = studentDto.convertStudentDtoToStudent(student);
+    	Student changedStudent = studentDto.convertStudentDtoToStudent(student);
     	User user = userService.findById(student.getUser().getId());
-    	izmenjenStudent.setUser(user);
-    	student = studentService.saveStudent(izmenjenStudent);
+    	changedStudent.setUser(user);
+    	student = studentService.saveStudent(changedStudent);
     	return new ResponseEntity<StudentDto>(new StudentDto(student), HttpStatus.OK);
     }
 

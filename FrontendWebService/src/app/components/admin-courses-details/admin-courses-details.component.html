@@ -20,3 +20,27 @@
         </tbody>
     </table>
 </div>
+
+<div id="editCourse">
+  <h2>{{ title2 }}</h2>
+  <form>
+    <div class="row mb-3">
+      <label for="inputFirstName" class="col-sm-2 col-form-label">Title</label>
+      <div class="col-sm-10">
+        <input type="text" [(ngModel)]="course.title" id="inputtitle" name="title" class="form-control">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputLastName3" class="col-sm-2 col-form-label">ECTS</label>
+      <div class="col-sm-10">
+        <input type="text" [(ngModel)]="course.ects" name="ects" id="inputects" class="form-control">
+      </div>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary" style="float: right;" (click)="goBack()">Cancel</button>
+    </div>
+    <div class="col-11">
+      <button type="submit" class="btn btn-primary" style="float: right;" (click)="editCourse()">Confirm</button>
+    </div>
+  </form>
+</div>

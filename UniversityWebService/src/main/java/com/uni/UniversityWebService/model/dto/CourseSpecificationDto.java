@@ -24,6 +24,13 @@ public class CourseSpecificationDto {
         this.courseInstanceDtos = convertCourseInstancesToDtos(courseSpecification.getCourseInstances());
         //this.enrollmentDtos = convertEnrollmentToDtos(courseSpecification.getEnrollments());
     }
+    
+    public CourseSpecification convertCourseSpecificationDtoToCS(CourseSpecification courseSpecification) {
+    	courseSpecification.setId(this.getId());
+    	courseSpecification.setTitle(this.getTitle());
+    	courseSpecification.setECTS(this.ECTS);
+    	return courseSpecification;
+    }
 
     public List<CourseInstanceDto> convertCourseInstancesToDtos(List<CourseInstance> courseInstances){
         List<CourseInstanceDto> courseInstanceDtos = new ArrayList<>();

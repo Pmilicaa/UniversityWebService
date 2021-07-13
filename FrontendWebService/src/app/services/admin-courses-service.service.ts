@@ -26,6 +26,18 @@ export class AdminCoursesServiceService {
     return this.http.get<Course[]>(this.URL_COURSES, requestOptions);
   }
 
+  getCourse(courseId: number): Observable<Course> {
+    const headInfo = {
+      'Content-Type': 'application/json',
+      'X-Auth-Token': "" + this.authService.getToken()
+    }
+    const requestOptions = {
+      headers: new HttpHeaders(headInfo)
+    };
+    const url = `${this.URL_COURSES}/${courseId}`
+    return this.http.get<Course>(url, requestOptions);
+  }
+
   getTeachersByCourse(courseId: number): Observable<Professor[]> {
     const headInfo = {
       'Content-Type': 'application/json',
@@ -48,6 +60,18 @@ export class AdminCoursesServiceService {
     };
     const url = `${this.URL_COURSES}/${courseId}/courseInstances`
     return this.http.get<CourseInstance[]>(url, requestOptions);
+  }
+
+  updateCourse(courseId: number, course: Course): Observable<Course> {
+    const headInfo = {
+      'Content-Type': 'application/json',
+      'X-Auth-Token': "" + this.authService.getToken()
+    }
+    const requestOptions = {
+      headers: new HttpHeaders(headInfo)
+    };
+    const url = `${this.URL_COURSES}/${courseId}`
+    return this.http.put<Course>(url, course, requestOptions);
   }
 
 }

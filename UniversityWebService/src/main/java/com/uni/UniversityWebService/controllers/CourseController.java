@@ -6,6 +6,7 @@ import com.uni.UniversityWebService.model.Teacher;
 import com.uni.UniversityWebService.model.Teaching;
 import com.uni.UniversityWebService.model.dto.CourseInstanceDto;
 import com.uni.UniversityWebService.model.dto.CourseSpecificationDto;
+import com.uni.UniversityWebService.model.dto.StudentDto;
 import com.uni.UniversityWebService.model.dto.TeacherDto;
 import com.uni.UniversityWebService.repositories.CourseSpecificationRepository;
 import com.uni.UniversityWebService.repositories.TeachingRepository;
@@ -56,6 +57,15 @@ public class CourseController {
     	return new ResponseEntity<List<CourseSpecificationDto>>(coursesDto, HttpStatus.OK);
     }
     
+    @GetMapping(path = "/courses/{courseId}")
+    public @ResponseBody ResponseEntity<CourseSpecificationDto> getCourse(@PathVariable("courseId") Long courseId) {
+    	CourseSpecification cs = courseSpecificationRepository.findById(courseId).get();
+    	if(cs == null) {
+    		return new ResponseEntity<CourseSpecificationDto>(HttpStatus.NOT_FOUND);
+    	}
+    	return new ResponseEntity<CourseSpecificationDto>(new CourseSpecificationDto(cs), HttpStatus.OK);
+    }
+    
     @GetMapping(path = "/courses/{courseId}/teachers")
 	 public @ResponseBody ResponseEntity<List<TeacherDto>> getAllTeacherByCourse(@PathVariable("courseId") Long courseId) {
 		 List<Teaching> teachings = teachingService.findAllByCourse(courseId);
@@ -82,6 +92,21 @@ public class CourseController {
 			 courseInstancesDto.add(new CourseInstanceDto(ci));
 		 }
 		 return new ResponseEntity<List<CourseInstanceDto>>(courseInstancesDto, HttpStatus.OK);
+	 }
+	 
+	 @PutMapping(path = "/courses/{courseId}")
+	 public @ResponseBody ResponseEntity<CourseSpecificationDto> updateCourse(@RequestBody CourseSpecificationDto courseSpecificationDto, @PathVariable("courseId") Long courseId) {
+		 if(!courseId.equals(courseSpecificationDto.getId())) {
+			 return new ResponseEntity<CourseSpecificationDto>(HttpStatus.NOT_FOUND);
+		 }
+		 CourseSpecification cs = courseSpecificationRepository.findById(courseId).get();
+		 if(cs == null) {
+	    	return new ResponseEntity<CourseSpecificationDto>(HttpStatus.BAD_REQUEST);
+	     }
+		 CourseSpecification changedCourseSpecification = courseSpecificationDto.convertCourseSpecificationDtoToCS(cs);
+		 cs = courseService.saveCourseSpecification(changedCourseSpecification);
+		 
+		 return new ResponseEntity<CourseSpecificationDto>(new CourseSpecificationDto(cs), HttpStatus.OK);
 	 }
 
 }

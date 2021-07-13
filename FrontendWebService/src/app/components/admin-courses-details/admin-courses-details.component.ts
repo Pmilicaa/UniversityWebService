@@ -1,5 +1,7 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Course } from 'src/app/models/Course';
 import { CourseInstance } from 'src/app/models/CourseInstanse';
 import { Professor } from 'src/app/models/Professor';
 import { AdminCoursesServiceService } from 'src/app/services/admin-courses-service.service';
@@ -18,12 +20,19 @@ export class AdminCoursesDetailsComponent implements OnInit {
 
   title ="Details for course";
   endDateMessage = "Active"
+  title2: String = "Edit Course";
 
-  constructor(private adminCourseService: AdminCoursesServiceService, private activatedRoute: ActivatedRoute) { }
+  course: Course = {
+    title: ' ',
+    ects: +' ',
+    code: ' '
+  }
+
+  constructor(private adminCourseService: AdminCoursesServiceService, private activatedRoute: ActivatedRoute, private route: Router, private location: Location) { }
 
   ngOnInit(): void {
     this.getCI();
-    console.log(this.courseInstances);
+    this.getCS();
   }
 
   getCI() {
@@ -37,6 +46,19 @@ export class AdminCoursesDetailsComponent implements OnInit {
       console.log(this.courseInstances);
       });
     });
+  }
+
+  getCS() {
+    this.id=+this.activatedRoute.snapshot.params["id"];
+    this.adminCourseService.getCourse(this.id).subscribe((course) => {this.course = course});
+  }
+
+  editCourse(): void {
+    this.adminCourseService.updateCourse(this.course.id, this.course).subscribe(() => this.route.navigate(["AdminCourses"]));
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }
