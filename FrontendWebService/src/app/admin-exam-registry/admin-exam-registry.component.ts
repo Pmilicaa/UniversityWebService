@@ -10,6 +10,7 @@ export class AdminExamRegistryComponent implements OnInit {
   title = "Exam Registry";
   constructor(private userServiceService: UserServiceService) { }
   adminExamRegistrys: AdminExamRegistry[] ;
+  public selectedAdminExamRegistry:AdminExamRegistry = new AdminExamRegistry();
   ngOnInit(): void {
     this.userServiceService.getAllExamRegistrys()
                            .subscribe((adminExamRegistrys)=>{this.adminExamRegistrys=adminExamRegistrys
@@ -23,4 +24,25 @@ export class AdminExamRegistryComponent implements OnInit {
       );
   }
 
+  editExams(){
+    console.log(this.selectedAdminExamRegistry);
+    this.userServiceService.editExamPartRegistry(this.selectedAdminExamRegistry).subscribe((result) => {
+      if(result){
+        this.selectedAdminExamRegistry=new AdminExamRegistry();
+        
+
+
+      }
+    });
+  }
+  public showeditExams(selectedAdminExamRegistry: AdminExamRegistry): void {
+    this.selectedAdminExamRegistry=JSON.parse(JSON.stringify(selectedAdminExamRegistry));
+
+    let x = document.getElementById("editExams");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
 }

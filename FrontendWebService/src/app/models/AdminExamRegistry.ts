@@ -9,6 +9,7 @@ export default class AdminExamRegistryComponent{
     teacher : string;
     classroom: string;
     examPeriod : string;
+    examPartType : string;
     date : string;
     time : string;
 

@@ -31,4 +31,16 @@ export class UserServiceService {
     };
     return this.http.get<AdminExamRegistry[]>(this.URL2,requestOptions);
   }
+  editExamPartRegistry(adminExamRegistry:AdminExamRegistry):Observable<AdminExamRegistry>{
+    const headInfo = {
+      'Content-Type': 'application/json',
+      'X-Auth-Token': "" + this.authService.getToken()
+      
+    }
+    const requestOptions = {
+      headers: new HttpHeaders(headInfo)
+    };
+    return this.http.put<AdminExamRegistry>(this.URL2,adminExamRegistry,requestOptions)
+  }
+
 }

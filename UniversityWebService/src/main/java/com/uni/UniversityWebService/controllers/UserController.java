@@ -1,9 +1,6 @@
 package com.uni.UniversityWebService.controllers;
 
-import com.uni.UniversityWebService.model.Role;
-import com.uni.UniversityWebService.model.Student;
-import com.uni.UniversityWebService.model.Teacher;
-import com.uni.UniversityWebService.model.User;
+import com.uni.UniversityWebService.model.*;
 import com.uni.UniversityWebService.model.dto.RegisterExamDto;
 import com.uni.UniversityWebService.services.StudentService;
 import com.uni.UniversityWebService.services.UserService;
@@ -86,4 +83,11 @@ public class UserController {
 
         return new ResponseEntity(userService.getAllRegisterExams(), HttpStatus.OK);
     }
+    @PutMapping(path = "/examRegistery")
+    public @ResponseBody ResponseEntity<?> updateExamPart(@RequestBody RegisterExamDto registerExamDto){
+        RegisterExamDto registerExamDto1 = userService.examPartUpdate(registerExamDto);
+
+        return new ResponseEntity(registerExamDto1, HttpStatus.OK);
+    }
+
 }

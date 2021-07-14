@@ -1,5 +1,6 @@
 package com.uni.UniversityWebService.model.dto;
 
+import com.uni.UniversityWebService.model.ExamPartType;
 import com.uni.UniversityWebService.model.ExamPeriod;
 
 import java.util.Date;
@@ -12,6 +13,15 @@ public class RegisterExamDto {
             private String teacher;
             private String classroom;
             private ExamPeriod examPeriod;
+            private String examPartType;
+
+    public String getExamPartType() {
+        return examPartType;
+    }
+
+    public void setExamPartType(String examPartType) {
+        this.examPartType = examPartType;
+    }
 
     public String getCourse() {
         return course;
@@ -77,8 +87,10 @@ public class RegisterExamDto {
             return false;
         if (!(obj instanceof RegisterExamDto))
             return false;
+        RegisterExamDto registerExamDto = (RegisterExamDto) obj;
 
-        return this.course == ((RegisterExamDto) obj).getCourse();
+        return registerExamDto.getCourse()==this.getCourse() &&
+                registerExamDto.getExamPartType()==this.getExamPartType();
 
 
     }

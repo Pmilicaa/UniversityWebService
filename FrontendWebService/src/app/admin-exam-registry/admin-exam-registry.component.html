@@ -12,6 +12,8 @@
           <th scope="col">Date</th>
           <th scope="col">Time</th>
           <th scope="col">Teacher</th>
+          <th scope="col">Exam Type</th>
+          <th scope="col">Edit</th>
         </tr>
       </thead>
       <tbody>
@@ -32,8 +34,41 @@
           <td>
             {{ adminExamRegistry.teacher }}
           </td>
+          <td>
+            {{ adminExamRegistry.examPartType }}
+          </td>
+          <td>
+            <button type="button" class="btn btn-info" (click)="showeditExams(adminExamRegistry)" >Edit</button>
+          </td>
         </tr>
       </tbody>
     </table>
-    
   </div>
+
+    <div id="editExams" div class="bg-light p-4 rounded">
+      <h2>Edit Exam Part</h2>
+      <form  (ngSubmit)="editExams()">
+        <div class="row mb-3">
+          <label for="inputFirstName" class="col-sm-2 col-form-label">Classroom</label>
+          <div class="col-sm-10">
+            <input [(ngModel)]="selectedAdminExamRegistry.classroom" type="text" id="inputclassroomEdit" class="form-control" placeholder="Enter the classroom" name="classroom" >
+          </div>
+        
+        </div>
+        <div class="row mb-3">
+          <label for="inputlastName" class="col-sm-2 col-form-label">Date and Time</label>
+          <div class="col-sm-10">
+            <input [(ngModel)]="selectedAdminExamRegistry.examDateTime" type="text" id="inputexamDateTimeEdit" class="form-control" placeholder="Enter the examDateTime" name="examDateTime" >
+          </div>
+
+        </div>
+        <div class="row mb-3">
+        <div class="col-12">
+          <button type="button" class="btn btn-primary " style="float: right;">Cancel</button>
+          <button type="submit" class="btn btn-primary mr-2" style="float: right;" >Confirm</button>
+        </div>
+        
+        
+      </div>
+      </form>
+    </div>
