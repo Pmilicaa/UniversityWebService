@@ -1,6 +1,7 @@
 package com.uni.UniversityWebService.services;
 
 import com.uni.UniversityWebService.model.*;
+import com.uni.UniversityWebService.model.dto.ExamRegistrationDto;
 import com.uni.UniversityWebService.model.dto.RegisterExamDto;
 import com.uni.UniversityWebService.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,12 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ExamPartRepository examPartRepository;
+
+    @Autowired
+    private EnrollmentRepository enrollmentRepository;
 
     @Autowired
     private TeacherRepository teacherRepository;
@@ -70,7 +77,7 @@ public class UserService {
                 registerExamDto.setPrice(200);
                 registerExamDto.setClassroom(ep.getClassroom());
                 registerExamDto.setExamDateTime(ep.getExamPartStartDate());
-
+                registerExamDto.setExamPartType(ep.getExamPartType().getName());
                 registerExamDtos.add(registerExamDto);
             }
 
@@ -81,7 +88,37 @@ public class UserService {
         List<RegisterExamDto> returnList=new ArrayList<>(hSetReg);
         return returnList;
     }
+    public List<RegisterExamDto>getAllRegisterExams(String period){
 
+        List<CourseSpecification>courseList=courseSpecificationRepository.findAll();
+        List<Teaching> teachingList=teachingRepository.findAll();
+        List<RegisterExamDto>registerExamDtos= new ArrayList<>();
+
+        for(Teaching t : teachingList){
+
+
+            for (ExamPart ep : t.getExam().getExamParts()){
+
+                if(period.equals(t.getExam().getExamPeriod().getName())) {
+                    RegisterExamDto registerExamDto = new RegisterExamDto();
+                    registerExamDto.setTeacher(t.getTeacher().getLastName() + " " + t.getTeacher().getFirstName());
+                    registerExamDto.setCourse(t.getCourseSpecification().getTitle());
+                    registerExamDto.setPrice(200);
+                    registerExamDto.setClassroom(ep.getClassroom());
+                    registerExamDto.setExamDateTime(ep.getExamPartStartDate());
+                    registerExamDto.setExamPartType(ep.getExamPartType().getName());
+                    registerExamDtos.add(registerExamDto);
+                } }
+
+
+
+        }
+        Set<RegisterExamDto> hSetReg= new HashSet<>(registerExamDtos);
+        List<RegisterExamDto> returnList=new ArrayList<>(hSetReg);
+        return returnList;
+
+
+    }
 
     public User updateUser(User user){
         User userToUpdate = userRepository.findById(user.getId()).get();
@@ -103,7 +140,30 @@ public class UserService {
 
         return teacherToUpdate;
     }
+    public RegisterExamDto examPartUpdate(RegisterExamDto registerExamDto){
+        ExamPart examPart=new ExamPart();
+        List<Enrollment> enrollments= enrollmentRepository.findAll();
+        for(Enrollment e : enrollments){
 
+            if(e.getCourseSpecification().getTitle().equals(registerExamDto.getCourse())){
+                Set<ExamPart> examParts=e.getExam().getExamParts();
+                for(ExamPart ep : examParts){
+
+                    if(ep.getExamPartType().getName().equals(registerExamDto.getExamPartType())){
+
+                        ep.setClassroom(registerExamDto.getClassroom());
+                        ep.setExamPartStartDate(registerExamDto.getExamDateTime());
+                        examPartRepository.save(ep);
+                        examPart=ep;
+                    }
+
+                }
+
+            }
+
+        }
+        return registerExamDto;
+    }
     
     public void deleteUser(User user) {
     	userRepository.delete(user);
