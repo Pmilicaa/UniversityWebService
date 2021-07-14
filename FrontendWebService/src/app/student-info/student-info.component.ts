@@ -16,6 +16,7 @@ export class StudentInfoComponent implements OnInit {
     cardNumber: "",
     balance: 0,
     accountNumber: 123123,
+    active: true,
     user: {
       userName: "",
       role: "",

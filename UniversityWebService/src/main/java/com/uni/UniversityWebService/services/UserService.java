@@ -110,8 +110,8 @@ public class UserService {
     }
 
     public void deleteTeacher(Teacher teacher){
-        Teacher teacherToDelete = teacherRepository.findById(teacher.getId()).get();
-        teacherRepository.delete(teacherToDelete);
+        teacher.setActive(false);
+        teacherRepository.save(teacher);
 
 
     }

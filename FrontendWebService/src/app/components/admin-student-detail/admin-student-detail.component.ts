@@ -19,6 +19,7 @@ export class AdminStudentDetailComponent implements OnInit {
     cardNumber: '',
     balance: +'',
     accountNumber: +'',
+    active: null,
     user: null
   }
   id: number;

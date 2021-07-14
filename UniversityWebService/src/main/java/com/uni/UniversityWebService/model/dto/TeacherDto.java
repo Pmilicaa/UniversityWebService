@@ -18,6 +18,7 @@ public class TeacherDto {
 	private String lastName;
 	private String username;
     private TeachingType teachingType;
+    private boolean active;
 	private Set<Exam> exams = new HashSet<Exam>();
 	private Set<ExamPart> examParts = new HashSet<ExamPart>();
 	
@@ -28,6 +29,7 @@ public class TeacherDto {
 		this.firstName = teacher.getFirstName();
 		this.lastName = teacher.getLastName();
 		this.username = teacher.getUser().getUserName();
+		this.active = teacher.isActive();
 		
 	}
 	
@@ -86,4 +88,12 @@ public class TeacherDto {
 		this.username = username;
 	}
 
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	
 }

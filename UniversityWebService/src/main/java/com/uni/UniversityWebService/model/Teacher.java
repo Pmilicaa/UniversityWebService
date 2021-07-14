@@ -17,6 +17,9 @@ public class Teacher {
 
     @Column(name="lastName")
     private String lastName;
+    
+    @Column(name = "active")
+	private boolean active = true;
 
     @OneToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name="User_id", referencedColumnName = "id")
@@ -30,17 +33,19 @@ public class Teacher {
     private List<Teaching> teachings;
 
 
-    public Teacher(Long id,String firstName,String lastName,List<Teaching> teachings){
+    public Teacher(Long id,String firstName,String lastName,List<Teaching> teachings, boolean active){
         this.id=id;
         this.firstName=firstName;
         this.lastName=lastName;
         this.teachings= teachings;
+        this.active=active;
     }
 
-    public Teacher(String firstName,String lastName,List<Teaching> teachings){
+    public Teacher(String firstName,String lastName,List<Teaching> teachings, boolean active){
         this.firstName=firstName;
         this.lastName=lastName;
         this.teachings= teachings;
+        this.active=active;
     }
 
     public Teacher(){
@@ -84,4 +89,13 @@ public class Teacher {
     public void setTeachings(List<Teaching> teachings) {
         this.teachings = teachings;
     }
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+    
 }

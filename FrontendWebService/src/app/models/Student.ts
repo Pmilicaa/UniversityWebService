@@ -7,6 +7,7 @@ export class Student implements StudentInterface {
     cardNumber:string;
     balance:number;
     accountNumber:number;
+    active: boolean
     user: User;
 
 constructor(studentCfg: StudentInterface)
@@ -17,6 +18,7 @@ constructor(studentCfg: StudentInterface)
         this.cardNumber = studentCfg.cardNumber;
         this.balance = studentCfg.balance;
         this.accountNumber = studentCfg.accountNumber;
+        this.active =studentCfg.active;
         this.user = studentCfg.user;		
 	}
 }
@@ -28,5 +30,6 @@ interface StudentInterface{
     cardNumber:string;
     balance:number;
     accountNumber:number;
+    active:boolean;
     user: User;
 }

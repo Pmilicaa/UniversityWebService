@@ -12,15 +12,17 @@
     </thead>
     <tbody>
       <tr *ngFor = "let professor of professors; let i = index">
-        <th scope="row">{{ i + 1 }}</th>
-        <td>{{ professor.firstName }}</td>
-        <td>{{ professor.lastName }}</td>
-        <td>
-          <button type="button" class="btn btn-danger" (click)="removeTeacher(professor)">Delete</button>
-        </td>
-        <td>
-          <button type="button" class="btn btn-info" (click)="showEditTeacher(professor)">Edit</button>
-        </td>
+        <ng-container *ngIf="professor.active">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ professor.firstName }}</td>
+          <td>{{ professor.lastName }}</td>
+          <td>
+            <button type="button" class="btn btn-danger" (click)="removeTeacher(professor)">Delete</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-info" (click)="showEditTeacher(professor)">Edit</button>
+          </td>
+        </ng-container>
       </tr>
     </tbody>
   </table>

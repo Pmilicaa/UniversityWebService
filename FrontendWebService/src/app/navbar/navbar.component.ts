@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Student } from '../models/Student';
 import { AuthenticationServiceService } from '../services/authentication-service.service';
+import { StudentServiceService } from '../services/student-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +11,9 @@ import { AuthenticationServiceService } from '../services/authentication-service
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private authService: AuthenticationServiceService) { }
+  student: Student;
+
+  constructor(private authService: AuthenticationServiceService, private studentService: StudentServiceService, private router: Router) { }
 
   onLogout(): void {
     this.authService.logout();
@@ -16,6 +21,18 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.studentService.getMe().subscribe((student)=>{
+      this.student=student
+      setTimeout(() => {
+        if (this.student.active == false) {
+          this.logout();
+        }
+    }, 1);});
+  }
+
+  logout(): void{
+    this.authService.logout();
+    this.router.navigate(['login']);
   }
 
 }

@@ -1,7 +1,7 @@
 <nav class="nav">
     <a class="nav-link Students" routerLink = "/adminStudents" style="color: black;">Students</a>
     <a class="nav-link Professors" routerLink = "/adminProfessors" style="color: black;" href="#">Professors</a>
-    <a class="nav-link Exams" routerLink = "/exam" style="color: black;" href="#">Exams</a>
+    <a class="nav-link Exams" routerLink = "/examRegistery" style="color: black;" href="#">Exams</a>
     <a class="nav-link Courses" routerLink = "/AdminCourses" style="color: black;" href="#">Courses</a>
     <a *ngIf="loggedIn()" class="nav-link Logout" style="color: black;" (click)="logout()" href="#">Logout</a>
 </nav>

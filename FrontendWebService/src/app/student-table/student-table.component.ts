@@ -18,6 +18,7 @@ export class StudentTableComponent implements OnInit {
       cardNumber: "12313rfr35y24ygw3r5325",
       balance: 15000,
       accountNumber: 423756547967,
+      active: true,
       user: {
         userName: "aleksa123",
         password:"asdasd",
@@ -31,6 +32,7 @@ export class StudentTableComponent implements OnInit {
       cardNumber: "345yuikj4567890g",
       balance: 15000,
       accountNumber: 234567890,
+      active: true,
       user: {
         userName: "aleksa123",
         password:"asdasd",

@@ -61,7 +61,8 @@ public class StudentService {
 	}
 	
 	public void remove(Student student) {
-			studentRepository.delete(student);
+		student.setActive(false);
+		studentRepository.save(student);
 	}
 
 	public List<Student> findAllStudents(){

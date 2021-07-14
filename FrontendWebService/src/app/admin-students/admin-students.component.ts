@@ -29,6 +29,7 @@ export class AdminStudentsComponent implements OnInit {
       balance: +form.value.balance,
       cardNumber: form.value.cardnumber,
       accountNumber: +form.value.accountnumber,
+      active: true,
       user: new User({
         userName: form.value.username,
         password: form.value.password,

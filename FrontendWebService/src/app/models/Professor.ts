@@ -6,6 +6,7 @@ export class Professor{
     id:number;
     firstName:string;
     lastName:string;
+    active:boolean;
     teaching: Teaching[];
     user: User;
     constructor(){ 

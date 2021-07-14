@@ -13,16 +13,18 @@
     </thead>
     <tbody>
       <tr *ngFor = "let student of students; let i = index">
-        <th scope="row">{{ i + 1 }}</th>
-        <td>{{ student.firstName }}</td>
-        <td>{{ student.lastName }}</td>
-        <td>{{ student.cardNumber }}</td>
-        <td>
-          <button type="button" class="btn btn-danger" (click)="deleteStudent(student.id)">Delete</button>
-        </td>
-        <td>
-          <button type="button" class="btn btn-info" (click)="gotoEdit(student.id)">Edit</button>
-        </td>
+        <ng-container *ngIf="student.active">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ student.firstName }}</td>
+          <td>{{ student.lastName }}</td>
+          <td>{{ student.cardNumber }}</td>
+          <td>
+            <button type="button" class="btn btn-danger" (click)="deleteStudent(student.id)">Delete</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-info" (click)="gotoEdit(student.id)">Edit</button>
+          </td>
+        </ng-container>
       </tr>
     </tbody>
   </table>

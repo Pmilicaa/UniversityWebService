@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Professor } from '../models/Professor';
 import { AuthenticationServiceService } from '../services/authentication-service.service';
+
 
 @Component({
   selector: 'app-admin-profile',
@@ -9,10 +11,13 @@ import { AuthenticationServiceService } from '../services/authentication-service
 })
 export class AdminProfileComponent implements OnInit {
 
+  
+
   constructor(private authService: AuthenticationServiceService,
               private router: Router) { }
 
   ngOnInit(): void {
+    
   }
 
   loggedIn(): boolean{
@@ -23,5 +28,7 @@ export class AdminProfileComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(['login']);
   }
+
+  
 
 }

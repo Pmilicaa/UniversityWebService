@@ -18,6 +18,7 @@ public class StudentDto {
 	private String cardNumber;
 	private Integer balance;
 	private Integer accountNumber;
+	private boolean active;
 	private List<TransactionDto> transactionsDto;
 	private List<EnrollmentDto> enrollmentsDto;
 	private UserDto userDto;
@@ -34,6 +35,7 @@ public class StudentDto {
 		this.cardNumber = student.getCardNumber();
 		this.balance = student.getBalance();
 		this.accountNumber = student.getAccountNumber();
+		this.active = student.isActive();
 		this.transactionsDto = convertTransactionsToDtos(student.getTransactions());
 //		this.enrollmentsDto = convertEnrollmentsToDtos(student.getEnrollments());
 		this.userDto = new UserDto(student.getUser());
@@ -139,6 +141,14 @@ public class StudentDto {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 	
 }

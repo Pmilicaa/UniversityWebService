@@ -28,6 +28,9 @@ public class Student {
 	@Column(name="accountNumber")
 	private Integer accountNumber;
 	
+	@Column(name = "active")
+	private boolean active = true;
+	
 	@OneToMany(
 			cascade = CascadeType.ALL,
 			fetch = FetchType.LAZY
@@ -60,7 +63,7 @@ public class Student {
 
 	public Student(Long id, String firstName, String lastName, String cardNumber, Integer balance,
 			Integer accountNumber, List<Document> documents, List<Transaction> transactions,
-			List<Enrollment> enrollments,User user) {
+			List<Enrollment> enrollments,User user, boolean active) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -72,6 +75,7 @@ public class Student {
 		this.transactions = transactions;
 		this.enrollments = enrollments;
 		this.user=user;
+		this.active = active;
 
 	}
 
@@ -136,4 +140,13 @@ public class Student {
 	}
 	public User getUser() { return user; }
 	public void setUser(User user) { this.user = user; }
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	
 }

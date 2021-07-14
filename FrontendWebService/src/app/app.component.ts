@@ -10,6 +10,7 @@ export class AppComponent {
   title = 'FrontendWebService';
   roles: string[]= [];
   currentUser: any;
+  
 
   constructor(private router: Router) { 
 
@@ -19,6 +20,7 @@ export class AppComponent {
     this.roles = this.getCurrentUser().roles;
     this.currentUser = this.getCurrentUser();
   }
+  
 
   getCurrentUser() {
     if (localStorage.currentUser) {
