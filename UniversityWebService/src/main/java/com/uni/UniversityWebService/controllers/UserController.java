@@ -83,6 +83,12 @@ public class UserController {
 
         return new ResponseEntity(userService.getAllRegisterExams(), HttpStatus.OK);
     }
+    @GetMapping(path = "/examRegistery/{period}")
+    public ResponseEntity<?> getAllRegisterExamsByPeriod(@PathVariable("period") String period){
+
+
+        return new ResponseEntity(userService.getAllRegisterExams(period), HttpStatus.OK);
+    }
     @PutMapping(path = "/examRegistery")
     public @ResponseBody ResponseEntity<?> updateExamPart(@RequestBody RegisterExamDto registerExamDto){
         RegisterExamDto registerExamDto1 = userService.examPartUpdate(registerExamDto);

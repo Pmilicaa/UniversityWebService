@@ -1,6 +1,14 @@
 <div  div class="bg-light p-4 rounded">
     <h3>{{ title }}
+      <select
+      (change)="filterByPeriod($event.target.value)"
+       [(ngModel)]="selectedOption">
+        <option *ngFor="let o of options">
+           {{o.name}}
+        </option>
+     </select>
     </h3>
+   
     
     <table class="table">
       <thead>
