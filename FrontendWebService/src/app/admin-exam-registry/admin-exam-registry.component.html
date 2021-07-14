@@ -14,13 +14,13 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Course</th>
-          <th scope="col">Classroom</th>
-          <th scope="col">Price</th>
-          <th scope="col">Date</th>
-          <th scope="col">Time</th>
-          <th scope="col">Teacher</th>
-          <th scope="col">Exam Type</th>
+          <th [appSort]="adminExamRegistrys" data-order="desc" data-name="course" scope="col">Course</th>
+          <th [appSort]="adminExamRegistrys" data-order="desc" data-name="classroom" scope="col">Classroom</th>
+          <th [appSort]="adminExamRegistrys" data-order="desc" data-name="price" scope="col">Price</th>
+          <th [appSort]="adminExamRegistrys" data-order="desc" data-name="date" scope="col">Date</th>
+          <th [appSort]="adminExamRegistrys" data-order="desc" data-name="time" scope="col">Time</th>
+          <th [appSort]="adminExamRegistrys" data-order="desc" data-name="teacher" scope="col">Teacher</th>
+          <th [appSort]="adminExamRegistrys" data-order="desc" data-name="examPartType" scope="col">Exam Type</th>
           <th scope="col">Edit</th>
         </tr>
       </thead>

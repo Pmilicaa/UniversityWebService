@@ -45,6 +45,7 @@ import { AdminCoursesDetailsComponent } from './components/admin-courses-details
 import { ProfessorStudentTableComponent } from './components/professor-student-table/professor-student-table.component';
 import { CourseServiceService } from './services/course-service.service';
 import { AdminExamRegistryComponent } from './admin-exam-registry/admin-exam-registry.component';
+import { SortDirective } from './directive/sort.directive';
 
 @NgModule({
   declarations: [ 
@@ -79,7 +80,8 @@ import { AdminExamRegistryComponent } from './admin-exam-registry/admin-exam-reg
     AdminCoursesDetailsComponent,
     CourseTableComponent,
     ProfessorStudentTableComponent,
-    AdminExamRegistryComponent
+    AdminExamRegistryComponent,
+    SortDirective
   ],
   imports: [
     AppRoutingModule,

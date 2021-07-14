@@ -4,8 +4,8 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">FirstName</th>
-        <th scope="col">LastName</th>
+        <th [appSort]="professors" data-order="desc" data-name="firstName" scope="col">FirstName</th>
+        <th [appSort]="professors" data-order="desc" data-name="lastName" scope="col">LastName</th>
         <th scope="col">Options</th>
         <th scope="col">Options</th>
       </tr>
