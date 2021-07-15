@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.uni.UniversityWebService.model.*;
+import com.uni.UniversityWebService.model.dto.CourseSpecificationDto;
 import com.uni.UniversityWebService.model.dto.ExamPartProfessorDto;
 
 import com.uni.UniversityWebService.repositories.TeachingRepository;
@@ -57,21 +58,22 @@ public class TeacherService {
 		System.out.println();
 		return courseInstances;
 	}
-	public List<CourseSpecification> findTeacherCourseSpec(Long id){
+	public List<CourseSpecificationDto> findTeacherCourseSpec(Long id){
 		
 		Teacher teacher = teacherRepository.findById(id).get();
 	//	System.out.println("asdasdasdsa " + teacher.getTeachings().size());
 		List<Teaching> teachings = teachingRepository.findAll();
-		List<CourseSpecification> courseSpec = new ArrayList<>();
+		List<CourseSpecificationDto> courseSpec = new ArrayList<>();
 		List<Teaching> teachingTeacher = new ArrayList<>();
 		for(Teaching t : teachings) {
 			if(t.getTeacher().getId() == id) {
-				courseSpec.add(t.getCourseSpecification());
+				CourseSpecificationDto courseDto = new CourseSpecificationDto(t.getCourseSpecification());
+				courseSpec.add(courseDto);
 				teachingTeacher.add(t);
 				teacher.setTeachings(teachingTeacher);
 			}
 		}
-	//	System.out.println(courseSpec);
+	//	System.out.println(courseSpec); 
 		return courseSpec;
 	}
 	public List<Student> findTeacherRegisteredStudents (Teacher teacher, CourseSpecification courseSpecification){
