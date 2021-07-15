@@ -6,6 +6,7 @@ export class CourseSpecification{
     title: string;
     ects:number;
     code:string;
+    active:string;
     courseInstances: CourseInstance[];
     enrollments:Enrollment[];
 }

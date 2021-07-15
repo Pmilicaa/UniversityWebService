@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Course } from '../models/Course';
 import { CourseInstance } from '../models/CourseInstanse';
+import { CourseSpecification } from '../models/CourseSpecification';
 import { Professor } from '../models/Professor';
 import { AuthenticationServiceService } from './authentication-service.service';
 
@@ -84,6 +85,19 @@ export class AdminCoursesServiceService {
     };
     const url = `${this.URL_COURSES}/${courseId}`;
     return this.http.delete<any>(url, requestOptions);
+  }
+
+  addCourse(courseSpec:CourseSpecification){
+    const headInfo = {
+      'Content-Type': 'application/json',
+      'X-Auth-Token': "" + this.authService.getToken()
+      
+    }
+    const requestOptions = {
+      headers: new HttpHeaders(headInfo)
+    };
+    return this.http.post<any>(this.URL_COURSES,courseSpec, requestOptions);
+
   }
 
 }

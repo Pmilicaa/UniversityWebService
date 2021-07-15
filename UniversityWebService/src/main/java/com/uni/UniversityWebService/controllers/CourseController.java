@@ -56,7 +56,15 @@ public class CourseController {
     	}
     	return new ResponseEntity<List<CourseSpecificationDto>>(coursesDto, HttpStatus.OK);
     }
-    
+    @PostMapping(path= "/courses")
+	public @ResponseBody ResponseEntity<CourseSpecification> addCourseSpecification(@RequestBody CourseSpecification courseSpecification){
+    	CourseSpecification cs=courseService.saveCourseSpecification(courseSpecification);
+		return new ResponseEntity(cs, HttpStatus.OK);
+	}
+
+
+
+
     @GetMapping(path = "/courses/{courseId}")
     public @ResponseBody ResponseEntity<CourseSpecificationDto> getCourse(@PathVariable("courseId") Long courseId) {
     	CourseSpecification cs = courseSpecificationRepository.findById(courseId).get();

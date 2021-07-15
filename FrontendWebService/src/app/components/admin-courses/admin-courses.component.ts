@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Course } from 'src/app/models/Course';
+import { CourseSpecification } from 'src/app/models/CourseSpecification';
 import { AdminCoursesServiceService } from 'src/app/services/admin-courses-service.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { AdminCoursesServiceService } from 'src/app/services/admin-courses-servi
   styleUrls: ['./admin-courses.component.css']
 })
 export class AdminCoursesComponent implements OnInit {
-
+  public courseSpec:CourseSpecification= new CourseSpecification();
   courses: Course[];
   title: String = "Courses";
   
@@ -31,7 +32,24 @@ export class AdminCoursesComponent implements OnInit {
     this.adminCourseService.deleteCourse(id).subscribe(() => this.getAllCourses());
   }
 
-  
+  addCourse(){
+    console.log(this.courseSpec);
+    this.adminCourseService.addCourse(this.courseSpec).subscribe((result) => {
+      if(result){
+        this.courseSpec=new CourseSpecification();
+        
+      }
+    });
+
+  }
+  public showAddCourse(): void {
+    let x = document.getElementById("addCourse");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
 
   // showEditTeacher(id: number): void {
   //   this.gotoDetails(id);

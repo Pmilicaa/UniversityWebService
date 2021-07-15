@@ -30,4 +30,41 @@
             </tr>
         </tbody>
     </table>
+    <button type="button" class="btn btn-success" style="float: right;" (click)="showAddCourse()">Add Course</button>
 </div>
+<div id="addCourse" div class="bg-light p-4 rounded" style="display: none;">
+  <h2>Edit Exam Part</h2>
+  <form  (ngSubmit)="addCourse()">
+    <div class="row mb-3">
+      <label for="inputFirstName" class="col-sm-2 col-form-label">Title</label>
+      <div class="col-sm-10">
+        <input [(ngModel)]="courseSpec.title" type="text" id="inputTitle" class="form-control" placeholder="Enter the Title" name="Title" >
+      </div>
+    
+    </div>
+    <div class="row mb-3">
+      <label for="inputlastName" class="col-sm-2 col-form-label">Code</label>
+      <div class="col-sm-10">
+        <input [(ngModel)]="courseSpec.code" type="text" id="inputexamcode" class="form-control" placeholder="Enter the code" name="code" >
+      </div>
+
+    </div>
+    <div class="row mb-3">
+      <label for="inputlastName" class="col-sm-2 col-form-label">Active</label>
+      <div class="col-sm-10">
+        <input [(ngModel)]="courseSpec.active" type="text" id="inputactive" class="form-control" placeholder="Enter the active" name="active" >
+      </div>
+
+    </div>
+    <div class="row mb-3">
+      <label for="inputlastName" class="col-sm-2 col-form-label">ects</label>
+      <div class="col-sm-10">
+        <input [(ngModel)]="courseSpec.ects" type="text" id="inputects" class="form-control" placeholder="Enter the ects" name="ects" >
+      </div>
+
+    </div>
+    <div class="row mb-3">
+    <div class="col-12">
+      <button type="button" class="btn btn-primary " style="float: right;">Cancel</button>
+      <button type="submit" class="btn btn-primary mr-2" style="float: right;" >Confirm</button>
+    </div>
