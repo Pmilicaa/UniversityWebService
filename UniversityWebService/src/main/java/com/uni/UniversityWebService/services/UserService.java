@@ -19,16 +19,16 @@ public class UserService {
     private UserRepository userRepository;
 
     @Autowired
-    private ExamPartRepository examPartRepository;
-
-    @Autowired
-    private EnrollmentRepository enrollmentRepository;
+    private ExamPeriodRepository examPeriodRepository;
 
     @Autowired
     private ExamRepository examRepository;
 
     @Autowired
-    private ExamPeriodRepository examPeriodRepository;
+    private ExamPartRepository examPartRepository;
+
+    @Autowired
+    private EnrollmentRepository enrollmentRepository;
 
     @Autowired
     private TeacherRepository teacherRepository;
@@ -150,13 +150,38 @@ public class UserService {
     public RegisterExamDto examPartUpdate(RegisterExamDto registerExamDto){
         ExamPart examPart=new ExamPart();
         List<Enrollment> enrollments= enrollmentRepository.findAll();
+        List<Teaching> teachings= teachingRepository.findAll();
         ExamPeriod examPeriod=examPeriodRepository.findByName(registerExamDto.getExamPeriod1());
-        Exam exam= new Exam();
         for(Enrollment e : enrollments){
 
             if(e.getCourseSpecification().getTitle().equals(registerExamDto.getCourse())){
                 Set<ExamPart> examParts=e.getExam().getExamParts();
-                exam= e.getExam();
+                Exam exam=e.getExam();
+
+                exam.setExamPeriod(examPeriod);
+                examRepository.save(exam);
+
+                for(ExamPart ep : examParts){
+
+                    if(ep.getExamPartType().getName().equals(registerExamDto.getExamPartType())){
+
+                        ep.setClassroom(registerExamDto.getClassroom());
+                        ep.setExamPartStartDate(registerExamDto.getExamDateTime());
+                        examPartRepository.save(ep);
+                        examPart=ep;
+                    }
+
+                }
+
+            }
+
+        }
+        for(Teaching t : teachings){
+
+            if(t.getCourseSpecification().getTitle().equals(registerExamDto.getCourse())){
+                Set<ExamPart> examParts=t.getExam().getExamParts();
+                Exam exam=t.getExam();
+
                 exam.setExamPeriod(examPeriod);
                 examRepository.save(exam);
                 for(ExamPart ep : examParts){
@@ -165,7 +190,6 @@ public class UserService {
 
                         ep.setClassroom(registerExamDto.getClassroom());
                         ep.setExamPartStartDate(registerExamDto.getExamDateTime());
-
                         examPartRepository.save(ep);
                         examPart=ep;
                     }
@@ -177,9 +201,9 @@ public class UserService {
         }
         return registerExamDto;
     }
-    
+
     public void deleteUser(User user) {
-    	userRepository.delete(user);
+        userRepository.delete(user);
     }
 
     public void deleteTeacher(Teacher teacher){
