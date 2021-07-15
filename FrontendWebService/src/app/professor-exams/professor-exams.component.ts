@@ -1,8 +1,10 @@
 import { identifierModuleUrl } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Exam } from '../models/Exam';
 import ExamPart from '../models/ExamPart';
 import ExamPartsAndCourses from '../models/ExamPartsAndCourses';
 import {Professor} from '../models/Professor';
+import { Student } from '../models/Student';
 import { ProfessorServiceService } from '../services/professor-service.service';
 
 @Component({
@@ -14,7 +16,11 @@ export class ProfessorExamsComponent implements OnInit {
   professor : Professor;
   constructor(private professorService : ProfessorServiceService) { };
   title = "Exam Parts";
+  students: Student[]=[];
   examParts: ExamPartsAndCourses[];
+  examParts1: ExamPart[]=[];
+  examPart : ExamPart;
+  exams : Exam[]=[];
   selectedOption: string;
   options = [
     { name: "January", value: 1 },
@@ -57,5 +63,24 @@ export class ProfessorExamsComponent implements OnInit {
       
     });
 
+  }
+  seeRegisteredStudent(course : String){
+    this.professorService.getRegisteredStudent(course).subscribe(( students ) => {
+      this.students = students;
+    })
+  }
+  getStudentExamPart(id : number){
+    console.log(id + "id je")
+    this.professorService.getExamPartStudentForGrade(id).subscribe(( examParts1 ) => {
+      this.examParts1 = examParts1;
+    })
+    console.log(this.examParts)
+  }
+  
+  gradeStudent(id : number){
+    var inputValue = (<HTMLInputElement>document.getElementById("gradeInput")).value;
+    this.professorService.getExamPartWithPoints(id, inputValue).subscribe(( examPart ) => {
+      this.examPart = examPart;
+    })
   }
 }

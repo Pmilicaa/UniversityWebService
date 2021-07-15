@@ -31,8 +31,54 @@
           <td>
             {{ examPart.time }}
           </td>
+          <td>
+            <button type="submit" class="btn btn-primary" style="float: right;" (click)="seeRegisteredStudent(examPart.course)">See students</button>
+          </td>
         </tr>
       </tbody>
     </table>
+    <div class="bg-light p-4 rounded mt-1">
+      <h2 class="text-black">Registered exam part by students</h2>
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of students; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{student.firstName}}</td>
+            <td>{{student.lastName}}</td>
+            <td *ngFor = "let examPart of examParts; let i = index">
+              <button type="submit" class="btn btn-primary" style="float: right;" (click)="getStudentExamPart(student.id)">See registered exam part</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Exam part</th>
+            <th scope="col">Points</th>
+            <th scope="col">Requred points</th>
+            <th><input type="text" id="gradeInput"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let examPart of examParts1; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{examPart.examPartType.name}}</td>            
+            <td>{{examPart.examPartPoints}}</td> 
+            <td>{{examPart.requiredPoints}}</td>  
+            <td><button type="submit" class="btn btn-primary" style="float: right;" (click)="gradeStudent(examPart.id)">Grade student</button>
+            </td>          
+          </tr>
+        </tbody>
+      </table>
+    </div>
     
   </div>
