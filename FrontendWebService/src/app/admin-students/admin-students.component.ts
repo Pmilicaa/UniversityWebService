@@ -17,10 +17,18 @@ export class AdminStudentsComponent implements OnInit {
 
   stud: Student;
 
+  page: number = 0;
+  pages: Array<number>;
+
   private readonly ROLE_STUDENT = "ROLE_STUDENT";
   
-  constructor(private adminStudentService: AdminStudentsService, private route: Router, private location: Location, private activateRoute: ActivatedRoute) { 
-  }  
+  constructor(private adminStudentService: AdminStudentsService, private route: Router, private location: Location, private activateRoute: ActivatedRoute) { }
+  
+  setPage(i, event:any){
+    event.preventDefault();
+    this.page=i;
+    this.getAllStudets(); 
+  }
 
   addStudent(form: NgForm): void {
     this.stud = new Student ({
@@ -54,7 +62,10 @@ export class AdminStudentsComponent implements OnInit {
   }
 
   private getAllStudets() {
-    this.adminStudentService.getAll().subscribe((students) => (this.students = students));
+    this.adminStudentService.getPagingStudents(this.page).subscribe( students => 
+      { this.students = students['content'];
+        this.pages = new Array(students['totalPages']);
+      });
   }
 
   deleteStudent(studentId: number): void {

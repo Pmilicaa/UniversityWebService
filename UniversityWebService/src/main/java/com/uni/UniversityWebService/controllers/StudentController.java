@@ -4,13 +4,20 @@ import com.uni.UniversityWebService.model.*;
 import com.uni.UniversityWebService.model.dto.CourseSpecificationDto;
 import com.uni.UniversityWebService.model.dto.EnrollmentDto;
 import com.uni.UniversityWebService.model.dto.StudentDto;
+import com.uni.UniversityWebService.repositories.StudentPageRepository;
 import com.uni.UniversityWebService.services.StudentService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.uni.UniversityWebService.services.UserService;
+
+import jdk.net.SocketFlow.Status;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -25,11 +32,21 @@ public class StudentController {
 
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private StudentPageRepository studentPageRepository;
 
     @GetMapping(path = "/students")
     public @ResponseBody
     ResponseEntity<?> getAllStudents(){
         return new ResponseEntity(studentService.findAllStudents(), HttpStatus.OK);
+    }
+    
+    @GetMapping(path = "/studentspaging")
+    public ResponseEntity<?> getPagingStduents(@RequestParam(defaultValue = "0") int page ) {
+    	Pageable requestpage = PageRequest.of(page, 3);
+    	Page<Student> students = studentPageRepository.findByActive(true, requestpage);
+    	return new ResponseEntity(students, HttpStatus.OK);
     }
     
     @GetMapping(path = "students/me")

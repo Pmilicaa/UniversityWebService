@@ -12,6 +12,7 @@ export class AdminStudentsService {
 
   private readonly URL_STUDENTS = "http://localhost:8080/students";
   private readonly URL_API_STUDENTS = "http://localhost:8080/api/students";
+  private readonly URL_PAGE_STUDENTS = "http://localhost:8080/studentspaging";
 
   private refreshNeeded = new Subject<void>();
 
@@ -31,6 +32,17 @@ export class AdminStudentsService {
       headers: new HttpHeaders(headInfo)
     };
     return this.http.get<Student[]>(this.URL_STUDENTS, requestOptions);
+  }
+
+  getPagingStudents(page: number): Observable<Student[]> {
+    const headInfo = {
+      'Content-Type': 'application/json',
+      'X-Auth-Token': "" + this.authService.getToken()
+    }
+    const requestOptions = {
+      headers: new HttpHeaders(headInfo)
+    };
+    return this.http.get<Student[]>(this.URL_PAGE_STUDENTS+'?page='+page, requestOptions);
   }
 
   saveStudent(student: Student): Observable<Student> {
