@@ -2,6 +2,7 @@
 <td>{{ examPart.examPartType.name}}</td>
 <td>{{ examPart.examPartPoints}}</td>
 <td>{{ examPart.requiredPoints}}</td>
+<td>{{ examPart.examPartStartDate}}</td>
 <td>{{ examPart.examPartStatus.name}}</td>
 <td>
     <button *ngIf="examPart.examPartStatus.name != 'Registered'" (click)="registerExam(examPart.id, selectedEnrollment.id)" class="btn btn-primary">Register</button>

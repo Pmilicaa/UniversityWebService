@@ -44,5 +44,9 @@ public class EnrollmentService {
 	public List<Enrollment> findByStudentUsername(String username){
 		return enrollmentRepository.findByStudent_User_UserName(username);
 	}
+
+	public List<Enrollment> findByCourseTitle(String title){
+		return enrollmentRepository.findByCourseSpecification_Title(title);
+	}
 	
 }
