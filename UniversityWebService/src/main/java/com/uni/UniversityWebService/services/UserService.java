@@ -25,6 +25,12 @@ public class UserService {
     private EnrollmentRepository enrollmentRepository;
 
     @Autowired
+    private ExamRepository examRepository;
+
+    @Autowired
+    private ExamPeriodRepository examPeriodRepository;
+
+    @Autowired
     private TeacherRepository teacherRepository;
 
     @Autowired
@@ -107,6 +113,7 @@ public class UserService {
                     registerExamDto.setClassroom(ep.getClassroom());
                     registerExamDto.setExamDateTime(ep.getExamPartStartDate());
                     registerExamDto.setExamPartType(ep.getExamPartType().getName());
+                    registerExamDto.setExamPeriod1(t.getExam().getExamPeriod().getName());
                     registerExamDtos.add(registerExamDto);
                 } }
 
@@ -143,16 +150,22 @@ public class UserService {
     public RegisterExamDto examPartUpdate(RegisterExamDto registerExamDto){
         ExamPart examPart=new ExamPart();
         List<Enrollment> enrollments= enrollmentRepository.findAll();
+        ExamPeriod examPeriod=examPeriodRepository.findByName(registerExamDto.getExamPeriod1());
+        Exam exam= new Exam();
         for(Enrollment e : enrollments){
 
             if(e.getCourseSpecification().getTitle().equals(registerExamDto.getCourse())){
                 Set<ExamPart> examParts=e.getExam().getExamParts();
+                exam= e.getExam();
+                exam.setExamPeriod(examPeriod);
+                examRepository.save(exam);
                 for(ExamPart ep : examParts){
 
                     if(ep.getExamPartType().getName().equals(registerExamDto.getExamPartType())){
 
                         ep.setClassroom(registerExamDto.getClassroom());
                         ep.setExamPartStartDate(registerExamDto.getExamDateTime());
+
                         examPartRepository.save(ep);
                         examPart=ep;
                     }

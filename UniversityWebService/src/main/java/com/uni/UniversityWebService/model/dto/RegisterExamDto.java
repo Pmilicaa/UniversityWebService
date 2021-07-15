@@ -14,6 +14,15 @@ public class RegisterExamDto {
             private String classroom;
             private ExamPeriod examPeriod;
             private String examPartType;
+            private String examPeriod1;
+
+    public String getExamPeriod1() {
+        return examPeriod1;
+    }
+
+    public void setExamPeriod1(String examPeriod1) {
+        this.examPeriod1 = examPeriod1;
+    }
 
     public String getExamPartType() {
         return examPartType;
