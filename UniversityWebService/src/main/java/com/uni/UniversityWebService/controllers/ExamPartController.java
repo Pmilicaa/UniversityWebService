@@ -1,6 +1,7 @@
 package com.uni.UniversityWebService.controllers;
 
 import com.uni.UniversityWebService.model.*;
+
 import com.uni.UniversityWebService.repositories.ExamPartStatusRepository;
 import com.uni.UniversityWebService.services.EnrollmentService;
 import com.uni.UniversityWebService.services.ExamRegistrationService;
@@ -43,6 +44,7 @@ public class ExamPartController {
 	@Autowired
 	private ExamRegistrationService examRegistrationService;
 
+
 	@GetMapping(path="/examParts")
 	public @ResponseBody ResponseEntity<?> getExamParts(){
 		return new ResponseEntity(examPartRepository.findAll(), HttpStatus.OK);
@@ -51,7 +53,6 @@ public class ExamPartController {
 	@PostMapping(path = "/examParts/register/{id}/{enrollmentId}")
 	public ResponseEntity<?> registerExamPart(@AuthenticationPrincipal UserDetails userDetails, @PathVariable(value = "id") Long id,
 											  @PathVariable(value = "enrollmentId") Long enrollmentId){
-
 		ExamPartStatus registeredStatus = examPartStatusRepository.findByCode("R");
 		// TODO: Check whether this exam part belongs to the user that's logged in
 		try{
@@ -64,11 +65,12 @@ public class ExamPartController {
 			ExamPart newExamPart = examPartService.save(examPart);
 
 			Student student = studentService.findByUserUsername(userDetails.getUsername());
-			ExamRegistration examRegistration = new ExamRegistration(student, enrollment.getCourseSpecification(), new Date(System.currentTimeMillis()), 200, examPart, examPart.getClassroom());
 
-			examRegistrationService.saveExamRegistration(examRegistration);
+
 			studentService.decreaseStudentBalance(student, 200);
-			studentService.saveStudent(student);
+			//studentService.saveStudent(student);
+
+
 
 			return new ResponseEntity(newExamPart, HttpStatus.OK);
 		}catch(NullPointerException e){
@@ -96,6 +98,21 @@ public class ExamPartController {
 		}catch (NullPointerException e){
 			return new ResponseEntity("Exam part with the specified id does not exist.", HttpStatus.BAD_REQUEST);
 		}
+	}
+
+	@PostMapping(path = "/examParts/dates")
+	public ResponseEntity<String> changeDates(@RequestBody ChangeDateDto changeDateDto){
+		System.out.println("Date in controller: " + changeDateDto.getDate());
+
+		Dates dates = datesRepository.findByCourseTitleAndPeriod(changeDateDto.getTitle(), changeDateDto.getPeriod());
+		Dates savedDates = examPartService.saveDates(dates, changeDateDto);
+		try {
+			examPartService.refreshDates(dates);
+		}catch (NullPointerException e){
+			return new ResponseEntity<>("Problem with parsing dates", HttpStatus.BAD_REQUEST);
+		}
+
+		return new ResponseEntity<>("Successfully changed dates", HttpStatus.OK);
 	}
 
 	// Test endpoint za paging
