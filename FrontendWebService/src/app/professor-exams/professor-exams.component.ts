@@ -65,13 +65,14 @@ export class ProfessorExamsComponent implements OnInit {
 
   }
   seeRegisteredStudent(course : String){
+    (<HTMLInputElement>document.getElementById("selectedCourse")).value = <string>course;
     this.professorService.getRegisteredStudent(course).subscribe(( students ) => {
       this.students = students;
     })
   }
   getStudentExamPart(id : number){
-    console.log(id + "id je")
-    this.professorService.getExamPartStudentForGrade(id).subscribe(( examParts1 ) => {
+    var courseSpec = (<HTMLInputElement>document.getElementById("selectedCourse")).value;
+    this.professorService.getExamPartStudentForGrade(id, courseSpec).subscribe(( examParts1 ) => {
       this.examParts1 = examParts1;
     })
     console.log(this.examParts)

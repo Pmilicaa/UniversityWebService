@@ -36,9 +36,9 @@ export class ProfessorServiceService {
     return this.http.get<Student[]>("http://localhost:8080/teachers/registeredStudentsForExam/" + course, {headers: headers});
 
   }
-  getExamPartStudentForGrade(id : number): Observable<ExamPart[]>{
+  getExamPartStudentForGrade(id : number, courseSpec : string): Observable<ExamPart[]>{
     const headers = new HttpHeaders({"Content-Type": "application/json", "X-Auth-Token": this.authService.getToken().toString()});
-    return this.http.get<ExamPart[]>("http://localhost:8080/teachers/student/" + id, {headers: headers});
+    return this.http.get<ExamPart[]>("http://localhost:8080/teachers/student/" + id + "/" + courseSpec, {headers: headers});
   }
   getExamPartWithPoints(id : number, inputValue : string): Observable<ExamPart>{
     const headers = new HttpHeaders({"Content-Type": "application/json", "X-Auth-Token": this.authService.getToken().toString()});

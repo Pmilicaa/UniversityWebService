@@ -8,7 +8,7 @@
         </option>
      </select>
     </h3>
-    
+    <input type="hidden" id="selectedCourse" name="custId" value="">
     <table class="table">
       <thead>
         <tr>
@@ -52,7 +52,7 @@
             <td>{{i+1}}</td>
             <td>{{student.firstName}}</td>
             <td>{{student.lastName}}</td>
-            <td *ngFor = "let examPart of examParts; let i = index">
+            <td>
               <button type="submit" class="btn btn-primary" style="float: right;" (click)="getStudentExamPart(student.id)">See registered exam part</button>
             </td>
           </tr>
