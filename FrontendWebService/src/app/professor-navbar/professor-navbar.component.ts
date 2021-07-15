@@ -25,7 +25,7 @@ export class ProfessorNavbarComponent implements OnInit {
     this.professorService.getloggedTeacher().subscribe((professor)=>{
       this.professor=professor
       setTimeout(() => {
-        if (this.professor.active) {
+        if (this.professor.active == false) {
           this.logout();
         }
     }, 1);});
