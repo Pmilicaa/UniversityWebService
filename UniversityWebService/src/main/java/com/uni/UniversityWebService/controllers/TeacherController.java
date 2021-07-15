@@ -99,11 +99,12 @@ public class TeacherController {
 		CourseSpecification courseSpec = courseSpecificationRepository.findByTitle(title);
 		return new ResponseEntity(teacherService.findTeacherRegisteredStudents(teacher, courseSpec), HttpStatus.OK);
 	}
-	@GetMapping(path="teachers/student/{id}")
-	public @ResponseBody ResponseEntity<?> getExamStudentForGrade(@AuthenticationPrincipal UserDetails userDetails, @PathVariable(value="id") Long id){
+	@GetMapping(path="teachers/student/{id}/{courseSpec}")
+	public @ResponseBody ResponseEntity<?> getExamStudentForGrade(@AuthenticationPrincipal UserDetails userDetails, @PathVariable(value="id") Long id, @PathVariable(value="courseSpec") String courseSpec ){
 		Teacher teacher = teacherRepository.findByUser_UserName(userDetails.getUsername());
 		Student student = studentRepository.findById(id).get();
-		return new ResponseEntity(teacherService.findExamStudentForGrade(teacher, student), HttpStatus.OK);
+		CourseSpecification courseSpeci = courseSpecificationRepository.findByTitle(courseSpec);
+		return new ResponseEntity(teacherService.findExamStudentForGrade(teacher, student, courseSpeci), HttpStatus.OK);
 	}
 	@GetMapping(path="teachers/examParts/{id}/{inputValue}")
 	public @ResponseBody ResponseEntity<?> getExamPartWithPoint(@AuthenticationPrincipal UserDetails userDetails, @PathVariable(value="id") Long id,@PathVariable(value="inputValue") String point){

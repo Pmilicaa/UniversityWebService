@@ -161,21 +161,23 @@ public class TeacherService {
 
 		return examPart;
 	}
-	public List<ExamPart> findExamStudentForGrade (Teacher teacher, Student student){
+	public List<ExamPart> findExamStudentForGrade (Teacher teacher, Student student, CourseSpecification courseSpeci){
 		List<Teaching> teachings = teachingRepository.findAll();
 		List<ExamPart> studentExamPart = new ArrayList<>();
-		for(Teaching t : teachings) {
-			if(t.getTeacher().getId() == teacher.getId()) {
-				for(Enrollment enrollment : student.getEnrollments()) {
-					for(ExamPart ep : enrollment.getExam().getExamParts()) {
-						if(ep.getExamPartStatus().getId() == 3) {
-							studentExamPart.add(ep);
+		for(Enrollment enrollment : student.getEnrollments()) {
+			if(enrollment.getCourseSpecification().equals(courseSpeci)) {
+				for(ExamPart ep : enrollment.getExam().getExamParts()) {
+					System.out.println(ep.getExamPartType().getName() + " exam part");
+					System.out.println(ep.getExamPartStatus().getName() + " exam part");
 
-						}
+					if(ep.getExamPartStatus().getId() == 3) {
+						studentExamPart.add(ep);
 					}
 				}
-			}
+				
+			}		
 		}
+		
 		return studentExamPart;
 	}
 	public List<ExamPartProfessorDto> findExamPartsAndCourseSepcificationForTeacher(Long id,String period){
