@@ -34,7 +34,7 @@
   <button type="button" class="btn btn-success" style="float: right;" (click)="showAddTeacher()">Add professor</button>
 </div>
 
-<div id="addTeacher" style="display: none;">
+<div id="addTeacher" style="display: none;" div class="bg-light p-4 rounded" >
   <h2>Add new Teacher</h2>
   <form  (ngSubmit)="addTeacher()">
     <div class="row mb-3">
@@ -71,7 +71,7 @@
   </form>
 </div>
 
-<div id="editTeacher" style="display: none;">
+<div id="editTeacher" style="display: none;" div class="bg-light p-4 rounded" >
   <h2>Edit Teacher</h2>
   <form  (ngSubmit)="editTeacher()">
     <div class="row mb-3">
@@ -87,7 +87,7 @@
         <input [(ngModel)]="selectedProfesor.lastName" type="text" id="inputLastNameEdit" class="form-control" placeholder="Enter the Last Name" name="lastName" >
       </div>
     </div>
-    <div class="col-12">
+    <div class="col-12" >
       <button type="button" class="btn btn-primary" style="float: right;">Cancel</button>
     </div>
     <div class="col-11">

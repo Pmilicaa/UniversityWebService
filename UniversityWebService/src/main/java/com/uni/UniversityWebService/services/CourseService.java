@@ -62,7 +62,7 @@ public class CourseService {
         List<ExamPartType> examPartTypes=examPartTypeRepository.findAll();
         ExamPeriod ep=eps.get(1);
         List<TeachingType>tts= teachingTypeRepository.findAll();
-        List<ExamPartStatus> examPartStatuses=examPartStatusRepository.findAll();
+        ExamPartStatus examPartStatuses=examPartStatusRepository.findByCode("N");
         TeachingType teachingType=tts.get(0);
         for(Student s:students){
             Set<ExamPart> examPartSet=new HashSet<>();
@@ -73,7 +73,7 @@ public class CourseService {
                 examPart.setClassroom("200");
                 examPart.setExamPartPoints(0);
                 examPart.setExamPartType(ept);
-                examPart.setExamPartStatus(examPartStatuses.get(0));
+                examPart.setExamPartStatus(examPartStatuses);
                 examPart.setRequiredPoints(25);
                 examPartSet.add(examPart);
                 examPartRepository.save(examPart);
@@ -92,13 +92,27 @@ public class CourseService {
             }
 
         for (Teacher t:teachers) {
+            Set<ExamPart> examPartSet=new HashSet<>();
             if(t.getFirstName().equals(teacher)){
             Teaching teaching = new Teaching();
             teaching.setCode("M");
+                for(ExamPartType ept:examPartTypes){
+
+                    ExamPart examPart= new ExamPart();
+                    examPart.setExamPartStartDate(new Date("20/1/2021"));
+                    examPart.setClassroom("200");
+                    examPart.setExamPartPoints(0);
+                    examPart.setExamPartType(ept);
+                    examPart.setExamPartStatus(examPartStatuses);
+                    examPart.setRequiredPoints(25);
+                    examPartSet.add(examPart);
+                    examPartRepository.save(examPart);
+                }
             Exam exam = new Exam();
             exam.setExamPoints(0);
             exam.setGrade(0);
             exam.setExamPeriod(ep);
+            exam.setExamParts(examPartSet);
             examRepository.save(exam);
             teaching.setExam(exam);
             teaching.setTeacher(t);
