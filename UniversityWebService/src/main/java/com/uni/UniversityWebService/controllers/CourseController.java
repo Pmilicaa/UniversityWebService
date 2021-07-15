@@ -56,9 +56,9 @@ public class CourseController {
     	}
     	return new ResponseEntity<List<CourseSpecificationDto>>(coursesDto, HttpStatus.OK);
     }
-    @PostMapping(path= "/courses")
-	public @ResponseBody ResponseEntity<CourseSpecification> addCourseSpecification(@RequestBody CourseSpecification courseSpecification){
-    	CourseSpecification cs=courseService.saveCourseSpecification(courseSpecification);
+    @PostMapping(path= "/courses/{id}")
+	public @ResponseBody ResponseEntity<CourseSpecification> addCourseSpecification(@RequestBody CourseSpecification courseSpecification,@PathVariable("id") String id){
+    	CourseSpecification cs=courseService.saveCourseSpecification(courseSpecification,id);
 		return new ResponseEntity(cs, HttpStatus.OK);
 	}
 
@@ -112,7 +112,7 @@ public class CourseController {
 	    	return new ResponseEntity<CourseSpecificationDto>(HttpStatus.BAD_REQUEST);
 	     }
 		 CourseSpecification changedCourseSpecification = courseSpecificationDto.convertCourseSpecificationDtoToCS(cs);
-		 cs = courseService.saveCourseSpecification(changedCourseSpecification);
+		 cs = courseService.addNewCourse(changedCourseSpecification);
 		 
 		 return new ResponseEntity<CourseSpecificationDto>(new CourseSpecificationDto(cs), HttpStatus.OK);
 	 }

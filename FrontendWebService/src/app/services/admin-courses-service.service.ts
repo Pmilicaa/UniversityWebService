@@ -87,7 +87,7 @@ export class AdminCoursesServiceService {
     return this.http.delete<any>(url, requestOptions);
   }
 
-  addCourse(courseSpec:CourseSpecification){
+  addCourse(courseSpec:CourseSpecification,id: String){
     const headInfo = {
       'Content-Type': 'application/json',
       'X-Auth-Token': "" + this.authService.getToken()
@@ -96,7 +96,8 @@ export class AdminCoursesServiceService {
     const requestOptions = {
       headers: new HttpHeaders(headInfo)
     };
-    return this.http.post<any>(this.URL_COURSES,courseSpec, requestOptions);
+    const url = `${this.URL_COURSES}/${id}`;
+    return this.http.post<any>(url,courseSpec, requestOptions);
 
   }
 

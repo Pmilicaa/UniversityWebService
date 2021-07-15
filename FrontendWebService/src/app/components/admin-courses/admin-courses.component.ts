@@ -13,7 +13,7 @@ export class AdminCoursesComponent implements OnInit {
   public courseSpec:CourseSpecification= new CourseSpecification();
   courses: Course[];
   title: String = "Courses";
-  
+  id:String;
   constructor(private adminCourseService: AdminCoursesServiceService, private route: Router) { }
 
   ngOnInit(): void {
@@ -34,7 +34,8 @@ export class AdminCoursesComponent implements OnInit {
 
   addCourse(){
     console.log(this.courseSpec);
-    this.adminCourseService.addCourse(this.courseSpec).subscribe((result) => {
+    console.log(this.id);
+    this.adminCourseService.addCourse(this.courseSpec, this.id).subscribe((result) => {
       if(result){
         this.courseSpec=new CourseSpecification();
         
