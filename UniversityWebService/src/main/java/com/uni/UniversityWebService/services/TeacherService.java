@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.uni.UniversityWebService.repositories.EnrollmentRepository;
 import com.uni.UniversityWebService.repositories.ExamPartRepository;
+import com.uni.UniversityWebService.repositories.ExamRegistrationRepository;
 import com.uni.UniversityWebService.repositories.TeacherRepository;
 
 @Service
@@ -28,6 +29,8 @@ public class TeacherService {
 	@Autowired
 	private ExamPartRepository examPartRepository;
 	
+	@Autowired
+	private ExamRegistrationRepository examRegistrationRepository;
 	
 	public List<CourseInstance> findTeacherCourses(Long id){
 		
@@ -63,7 +66,52 @@ public class TeacherService {
 	//	System.out.println(courseSpec);
 		return courseSpec;
 	}
+	public List<Student> findTeacherRegisteredStudents (Teacher teacher, CourseSpecification courseSpecification){
+		List<Teaching> teachings = teachingRepository.findAll();
+		List<Student> registredStudent = new ArrayList<>();
+		for(Teaching t : teachings) {
+			if(t.getTeacher().getId() == teacher.getId() && t.getCourseSpecification().getId() == courseSpecification.getId()) {
+				for(Enrollment enrollment : t.getCourseSpecification().getEnrollments()) {
+					for(ExamPart ep : enrollment.getExam().getExamParts()) {
+						if(ep.getExamPartStatus().getId() == 3) {
+							if(!registredStudent.contains(enrollment.getStudent())) {
+								registredStudent.add(enrollment.getStudent());
+							}
 
+						}
+					}
+				}
+			}
+		}
+		return registredStudent;
+	}
+	
+	public ExamPart gradeStudent(Teacher teacher, ExamPart examPart, String point) {
+		int i=Integer.parseInt(point);  
+		examPart.setExamPartPoints(i);
+		examPartRepository.save(examPart);
+		System.out.println(examPart.getExamPartPoints());
+		System.out.println(point + "pointtttt");
+
+		return examPart;
+	}
+	public List<ExamPart> findExamStudentForGrade (Teacher teacher, Student student){
+		List<Teaching> teachings = teachingRepository.findAll();
+		List<ExamPart> studentExamPart = new ArrayList<>();
+		for(Teaching t : teachings) {
+			if(t.getTeacher().getId() == teacher.getId()) {
+				for(Enrollment enrollment : student.getEnrollments()) {
+					for(ExamPart ep : enrollment.getExam().getExamParts()) {
+						if(ep.getExamPartStatus().getId() == 3) {
+							studentExamPart.add(ep);
+
+						}
+					}
+				}
+			}
+		}
+		return studentExamPart;
+	}
 	public List<ExamPartProfessorDto> findExamPartsAndCourseSepcificationForTeacher(Long id,String period){
 		List<ExamPartProfessorDto> examPartProfessorDtos= new ArrayList<>();
 		List<ExamPart>examParts = new ArrayList<>();

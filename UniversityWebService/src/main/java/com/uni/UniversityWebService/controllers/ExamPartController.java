@@ -100,20 +100,20 @@ public class ExamPartController {
 		}
 	}
 
-	@PostMapping(path = "/examParts/dates")
-	public ResponseEntity<String> changeDates(@RequestBody ChangeDateDto changeDateDto){
-		System.out.println("Date in controller: " + changeDateDto.getDate());
-
-		Dates dates = datesRepository.findByCourseTitleAndPeriod(changeDateDto.getTitle(), changeDateDto.getPeriod());
-		Dates savedDates = examPartService.saveDates(dates, changeDateDto);
-		try {
-			examPartService.refreshDates(dates);
-		}catch (NullPointerException e){
-			return new ResponseEntity<>("Problem with parsing dates", HttpStatus.BAD_REQUEST);
-		}
-
-		return new ResponseEntity<>("Successfully changed dates", HttpStatus.OK);
-	}
+	/*
+	 * @PostMapping(path = "/examParts/dates") public ResponseEntity<String>
+	 * changeDates(@RequestBody ChangeDateDto changeDateDto){
+	 * System.out.println("Date in controller: " + changeDateDto.getDate());
+	 * 
+	 * Dates dates =
+	 * datesRepository.findByCourseTitleAndPeriod(changeDateDto.getTitle(),
+	 * changeDateDto.getPeriod()); Dates savedDates =
+	 * examPartService.saveDates(dates, changeDateDto); try {
+	 * examPartService.refreshDates(dates); }catch (NullPointerException e){ return
+	 * new ResponseEntity<>("Problem with parsing dates", HttpStatus.BAD_REQUEST); }
+	 * 
+	 * return new ResponseEntity<>("Successfully changed dates", HttpStatus.OK); }
+	 */
 
 	// Test endpoint za paging
 	@GetMapping(path = "/examParts/paged/{pageId}/{sortType}/{sortBy}")

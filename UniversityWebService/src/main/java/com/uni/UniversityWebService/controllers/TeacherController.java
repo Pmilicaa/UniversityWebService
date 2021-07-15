@@ -32,6 +32,8 @@ import com.uni.UniversityWebService.model.dto.TeacherDto;
 import com.uni.UniversityWebService.model.dto.TeachingDto;
 import com.uni.UniversityWebService.repositories.CourseInstanceRepository;
 import com.uni.UniversityWebService.repositories.CourseSpecificationRepository;
+import com.uni.UniversityWebService.repositories.ExamPartRepository;
+import com.uni.UniversityWebService.repositories.StudentRepository;
 import com.uni.UniversityWebService.repositories.TeacherRepository;
 import com.uni.UniversityWebService.repositories.TeachingRepository;
 import com.uni.UniversityWebService.repositories.UserRepository;
@@ -62,7 +64,13 @@ public class TeacherController {
 	private ExamPartService examPartService;
 	
 	@Autowired
+	private ExamPartRepository examPartRepository;
+	
+	@Autowired
 	private StudentService studentService;
+	@Autowired
+	private StudentRepository studentRepository;
+	
 	
 	@Autowired
 	private ExamService examService;
@@ -77,7 +85,25 @@ public class TeacherController {
 
 		return new ResponseEntity(teacherService.findExamPartsAndCourseSepcificationForTeacher(id,period), HttpStatus.OK);
 	}
-	
+	@GetMapping(path="teachers/registeredStudentsForExam/{course}")
+	public @ResponseBody ResponseEntity<?> getTeacherRegisteredStudentsForExam(@AuthenticationPrincipal UserDetails userDetails, @PathVariable(value="course") String title){
+		Teacher teacher = teacherRepository.findByUser_UserName(userDetails.getUsername());
+		CourseSpecification courseSpec = courseSpecificationRepository.findByTitle(title);
+		return new ResponseEntity(teacherService.findTeacherRegisteredStudents(teacher, courseSpec), HttpStatus.OK);
+	}
+	@GetMapping(path="teachers/student/{id}")
+	public @ResponseBody ResponseEntity<?> getExamStudentForGrade(@AuthenticationPrincipal UserDetails userDetails, @PathVariable(value="id") Long id){
+		Teacher teacher = teacherRepository.findByUser_UserName(userDetails.getUsername());
+		Student student = studentRepository.findById(id).get();
+		return new ResponseEntity(teacherService.findExamStudentForGrade(teacher, student), HttpStatus.OK);
+	}
+	@GetMapping(path="teachers/examParts/{id}/{inputValue}")
+	public @ResponseBody ResponseEntity<?> getExamPartWithPoint(@AuthenticationPrincipal UserDetails userDetails, @PathVariable(value="id") Long id,@PathVariable(value="inputValue") String point){
+		Teacher teacher = teacherRepository.findByUser_UserName(userDetails.getUsername());
+		ExamPart examPart = examPartRepository.findById(id).get();
+		System.out.println(examPart.getExamPartType() + "status" + point + "bodovi");
+		return new ResponseEntity(teacherService.gradeStudent(teacher, examPart, point), HttpStatus.OK);
+	}
 //	@PostMapping(path="teachers/{teacherId}/teaching/{courseSpecId}")
 //	public @ResponseBody ResponseEntity<?> addTeacherTeaching(@PathVariable(value="teacherId") Long id, @PathVariable(value="courseSpecId") Long courseSpecId){
 //		
@@ -113,7 +139,10 @@ public class TeacherController {
 	}
 	@GetMapping(path="/teachers/me")
 	public @ResponseBody ResponseEntity<?> getLoggedTeacher(@AuthenticationPrincipal UserDetails userDetails){
+		System.out.println(userDetails.getUsername());
 		Teacher teacher = teacherRepository.findByUser_UserName(userDetails.getUsername());
+		System.out.println(teacher.getFirstName() + teacher.getUser().getUserName());
+
 		return new ResponseEntity(new TeacherDto(teacher), HttpStatus.OK);
 	}
 	@GetMapping(path = "/teachers")
