@@ -16,8 +16,8 @@ export class ProfessorNavbarComponent implements OnInit {
   constructor(private authService: AuthenticationServiceService, private professorService: ProfessorServiceService, private router: Router) { }
 
   onLogOut(){
-    this.authService.logout(); 
-    window.location.reload();
+    this.authService.logout();
+    this.router.navigate(['login']);
   }
 
 
