@@ -26,6 +26,11 @@
       </tr>
     </tbody>
   </table>
+  <ul class="nav nav-pills">
+    <li class="nav-item" *ngFor="let p of pages; let i = index">
+      <a class="nav-link" href="" (click)="setPage(i,$event)" [ngClass]="{'active':i==page}">{{i}}</a>
+    </li>
+  </ul>
   <button type="button" class="btn btn-success" style="float: right;" (click)="showAddTeacher()">Add professor</button>
 </div>
 

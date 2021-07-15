@@ -14,15 +14,30 @@ export class AdminProfessorComponent implements OnInit {
 
   professors: Professor[];
 
+  page: number = 0;
+  pages: Array<number>;
+
   constructor(private adminProfessorsService: AdminProfessorsService,private route: Router,private location: Location) { }
+
+  setPage(i, event:any){
+    event.preventDefault();
+    this.page=i;
+    this.getAllProfessors(); 
+  }
 
   title = "Professors"
   public profesor:Professor=new Professor();
   public selectedProfesor:Professor=new Professor();
+  
   ngOnInit(): void {
-    this.adminProfessorsService.getAll().subscribe((professors) => (this.professors = professors));
-    
+    this.getAllProfessors();
+  }
 
+  getAllProfessors() {
+    this.adminProfessorsService.getPagingProfessorss(this.page).subscribe( professors => 
+      {(this.professors = professors['content']);
+      this.pages = new Array(professors['totalPages']);
+    });
   }
  
   addTeacher(){

@@ -10,6 +10,7 @@ import { AuthenticationServiceService } from './authentication-service.service';
 export class AdminProfessorsService {
 
   private readonly URL = "http://localhost:8080/teachers";
+  private readonly URL_PAGE_STUDENTS = "http://localhost:8080/teacherspaging";
 
   constructor(private http: HttpClient,private authService: AuthenticationServiceService) { }
 
@@ -24,6 +25,18 @@ export class AdminProfessorsService {
     };
     return this.http.get<Professor[]>(this.URL,requestOptions);
   }
+
+  getPagingProfessorss(page: number): Observable<Professor[]> {
+    const headInfo = {
+      'Content-Type': 'application/json',
+      'X-Auth-Token': "" + this.authService.getToken()
+    }
+    const requestOptions = {
+      headers: new HttpHeaders(headInfo)
+    };
+    return this.http.get<Professor[]>(this.URL_PAGE_STUDENTS+'?page='+page, requestOptions);
+  }
+
   addTeacher(profesor:Professor): Observable<Professor>{
     const headInfo = {
       'Content-Type': 'application/json',
