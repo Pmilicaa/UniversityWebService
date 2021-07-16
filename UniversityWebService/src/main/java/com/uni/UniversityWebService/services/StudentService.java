@@ -128,45 +128,25 @@ public class StudentService {
 		ExamPartStatus notRegisteredStatus = examPartStatusRepository.findByCode("N");
 
 		ExamPeriod januaryPeriod = examPeriodRepository.findByName("January");
+		for (CourseSpecification courseSpec : courseSpecificationRepository.findAll()) {
 
-		CourseSpecification mathCourse = courseSpecificationRepository.findByTitle("Mathematics");
-		CourseSpecification oopCourse = courseSpecificationRepository.findByTitle("Object oriented programming");
+			ExamPart colloqPart = new ExamPart(new Date("20/1/2021"), "100", 0, 10, examPartTypeColloq, notRegisteredStatus);
+			ExamPart homeworkPart = new ExamPart(new Date("20/1/2021"), "100", 0, 20, examPartTypeHomework, notRegisteredStatus);
+			ExamPart finalPart = new ExamPart(new Date("20/1/2021"), "100", 0, 30, examPartTypeFinal, notRegisteredStatus);
+			Exam exam = new Exam(0, 0, null, null, januaryPeriod);
+			exam.getExamParts().add(colloqPart);
+			exam.getExamParts().add(homeworkPart);
+			exam.getExamParts().add(finalPart);
 
-		// Matematika
-		ExamPart colloqPart = new ExamPart(new Date("20/1/2021"), "100", 0, 10, examPartTypeColloq, notRegisteredStatus);
-		ExamPart homeworkPart = new ExamPart(new Date("20/1/2021"), "100", 0, 20, examPartTypeHomework, notRegisteredStatus);
-		ExamPart finalPart = new ExamPart(new Date("20/1/2021"), "100", 0, 30, examPartTypeFinal, notRegisteredStatus);
-		Exam mathExam = new Exam(0, 0, null, null, januaryPeriod);
-		mathExam.getExamParts().add(colloqPart);
-		mathExam.getExamParts().add(homeworkPart);
-		mathExam.getExamParts().add(finalPart);
+			Enrollment enrollment = new Enrollment(exam, courseSpec, student);
+			exam.setEnrollment(enrollment);
 
-		Enrollment mathEnrollment = new Enrollment(mathExam, mathCourse, student);
-		mathExam.setEnrollment(mathEnrollment);
-
-		examPartService.save(colloqPart);
-		examPartService.save(homeworkPart);
-		examPartService.save(finalPart);
-		examService.save(mathExam);
-		enrollmentService.save(mathEnrollment);
-
-		// OOP
-		ExamPart colloqPartOOP = new ExamPart(new Date("20/5/2021"), "100", 0, 10, examPartTypeColloq, notRegisteredStatus);
-		ExamPart homeworkPartOOP = new ExamPart(new Date("25/6/2021"), "200", 0, 20, examPartTypeHomework, notRegisteredStatus);
-		ExamPart finalPartOOP = new ExamPart(new Date("15/7/2021"), "300", 0, 30, examPartTypeFinal, notRegisteredStatus);
-		Exam oopExam= new Exam(0, 0, null, null, januaryPeriod);
-		oopExam.getExamParts().add(colloqPartOOP);
-		oopExam.getExamParts().add(homeworkPartOOP);
-		oopExam.getExamParts().add(finalPartOOP);
-
-		Enrollment oopEnrollment = new Enrollment(oopExam, oopCourse, student);
-		oopExam.setEnrollment(oopEnrollment);
-
-		examPartService.save(colloqPartOOP);
-		examPartService.save(homeworkPartOOP);
-		examPartService.save(finalPartOOP);
-		examService.save(oopExam);
-		enrollmentService.save(oopEnrollment);
+			examPartService.save(colloqPart);
+			examPartService.save(homeworkPart);
+			examPartService.save(finalPart);
+			examService.save(exam);
+			enrollmentService.save(enrollment);
+		}
 
 		return student;
 	}
